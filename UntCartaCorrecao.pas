@@ -16,8 +16,8 @@ uses
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinXmas2008Blue,
   dxSkinscxPCPainter, cxPC, cxContainer, cxEdit, cxGroupBox, cxTextEdit,
   cxMemo, OleCtrls, SHDocVw, Menus, ActnList, StdCtrls, cxButtons, ACBrNFe,
-  ACBrNFeDANFEClass, ACBrNFeDANFERave, DB, IBCustomDataSet,
-  ACBrNFeDANFERaveCB, cxLabel;
+  ACBrNFeDANFEClass,  DB, IBCustomDataSet,
+   cxLabel, ACBrBase, ACBrDFe;
 
 type
   TFrmCartaCorrecao = class(TForm)
@@ -38,7 +38,6 @@ type
     DtVendaCARTA_CORRECAO_ELETRONICA: TMemoField;
     DtVendaCCE_SEQUENCIA: TIntegerField;
     DtVendaNUM_NF: TIntegerField;
-    ACBrNFeDANFERaveCB1: TACBrNFeDANFERaveCB;
     TabCorrecao: TcxTabSheet;
     MemoCorrecao: TcxMemo;
     cxLabel1: TcxLabel;
@@ -124,7 +123,7 @@ begin
     infEvento.detEvento.xCorrecao := Correcao;
   end;
 
-  if DmApp.ACBrNFe.EnviarEventoNFe(StrToInt(idLote)) then
+  if DmApp.ACBrNFe.EnviarEvento(StrToInt(idLote)) then//EnviarEventoNFe(StrToInt(idLote)) then
   begin
     CorrecaoXML := DmApp.ACBrNFe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0].RetInfEvento.XML;
     MemoResp.Lines.Text := CorrecaoXML;

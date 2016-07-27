@@ -26,7 +26,8 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridBandedTableView,
   cxGridDBBandedTableView, cxGridLevel, cxGridCustomView, cxGrid,
   cxGridCustomPopupMenu, cxGridPopupMenu, pcnConversao, cxTextEdit,
-  cxMaskEdit, cxDropDownEdit, cxCalendar, cxButtonEdit;
+  cxMaskEdit, cxDropDownEdit, cxCalendar, cxButtonEdit,
+  pcnConversaoNFe;
 
 type
 
@@ -1565,11 +1566,13 @@ begin
             if not(DirectoryExists('C:\Sistemas\HelpStore\Temp\')) then
               CreateDir('C:\Sistemas\HelpStore\Temp\');
 
-            FileXML := 'C:\Sistemas\HelpStore\Temp\NFe'+DataSource.DataSet.fieldbyname('NUM_NF').asString+'.tmp';
+            FileXML := 'C:\Sistemas\HelpStore\Temp\NFe'+DataSource.DataSet.fieldbyname('NUM_NF').asString+'.xml';
 
             DmVendas.SelFaturaVendasNFE_XML.SaveToFile(FileXML);
             dmApp.ACBrNFe.NotasFiscais.LoadFromFile(FileXML);
 
+            dmApp.ACBrNFe.EventoNFe.Evento.Clear;
+            
             // Pegando Versão da NFE  --- Sanniel
             if (dmApp.ACBrNFe.NotasFiscais.Items[0].NFe.infNFe.Versao = 2) then
             begin
@@ -1590,7 +1593,7 @@ begin
               if not(InputQuery('NFE Cancelamento', 'A Justificativa deve conter pelo menos 15 caracteres:', vAux)) then
                 exit;
 
-            dmApp.ACBrNFe.EventoNFe.Evento.Clear;
+            //dmApp.ACBrNFe.EventoNFe.Evento.Clear;
             dmApp.ACBrNFe.EventoNFe.idLote := DmVendas.SelFaturaVendasCODIGO.AsInteger ;
             with dmApp.ACBrNFe.EventoNFe.Evento.Add do
             begin
@@ -1600,7 +1603,21 @@ begin
             end;
 
             // Enviar o evento de cancelamento
-            if dmApp.ACBrNFe.EnviarEventoNFe((DmVendas.SelFaturaVendasCODIGO.AsInteger)) then
+
+                dmApp.ACBrNFe.EnviarEvento(DmVendas.SelFaturaVendasCODIGO.AsInteger);
+
+                //.Lines.Text := dmApp.ACBrNFe.WebServices.EnvEvento.RetWS;
+                //memoRespWS.Lines.Text := dmApp.ACBrNFe.WebServices.EnvEvento.RetornoWS;
+                //LoadXML(dmApp.ACBrNFe.WebServices.EnvEvento.RetornoWS, WBResposta);
+
+                if dmApp.ACBrNFe.WebServices.EnvEvento.cStat = 128 then
+                  Application.MessageBox('Solicitação processada.' + #013 + 'Protocolo: '
+                    + dmApp.ACBrNFe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0].RetInfEvento.nProt,'Aviso',mb_ok+mb_iconinformation);
+
+                //ShowMessage(IntToStr(dmApp.ACBrNFe.WebServices.EnvEvento.cStat));
+                //ShowMessage(dmApp.ACBrNFe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0].RetInfEvento.nProt);
+                
+            {if dmApp.ACBrNFe.EnviarEvento((DmVendas.SelFaturaVendasCODIGO.AsInteger)) then//EnviarEventoNFe((DmVendas.SelFaturaVendasCODIGO.AsInteger)) then
             begin
               with dmApp.ACBrNFe.WebServices.EnvEvento do
               begin
@@ -1621,7 +1638,7 @@ begin
                 XMLCancelamento := EventoRetorno.retEvento.Items[0].RetInfEvento.XML;
                 CodigoStatus    := EventoRetorno.retEvento.Items[0].RetInfEvento.cStat;
                 MotivoStatus    := EventoRetorno.retEvento.Items[0].RetInfEvento.xMotivo;}
-              end;
+              {end;
             end
             else
             begin
@@ -1638,7 +1655,7 @@ begin
                 );
               end;
 
-            end;
+            end;}
 
             {MemoResp.Lines.Text :=  UTF8Encode(ACBrNFe1.WebServices.EnvEvento.RetWS);
             memoRespWS.Lines.Text :=  UTF8Encode(ACBrNFe1.WebServices.EnvEvento.RetornoWS);

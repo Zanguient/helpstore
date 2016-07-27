@@ -7,6 +7,7 @@ object FrmEmpresas: TFrmEmpresas
   ClientHeight = 540
   ClientWidth = 790
   Color = 15396334
+  DefaultMonitor = dmMainForm
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -203,7 +204,7 @@ object FrmEmpresas: TFrmEmpresas
       Top = 47
       Width = 761
       Height = 458
-      ActivePage = tbsNFe
+      ActivePage = dxTabSheet3
       HotTrack = True
       TabOrder = 1
       OnChange = pcChange
@@ -1905,6 +1906,19 @@ object FrmEmpresas: TFrmEmpresas
           OnKeyDown = dxDBEdit1KeyDown
           DataField = 'NUM_ITENS_PDD'
           DataSource = DsEmpresas
+        end
+        object cxDBCheckBox1: TcxDBCheckBox
+          Left = 2
+          Top = 344
+          Caption = 'Aviso de Estoque Minimo'
+          DataBinding.DataField = 'AVISO_ESTOQUE_MIN'
+          DataBinding.DataSource = DsEmpresas
+          Properties.Alignment = taRightJustify
+          Properties.NullStyle = nssUnchecked
+          Properties.ValueChecked = 'S'
+          Properties.ValueUnchecked = 'N'
+          TabOrder = 62
+          Width = 137
         end
       end
       object dxTabSheet3: TcxTabSheet

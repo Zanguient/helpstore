@@ -10,6 +10,7 @@ inherited frmCadOS: TfrmCadOS
   inherited pgcCadastro: TcxPageControl
     Width = 1022
     Height = 584
+    ActivePage = tbsEdita
     ClientRectBottom = 580
     ClientRectRight = 1018
     inherited tbsLista: TcxTabSheet

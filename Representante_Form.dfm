@@ -17,8 +17,8 @@ object FrmRepresentantes: TFrmRepresentantes
   object frmRepresentante: TPanel
     Left = 0
     Top = 0
-    Width = 552
-    Height = 379
+    Width = 560
+    Height = 386
     Align = alClient
     Color = clBtnHighlight
     TabOrder = 0
@@ -39,14 +39,14 @@ object FrmRepresentantes: TFrmRepresentantes
     object pcRepresentante: TcxPageControl
       Left = 1
       Top = 1
-      Width = 550
-      Height = 377
-      ActivePage = cxTabSheet2
+      Width = 558
+      Height = 384
+      ActivePage = cxTabSheet1
       Align = alClient
       TabOrder = 1
-      ClientRectBottom = 373
+      ClientRectBottom = 380
       ClientRectLeft = 4
-      ClientRectRight = 546
+      ClientRectRight = 554
       ClientRectTop = 27
       object cxTabSheet1: TcxTabSheet
         Caption = 'Dados '

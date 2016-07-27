@@ -177,27 +177,27 @@ begin
    GRAFICO.Series[0].Active := False ;
    GRAFICO.Series[1].Active := False ;
 
-   Qrp := TQrp.Create(Self);
+  // Qrp := TQrp.Create(Self);
 
    If RDBARRAS.Checked
    THEN BEGIN
-        Qrp.Series1.Active := False ;
-        Qrp.Series2.Active := True  ;
+        GRAFICO.Series[0].Active := False;//Qrp.Series1.Active := False ;
+        GRAFICO.Series[1].Active := True;//Qrp.Series2.Active := True  ;
    end
    else begin
-        Qrp.Series1.Active := True  ;
-        Qrp.Series2.Active := False ;
+        GRAFICO.Series[0].Active := True;//Qrp.Series1.Active := True  ;
+        GRAFICO.Series[1].Active := False;//Qrp.Series2.Active := False ;
    end;
 
-   if (ckLegendas.Checked) then
-     qrp.GRAFICO.Chart.Legend.Visible := true
-   else
-     qrp.GRAFICO.Chart.Legend.Visible := false;
+  { if (ckLegendas.Checked) then
+     {qrp.}{GRAFICO.Chart.Legend.Visible := true
+  { else
+     {qrp.}{GRAFICO.Chart.Legend.Visible := false;
 
-   Qrp.Preview ;
+   {Qrp}{GRAFICO.Preview ;}
 
-   Qrp.Free   ;
-   Qrp := Nil ;
+   //Qrp.Free   ;
+   //Qrp := Nil ;
 
    If RDBARRAS.Checked
    THEN BEGIN

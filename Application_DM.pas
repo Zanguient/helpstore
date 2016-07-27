@@ -7,12 +7,13 @@ uses
   Db, IBQuery, IBCustomDataSet, IBEvents, IBDatabase, Dialogs,
   IniFiles, dxBar, IBStoredProc,IBSQL, Registry, OnGuard,OgUtil,
   ComObj,   FileCtrl, dxmdaset, IBDatabaseInfo, Variants,
-  IdMessage,  ACBrNFe, ACBrNFeDANFEClass, ACBrNFeDANFERave,
+  IdMessage,  ACBrNFe, ACBrNFeDANFEClass, 
   IdTCPConnection, IdTCPClient, IdMessageClient, IdSMTP, IdBaseComponent,
   IdComponent, IdIOHandler, IdIOHandlerSocket, IdSSLOpenSSL, pcnconversao,
-  RpDefine, RpRave,  ppReport, ppEndUsr, ACBrBase, ACBrExtenso, ExtCtrls
+  RpDefine,  ppReport, ppEndUsr, ACBrBase, ACBrExtenso, ExtCtrls
   ,ppSMTPIndy9 ,ppSMTPIndy, ppParameter, ppSMTPCustom, cxFilterControl, cxDBFilterControl,cxGridExportLink, cxGridDBBandedTableView,cxGrid,
-  madExceptVcl,  untCadPadrao, ACBrBoleto, ACBrBoletoFCFortesFr;
+  madExceptVcl,  untCadPadrao, ACBrNFeDANFeRLClass, ACBrDFe,
+  pcnConversaoNFe, ACBrBoleto;
 
 type
   TDmApp = class(TDataModule)
@@ -277,7 +278,6 @@ type
     SSLSocket: TIdSSLIOHandlerSocket;
     IdSMTP: TIdSMTP;
     IdMessage: TIdMessage;
-    RvProject1: TRvProject;
     ConfiguracoesOS_CONFIG_CAMPOS: TIBStringField;
     ConfiguracoesOFC_CONTATO_POR_CLIENTE: TIBStringField;
     VerificaLimite: TIBQuery;
@@ -390,7 +390,6 @@ type
     BCH_PRODUTOTRIB_COFINS: TIBStringField;
     BCH_PRODUTOTRIB_IPI: TIBStringField;
     ACBrNFe: TACBrNFe;
-    ACBrNFeDANFERave: TACBrNFeDANFERave;
     Extenso: TACBrExtenso;
     TimerConsultaEstoque: TTimer;
     EST_EMAIL_POSICAO_ESTOQUE: TIBDataSet;
@@ -709,8 +708,7 @@ type
     QryParceiroPARC_TEXTO_RELATORIO: TIBStringField;
     QryParceiroPARC_PATH_ICONE: TIBStringField;
     ACBrNFe1: TACBrNFe;
-    ACBrBoletoFCFortes: TACBrBoletoFCFortes;
-    ACBrBoleto: TACBrBoleto;
+    ACBrNFeDANFeRL1: TACBrNFeDANFeRL;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
     procedure EventosEventAlert(Sender: TObject; EventName: String;
@@ -8884,13 +8882,13 @@ Function TDmApp.SelecionarEmpresa: String;
               dmapp.ACBrNFe.Configuracoes.Geral.Salvar       := true; //ckSalvar.Checked;
 
               //Local onde Ficarão armazenados os logs
-              dmapp.ACBrNFe.Configuracoes.Geral.PathSalvar   := dmApp.NFE_GER_PATH_LOGS;
+              dmapp.ACBrNFe.Configuracoes.Arquivos.PathSalvar := dmApp.NFE_GER_PATH_LOGS;//Geral.PathSalvar   := dmApp.NFE_GER_PATH_LOGS;
 
               //Local onde ficarão armazenados as NFe geradas
-              dmapp.ACBrNFe.Configuracoes.Arquivos.PathCan := dmApp.NFE_GER_PATH_LOGS;
+              //dmapp.ACBrNFe.Configuracoes.Arquivos.PathCan := dmApp.NFE_GER_PATH_LOGS;
               dmapp.ACBrNFe.Configuracoes.Arquivos.PathNFe := dmApp.NFE_GER_PATH_LOGS;
               dmapp.ACBrNFe.Configuracoes.Arquivos.PathInu := dmApp.NFE_GER_PATH_LOGS;
-              dmapp.ACBrNFe.Configuracoes.Arquivos.PathDPEC := dmApp.NFE_GER_PATH_LOGS;
+              //dmapp.ACBrNFe.Configuracoes.Arquivos.PathDPEC := dmApp.NFE_GER_PATH_LOGS;
 
               if (DmApp.NFE_WS_UF <> '') then
                  dmapp.ACBrNFe.Configuracoes.WebServices.UF         := DmApp.NFE_WS_UF;
@@ -11208,7 +11206,7 @@ begin
       frmStatus.Show;
       frmStatus.BringToFront;
     end;
-    stNFeEnvDPEC :
+    {stNFeEnvDPEC :
     begin
       if ( frmStatus = nil ) then
         frmStatus := TfrmStatus.Create(Application);
@@ -11216,14 +11214,14 @@ begin
       frmStatus.Show;
       frmStatus.BringToFront;
     end;
-    stNFeConsultaDPEC :
+    stNFeConsultaDPEC ://stNFeConsultaDPEC :
     begin
       if ( frmStatus = nil ) then
         frmStatus := TfrmStatus.Create(Application);
       frmStatus.lblStatus.Caption := 'Consultando DPEC...';
       frmStatus.Show;
       frmStatus.BringToFront;
-    end;
+    end;   }
     stNFeEmail :
     begin
       if ( frmStatus = nil ) then
@@ -11258,9 +11256,7 @@ begin
   try
      ACBrNFe.WebServices.StatusServico.Executar
   except on E: Exception do
-      begin
-        raise Exception.Create(E.Message);
-      end;
+    raise Exception.Create(E.Message);
   end;
 
   dmCadastros2.QryVerificaNUMNFE.Close;
@@ -11325,7 +11321,7 @@ begin
   // NF-e 3.10
   ACBRNFE.Configuracoes.Geral.ModeloDF := moNFe; // moNFe ou moNFCe
   ACBRNFE.Configuracoes.Geral.VersaoDF := ve310;   // Versão 3.10
-  ACBRNFE.Configuracoes.Geral.PathSchemas := ExtractFilePath(Application.ExeName) + 'Schemas\ve310\';
+  ACBRNFE.Configuracoes.Arquivos.PathSchemas := ExtractFilePath(Application.ExeName) + 'Schemas\'; //.Geral.PathSchemas := ExtractFilePath(Application.ExeName) + 'Schemas\ve310\';
   with dmApp do
   begin
     if copy(DmApp.NFE_REGIME,1,1) = '1' then
@@ -11457,10 +11453,14 @@ begin
       //os valores reais do destinatario
      // if (DMApp.NFE_WS_AMBIENTE = '0') then
      if (dmCadastros2.NFe_Faturamentos2DEST_IE.value) = 'ISENTO' then
-     //begin
-      Dest.indIEDest := inNaoContribuinte// inIsento;
+     begin
+      Dest.indIEDest := inNaoContribuinte;// inIsento;
+
+      //Sanniel -- Alteração realizada para indicar consumidor final
+      Ide.indFinal := cfConsumidorFinal;
+      
       //Dest.IE := '';
-     else
+     end else
       Dest.IE                := StringReplace(StringReplace(dmCadastros2.NFe_Faturamentos2DEST_IE.value,'.','',[rfReplaceAll]),'-','',[rfReplaceAll]);
      // else
      //   Dest.IE := '';
@@ -11535,8 +11535,9 @@ begin
           Prod.uTrib    := dmCadastros2.NFe_Faturamentos_ItensUTRIB.value;
 
           Prod.NCM :=   dmCadastros2.NFe_Faturamentos_ItensCODIGO_NCM.AsString;
-          //if dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 5102 then
 
+          if dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 5405 then
+            Prod.CEST := dmCadastros2.NFe_Faturamentos_ItensCEST.AsString;
 
           if (trim(dmCadastros2.NFe_Faturamentos_ItensCOD_GETIN.AsString) <> '') then
           begin
@@ -11583,6 +11584,8 @@ begin
                   CSOSN := csosn300
                 else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 400) then
                   CSOSN := csosn400
+                else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 500) then
+                  CSOSN := csosn500
                 else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 900) then
                   CSOSN := csosn900;
               end;
@@ -11712,8 +11715,8 @@ begin
 
     if (StrToTpEmis(Ok,IntToStr(StrToInt(DMApp.NFE_GER_FORMA_EMISSAO)+1)) = teNormal) then
     begin
-      ACBrNFe.NotasFiscais.Valida;
-      ACBrNFe.NotasFiscais.Items[0].SaveToFile;
+      ACBrNFe.NotasFiscais.Validar; //Valida;
+      ACBrNFe.NotasFiscais.Items[0].GravarXML; //SaveToFile;
       //Salvando somente para armazenar o xml também no banco com status '3' - Pendente
       UpdateFAT_NFE(dmApp.Cnpj,venda,3);
       dmApp.Transaction.CommitRetaining;
@@ -11721,7 +11724,7 @@ begin
       ACBrNFe.Enviar(0);
       //Salvando dados completos, chave, protocolo, XML etc..
       UpdateFAT_NFE(dmApp.Cnpj,venda,1);
-    end
+    end; {
     else if (StrToTpEmis(Ok,IntToStr(StrToInt(DMApp.NFE_GER_FORMA_EMISSAO)+1))=teDPEC) then
     begin
       ACBrNFe.WebServices.EnviarDPEC.Executar;
@@ -11739,14 +11742,14 @@ begin
       dmCadastros2.UPDNFeVendas.parambyname('NFE_NUMERO').value := inttostr(ACBrNFe.NotasFiscais.Items[0].NFe.Ide.nNF);
       dmCadastros2.UPDNFeVendas.parambyname('NFE_AUTORIZADA').value := 4;
       dmCadastros2.UPDNFeVendas.ExecQuery;
-    end;
+    end;                            }
 
 
    // MemoResp.Lines.Text := UTF8Encode(ACBrNFe.WebServices.Retorno.RetWS);
    // LoadXML(MemoResp, WBResposta);
 
      ACBrNFe.NotasFiscais.Clear;
-  end
+ end;
 end;
 
 procedure TDmApp.UpdateFAT_NFE(cnpj: string; venda, Status: integer);
@@ -12029,8 +12032,9 @@ begin
     CONFIG_REL_GRAFICO.close;
     CONFIG_REL_GRAFICO.parambyname('relatorio').value := Relatorio;
     CONFIG_REL_GRAFICO.Open;
+    CONFIG_REL_GRAFICO.FetchAll;
 
-    if (CONFIG_REL_GRAFICOID.AsInteger = 0) then
+    if  (CONFIG_REL_GRAFICO.RecordCount {CONFIG_REL_GRAFICOID.AsInteger} = 0) then
     begin
       CONFIG_REL_GRAFICO.Open;
       CONFIG_REL_GRAFICO.Insert;

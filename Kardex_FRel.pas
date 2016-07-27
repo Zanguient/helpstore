@@ -19,16 +19,14 @@ uses
   dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
   dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinXmas2008Blue, Menus, cxButtons, cxLabel, cxTextEdit, cxMaskEdit,
-  cxDropDownEdit, cxCalendar;
+  cxDropDownEdit, cxCalendar, cxCheckBox, ppEndUsr, cxLookupEdit,
+  cxDBLookupEdit, cxDBLookupComboBox, cxRadioGroup, cxGroupBox;
 
 type
   TFRelKardex = class(TForm)
-    pnlClient: TPanel;
     Actions: TActionList;
     ActPreview: TAction;
     ActFechar: TAction;
-    Label2: TcxLabel;
-    cmbProduto: TdxLookupEdit;
     dsProdutos: TDataSource;
     ActBuscarProd: TAction;
     rptKardex: TppReport;
@@ -64,18 +62,6 @@ type
     ppParameterList2: TppParameterList;
     dbKardex: TppDBPipeline;
     dsKardex: TDataSource;
-    gbData: TGroupBox;
-    Label3: TcxLabel;
-    Label5: TcxLabel;
-    edAs1: TcxLabel;
-    edAs3: TcxLabel;
-    Rd1: TRadioButton;
-    Rd2: TRadioButton;
-    DataInicial: TcxDateEdit;
-    DataFinal: TcxDateEdit;
-    Panel2: TPanel;
-    BtnOk: TcxButton;
-    RzBitBtn2: TcxButton;
     ppDBText3: TppDBText;
     ppLabel1: TppLabel;
     ppDBText2: TppDBText;
@@ -93,6 +79,25 @@ type
     dsApp: TDataSource;
     ppAppRepresentante: TppDBPipeline;
     ppDBText10: TppDBText;
+    dsLayout: TDataSource;
+    ppLayout: TppDBPipeline;
+    Designer: TppDesigner;
+    pnlClient: TcxGroupBox;
+    Label2: TcxLabel;
+    cmbProduto: TcxLookupComboBox;
+    gbData: TcxGroupBox;
+    Label5: TcxLabel;
+    DataInicial: TcxDateEdit;
+    Label3: TcxLabel;
+    DataFinal: TcxDateEdit;
+    edAs3: TcxLabel;
+    edAs1: TcxLabel;
+    Rd1: TcxRadioButton;
+    Rd2: TcxRadioButton;
+    Panel2: TcxGroupBox;
+    ckConfigurar: TcxCheckBox;
+    BtnOk: TcxButton;
+    RzBitBtn2: TcxButton;
     procedure FormCreate(Sender: TObject);
     procedure ActFecharExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -116,7 +121,7 @@ var
 implementation
 
 uses Relatorios_DM, Usuarios_DM, Application_DM, Funcoes,
-  Localizar_Produto_Cadastro_Auto, Relatorios_DM2;
+  Localizar_Produto_Cadastro_Auto, Relatorios_DM2, Cadastros_Dm2;
 
 {$R *.DFM}
 
@@ -178,6 +183,14 @@ procedure TFRelKardex.ActPreviewExecute(Sender: TObject);
 var
   ssql, tipodoc : string;
 begin
+  //Verificação incluída dia 20_05_2016 por Sanniel. Cópia do contrato de atendimento
+  if (ckConfigurar.Checked) then
+  begin
+    dmApp.ConfigurarRelatorio(rptKardex,Designer,FRelKardex.Caption);
+    exit;
+  end;
+  //
+
   if Trim(cmbProduto.Text) = '' then
   begin
     application.messagebox('Informe o produto','Aviso',mb_ok + mb_iconinformation);
@@ -206,6 +219,18 @@ begin
     exit;
   end;
 
+  //Verificação incluída dia 20_05_2016 por Sanniel. Cópia do contrato de atendimento
+  dmCadastros2.CONFIG_REL_GRAFICO.close;
+  dmCadastros2.CONFIG_REL_GRAFICO.parambyname('relatorio').value := FRelKardex.Caption;
+  dmCadastros2.CONFIG_REL_GRAFICO.Open;
+
+  if dmCadastros2.CONFIG_REL_GRAFICO.RecordCount > 0 then
+  begin
+    rptKardex.Template.DatabaseSettings.Name := FRelKardex.Caption;
+    rptKardex.Template.LoadFromDatabase;
+  end;
+  //
+  
   //Opção de pesquisa
   if (rd1.Checked) then
   begin
@@ -222,7 +247,7 @@ begin
     Kardex.close;
     Kardex.sql.text :=  sqlOriginal + ssql + ' order by k.codigo ';
     Kardex.ParamByName('CNPJ').asString     := DMApp.Cnpj;
-    Kardex.ParamByName('PRODUTO').asString  := cmbProduto.LookupKeyValue;
+    Kardex.ParamByName('PRODUTO').asString  := cmbProduto.Text;//cmbProduto.LookupKeyValue;
     Kardex.ParamByName('DT_INICIAL').asDate := DataInicial.Date;
     Kardex.ParamByName('DT_FINAL').asDate   := DataFinal.Date;
     Kardex.Open;

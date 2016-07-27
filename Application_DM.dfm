@@ -2,9 +2,10 @@ object DmApp: TDmApp
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Left = 1
+  Left = 319
+  Top = 3
   Height = 728
-  Width = 1278
+  Width = 808
   object Database: TIBDatabase
     Connected = True
     DatabaseName = 'D:\Sistemas\HelpStore\Dados\comparer\HELPSTORE_PADRAO.GDB'
@@ -2403,10 +2404,6 @@ object DmApp: TDmApp
     Left = 280
     Top = 400
   end
-  object RvProject1: TRvProject
-    Left = 280
-    Top = 456
-  end
   object VerificaLimite: TIBQuery
     Database = Database
     Transaction = Transaction
@@ -2983,59 +2980,26 @@ object DmApp: TDmApp
     end
   end
   object ACBrNFe: TACBrNFe
-    Configuracoes.Geral.PathSalvar = 'C:\Program Files\Borland\Delphi7\Bin\'
-    Configuracoes.Geral.ExibirErroSchema = True
-    Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
-    Configuracoes.Geral.RetirarAcentos = True
-    Configuracoes.Geral.ValidarDigest = False
-    Configuracoes.WebServices.UF = 'SP'
-    Configuracoes.WebServices.AguardarConsultaRet = 0
-    Configuracoes.WebServices.IntervaloTentativas = 0
-    Configuracoes.WebServices.AjustaAguardaConsultaRet = False
-    Configuracoes.Arquivos.Salvar = True
-    Configuracoes.Arquivos.PastaMensal = True
-    Configuracoes.Arquivos.AdicionarLiteral = True
-    Configuracoes.Arquivos.SalvarCCeCanEvento = True
-    Configuracoes.Arquivos.PathNFe = 'C:\ACBrNFeMonitor\Arq'
-    Configuracoes.Arquivos.PathCan = 'C:\ACBrNFeMonitor\Arq'
-    Configuracoes.Arquivos.PathInu = 'C:\ACBrNFeMonitor\Arq'
-    Configuracoes.Arquivos.PathDPEC = 'C:\ACBrNFeMonitor\Arq'
     OnStatusChange = ACBrNFeStatusChange
-    DANFE = ACBrNFeDANFERave
+    Configuracoes.Geral.SSLLib = libCapicomDelphiSoap
+    Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
+    Configuracoes.Geral.ValidarDigest = False
+    Configuracoes.Geral.IncluirQRCodeXMLNFCe = False
+    Configuracoes.Arquivos.PathSalvar = 'C:\Sistemas\HelpStore\FISCAL\'
+    Configuracoes.Arquivos.PathSchemas = 
+      'D:\Sistemas\Componentes\ACBR Trunk2\Exemplos\ACBrDFe\Schemas\NFe' +
+      '\'
+    Configuracoes.Arquivos.AdicionarLiteral = True
+    Configuracoes.Arquivos.PathNFe = 'C:\Sistemas\HelpStore\FISCAL'
+    Configuracoes.Arquivos.PathInu = 'C:\Sistemas\HelpStore\NFe'
+    Configuracoes.Arquivos.PathEvento = 'C:\Sistemas\HelpStore\NFe'
+    Configuracoes.WebServices.UF = 'MS'
+    Configuracoes.WebServices.AguardarConsultaRet = 30000
+    Configuracoes.WebServices.AjustaAguardaConsultaRet = True
+    Configuracoes.WebServices.TimeOut = 20000
+    Configuracoes.WebServices.QuebradeLinha = '|'
+    DANFE = ACBrNFeDANFeRL1
     Left = 350
-    Top = 456
-  end
-  object ACBrNFeDANFERave: TACBrNFeDANFERave
-    ACBrNFe = ACBrNFe
-    Sistema = 'HelpStore'
-    PathPDF = 'c:\Sistemas\HelpStore\NFe\'
-    MostrarPreview = True
-    MostrarStatus = True
-    TipoDANFE = tiRetrato
-    NumCopias = 1
-    ImprimirDescPorc = True
-    ImprimirTotalLiquido = False
-    MargemInferior = 0.800000000000000000
-    MargemSuperior = 0.800000000000000000
-    MargemEsquerda = 0.600000000000000000
-    MargemDireita = 0.510000000000000000
-    CasasDecimais._qCom = 2
-    CasasDecimais._vUnCom = 2
-    ExibirResumoCanhoto = False
-    FormularioContinuo = False
-    TamanhoFonte_DemaisCampos = 10
-    ProdutosPorPagina = 0
-    ImprimirDetalhamentoEspecifico = True
-    NFeCancelada = False
-    LocalImpCanhoto = 0
-    ImprimeItens = True
-    ViaConsumidor = True
-    RavFile = 'c:\Sistemas\HelpStore\NFe\Report\NotaFiscalEletronica.rav'
-    EspessuraBorda = 1
-    TamanhoFonte_RazaoSocial = 12
-    TamanhoFonte_ANTT = 10
-    TributosPercentual = ptValorProdutos
-    Left = 440
     Top = 456
   end
   object Extenso: TACBrExtenso
@@ -5570,48 +5534,63 @@ object DmApp: TDmApp
     end
   end
   object ACBrNFe1: TACBrNFe
-    Configuracoes.Geral.PathSalvar = 'C:\Program Files\Borland\Delphi7\Bin\'
-    Configuracoes.Geral.ExibirErroSchema = True
+    Configuracoes.Geral.SSLLib = libCapicomDelphiSoap
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
-    Configuracoes.Geral.RetirarAcentos = True
     Configuracoes.Geral.ValidarDigest = False
-    Configuracoes.WebServices.UF = 'SP'
-    Configuracoes.WebServices.AguardarConsultaRet = 0
-    Configuracoes.WebServices.IntervaloTentativas = 0
-    Configuracoes.WebServices.AjustaAguardaConsultaRet = False
-    Configuracoes.Arquivos.Salvar = True
-    Configuracoes.Arquivos.PastaMensal = True
+    Configuracoes.Geral.IncluirQRCodeXMLNFCe = False
     Configuracoes.Arquivos.AdicionarLiteral = True
+    Configuracoes.Arquivos.SepararPorMes = True
     Configuracoes.Arquivos.PathNFe = 'C:\ACBrNFeMonitor\Arq'
-    Configuracoes.Arquivos.PathCan = 'C:\ACBrNFeMonitor\Arq'
     Configuracoes.Arquivos.PathInu = 'C:\ACBrNFeMonitor\Arq'
-    Configuracoes.Arquivos.PathDPEC = 'C:\ACBrNFeMonitor\Arq'
+    Configuracoes.WebServices.UF = 'MS'
+    Configuracoes.WebServices.AguardarConsultaRet = 0
+    Configuracoes.WebServices.QuebradeLinha = '|'
     Left = 430
     Top = 504
   end
-  object ACBrBoletoFCFortes: TACBrBoletoFCFortes
-    ACBrBoleto = ACBrBoleto
-    DirLogo = 'c:\Sistemas\HelpStore\Manager\Boletos\Logos\Colorido'
-    SoftwareHouse = 'Manager 2.0'
-    Left = 456
-    Top = 208
-  end
-  object ACBrBoleto: TACBrBoleto
-    Banco.TamanhoMaximoNossoNum = 10
-    Banco.TipoCobranca = cobNenhum
-    Cedente.Nome = 'TodaObra Materias p/ Construcao'
-    Cedente.CodigoCedente = '4266443'
-    Cedente.Agencia = '3913'
-    Cedente.AgenciaDigito = '3'
-    Cedente.Conta = '0000074294'
-    Cedente.ContaDigito = '5'
-    Cedente.TipoInscricao = pOutras
-    Cedente.UF = 'MS'
-    NomeArqRemessa = '.'
-    NumeroArquivo = 0
-    LayoutRemessa = c240
-    ACBrBoletoFC = ACBrBoletoFCFortes
-    Left = 360
-    Top = 207
+  object ACBrNFeDANFeRL1: TACBrNFeDANFeRL
+    ACBrNFe = ACBrNFe
+    Sistema = 
+      'HelpStore / NT Servi'#231'os - Software e Inform'#225'tica / 67 3287-2076 ' +
+      '/ 99683-6431'
+    PathPDF = 'c:\Sistemas\HelpStore\NFe\'
+    MostrarPreview = True
+    MostrarStatus = True
+    TipoDANFE = tiRetrato
+    NumCopias = 1
+    ImprimeNomeFantasia = False
+    ImprimirDescPorc = True
+    ImprimirTotalLiquido = False
+    MargemInferior = 0.800000000000000000
+    MargemSuperior = 0.800000000000000000
+    MargemEsquerda = 0.600000000000000000
+    MargemDireita = 0.510000000000000000
+    CasasDecimais.Formato = tdetInteger
+    CasasDecimais._qCom = 4
+    CasasDecimais._vUnCom = 4
+    CasasDecimais._Mask_qCom = '###,###,###,##0.00'
+    CasasDecimais._Mask_vUnCom = '###,###,###,##0.00'
+    ExibirResumoCanhoto = False
+    FormularioContinuo = False
+    TamanhoFonte_DemaisCampos = 10
+    ProdutosPorPagina = 0
+    ImprimirDetalhamentoEspecifico = True
+    NFeCancelada = False
+    ImprimirItens = True
+    ViaConsumidor = True
+    TamanhoLogoHeight = 0
+    TamanhoLogoWidth = 0
+    RecuoEndereco = 0
+    RecuoEmpresa = 0
+    LogoemCima = False
+    TamanhoFonteEndereco = 0
+    RecuoLogo = 0
+    TributosSeparadamente = False
+    LarguraCodProd = 54
+    ExibirEAN = False
+    QuebraLinhaEmDetalhamentoEspecifico = True
+    ExibeCampoFatura = False
+    Left = 536
+    Top = 512
   end
 end

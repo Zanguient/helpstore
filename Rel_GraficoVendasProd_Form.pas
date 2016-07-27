@@ -4,15 +4,11 @@ interface
 
 uses Windows, SysUtils, Messages, Classes, Graphics, Controls,
   StdCtrls, ExtCtrls, Forms, Quickrpt, QRCtrls, TeEngine, Series, TeeProcs,
-  Chart, DBChart, QrTee;
+  Chart, DBChart{, QrTee};
 
 type
   TQrp2 = class(TQuickRep)
-    QRDBChart1: TQRDBChart;
-    GRAFICO: TQRChart;
-    Series1: TPieSeries;
     TitleBand1: TQRBand;
-    Series2: TBarSeries;
   private
 
   public

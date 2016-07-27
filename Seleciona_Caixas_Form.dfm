@@ -6,6 +6,7 @@ object FrmSelecionaCaixas: TFrmSelecionaCaixas
   BorderIcons = [biSystemMenu]
   Caption = 'Seleciona Caixas'
   Color = clBtnFace
+  DefaultMonitor = dmMainForm
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -20,8 +21,8 @@ object FrmSelecionaCaixas: TFrmSelecionaCaixas
   object PnClient: TPanel
     Left = 0
     Top = 0
-    Width = 343
-    Height = 202
+    Width = 351
+    Height = 209
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -164,8 +165,8 @@ object FrmSelecionaCaixas: TFrmSelecionaCaixas
   end
   object Panel1: TPanel
     Left = 0
-    Top = 202
-    Width = 343
+    Top = 209
+    Width = 351
     Height = 41
     Align = alBottom
     BevelInner = bvRaised

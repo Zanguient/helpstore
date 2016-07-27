@@ -784,6 +784,7 @@ type
     SelEmpresaMARGEM_BRUTA: TFloatField;
     EmpresasOFC_DATA_BASE_MAN_OS: TDateField;
     SelEmpresaOFC_DATA_BASE_MAN_OS: TDateField;
+    EmpresasAVISO_ESTOQUE_MIN: TIBStringField;
     procedure EmpresasBeforeOpen(DataSet: TDataSet);
     procedure EmpresasAfterClose(DataSet: TDataSet);
     procedure EmpresasTIPO_TAXAGetText(Sender: TField; var Text: String;

@@ -122,29 +122,8 @@ object FrmGraficoVendas: TFrmGraficoVendas
       Align = alBottom
       TabOrder = 2
       object Series1: TPieSeries
-        Marks.Arrow.Visible = True
-        Marks.Callout.Brush.Color = clBlack
-        Marks.Callout.Arrow.Visible = True
-        Marks.Style = smsLabelPercent
-        Marks.Visible = True
-        DataSource = DMRelatorios.Fat_GraficoVendas
-        Title = 'GRAFICOS'
-        ValueFormat = '###,###,##0.00'
-        XLabelsSource = 'NOME_VENDEDOR'
         Active = False
-        Gradient.Direction = gdRadial
-        OtherSlice.Legend.Visible = False
-        OtherSlice.Text = 'Other'
-        PieValues.Name = 'Pie'
-        PieValues.Order = loNone
-        PieValues.ValueSource = 'VALOR'
-      end
-      object Series2: TBarSeries
-        ColorEachPoint = True
-        Marks.Arrow.Visible = True
-        Marks.Callout.Brush.Color = clBlack
-        Marks.Callout.Arrow.Visible = True
-        Marks.Callout.Length = 8
+        Marks.ArrowLength = 8
         Marks.Style = smsLabelPercent
         Marks.Visible = True
         DataSource = DMRelatorios.Fat_GraficoVendas
@@ -152,10 +131,30 @@ object FrmGraficoVendas: TFrmGraficoVendas
         Title = 'GRAFICOS'
         ValueFormat = '###,###,##0.00'
         XLabelsSource = 'NOME_VENDEDOR'
-        Gradient.Direction = gdTopBottom
+        OtherSlice.Text = 'Other'
+        PieValues.DateTime = False
+        PieValues.Name = 'Pie'
+        PieValues.Multiplier = 1.000000000000000000
+        PieValues.Order = loNone
+        PieValues.ValueSource = 'VALOR'
+      end
+      object Series2: TBarSeries
+        ColorEachPoint = True
+        Marks.ArrowLength = 20
+        Marks.Style = smsLabelPercent
+        Marks.Visible = True
+        DataSource = DMRelatorios.Fat_GraficoVendas
+        SeriesColor = clRed
+        Title = 'GRAFICOS'
+        ValueFormat = '###,###,##0.00'
+        XLabelsSource = 'NOME_VENDEDOR'
+        XValues.DateTime = False
         XValues.Name = 'X'
+        XValues.Multiplier = 1.000000000000000000
         XValues.Order = loAscending
+        YValues.DateTime = False
         YValues.Name = 'Bar'
+        YValues.Multiplier = 1.000000000000000000
         YValues.Order = loNone
         YValues.ValueSource = 'VALOR'
       end

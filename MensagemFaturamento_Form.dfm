@@ -6,6 +6,7 @@ object FrmMensagemFaturamento: TFrmMensagemFaturamento
   BorderIcons = []
   Caption = ' Mensagem '
   Color = clBtnFace
+  DefaultMonitor = dmMainForm
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -21,7 +22,7 @@ object FrmMensagemFaturamento: TFrmMensagemFaturamento
     Left = 0
     Top = 0
     Width = 316
-    Height = 158
+    Height = 154
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered

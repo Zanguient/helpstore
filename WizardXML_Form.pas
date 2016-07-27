@@ -22,7 +22,7 @@ uses
   cxDropDownEdit, cxCalendar, cxCalc, cxStyles, cxCustomData, cxFilter,
   cxData, cxDataStorage, cxDBData, cxGridCustomTableView, cxGridTableView,
   cxGridBandedTableView, cxGridDBBandedTableView, cxGridCustomView,
-  cxClasses, cxGridLevel, cxGrid, ACBrNFeDANFEClass, ACBrNFeDANFERave,
+  cxClasses, cxGridLevel, cxGrid, ACBrNFeDANFEClass, 
   cxGridCustomPopupMenu, cxGridPopupMenu, cxPropertiesStore, ActnList,
   IBQuery, cxDBLookupComboBox, cxSplitter, cxLookupEdit, cxDBLookupEdit;
 
@@ -461,7 +461,7 @@ var
 
 implementation
 
-uses ACBrNFeUtil, ACBrHTMLtoXML, pcnNFe, Application_DM,
+uses ACBRDFEUTIL, ACBrHTMLtoXML, pcnNFe, Application_DM,
   Localizar_Produto_Cadastro_Auto, NaturezaOper_Form, Main,
   Localizar_Natureza, Localizar_Fornecedor, Entradas_DM, Fornecedores_Form,
   Funcoes, SelEntradas_Form, Entradas_Form, Empresas_DM;

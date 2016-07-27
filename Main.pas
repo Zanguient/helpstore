@@ -37,7 +37,8 @@ uses
   cxGridChartView, cxGridDBChartView, {TeeSubChart,}
   dxLayoutControl, dxLayoutControlAdapters, dxLayoutLookAndFeels, cxDropDownEdit,
   cxCalendar, cxDBEdit, cxTextEdit, cxMaskEdit, cxLookupEdit,
-  cxDBLookupEdit, cxDBLookupComboBox, dxmdaset, cxButtons, cxBarEditItem, dxSkinsStrs;
+  cxDBLookupEdit, cxDBLookupComboBox, dxmdaset, cxButtons, cxBarEditItem, dxSkinsStrs, ShellAPI,
+  Variants;
 
 type
   TFrmMain = class(TForm)
@@ -740,6 +741,15 @@ type
     btnControleTonner: TdxBarButton;
     btnListaContTonner: TdxBarButton;
     TimerLimpaMem: TTimer;
+    dxBarButton15: TdxBarButton;
+    dxBarLargeButton4: TdxBarLargeButton;
+    dxBarSubItem22: TdxBarSubItem;
+    dxBarLargeButton5: TdxBarLargeButton;
+    actChamado: TAction;
+    actChat: TAction;
+    actConfAtualizacao: TAction;
+    dxBarSubItem23: TdxBarSubItem;
+    dxBarButton16: TdxBarButton;
     procedure opFecharClick(Sender: TObject);
     procedure PessoasFJClick(Sender: TObject);
     procedure LblUsuarioMouseEnter(Sender: TObject);
@@ -1067,6 +1077,9 @@ type
     procedure btnControleTonnerClick(Sender: TObject);
     procedure btnListaContTonnerClick(Sender: TObject);
     procedure TimerLimpaMemTimer(Sender: TObject);
+    procedure actChatExecute(Sender: TObject);
+    procedure actChamadoExecute(Sender: TObject);
+    procedure actConfAtualizacaoExecute(Sender: TObject);
   private
     { Private declarations }
     //Agente: IAgentCtlCharacter;
@@ -1201,7 +1214,6 @@ uses
     GraficoVendas_Form,
     Mensagem_Form,
     VendasPorProduto_FRel,
-    GraficoVendasGrupoProdutos_Form,
     ConsultaVendasVendedor_Form,
     Localizar_Cliente,
     Localizar_Fornecedor,
@@ -1362,7 +1374,7 @@ uses
   untCadProdutos, UntCadGrupos, UntCadPerfilGrades, UntCadReducoes,
   UntRelOrcamento, UntCadTransportadoras, untCadCRMAtividades,
   untCadCRMStatus, untGeraVisitaPreventiva, untCadHelp,
-  untCadControleTonner, untListaControleTonner;
+  untCadControleTonner, untListaControleTonner, untConfAtualizacao;
 
 {$R *.DFM}
 
@@ -2870,6 +2882,11 @@ var
   VersaoDB, Versao : integer;
   sAux : string;
   TipoEmpresa, Exibe_mod : Variant;
+
+  NomeServidor, AuxConsultaSql, Origem, Destino, LinhadeComando, DestinoRAR, exeAtualizar, CaminhoExeServidor : string;
+  NomePC: Array[0..255] of char; //Nome PC
+  size: DWord;  //Nome PC
+  PathAtualizacao: Variant;
 begin
   versao := DMApp.RetornaVersao;
   if (versao = 0) then
@@ -2935,7 +2952,104 @@ begin
  mtbFiltroDATA1.value := Date;
  mtbFiltroDATA2.value := Date - 30;
 
-  GrafEfetuaConsulta(true);
+  GrafEfetuaConsulta(true);         
+
+  AuxConsultaSql := 'select count(*) from tbl_conf where CNPJ = ''' + QryEmpresasCNPJ.value + '''';
+  try
+    if RetornaValor(AuxConsultaSql) > 0 then
+    begin
+      size := 256;
+      GetComputerName(NomePC,size); //Nome PC
+      try
+        NomeServidor := RetornaValor('select c.nome_servidor from tbl_conf c where CNPJ = ''' + QryEmpresasCNPJ.value + '''');
+      except
+        NomeServidor := '';
+      end;
+
+      if NomeServidor = NomePC then
+      begin
+        AuxConsultaSql := 'select c.path_atualizacao from tbl_conf c where CNPJ = ''' + QryEmpresasCNPJ.value + '''';
+        PathAtualizacao := RetornaValor(AuxConsultaSql);
+
+        if not VarIsNull(PathAtualizacao) then
+        begin
+          Origem := PathAtualizacao + '\helpstore.rar';
+
+          if FileExists(Origem) Then
+          begin
+            Destino := 'C:\Sistemas\HelpStore\Temp';
+
+            if not DirectoryExists(Destino) then
+              CreateDir(Destino);
+
+            if DirectoryExists(Destino) then
+            begin
+              LinhadeComando:= 'C:\Arquivos de programas\WinRAR\WINRAR.EXE x '+ Origem + ' ' + Destino;
+
+              if FileExists(exeAtualizar) then
+                DeleteFile(exeAtualizar);
+
+              WinExec(Pchar(LinhadeComando),1);
+              exeAtualizar := Destino + '\HelpStore.exe';
+              
+              if FileExists(exeAtualizar) then
+              begin
+                if UltimaAtualizacaoArquivo(exeAtualizar) > UltimaAtualizacaoArquivo(Application.ExeName) then
+                begin
+                  if FileExists(ExtractFilePath(Application.ExeName) + '\AtualizarHelpStore.bat') then
+                  begin
+                    try
+                      DestinoRAR := PathAtualizacao + '\helpstore' + '_' + IntToStr(DayOf(Date)) + '-' + IntToStr(MonthOf(Date)) + '-'  + IntToStr(YearOf(Date)) + '.rar';
+                      RenameFile(Origem, DestinoRAR);
+                      WinExec(PAnsiChar(ExtractFilePath(Application.ExeName) + '\AtualizarHelpStore.bat'),SW_SHOWMAXIMIZED);
+                      Application.Terminate;
+                    except
+                      Application.MessageBox('Atualização não realizada. Contate o suporte. BAT não executado corretamente.', 'Atenção', mb_ok + MB_ICONERROR);
+                    end;
+                  end else
+                    Application.MessageBox('Atualização não realizada. Contate o suporte. BAT não existe.', 'Atenção', mb_ok + MB_ICONERROR);
+                end else
+                begin
+                  Application.MessageBox('Atualização não realizada. Data superior ao extraído', 'Atenção', mb_ok + MB_ICONERROR);
+                  DeleteFile(exeAtualizar);
+                end;
+              end else
+                Application.MessageBox('Atualização não realizada. Contate o suporte. EXE não foi extraído.', 'Atenção', mb_ok + MB_ICONERROR);
+            end else
+              Application.MessageBox('Atualização não realizada. Diretório TEMP não existe', 'Atenção', mb_ok + MB_ICONERROR);
+          end;
+        end;
+      end else
+      begin
+        CaminhoExeServidor := NomeServidor + '\HelpStore\HelpStore.exe';
+        if FileExists(CaminhoExeServidor) then
+        begin
+          if UltimaAtualizacaoArquivo(CaminhoExeServidor) > UltimaAtualizacaoArquivo(Application.ExeName) then
+          begin
+            Destino := 'C:\Sistemas\HelpStore\Temp';
+
+            if not DirectoryExists(Destino) then
+              CreateDir(Destino);
+
+            if DirectoryExists(Destino) then
+            begin
+              CopyFile(CaminhoExeServidor, Destino + '\HelpStore.exe');
+              
+              if FileExists(ExtractFilePath(Application.ExeName) + '\AtualizarHelpStore.bat') then
+              begin
+                WinExec(PAnsiChar(ExtractFilePath(Application.ExeName) + '\AtualizarHelpStore.bat'),SW_SHOWMAXIMIZED);
+                Application.Terminate;
+              end else
+                Application.MessageBox('Atualização não realizada. Contate o suporte. BAT não executado corretamente.', 'Atenção', mb_ok + MB_ICONERROR);
+            end;
+          end;
+        end else
+          Application.MessageBox('Pasta para atualização no servidor não está compartihada. Contate o suporte.', 'Atenção', mb_ok + MB_ICONERROR);
+      end;
+    end;
+  except
+  end;
+  
 End;
 
 procedure TFrmMain.opMotoristasClick(Sender: TObject);
@@ -3759,7 +3873,7 @@ begin
   If DMApp.SelecionarEmpresa = 'N' Then
      Exit;
   { * * * * * }
-  If FrmGraficoVendasPorGrupo = Nil Then
+  {If FrmGraficoVendasPorGrupo = Nil Then
      Begin
        //
        If FrmMain.MDIChildCount > 0 Then
@@ -3773,7 +3887,7 @@ begin
 
        FrmGraficoVendasPorGrupo.Free ;
        FrmGraficoVendasPorGrupo := Nil ;
-     End;
+     End; }
 
 end;
 
@@ -8667,7 +8781,7 @@ end;
 
 procedure TFrmMain.FormCreate(Sender: TObject);
 var
-  DirUser : string;
+  DirUser: string;
 begin
   FResNames := TStringList.Create;
   FSkinNames := TStringList.Create;
@@ -9522,6 +9636,37 @@ end;
 procedure TFrmMain.TimerLimpaMemTimer(Sender: TObject);
 begin
   TrimAppMemorySize;
+end;
+
+procedure TFrmMain.actChatExecute(Sender: TObject);
+begin
+  ShellExecute(Handle,'open','https://www.tomticket.com/chat/?id=EP09781&ac=625984P21032016110733', '',nil,0);
+end;
+
+procedure TFrmMain.actChamadoExecute(Sender: TObject);
+begin
+  ShellExecute(Handle,'open','https://ntservicos.tomticket.com?account=625984P21032016110733', '',nil,0);
+end;
+
+procedure TFrmMain.actConfAtualizacaoExecute(Sender: TObject);
+begin
+  If FrmMain.MDIChildCount > 1 Then
+     Exit;
+
+  if not(DMApp.Verificar_Login(FileName(Application.ExeName), 'frmConfAtualizacao', True)) then
+    Exit;
+
+  if DMApp.SelecionarEmpresa = 'N' then
+    Exit;
+
+  if frmConfAtualizacao = nil  then
+  begin
+    Application.ProcessMessages;
+    frmConfAtualizacao := TfrmConfAtualizacao.Create(Self);
+    frmConfAtualizacao.Showmodal;
+    frmConfAtualizacao.Free;
+    frmConfAtualizacao := Nil;
+  end;
 end;
 
 end.

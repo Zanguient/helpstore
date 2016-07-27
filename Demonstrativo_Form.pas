@@ -208,8 +208,8 @@ var
   Reg : array of Reg_demon;
 implementation
 
-uses Relatorios_DM, Usuarios_DM, Application_DM, Funcoes, Main,
-  Rel_GraficoVendas_Form, GraficoVendas_Form;
+uses Relatorios_DM, Usuarios_DM, Application_DM, Funcoes, Main{,
+  Rel_GraficoVendas_Form, GraficoVendas_Form}; 
 
 {$R *.DFM}
 

@@ -1,10 +1,10 @@
 object FRelKardex: TFRelKardex
-  Left = 368
-  Top = 244
+  Left = 225
+  Top = 230
   BorderStyle = bsDialog
   Caption = 'Extrato Movimento Produto'
-  ClientHeight = 189
-  ClientWidth = 358
+  ClientHeight = 206
+  ClientWidth = 360
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,123 +13,61 @@ object FRelKardex: TFRelKardex
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
-  OnActivate = ActFecharExecute
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object pnlClient: TPanel
+  object pnlClient: TcxGroupBox
     Left = 0
     Top = 0
-    Width = 358
-    Height = 157
     Align = alClient
-    BevelInner = bvRaised
-    BevelOuter = bvLowered
-    Color = clWhite
+    PanelStyle.Active = True
     TabOrder = 0
+    Height = 176
+    Width = 360
     object Label2: TcxLabel
       Left = 18
       Top = 11
       Caption = 'Produto'
       ParentFont = False
+      Transparent = True
     end
-    object cmbProduto: TdxLookupEdit
+    object cmbProduto: TcxLookupComboBox
       Left = 16
-      Top = 26
-      Width = 329
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      Style.BorderColor = clBtnShadow
-      Style.BorderStyle = xbsSingle
-      Style.ButtonStyle = btsSimple
+      Top = 29
+      Properties.KeyFieldNames = 'CODIGO'
+      Properties.ListColumns = <
+        item
+          FieldName = 'CODIGO'
+        end
+        item
+          FieldName = 'NOME'
+        end>
+      Properties.ListSource = dsProdutos
       TabOrder = 0
       OnEnter = cmbCodProdutoEnter
       OnExit = cmbCodProdutoExit
       OnKeyDown = cmbPessoaKeyDown
-      DropDownRows = 10
-      DropDownWidth = 450
-      ListFieldName = 'CODIGO; NOME'
-      KeyFieldName = 'CODIGO'
-      ListSource = dsProdutos
-      LookupKeyValue = Null
-    end
-    object gbData: TGroupBox
-      Left = 16
-      Top = 55
       Width = 329
-      Height = 86
+    end
+    object gbData: TcxGroupBox
+      Left = 16
+      Top = 64
       Caption = 'Data'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8404992
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
       TabOrder = 1
-      object Label3: TcxLabel
-        Left = 149
-        Top = 48
-        Caption = 'Final'
-        ParentFont = False
-      end
+      Height = 97
+      Width = 329
       object Label5: TcxLabel
         Left = 10
-        Top = 48
+        Top = 56
         Caption = 'Inicial'
         ParentFont = False
-      end
-      object edAs1: TcxLabel
-        Left = 133
-        Top = 41
-        Cursor = crHandPoint
-        Hint = 'Campo Requerido'
-        Caption = '*'
-        ParentColor = False
-        ParentFont = False
-        ParentShowHint = False
-        ShowHint = True
-      end
-      object edAs3: TcxLabel
-        Tag = 1
-        Left = 277
-        Top = 38
-        Cursor = crHandPoint
-        Hint = 'Campo Requerido'
-        Caption = '*'
-        ParentColor = False
-        ParentFont = False
-        ParentShowHint = False
-        ShowHint = True
-      end
-      object Rd1: TRadioButton
-        Left = 16
-        Top = 19
-        Width = 81
-        Height = 17
-        Caption = 'Movimento'
-        Checked = True
-        TabOrder = 0
-        TabStop = True
-        OnKeyDown = cmbPessoaKeyDown
-      end
-      object Rd2: TRadioButton
-        Left = 99
-        Top = 19
-        Width = 89
-        Height = 17
-        Caption = 'Documento'
-        TabOrder = 1
-        OnKeyDown = cmbPessoaKeyDown
+        Transparent = True
       end
       object DataInicial: TcxDateEdit
         Left = 40
-        Top = 44
+        Top = 52
         EditValue = 2.38330601849884d
         ParentFont = False
         TabOrder = 2
@@ -138,9 +76,16 @@ object FRelKardex: TFRelKardex
         OnKeyDown = cmbPessoaKeyDown
         Width = 89
       end
+      object Label3: TcxLabel
+        Left = 149
+        Top = 56
+        Caption = 'Final'
+        ParentFont = False
+        Transparent = True
+      end
       object DataFinal: TcxDateEdit
         Left = 176
-        Top = 45
+        Top = 53
         EditValue = 55152.3833060185d
         ParentFont = False
         TabOrder = 3
@@ -149,35 +94,91 @@ object FRelKardex: TFRelKardex
         OnKeyDown = cmbPessoaKeyDown
         Width = 97
       end
+      object edAs3: TcxLabel
+        Tag = 1
+        Left = 277
+        Top = 46
+        Cursor = crHandPoint
+        Hint = 'Campo Requerido'
+        Caption = '*'
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Transparent = True
+      end
+      object edAs1: TcxLabel
+        Left = 133
+        Top = 49
+        Cursor = crHandPoint
+        Hint = 'Campo Requerido'
+        Caption = '*'
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        Transparent = True
+      end
+      object Rd1: TcxRadioButton
+        Left = 14
+        Top = 24
+        Width = 113
+        Height = 17
+        BiDiMode = bdLeftToRight
+        Caption = 'Movimento'
+        Checked = True
+        ParentBiDiMode = False
+        TabOrder = 0
+        TabStop = True
+        OnKeyDown = cmbPessoaKeyDown
+        Transparent = True
+      end
+      object Rd2: TcxRadioButton
+        Left = 152
+        Top = 24
+        Width = 73
+        Height = 17
+        Caption = 'Documento'
+        TabOrder = 1
+        OnKeyDown = cmbPessoaKeyDown
+        Transparent = True
+      end
     end
   end
-  object Panel2: TPanel
+  object Panel2: TcxGroupBox
     Left = 0
-    Top = 157
-    Width = 358
-    Height = 32
+    Top = 176
     Align = alBottom
-    BevelInner = bvRaised
-    BevelOuter = bvLowered
+    PanelStyle.Active = True
     TabOrder = 1
-    DesignSize = (
-      358
-      32)
+    Height = 30
+    Width = 360
+    object ckConfigurar: TcxCheckBox
+      Left = 2
+      Top = 2
+      Align = alLeft
+      Caption = 'Cfg. Rel.'
+      ParentFont = False
+      TabOrder = 0
+      Transparent = True
+      OnKeyDown = cmbPessoaKeyDown
+      Width = 62
+    end
     object BtnOk: TcxButton
-      Left = 173
-      Top = 4
-      Width = 93
-      Height = 25
+      Left = 188
+      Top = 2
+      Width = 85
+      Height = 26
       Cursor = crHandPoint
       Action = ActPreview
-      Anchors = [akRight, akBottom]
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 0
+      TabOrder = 1
+      Align = alRight
       Glyph.Data = {
         76010000424D7601000000000000760000002800000020000000100000000100
         0400000000000001000000000000000000001000000000000000000000000000
@@ -194,13 +195,12 @@ object FRelKardex: TFRelKardex
       NumGlyphs = 2
     end
     object RzBitBtn2: TcxButton
-      Left = 268
-      Top = 4
+      Left = 273
+      Top = 2
       Width = 85
-      Height = 25
+      Height = 26
       Cursor = crHandPoint
       Action = ActFechar
-      Anchors = [akRight, akBottom]
       Cancel = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -208,7 +208,8 @@ object FRelKardex: TFRelKardex
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 2
+      Align = alRight
       Glyph.Data = {
         76010000424D7601000000000000760000002800000020000000100000000100
         04000000000000010000120B0000120B00001000000000000000000000000000
@@ -265,6 +266,13 @@ object FRelKardex: TFRelKardex
     PrinterSetup.mmPaperHeight = 297000
     PrinterSetup.mmPaperWidth = 210000
     PrinterSetup.PaperSize = 9
+    Template.DatabaseSettings.DataPipeline = ppLayout
+    Template.DatabaseSettings.Name = 'mov_produto'
+    Template.DatabaseSettings.NameField = 'RELATORIO'
+    Template.DatabaseSettings.TemplateField = 'CONFIG'
+    Template.FileName = 'D:\Sistemas\HelpStore\Reports\kardex.rtm'
+    Template.SaveTo = stDatabase
+    Template.Format = ftASCII
     AllowPrintToArchive = True
     AllowPrintToFile = True
     DeviceType = 'Screen'
@@ -1400,8 +1408,8 @@ object FRelKardex: TFRelKardex
     object ppAppRepresentanteppField1: TppField
       FieldAlias = 'PARC_RAZAO_SOCIAL'
       FieldName = 'PARC_RAZAO_SOCIAL'
-      FieldLength = 50
-      DisplayWidth = 50
+      FieldLength = 0
+      DisplayWidth = 0
       Position = 0
     end
     object ppAppRepresentanteppField2: TppField
@@ -1484,5 +1492,80 @@ object FRelKardex: TFRelKardex
       DisplayWidth = 200
       Position = 11
     end
+    object ppAppRepresentanteppField13: TppField
+      FieldAlias = 'PARC_PATH_ICONE'
+      FieldName = 'PARC_PATH_ICONE'
+      FieldLength = 200
+      DisplayWidth = 200
+      Position = 12
+    end
+  end
+  object dsLayout: TDataSource
+    AutoEdit = False
+    DataSet = dmCadastros2.CONFIG_REL_GRAFICO
+    Left = 323
+    Top = 33
+  end
+  object ppLayout: TppDBPipeline
+    DataSource = dsLayout
+    UserName = 'SerieNF1'
+    Left = 292
+    Top = 32
+    object ppLayoutppField1: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'ID'
+      FieldName = 'ID'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 0
+      Position = 0
+    end
+    object ppLayoutppField2: TppField
+      FieldAlias = 'CNPJ'
+      FieldName = 'CNPJ'
+      FieldLength = 14
+      DisplayWidth = 14
+      Position = 1
+    end
+    object ppLayoutppField3: TppField
+      FieldAlias = 'RELATORIO'
+      FieldName = 'RELATORIO'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 2
+    end
+    object ppLayoutppField4: TppField
+      FieldAlias = 'CONFIG'
+      FieldName = 'CONFIG'
+      FieldLength = 8
+      DataType = dtMemo
+      DisplayWidth = 10
+      Position = 3
+      Searchable = False
+      Sortable = False
+    end
+  end
+  object Designer: TppDesigner
+    Tag = 1
+    AllowDataSettingsChange = True
+    Caption = 'Configurar Relat'#243'rio'
+    DataSettings.SessionType = 'BDESession'
+    DataSettings.AllowEditSQL = False
+    DataSettings.DatabaseType = dtInterBase
+    DataSettings.GuidCollationType = gcString
+    DataSettings.IsCaseSensitive = True
+    DataSettings.SQLType = sqSQL2
+    DataSettings.UseDataDictionary = True
+    Position = poScreenCenter
+    Report = rptKardex
+    IniStorageType = 'IniFile'
+    IniStorageName = '($WINSYS)\RBuilder.ini'
+    WindowHeight = 400
+    WindowLeft = 100
+    WindowTop = 50
+    WindowWidth = 600
+    WindowState = wsMaximized
+    Left = 264
+    Top = 32
   end
 end

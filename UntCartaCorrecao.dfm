@@ -18,15 +18,15 @@ object FrmCartaCorrecao: TFrmCartaCorrecao
   object cxPageControl1: TcxPageControl
     Left = 0
     Top = 0
-    Width = 495
-    Height = 369
+    Width = 503
+    Height = 376
     ActivePage = TabCorrecao
     Align = alClient
     HideTabs = True
     TabOrder = 0
-    ClientRectBottom = 368
+    ClientRectBottom = 375
     ClientRectLeft = 1
-    ClientRectRight = 494
+    ClientRectRight = 502
     ClientRectTop = 1
     object TabRespostas: TcxTabSheet
       Caption = 'TabRespostas'
@@ -38,8 +38,8 @@ object FrmCartaCorrecao: TFrmCartaCorrecao
         Lines.Strings = (
           'MemoResp')
         TabOrder = 0
-        Height = 367
-        Width = 493
+        Height = 374
+        Width = 501
       end
     end
     object TabXML: TcxTabSheet
@@ -51,13 +51,13 @@ object FrmCartaCorrecao: TFrmCartaCorrecao
         Align = alClient
         PanelStyle.Active = True
         TabOrder = 0
-        Height = 332
-        Width = 493
+        Height = 339
+        Width = 501
         object WBResposta: TWebBrowser
           Left = 2
           Top = 2
-          Width = 489
-          Height = 328
+          Width = 497
+          Height = 335
           Align = alClient
           TabOrder = 0
           ControlData = {
@@ -70,12 +70,12 @@ object FrmCartaCorrecao: TFrmCartaCorrecao
       end
       object cxGroupBox2: TcxGroupBox
         Left = 0
-        Top = 332
+        Top = 339
         Align = alBottom
         PanelStyle.Active = True
         TabOrder = 1
         Height = 35
-        Width = 493
+        Width = 501
         object cxButton3: TcxButton
           Left = 8
           Top = 7
@@ -157,22 +157,16 @@ object FrmCartaCorrecao: TFrmCartaCorrecao
     end
   end
   object ACBrNFe1: TACBrNFe
-    Configuracoes.Geral.PathSalvar = 'C:\Program Files\Borland\Delphi7\Bin\'
-    Configuracoes.Geral.ExibirErroSchema = True
+    Configuracoes.Geral.SSLLib = libCapicomDelphiSoap
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
-    Configuracoes.Geral.RetirarAcentos = True
     Configuracoes.Geral.ValidarDigest = False
-    Configuracoes.WebServices.UF = 'SP'
-    Configuracoes.WebServices.AguardarConsultaRet = 0
-    Configuracoes.WebServices.IntervaloTentativas = 0
-    Configuracoes.WebServices.AjustaAguardaConsultaRet = False
-    Configuracoes.Arquivos.Salvar = True
-    Configuracoes.Arquivos.PastaMensal = True
+    Configuracoes.Geral.IncluirQRCodeXMLNFCe = False
     Configuracoes.Arquivos.AdicionarLiteral = True
     Configuracoes.Arquivos.PathNFe = 'C:\ACBrNFeMonitor\Arq'
-    Configuracoes.Arquivos.PathCan = 'C:\ACBrNFeMonitor\Arq'
     Configuracoes.Arquivos.PathInu = 'C:\ACBrNFeMonitor\Arq'
-    Configuracoes.Arquivos.PathDPEC = 'C:\ACBrNFeMonitor\Arq'
+    Configuracoes.WebServices.UF = 'SP'
+    Configuracoes.WebServices.AguardarConsultaRet = 0
+    Configuracoes.WebServices.QuebradeLinha = '|'
     Left = 190
   end
   object DtVenda: TIBDataSet
@@ -282,43 +276,5 @@ object FrmCartaCorrecao: TFrmCartaCorrecao
     DataSet = DtVenda
     Left = 252
     Top = 65531
-  end
-  object ACBrNFeDANFERaveCB1: TACBrNFeDANFERaveCB
-    ACBrNFe = ACBrNFe1
-    PathPDF = 'C:\Program Files\Borland\Delphi7\Bin\'
-    MostrarPreview = True
-    MostrarStatus = True
-    TipoDANFE = tiRetrato
-    NumCopias = 1
-    ImprimirDescPorc = False
-    ImprimirTotalLiquido = True
-    MargemInferior = 0.800000000000000000
-    MargemSuperior = 0.800000000000000000
-    MargemEsquerda = 0.600000000000000000
-    MargemDireita = 0.510000000000000000
-    CasasDecimais._qCom = 2
-    CasasDecimais._vUnCom = 2
-    ExibirResumoCanhoto = False
-    FormularioContinuo = False
-    TamanhoFonte_DemaisCampos = 10
-    ProdutosPorPagina = 0
-    ImprimirDetalhamentoEspecifico = True
-    NFeCancelada = False
-    LocalImpCanhoto = 0
-    ImprimeItens = True
-    ViaConsumidor = True
-    TributosSeparadamente = False
-    TamanhoCampoCodigo = 0
-    TamanhoCampoVlUnit = 0
-    TamanhoFonte_ANTT = 10
-    TamanhoFonte_infComplementares = 6
-    Fonte = ftTimes
-    EspessuraBorda = 2
-    ExpandirDadosAdicionaisAuto = False
-    MostrarSetup = False
-    TributosPercentual = ptValorProdutos
-    ImprimirDesconto = True
-    ImprimirTributosItem = False
-    Left = 216
   end
 end

@@ -1,12 +1,13 @@
 object FrmProdutos: TFrmProdutos
   Left = 197
-  Top = 111
+  Top = 100
   BorderIcons = [biSystemMenu, biMaximize]
   BorderStyle = bsSingle
   Caption = ' Produtos '
   ClientHeight = 600
   ClientWidth = 800
   Color = 15396334
+  DefaultMonitor = dmMainForm
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -90,7 +91,7 @@ object FrmProdutos: TFrmProdutos
       Width = 796
       Height = 564
       Cursor = crHandPoint
-      ActivePage = Pg1
+      ActivePage = dxTabSheet2
       Align = alClient
       HotTrack = True
       TabOrder = 1

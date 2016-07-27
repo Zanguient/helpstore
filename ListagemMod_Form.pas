@@ -160,6 +160,7 @@ begin
   begin
     Value := ANode.Values[DBTreeListCNPJ.index];
     if ((not VarIsNull(Value)) and (Value <> '')) then
+    try
       Value := StringReplace(Value,'.','',[rfReplaceAll]);
       Value := StringReplace(Value,'/','',[rfReplaceAll]);
       Value := StringReplace(Value,'-','',[rfReplaceAll]);
@@ -172,6 +173,8 @@ begin
       begin
         AFont.Style := [];
         AColor := clWindow;
+      end;
+      except
       end;
   end;
 end;

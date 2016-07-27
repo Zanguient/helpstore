@@ -1,10 +1,10 @@
 object FRelEnviaCaixa: TFRelEnviaCaixa
   Left = 291
-  Top = 378
+  Top = 319
   BorderStyle = bsDialog
-  Caption = '  Imprime Venda '
-  ClientHeight = 141
-  ClientWidth = 301
+  Caption = 'Imprime Venda '
+  ClientHeight = 149
+  ClientWidth = 406
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,53 +18,65 @@ object FRelEnviaCaixa: TFRelEnviaCaixa
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object pnlClient: TPanel
+  object Panel2: TcxGroupBox
     Left = 0
-    Top = 0
-    Width = 301
-    Height = 101
-    Align = alClient
-    BevelInner = bvRaised
-    BevelOuter = bvLowered
-    Color = clWhite
-    TabOrder = 0
-    object LBLNOME: TcxLabel
-      Left = 45
-      Top = 10
-      Caption = 'Impress'#227'o  de Vendas'
-      ParentFont = False
-      Transparent = True
-    end
-    object LBLPEDIDO: TcxLabel
-      Left = 45
-      Top = 42
-      Caption = 'Pedido N'#186' =>'
-      ParentFont = False
-      Transparent = True
-    end
-    object LblTipo: TcxLabel
-      Left = 45
-      Top = 71
-      Caption = 'Tipo Impressora'
-      ParentFont = False
-      Transparent = True
-      Visible = False
-    end
-  end
-  object Panel2: TPanel
-    Left = 0
-    Top = 101
-    Width = 301
-    Height = 40
+    Top = 117
     Align = alBottom
-    BevelInner = bvRaised
-    BevelOuter = bvLowered
-    TabOrder = 1
+    PanelStyle.Active = True
+    TabOrder = 0
+    Height = 32
+    Width = 406
+    object ckConfigurar: TcxCheckBox
+      Left = 2
+      Top = 2
+      Align = alLeft
+      Caption = 'Cfg. Rel.'
+      ParentFont = False
+      TabOrder = 0
+      Transparent = True
+      Width = 62
+    end
+    object Vias: TcxSpinEdit
+      Left = 67
+      Top = 5
+      TabOrder = 1
+      Value = 1
+      Width = 41
+    end
+    object btnver: TcxButton
+      Left = 242
+      Top = 2
+      Width = 88
+      Height = 28
+      Cursor = crHandPoint
+      Action = ActVisualizar
+      Cancel = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 2
+      Align = alRight
+      Glyph.Data = {
+        42010000424D4201000000000000760000002800000011000000110000000100
+        040000000000CC00000000000000000000001000000000000000000000000000
+        BF0000BF000000BFBF00BF000000BF00BF00BFBF0000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00DDDDDDDDDDDD
+        DDDDD0000000DDDDDDDDDDDDDDDDD0000000DD0000000000000DD0000000D0FF
+        FFFFFFFFFFF0D0000000D0F00000000000F0D0000000D0FFFFFFFFFFFFF0D000
+        0000D0F00000000000F0D0000000D0FFFFFFFFFFFFF0D0000000D0F000000000
+        00F0D0000000D0FFFFFFFFFFFFF0D0000000D0F00000000000F0D0000000D0FF
+        FFFFFFFFFFF0D0000000D0F00000000000F0D0000000D0FFFFFFFFFFFFF0D000
+        0000DD0000000000000DD0000000DDDDDDDDDDDDDDDDD0000000DDDDDDDDDDDD
+        DDDDD0000000}
+    end
     object btnimprimir: TcxButton
-      Left = 8
-      Top = 7
+      Left = 157
+      Top = 2
       Width = 85
-      Height = 25
+      Height = 28
       Cursor = crHandPoint
       Action = ActPreview
       Font.Charset = DEFAULT_CHARSET
@@ -73,7 +85,8 @@ object FRelEnviaCaixa: TFRelEnviaCaixa
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 0
+      TabOrder = 3
+      Align = alRight
       Glyph.Data = {
         EE030000424DEE03000000000000360000002800000012000000110000000100
         180000000000B8030000C30E0000C30E00000000000000000000BFBFBF000000
@@ -109,10 +122,10 @@ object FRelEnviaCaixa: TFRelEnviaCaixa
         BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF0000}
     end
     object RzBitBtn2: TcxButton
-      Left = 216
-      Top = 7
+      Left = 330
+      Top = 2
       Width = 74
-      Height = 25
+      Height = 28
       Cursor = crHandPoint
       Action = ActFechar
       Cancel = True
@@ -122,7 +135,8 @@ object FRelEnviaCaixa: TFRelEnviaCaixa
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 4
+      Align = alRight
       Glyph.Data = {
         76010000424D7601000000000000760000002800000020000000100000000100
         04000000000000010000120B0000120B00001000000000000000000000000000
@@ -138,49 +152,39 @@ object FRelEnviaCaixa: TFRelEnviaCaixa
         0333337F777FFFFF7F3333000000000003333377777777777333}
       NumGlyphs = 2
     end
-    object btnver: TcxButton
-      Left = 93
-      Top = 7
-      Width = 88
-      Height = 25
-      Cursor = crHandPoint
-      Action = ActVisualizar
-      Cancel = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
+  end
+  object pnlClient: TcxGroupBox
+    Left = 0
+    Top = 0
+    Align = alClient
+    PanelStyle.Active = True
+    PanelStyle.OfficeBackgroundKind = pobkStyleColor
+    Style.Shadow = False
+    StyleDisabled.BorderColor = clWindow
+    TabOrder = 1
+    Height = 117
+    Width = 406
+    object LBLNOME: TcxLabel
+      Left = 45
+      Top = 10
+      Caption = 'Impress'#227'o  de Vendas'
       ParentFont = False
-      TabOrder = 1
-      Glyph.Data = {
-        42010000424D4201000000000000760000002800000011000000110000000100
-        040000000000CC00000000000000000000001000000000000000000000000000
-        BF0000BF000000BFBF00BF000000BF00BF00BFBF0000C0C0C000808080000000
-        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00DDDDDDDDDDDD
-        DDDDD0000000DDDDDDDDDDDDDDDDD0000000DD0000000000000DD0000000D0FF
-        FFFFFFFFFFF0D0000000D0F00000000000F0D0000000D0FFFFFFFFFFFFF0D000
-        0000D0F00000000000F0D0000000D0FFFFFFFFFFFFF0D0000000D0F000000000
-        00F0D0000000D0FFFFFFFFFFFFF0D0000000D0F00000000000F0D0000000D0FF
-        FFFFFFFFFFF0D0000000D0F00000000000F0D0000000D0FFFFFFFFFFFFF0D000
-        0000DD0000000000000DD0000000DDDDDDDDDDDDDDDDD0000000DDDDDDDDDDDD
-        DDDDD0000000}
+      Transparent = True
     end
-    object Vias: TdxSpinEdit
-      Left = 182
-      Top = 7
-      Width = 33
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Tahoma'
-      Font.Style = []
+    object LBLPEDIDO: TcxLabel
+      Left = 45
+      Top = 42
+      Caption = 'Pedido N'#186' =>'
       ParentFont = False
-      Style.BorderColor = clBtnShadow
-      Style.BorderStyle = xbsSingle
-      Style.ButtonStyle = btsSimple
-      TabOrder = 2
-      Value = 1.000000000000000000
+      Transparent = True
+    end
+    object LblTipo: TcxLabel
+      Left = 45
+      Top = 71
+      Caption = 'Tipo Impressora'
+      ParentFont = False
+      Transparent = True
+      Visible = False
     end
   end
   object Actions: TActionList
@@ -309,7 +313,7 @@ object FRelEnviaCaixa: TFRelEnviaCaixa
     RTFSettings.DefaultFont.Style = []
     TextSearchSettings.DefaultString = '<Texto a localizar>'
     TextSearchSettings.Enabled = True
-    Left = 16
+    Left = 280
     Top = 4
     Version = '12.03'
     mmColumnWidth = 297000
@@ -705,13 +709,13 @@ object FRelEnviaCaixa: TFRelEnviaCaixa
   object ppSerieNF: TppDBPipeline
     DataSource = dsPedidos
     UserName = 'SerieNF'
-    Left = 44
+    Left = 308
     Top = 4
   end
   object ppLayout: TppDBPipeline
     DataSource = DMCadastros.dsEdtSerieNF
     UserName = 'SerieNF1'
-    Left = 72
+    Left = 336
     Top = 4
   end
   object rptSerieOrcaNF: TppReport
@@ -761,7 +765,7 @@ object FRelEnviaCaixa: TFRelEnviaCaixa
     RTFSettings.DefaultFont.Style = []
     TextSearchSettings.DefaultString = '<Texto a localizar>'
     TextSearchSettings.Enabled = True
-    Left = 82
+    Left = 370
     Top = 55
     Version = '12.03'
     mmColumnWidth = 74000
@@ -2777,13 +2781,13 @@ object FRelEnviaCaixa: TFRelEnviaCaixa
   object ppLayoutOrca: TppDBPipeline
     DataSource = DMCadastros.dsSerieOrcNF
     UserName = 'LayoutOrca'
-    Left = 50
+    Left = 338
     Top = 55
   end
   object ppSerieOrcaNF: TppDBPipeline
     DataSource = DmVendas2.dsSeries_ORC_NF
     UserName = 'SerieOrcaNF'
-    Left = 18
+    Left = 306
     Top = 55
     object ppSerieOrcaNFppField1: TppField
       FieldAlias = 'CLIENTE'
@@ -3258,7 +3262,75 @@ object FRelEnviaCaixa: TFRelEnviaCaixa
   end
   object dsPedidos: TDataSource
     DataSet = DmVendas2.qrySeriesNF
-    Left = 101
+    Left = 365
     Top = 5
+  end
+  object Designer: TppDesigner
+    Tag = 1
+    AllowDataSettingsChange = True
+    Caption = 'Configurar Relat'#243'rio'
+    DataSettings.SessionType = 'BDESession'
+    DataSettings.AllowEditSQL = False
+    DataSettings.DatabaseType = dtInterBase
+    DataSettings.GuidCollationType = gcString
+    DataSettings.IsCaseSensitive = True
+    DataSettings.SQLType = sqSQL2
+    DataSettings.UseDataDictionary = True
+    Position = poScreenCenter
+    Report = rptSerieOrcaNF
+    IniStorageType = 'IniFile'
+    IniStorageName = '($WINSYS)\RBuilder.ini'
+    WindowHeight = 400
+    WindowLeft = 100
+    WindowTop = 50
+    WindowWidth = 600
+    WindowState = wsMaximized
+    Left = 160
+    Top = 32
+  end
+  object ppDBPipeline1: TppDBPipeline
+    DataSource = dsLayout
+    UserName = 'DBPipeline1'
+    Left = 188
+    Top = 32
+    object ppLayoutppField1: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'ID'
+      FieldName = 'ID'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 0
+      Position = 0
+    end
+    object ppLayoutppField2: TppField
+      FieldAlias = 'CNPJ'
+      FieldName = 'CNPJ'
+      FieldLength = 14
+      DisplayWidth = 14
+      Position = 1
+    end
+    object ppLayoutppField3: TppField
+      FieldAlias = 'RELATORIO'
+      FieldName = 'RELATORIO'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 2
+    end
+    object ppLayoutppField4: TppField
+      FieldAlias = 'CONFIG'
+      FieldName = 'CONFIG'
+      FieldLength = 8
+      DataType = dtMemo
+      DisplayWidth = 10
+      Position = 3
+      Searchable = False
+      Sortable = False
+    end
+  end
+  object dsLayout: TDataSource
+    AutoEdit = False
+    DataSet = dmCadastros2.CONFIG_REL_GRAFICO
+    Left = 219
+    Top = 33
   end
 end

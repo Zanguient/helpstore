@@ -3809,6 +3809,7 @@ end;
 
 procedure TDmVendas.CotacoesNewRecord(DataSet: TDataSet);
 begin
+  CotacoesCNPJ.Value := DmApp.Cnpj; // Sanniel 31/05/16 - Não recebia valor
      CotacoesDESC_ACRESC.Value := 0   ;
      CotacoesTOTAL.Value       := 0   ;
      CotacoesFECHADO.Value     := 'N' ;

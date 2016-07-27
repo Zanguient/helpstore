@@ -140,10 +140,8 @@ uses
   Mensagem_DM in 'Mensagem_DM.pas' {DMMensagem: TDataModule},
   VendasPeriodo_FRel in 'VendasPeriodo_FRel.pas' {FRelVendasPeriodo},
   Mensagem_Form in 'Mensagem_Form.pas' {FrmMensagem},
-  GraficoVendasGrupoProdutos_Form in 'GraficoVendasGrupoProdutos_Form.pas' {FrmGraficoVendasPorGrupo},
   ConsultaVendasVendedor_Form in 'ConsultaVendasVendedor_Form.pas' {FrmConsultaVendasVend},
   VendasVendedor_FRel in 'VendasVendedor_FRel.pas' {FRelVendasVendedor},
-  GraficoVendas_Form in 'GraficoVendas_Form.pas' {FrmGraficoVendas},
   AuxContagem_FRel in 'AuxContagem_FRel.pas' {FRelAuxContagemEstoque},
   CaixaSaidas_Form in 'CaixaSaidas_Form.pas' {FrmCaixaSaidas},
   Localizar_Propriedade in 'Localizar_Propriedade.pas' {Frm_Localizar_Propriedade},
@@ -394,7 +392,6 @@ uses
   Gera_PagarComissao in 'Gera_PagarComissao.pas' {frmGeraPagarComissao},
   Filtra_GeraComissao in 'Filtra_GeraComissao.pas' {frmFiltraGeraComissoes},
   Cheque_Financeiro_Form in 'Cheque_Financeiro_Form.pas' {FrmCheque_Planilha},
-  Rel_GraficoVendasProd_Form in 'Rel_GraficoVendasProd_Form.pas' {Qrp2: TQuickRep},
   Sugestao_FRel in 'Sugestao_FRel.pas' {fRelSugestaoCompra},
   Receber_FRel2 in 'Receber_FRel2.pas' {fRelReceber2},
   Paises_Form in 'Paises_Form.pas' {FrmPaises},
@@ -585,7 +582,8 @@ uses
   untListaPadrao in 'untListaPadrao.pas' {frmListaPadrao},
   untListaControleTonner in 'untListaControleTonner.pas' {frmListaControleTonner},
   UntCartaCorrecao in 'UntCartaCorrecao.pas' {FrmCartaCorrecao},
-  UntCadProduto in '..\..\..\Users\Sanniel\Google Drive\Sistemas\TERRITORIO\UntCadProduto.pas' {frmCadProduto};
+  UntCadProduto in '..\..\..\Users\Sanniel\Google Drive\Sistemas\TERRITORIO\UntCadProduto.pas' {frmCadProduto},
+  untConfAtualizacao in 'untConfAtualizacao.pas' {frmConfAtualizacao};
 
 {$R *.RES}
 
@@ -612,6 +610,5 @@ begin
   Application.CreateForm(TDmOrdemCarga, DmOrdemCarga);
   Application.CreateForm(TDmSerie_Customizaveis, DmSerie_Customizaveis);
   Application.CreateForm(TFrmMain, FrmMain);
-  Application.CreateForm(TfrmCadProduto, frmCadProduto);
   Application.Run;
 end.

@@ -14,7 +14,7 @@ object FrmSplash: TFrmSplash
   Font.Style = []
   FormStyle = fsStayOnTop
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
@@ -2723,7 +2723,7 @@ object FrmSplash: TFrmSplash
     Caption = 'Copyright '#169' 2011 '
     ParentFont = False
     Transparent = True
-    Height = 15
+    Height = 26
     Width = 102
   end
   object lblLink: TcxDBLabel

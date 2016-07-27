@@ -988,6 +988,7 @@ type
     LeituraDESC_ACRESC_TOTAL: TFloatField;
     SelContratosLeituraNUM_CONTRATO: TIBStringField;
     NFe_Faturamentos2XML_REF_DEV: TBlobField;
+    NFe_Faturamentos_ItensCEST: TIBStringField;
     procedure ProdutosClientesAfterInsert(DataSet: TDataSet);
     procedure ProdutosClientesBeforeOpen(DataSet: TDataSet);
     procedure ProdutosClientesNewRecord(DataSet: TDataSet);

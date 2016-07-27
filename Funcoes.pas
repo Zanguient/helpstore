@@ -214,6 +214,9 @@ Procedure ZapFiles(vMasc:String);
 function PrintImage(Origem: String):Boolean;
 function SoNumeros(Const Texto:String):String;
 
+//  Sanniel 23/03/2016
+function UltimaAtualizacaoArquivo(const TheFile: string): {string} TDateTime;
+
 Var
    NextCtl: Integer;
    DataSource : TDataSource;
@@ -244,6 +247,28 @@ const
     C2 = 22719;
     NULL_STRING = '';
 
+function UltimaAtualizacaoArquivo(const TheFile: string): {string} TDateTime;
+var
+  FileH: THandle;
+  LocalFT: TFileTime;
+  DosFT: DWORD;
+  LastAccessedTime: TDateTime;
+  FindData: TWin32FindData;
+begin
+  Result := StrToDate('01/01/1900');
+  FileH := FindFirstFile(PChar(TheFile), FindData);
+  if FileH <> INVALID_HANDLE_VALUE then
+  begin
+    //Windows.FindClose(Handle) ;
+    if (FindData.dwFileAttributes and FILE_ATTRIBUTE_DIRECTORY) = 0 then
+    begin
+      FileTimeToLocalFileTime(FindData.ftLastWriteTime, LocalFT);
+      FileTimeToDosDateTime(LocalFT,LongRec(DosFT).Hi, LongRec(DosFT).Lo);
+      LastAccessedTime := FileDateToDateTime(DosFT);
+      Result := {DateTimeToStr(}LastAccessedTime{)};
+    end;
+  end;
+end;
 
 FUNCTION HORAS_TRABALHADAS(DATA_INI,DATA_FIM,     HORA_INI,HORA_FIM,     INTER_INI,INTER_FIM,   TRAB_INI,TRAB_FIM : STRING ) :REAL;
 var

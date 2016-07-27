@@ -15,7 +15,8 @@ uses
   dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver, dxSkinSpringTime,
   dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinXmas2008Blue, cxLabel, cxTextEdit, cxMaskEdit,
-  cxDropDownEdit, cxCalendar, cxDBEdit, Menus, StdCtrls, cxButtons, ACBrNFe, pcnConversao, DateUtils;
+  cxDropDownEdit, cxCalendar, cxDBEdit, Menus, StdCtrls, cxButtons, ACBrNFe, pcnConversao, DateUtils,
+  pcnConversaoNFe, ACBrBase, ACBrDFe;
 
 type
   TFrmExportaXml = class(TForm)

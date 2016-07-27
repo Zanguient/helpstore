@@ -3,90 +3,62 @@ object Qrp2: TQrp2
   Top = 0
   Width = 794
   Height = 708
-  Color = clBtnFace
+  Frame.Color = clBlack
+  Frame.DrawTop = False
+  Frame.DrawBottom = False
+  Frame.DrawLeft = False
+  Frame.DrawRight = False
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
   Font.Name = 'Arial'
   Font.Style = []
-  OldCreateOrder = True
-  PixelsPerInch = 96
-  TextHeight = 16
-  object GRAFICO: TQRChart
-    Left = 40
-    Top = 88
-    Width = 713
-    Height = 425
-    Frame.Color = clBlack
-    Frame.DrawTop = False
-    Frame.DrawBottom = False
-    Frame.DrawLeft = False
-    Frame.DrawRight = False
-    Size.Values = (
-      1124.479166666670000000
-      105.833333333333000000
-      232.833333333333000000
-      1886.479166666670000000)
-    object QRDBChart1: TQRDBChart
-      Left = -1
-      Top = -1
-      Width = 1
-      Height = 1
-      BackWall.Brush.Color = clWhite
-      BackWall.Brush.Style = bsClear
-      BackWall.Pen.Visible = False
-      Title.Text.Strings = (
-        'Gr'#225'fico de Vendas por Grupo de Produtos')
-      AxisVisible = False
-      ClipPoints = False
-      Frame.Visible = False
-      View3DOptions.Elevation = 315
-      View3DOptions.Orthogonal = False
-      View3DOptions.Perspective = 0
-      View3DOptions.Rotation = 360
-      View3DWalls = False
-      object Series1: TPieSeries
-        Marks.Arrow.Visible = True
-        Marks.Callout.Brush.Color = clBlack
-        Marks.Callout.Arrow.Visible = True
-        Marks.Style = smsLabelPercent
-        Marks.Visible = True
-        DataSource = DMRelatorios.Fat_Grafico_GrupoProd
-        Title = 'GRAFICOS'
-        ValueFormat = '###,###,##0.00'
-        XLabelsSource = 'NOME_GRUPO'
-        Gradient.Direction = gdRadial
-        OtherSlice.Legend.Visible = False
-        OtherSlice.Text = 'Other'
-        PieValues.Name = 'Pie'
-        PieValues.Order = loNone
-        PieValues.ValueSource = 'VALOR'
-      end
-      object Series2: TBarSeries
-        ColorEachPoint = True
-        Marks.Arrow.Visible = True
-        Marks.Callout.Brush.Color = clBlack
-        Marks.Callout.Arrow.Visible = True
-        Marks.Callout.Length = 8
-        Marks.Style = smsLabelPercent
-        Marks.Visible = True
-        DataSource = DMRelatorios.Fat_Grafico_GrupoProd
-        SeriesColor = clRed
-        Title = 'GRAFICOS'
-        ValueFormat = '###,###,##0.00'
-        XLabelsSource = 'NOME_GRUPO'
-        Gradient.Direction = gdTopBottom
-        XValues.Name = 'X'
-        XValues.Order = loAscending
-        YValues.Name = 'Bar'
-        YValues.Order = loNone
-        YValues.ValueSource = 'VALOR'
-      end
-    end
-  end
+  Functions.Strings = (
+    'PAGENUMBER'
+    'COLUMNNUMBER'
+    'REPORTTITLE')
+  Functions.DATA = (
+    '0'
+    '0'
+    #39#39)
+  Options = [FirstPageHeader, LastPageFooter]
+  Page.Columns = 1
+  Page.Orientation = poPortrait
+  Page.PaperSize = Letter
+  Page.Values = (
+    100.000000000000000000
+    2794.000000000000000000
+    100.000000000000000000
+    2159.000000000000000000
+    100.000000000000000000
+    100.000000000000000000
+    0.000000000000000000)
+  PrinterSettings.Copies = 1
+  PrinterSettings.OutputBin = Auto
+  PrinterSettings.Duplex = False
+  PrinterSettings.FirstPage = 0
+  PrinterSettings.LastPage = 0
+  PrinterSettings.UseStandardprinter = False
+  PrinterSettings.UseCustomBinCode = False
+  PrinterSettings.CustomBinCode = 0
+  PrinterSettings.ExtendedDuplex = 0
+  PrinterSettings.UseCustomPaperCode = False
+  PrinterSettings.CustomPaperCode = 0
+  PrinterSettings.PrintMetaFile = False
+  PrinterSettings.PrintQuality = 0
+  PrinterSettings.Collate = 0
+  PrinterSettings.ColorOption = 0
+  PrintIfEmpty = True
+  SnapToGrid = True
+  Units = MM
+  Zoom = 100
+  PrevFormStyle = fsNormal
+  PreviewInitialState = wsNormal
+  PrevInitialZoom = qrZoomToFit
+  PreviewDefaultSaveType = stQRP
   object TitleBand1: TQRBand
-    Left = 0
-    Top = 0
+    Left = 38
+    Top = 38
     Width = 718
     Height = 43
     Frame.Color = clBlack
@@ -96,11 +68,14 @@ object Qrp2: TQrp2
     Frame.DrawRight = False
     AlignToBottom = False
     Color = clWhite
+    TransparentBand = False
     ForceNewColumn = False
     ForceNewPage = False
     Size.Values = (
-      113.770833333333000000
-      1899.708333333330000000)
+      113.770833333333300000
+      1899.708333333333000000)
+    PreCaluculateBandHeight = False
+    KeepOnOnePage = False
     BandType = rbTitle
   end
 end

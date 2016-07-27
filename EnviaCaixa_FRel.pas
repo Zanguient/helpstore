@@ -18,26 +18,18 @@ uses
   dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinPumpkin, dxSkinSeven,
   dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
   dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinXmas2008Blue, Menus, cxButtons, cxLabel;
+  dxSkinXmas2008Blue, Menus, cxButtons, cxLabel, ppEndUsr, cxTextEdit,
+  cxMaskEdit, cxSpinEdit, cxCheckBox, cxGroupBox;
 
 type
   TFRelEnviaCaixa = class(TForm)
-    pnlClient: TPanel;
-    Panel2: TPanel;
-    btnimprimir: TcxButton;
-    RzBitBtn2: TcxButton;
     Actions: TActionList;
     ActPreview: TAction;
     ActFechar: TAction;
-    LBLNOME: TcxLabel;
     Print: TRDprint;
     ActBuscarProd: TAction;
-    LBLPEDIDO: TcxLabel;
-    btnver: TcxButton;
     ActVisualizar: TAction;
-    Vias: TdxSpinEdit;
     DSource: TDataSource;
-    LblTipo: TcxLabel;
     rptSerieNF: TppReport;
     ppHeaderBand1: TppHeaderBand;
     ppSystemVariable1: TppSystemVariable;
@@ -215,6 +207,23 @@ type
     ppSerieOrcaNFppField59: TppField;
     ppSerieOrcaNFppField60: TppField;
     dsPedidos: TDataSource;
+    Designer: TppDesigner;
+    ppDBPipeline1: TppDBPipeline;
+    ppLayoutppField1: TppField;
+    ppLayoutppField2: TppField;
+    ppLayoutppField3: TppField;
+    ppLayoutppField4: TppField;
+    dsLayout: TDataSource;
+    Panel2: TcxGroupBox;
+    ckConfigurar: TcxCheckBox;
+    Vias: TcxSpinEdit;
+    btnver: TcxButton;
+    btnimprimir: TcxButton;
+    RzBitBtn2: TcxButton;
+    pnlClient: TcxGroupBox;
+    LBLNOME: TcxLabel;
+    LBLPEDIDO: TcxLabel;
+    LblTipo: TcxLabel;
     procedure FormCreate(Sender: TObject);
     procedure ActFecharExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -1429,7 +1438,7 @@ begin
 end;
 
 procedure TFRelEnviaCaixa.ActPreviewExecute(Sender: TObject);
-begin
+begin   
      //Testa a Impressora
      Opcao := 'N' ;
 
@@ -1517,6 +1526,13 @@ begin
                DmVendas2.qrySeries_ORC_NF.ParamByName('orca').value := PedidoNumero;
                DmVendas2.qrySeries_ORC_NF.open;
 
+                //Verificação incluída dia 01_06_2016 por Sanniel. Cópia do FRelKardex
+                if (ckConfigurar.Checked) then
+                begin
+                  Designer.Show;
+                  exit;
+                end;
+                //
 
                rptSerieOrcaNF.print;
              end;

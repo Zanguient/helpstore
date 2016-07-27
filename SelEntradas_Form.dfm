@@ -21,8 +21,8 @@ object FrmSelEntradas: TFrmSelEntradas
   object pnlClient: TPanel
     Left = 0
     Top = 0
-    Width = 1262
-    Height = 690
+    Width = 1270
+    Height = 697
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -37,16 +37,16 @@ object FrmSelEntradas: TFrmSelEntradas
     OnResize = pnlClientResize
     object Bevel1: TBevel
       Left = 2
-      Top = 656
-      Width = 1258
+      Top = 663
+      Width = 1266
       Height = 2
       Align = alBottom
       Shape = bsTopLine
     end
     object pnlBottom: TPanel
       Left = 2
-      Top = 658
-      Width = 1258
+      Top = 665
+      Width = 1266
       Height = 30
       Align = alBottom
       BevelOuter = bvNone
@@ -54,7 +54,7 @@ object FrmSelEntradas: TFrmSelEntradas
       object dxBarDockControl1: TdxBarDockControl
         Left = 0
         Top = 2
-        Width = 1258
+        Width = 1266
         Height = 26
         Align = dalTop
         BarManager = BarMgr
@@ -62,7 +62,7 @@ object FrmSelEntradas: TFrmSelEntradas
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 1258
+        Width = 1266
         Height = 2
         Align = alTop
         BevelOuter = bvNone
@@ -70,17 +70,17 @@ object FrmSelEntradas: TFrmSelEntradas
       end
     end
     object Panel4: TPanel
-      Left = 1059
+      Left = 1067
       Top = 2
       Width = 201
-      Height = 654
+      Height = 661
       Align = alRight
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 1
       DesignSize = (
         201
-        654)
+        661)
       object BtnFaturarVenda: TcxButton
         Left = 5
         Top = 167
@@ -824,8 +824,8 @@ object FrmSelEntradas: TFrmSelEntradas
     object Panel6: TPanel
       Left = 2
       Top = 2
-      Width = 1057
-      Height = 654
+      Width = 1065
+      Height = 661
       Align = alClient
       BevelOuter = bvNone
       Color = clWhite
@@ -833,22 +833,22 @@ object FrmSelEntradas: TFrmSelEntradas
       object pc: TcxPageControl
         Left = 0
         Top = 47
-        Width = 1057
-        Height = 607
+        Width = 1065
+        Height = 614
         ActivePage = dxTabSheet1
         Align = alClient
         HotTrack = True
         TabOrder = 0
-        ClientRectBottom = 603
+        ClientRectBottom = 610
         ClientRectLeft = 4
-        ClientRectRight = 1053
+        ClientRectRight = 1061
         ClientRectTop = 27
         object dxTabSheet1: TcxTabSheet
           Caption = '  Nota Fiscal  '
           object Shape1: TShape
             Left = 0
             Top = 85
-            Width = 1049
+            Width = 1057
             Height = 1
             Align = alTop
             Pen.Color = clBtnShadow
@@ -856,8 +856,8 @@ object FrmSelEntradas: TFrmSelEntradas
           object Grid: TcxGrid
             Left = 0
             Top = 86
-            Width = 1049
-            Height = 490
+            Width = 1057
+            Height = 497
             Align = alClient
             TabOrder = 1
             object GridTV: TcxGridDBBandedTableView
@@ -1050,7 +1050,7 @@ object FrmSelEntradas: TFrmSelEntradas
           object Panel2: TPanel
             Left = 0
             Top = 0
-            Width = 1049
+            Width = 1057
             Height = 85
             Align = alTop
             BevelInner = bvRaised
@@ -1150,7 +1150,7 @@ object FrmSelEntradas: TFrmSelEntradas
       object Panel5: TPanel
         Left = 0
         Top = 0
-        Width = 1057
+        Width = 1065
         Height = 47
         Align = alTop
         BevelOuter = bvNone

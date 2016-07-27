@@ -6,6 +6,7 @@ object FrmVendasItens: TFrmVendasItens
   ClientHeight = 309
   ClientWidth = 872
   Color = clBtnFace
+  DefaultMonitor = dmMainForm
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

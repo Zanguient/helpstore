@@ -410,6 +410,8 @@ begin
 end;
 
 procedure TFrmVendasItens.edQtdadeExit(Sender: TObject);
+var
+  AuxSql: String;
 begin
      TiraCorFundo ( Sender );
      IF ( trim( edQtdade.Text ) = '0' ) or (  trim( edQtdade.Text ) = '0,00' ) or ( trim( edQtdade.Text ) = '' ) and ( not ( Datasource.DataSet.State in [dsBrowse]))
@@ -436,6 +438,23 @@ begin
                END;
           end;
      end;
+
+     //Sanniel - verifica se está em estoque mínimo
+  AuxSql:= 'select coalesce(sis.AVISO_ESTOQUE_MIN, ''N'') from sis_empresas sis';
+  if RetornaValor(AuxSql) = 'S' then
+  begin
+    with dmVendas do
+    begin
+      qryAux.close;
+      qryAux.sql.text := ' select EST_DISPONIVEL, EST_MIN from pcd_lista_produto(:empresa, :produto) ';
+      qryAux.parambyname('empresa').value := dmapp.cnpj;
+      qryAux.parambyname('produto').value := edQtdade.text;
+      qryAux.open;
+
+      if qryAux.FieldByName('EST_DISPONIVEL').AsInteger - StrToInt(edQtdade.text) <= qryAux.FieldByName('EST_MIN').AsInteger then
+        Application.MessageBox('Estoque mínimo atingido.','Atenção', mb_ok + mb_iconexclamation);
+    end;
+  end;
 end;
 
 procedure TFrmVendasItens.edProdutoExit(Sender: TObject);
@@ -443,6 +462,7 @@ Var
    Aux: String;
    CODIGO_LOTE : integer;
 begin
+
   //---------------------[ Verificando lote ]-------------------------------------
   with FrmVendas do
   begin

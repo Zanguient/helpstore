@@ -399,22 +399,16 @@ object FrmExportaXml: TFrmExportaXml
     Top = 8
   end
   object ACBrNFe1: TACBrNFe
-    Configuracoes.Geral.PathSalvar = 'C:\Program Files\Borland\Delphi7\Bin\'
-    Configuracoes.Geral.ExibirErroSchema = True
+    Configuracoes.Geral.SSLLib = libCapicomDelphiSoap
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
-    Configuracoes.Geral.RetirarAcentos = True
     Configuracoes.Geral.ValidarDigest = False
-    Configuracoes.WebServices.UF = 'SP'
-    Configuracoes.WebServices.AguardarConsultaRet = 0
-    Configuracoes.WebServices.IntervaloTentativas = 0
-    Configuracoes.WebServices.AjustaAguardaConsultaRet = False
-    Configuracoes.Arquivos.Salvar = True
-    Configuracoes.Arquivos.PastaMensal = True
+    Configuracoes.Geral.IncluirQRCodeXMLNFCe = False
     Configuracoes.Arquivos.AdicionarLiteral = True
     Configuracoes.Arquivos.PathNFe = 'C:\ACBrNFeMonitor\Arq'
-    Configuracoes.Arquivos.PathCan = 'C:\ACBrNFeMonitor\Arq'
     Configuracoes.Arquivos.PathInu = 'C:\ACBrNFeMonitor\Arq'
-    Configuracoes.Arquivos.PathDPEC = 'C:\ACBrNFeMonitor\Arq'
+    Configuracoes.WebServices.UF = 'SP'
+    Configuracoes.WebServices.AguardarConsultaRet = 0
+    Configuracoes.WebServices.QuebradeLinha = '|'
     Left = 190
   end
 end

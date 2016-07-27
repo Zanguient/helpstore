@@ -1,6 +1,6 @@
 object FrmCotacoesItens: TFrmCotacoesItens
-  Left = 301
-  Top = 306
+  Left = 328
+  Top = 405
   BorderStyle = bsDialog
   Caption = ' Itens da Cota'#231#227'o '
   ClientHeight = 310

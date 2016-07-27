@@ -7,6 +7,7 @@ object Frm_Localizar_Cliente: TFrm_Localizar_Cliente
   ClientHeight = 406
   ClientWidth = 785
   Color = clBtnFace
+  DefaultMonitor = dmMainForm
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

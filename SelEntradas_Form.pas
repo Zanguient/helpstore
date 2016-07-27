@@ -24,7 +24,7 @@ uses
   cxDBData, cxGridCustomTableView, cxGridTableView, cxGridBandedTableView,
   cxGridDBBandedTableView, cxGridLevel, cxGridCustomView, cxGrid,
   cxGridCustomPopupMenu, cxGridPopupMenu, ACBrNFeDANFEClass,
-  ACBrNFeDANFERave, IBStoredProc, cxCheckBox, cxTextEdit, cxDropDownEdit,
+   IBStoredProc, cxCheckBox, cxTextEdit, cxDropDownEdit,
   cxCalendar, cxMaskEdit, cxButtonEdit;
 
 type
@@ -208,7 +208,7 @@ implementation
 
 uses Entradas_DM, Main, Usuarios_DM, Funcoes, Application_DM, Entradas_Form,
   LocalizarProd_DM, Cadastros_DM, Localizar_Fornecedor, Entradas_FRel, Relatorios_DM,
-  Localizar_Produto_Cadastro_Auto, WizardXML_Form, Gerar_FatSaida;
+  Localizar_Produto_Cadastro_Auto, Gerar_FatSaida, WizardXML_Form;
 
   {$R *.DFM}
 

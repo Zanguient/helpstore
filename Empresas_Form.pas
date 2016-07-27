@@ -9,7 +9,7 @@ uses
   Buttons,   
   ExtDlgs, Mask, DBCtrls, Inifiles,
   Grids, DBGrids, ComCtrls,  OleCtrls, SHDocVw,
-  ACBrNFe, pcnConversao, ACBrNFeDANFEClass, ACBrNFeDANFERave, filectrl,
+  ACBrNFe, pcnConversao, ACBrNFeDANFEClass, filectrl,
   cxControls, cxContainer, cxEdit, cxGroupBox, dxTLClms, dxTL, dxDBTLCl,
   dxGrClms, dxDBGrid, dxDBCtrl, cxStyles, cxCustomData, cxGraphics,
   cxFilter, cxData, cxDataStorage, cxDBData, cxGridCustomTableView,
@@ -26,7 +26,8 @@ uses
   dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinXmas2008Blue, dxSkinsdxBarPainter, cxTextEdit, cxMaskEdit,
   cxDropDownEdit, cxDBEdit, dxSkinscxPCPainter, cxPC, 
-  cxRadioGroup, cxLabel, cxMemo, cxCheckBox, IBQuery, cxCalendar;
+  cxRadioGroup, cxLabel, cxMemo, cxCheckBox, IBQuery, cxCalendar,
+  pcnConversaoNFe;
 
 type
   TFrmEmpresas = class(TForm)
@@ -716,6 +717,7 @@ type
     cxLabel25: TcxLabel;
     cxDBDateEdit1: TcxDBDateEdit;
     cxLabel26: TcxLabel;
+    cxDBCheckBox1: TcxDBCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ActIncluirExecute(Sender: TObject);
     procedure ActExcluirExecute(Sender: TObject);
@@ -1455,7 +1457,7 @@ end;
 procedure TFrmEmpresas.sbtnGetCertClick(Sender: TObject);
 begin
  {$IFNDEF ACBrNFeOpenSSL}
- edtNumSerie.Text := dmapp.ACBrNFe.Configuracoes.Certificados.SelecionarCertificado;
+ edtNumSerie.Text := dmapp.ACBrNFe.SSL.SelecionarCertificado;//Configuracoes.Certificados.SelecionarCertificado;
  {$ENDIF}
 end;
 
@@ -1490,7 +1492,7 @@ begin
  begin
      // NF-e 3.10
   ACBRNFE.Configuracoes.Geral.ModeloDF := moNFe; // moNFe ou moNFCe
-  ACBRNFE.Configuracoes.Geral.VersaoDF := ve310;   // Versão 3.10 
+  ACBRNFE.Configuracoes.Geral.VersaoDF := ve310;   // Versão 3.10
    dmApp.ACBrNFe.WebServices.StatusServico.Executar;
    MemoResp.Lines.Text := UTF8Encode(dmApp.ACBrNFe.WebServices.StatusServico.RetWS);
    LoadXML(MemoResp, WBResposta);

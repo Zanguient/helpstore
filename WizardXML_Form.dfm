@@ -20,13 +20,13 @@ object frmImportaNFe: TfrmImportaNFe
   TextHeight = 13
   object cxGroupBox3: TcxGroupBox
     Left = 0
-    Top = 657
+    Top = 664
     Align = alBottom
     Alignment = alBottomRight
     Anchors = [akRight, akBottom]
     TabOrder = 2
     Height = 33
-    Width = 1262
+    Width = 1270
     object btnAnterior: TcxButton
       Left = 9
       Top = 2
@@ -66,14 +66,14 @@ object frmImportaNFe: TfrmImportaNFe
   object pgcImportacao: TcxPageControl
     Left = 0
     Top = 0
-    Width = 1262
-    Height = 657
+    Width = 1270
+    Height = 664
     ActivePage = tbs1
     Align = alClient
     TabOrder = 0
-    ClientRectBottom = 653
+    ClientRectBottom = 660
     ClientRectLeft = 4
-    ClientRectRight = 1258
+    ClientRectRight = 1266
     ClientRectTop = 27
     object tbs1: TcxTabSheet
       Caption = 'Selecionar Arquivo'
@@ -84,19 +84,19 @@ object frmImportaNFe: TfrmImportaNFe
         Align = alClient
         TabOrder = 0
         Visible = False
-        Height = 517
-        Width = 1254
+        Height = 524
+        Width = 1262
         object PageControl1: TcxPageControl
           Left = 3
           Top = 225
-          Width = 1248
-          Height = 289
+          Width = 1256
+          Height = 296
           ActivePage = TabSheet2
           Align = alClient
           TabOrder = 0
-          ClientRectBottom = 285
+          ClientRectBottom = 292
           ClientRectLeft = 4
-          ClientRectRight = 1244
+          ClientRectRight = 1252
           ClientRectTop = 27
           object TabSheet1: TcxTabSheet
             Caption = 'Dados HTML'
@@ -105,8 +105,8 @@ object frmImportaNFe: TfrmImportaNFe
               Top = 0
               Align = alClient
               TabOrder = 0
-              Height = 258
-              Width = 1240
+              Height = 265
+              Width = 1248
             end
           end
           object TabSheet2: TcxTabSheet
@@ -117,17 +117,17 @@ object frmImportaNFe: TfrmImportaNFe
               Top = 0
               Align = alClient
               TabOrder = 0
-              Height = 258
-              Width = 1240
+              Height = 265
+              Width = 1248
               object WBXML: TWebBrowser
                 Left = 3
                 Top = 21
-                Width = 1234
-                Height = 234
+                Width = 1242
+                Height = 241
                 Align = alClient
                 TabOrder = 0
                 ControlData = {
-                  4C0000008A7F00002F1800000000000000000000000000000000000000000000
+                  4C0000005D800000E81800000000000000000000000000000000000000000000
                   000000004C000000000000000000000001000000E0D057007335CF11AE690800
                   2B2E126208000000000000004C0000000114020000000000C000000000000046
                   8000000000000000000000000000000000000000000000000000000000000000
@@ -144,7 +144,7 @@ object frmImportaNFe: TfrmImportaNFe
           TabOrder = 1
           Transparent = True
           Height = 204
-          Width = 1248
+          Width = 1256
           object ProgressBar1: TcxProgressBar
             Left = 10
             Top = 184
@@ -277,7 +277,7 @@ object frmImportaNFe: TfrmImportaNFe
         Style.BorderStyle = ebsNone
         TabOrder = 1
         Height = 109
-        Width = 1254
+        Width = 1262
         object gCaminho: TcxGroupBox
           Left = 190
           Top = 2

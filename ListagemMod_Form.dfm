@@ -21,7 +21,7 @@ object frmListagemMod: TfrmListagemMod
     Left = 0
     Top = 0
     Width = 759
-    Height = 416
+    Height = 412
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -35,7 +35,7 @@ object frmListagemMod: TfrmListagemMod
     TabOrder = 0
     object Bevel1: TBevel
       Left = 2
-      Top = 412
+      Top = 408
       Width = 755
       Height = 2
       Align = alBottom
@@ -48,13 +48,13 @@ object frmListagemMod: TfrmListagemMod
       Align = alClient
       ParentFont = False
       TabOrder = 0
-      Height = 410
+      Height = 406
       Width = 755
       object DBTreeList: TdxDBTreeList
         Left = 3
-        Top = 22
+        Top = 21
         Width = 749
-        Height = 385
+        Height = 382
         Bands = <
           item
           end>
@@ -597,8 +597,8 @@ object frmListagemMod: TfrmListagemMod
     AllowReset = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
     CanCustomize = False
     Categories.Strings = (

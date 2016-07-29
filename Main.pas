@@ -31,10 +31,10 @@ uses
   cxSchedulerHolidays, cxSchedulerTimeGridView, cxSchedulerUtils,
   cxSchedulerWeekView, cxSchedulerYearView, cxSchedulerGanttView,
   dxSkinscxScheduler3Painter, ImgList, cxIntlScheduler, ComCtrls, ToolWin,
-   TeEngine, Series,  {Chart, DBChart,} 
+   TeEngine, Series,   
   cxGridBandedTableView,
   cxGridDBBandedTableView, dxDBEdtr, dxDBELib, dxEditor, dxEdLib, DBCtrls,
-  cxGridChartView, cxGridDBChartView, {TeeSubChart,}
+  cxGridChartView, cxGridDBChartView,
   dxLayoutControl, dxLayoutControlAdapters, dxLayoutLookAndFeels, cxDropDownEdit,
   cxCalendar, cxDBEdit, cxTextEdit, cxMaskEdit, cxLookupEdit,
   cxDBLookupEdit, cxDBLookupComboBox, dxmdaset, cxButtons, cxBarEditItem, dxSkinsStrs, ShellAPI,

@@ -1610,10 +1610,10 @@ begin
                 //memoRespWS.Lines.Text := dmApp.ACBrNFe.WebServices.EnvEvento.RetornoWS;
                 //LoadXML(dmApp.ACBrNFe.WebServices.EnvEvento.RetornoWS, WBResposta);
 
-                if dmApp.ACBrNFe.WebServices.EnvEvento.cStat = 128 then
+                {if dmApp.ACBrNFe.WebServices.EnvEvento.cStat = 128 then
                   Application.MessageBox('Solicitação processada.' + #013 + 'Protocolo: '
                     + dmApp.ACBrNFe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0].RetInfEvento.nProt,'Aviso',mb_ok+mb_iconinformation);
-
+                 }
                 //ShowMessage(IntToStr(dmApp.ACBrNFe.WebServices.EnvEvento.cStat));
                 //ShowMessage(dmApp.ACBrNFe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0].RetInfEvento.nProt);
                 

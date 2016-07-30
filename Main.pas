@@ -1850,7 +1850,7 @@ end;
 
 procedure TFrmMain.opProdutoClick(Sender: TObject);
 begin
-{    if Not(DMApp.Verificar_Login(FileName(Application.ExeName), 'frmCadProdutos', True)) Then
+    if Not(DMApp.Verificar_Login(FileName(Application.ExeName), 'frmCadProdutos', True)) Then
      Exit;
 
     if DMApp.SelecionarEmpresa = 'N' Then
@@ -1864,7 +1864,7 @@ begin
        frmCadProdutos.Free      ;
        frmCadProdutos := Nil    ;
     end;
-exit;}
+
   if not(DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmProdutos', True)) then
      Exit;
 

@@ -131,7 +131,7 @@ begin
           FrmLocProdutoCadastro_Auto.Showmodal;
 
 
-          FrmLocProdutoCadastro_Auto.LblTitulo.Caption := 'Localizar Produto' ;
+          FrmLocProdutoCadastro_Auto.Caption := 'Localizar Produto' ;
 
           FISCAL := ( FrmLocProdutoCadastro_Auto.CampTrecho );
 

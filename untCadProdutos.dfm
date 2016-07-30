@@ -10,7 +10,6 @@ inherited frmCadProdutos: TfrmCadProdutos
   inherited pgcCadastro: TcxPageControl
     Width = 709
     Height = 589
-    ActivePage = tbsEdita
     ClientRectBottom = 585
     ClientRectRight = 705
     inherited tbsLista: TcxTabSheet
@@ -28,99 +27,97 @@ inherited frmCadProdutos: TfrmCadProdutos
           object TVRegistroCODIGO_FABRICANTE: TcxGridDBBandedColumn
             DataBinding.FieldName = 'CODIGO_FABRICANTE'
             Position.BandIndex = 0
-            Position.ColIndex = 13
+            Position.ColIndex = 1
             Position.RowIndex = 0
           end
           object TVRegistroCOMPLEMENTO: TcxGridDBBandedColumn
             DataBinding.FieldName = 'COMPLEMENTO'
             Position.BandIndex = 0
-            Position.ColIndex = 14
+            Position.ColIndex = 2
             Position.RowIndex = 0
           end
           object TVRegistroNOME: TcxGridDBBandedColumn
             DataBinding.FieldName = 'NOME'
             Position.BandIndex = 0
-            Position.ColIndex = 1
+            Position.ColIndex = 3
             Position.RowIndex = 0
           end
           object TVRegistroQTDADE_2: TcxGridDBBandedColumn
             DataBinding.FieldName = 'QTDADE_2'
-            Width = 86
             Position.BandIndex = 0
-            Position.ColIndex = 2
+            Position.ColIndex = 4
             Position.RowIndex = 0
           end
           object TVRegistroQTDADE_1: TcxGridDBBandedColumn
             DataBinding.FieldName = 'QTDADE_1'
-            Width = 88
             Position.BandIndex = 0
-            Position.ColIndex = 3
+            Position.ColIndex = 5
             Position.RowIndex = 0
           end
           object TVRegistroPRC_VENDA: TcxGridDBBandedColumn
             DataBinding.FieldName = 'PRC_VENDA'
             Position.BandIndex = 0
-            Position.ColIndex = 4
+            Position.ColIndex = 6
             Position.RowIndex = 0
           end
           object TVRegistroCODIGO_2: TcxGridDBBandedColumn
             DataBinding.FieldName = 'CODIGO_2'
             Position.BandIndex = 0
-            Position.ColIndex = 5
+            Position.ColIndex = 7
             Position.RowIndex = 0
           end
           object TVRegistroPRC_REPOS: TcxGridDBBandedColumn
             DataBinding.FieldName = 'PRC_REPOS'
             Position.BandIndex = 0
-            Position.ColIndex = 15
+            Position.ColIndex = 8
             Position.RowIndex = 0
           end
           object TVRegistroMARCA: TcxGridDBBandedColumn
             DataBinding.FieldName = 'MARCA'
             Position.BandIndex = 0
-            Position.ColIndex = 6
+            Position.ColIndex = 9
             Position.RowIndex = 0
           end
           object TVRegistroSERIE: TcxGridDBBandedColumn
             DataBinding.FieldName = 'SERIE'
             Position.BandIndex = 0
-            Position.ColIndex = 7
+            Position.ColIndex = 10
             Position.RowIndex = 0
           end
           object TVRegistroMDL_CODIGO: TcxGridDBBandedColumn
             DataBinding.FieldName = 'MDL_CODIGO'
             Position.BandIndex = 0
-            Position.ColIndex = 16
+            Position.ColIndex = 11
             Position.RowIndex = 0
           end
           object TVRegistroMODELO: TcxGridDBBandedColumn
             DataBinding.FieldName = 'MODELO'
             Position.BandIndex = 0
-            Position.ColIndex = 8
+            Position.ColIndex = 12
             Position.RowIndex = 0
           end
           object TVRegistroSECAO: TcxGridDBBandedColumn
             DataBinding.FieldName = 'SECAO'
             Position.BandIndex = 0
-            Position.ColIndex = 9
+            Position.ColIndex = 13
             Position.RowIndex = 0
           end
           object TVRegistroLOCALIZACAO_1: TcxGridDBBandedColumn
             DataBinding.FieldName = 'LOCALIZACAO_1'
             Position.BandIndex = 0
-            Position.ColIndex = 10
+            Position.ColIndex = 14
             Position.RowIndex = 0
           end
           object TVRegistroLOCALIZACAO_2: TcxGridDBBandedColumn
             DataBinding.FieldName = 'LOCALIZACAO_2'
             Position.BandIndex = 0
-            Position.ColIndex = 11
+            Position.ColIndex = 15
             Position.RowIndex = 0
           end
           object TVRegistroLOCALIZACAO_3: TcxGridDBBandedColumn
             DataBinding.FieldName = 'LOCALIZACAO_3'
             Position.BandIndex = 0
-            Position.ColIndex = 12
+            Position.ColIndex = 16
             Position.RowIndex = 0
           end
         end
@@ -1284,6 +1281,7 @@ inherited frmCadProdutos: TfrmCadProdutos
           inherited PgcMaster: TcxPageControl
             Width = 699
             Height = 318
+            ActivePage = cxTabSheet1
             ClientRectBottom = 314
             ClientRectRight = 695
             inherited tbsMaster1: TcxTabSheet
@@ -2965,6 +2963,44 @@ inherited frmCadProdutos: TfrmCadProdutos
                 Transparent = True
                 Width = 174
               end
+              object cxDBTextEdit38: TcxDBTextEdit
+                Left = 591
+                Top = 96
+                DataBinding.DataField = 'COD_CEST'
+                DataBinding.DataSource = dsRegistro
+                ParentFont = False
+                Properties.CharCase = ecUpperCase
+                Style.Font.Charset = DEFAULT_CHARSET
+                Style.Font.Color = clWindowText
+                Style.Font.Height = -11
+                Style.Font.Name = 'Tahoma'
+                Style.Font.Style = []
+                Style.HotTrack = False
+                Style.IsFontAssigned = True
+                TabOrder = 55
+                Width = 86
+              end
+              object cxLabel98: TcxLabel
+                Left = 591
+                Top = 80
+                Caption = 'C'#243'd. CEST'
+                Style.HotTrack = False
+                Style.LookAndFeel.Kind = lfUltraFlat
+                Style.LookAndFeel.NativeStyle = False
+                Style.LookAndFeel.SkinName = 'GlassOceans'
+                Style.Shadow = False
+                Style.TransparentBorder = True
+                StyleDisabled.LookAndFeel.Kind = lfUltraFlat
+                StyleDisabled.LookAndFeel.NativeStyle = False
+                StyleDisabled.LookAndFeel.SkinName = 'GlassOceans'
+                StyleFocused.LookAndFeel.Kind = lfUltraFlat
+                StyleFocused.LookAndFeel.NativeStyle = False
+                StyleFocused.LookAndFeel.SkinName = 'GlassOceans'
+                StyleHot.LookAndFeel.Kind = lfUltraFlat
+                StyleHot.LookAndFeel.NativeStyle = False
+                StyleHot.LookAndFeel.SkinName = 'GlassOceans'
+                Transparent = True
+              end
             end
             object cxTabSheet2: TcxTabSheet
               Caption = 'Custos'
@@ -3990,93 +4026,96 @@ inherited frmCadProdutos: TfrmCadProdutos
       '  CNPJ = :OLD_CNPJ and'
       '  CODIGO = :OLD_CODIGO')
     InsertSQL.Strings = (
-      'insert into EST_PRODUTOS'
+      'insert into est_produtos'
       
-        '  (ALIQUOTA_ECF, APLICACAO, ATIVO, ATUALIZA_ARQ_EXTERNO, BCH_COD' +
-        'IGO, CNPJ, '
+        '  (ALIQUOTA_ECF, APLICACAO, ATIVO, ATUALIZA_ARQ_EXTERNO, ATUALIZ' +
+        'AR, BCH_CODIGO, '
       
-        '   CNPJ_AGRUP, COD_AGRUP, COD_GETIN, COD_LOCALIZACAO_1, COD_LOCA' +
-        'LIZACAO_2, '
+        '   CNPJ, CNPJ_AGRUP, COD_AGRUP, COD_CEST, COD_GETIN, COD_LOCALIZ' +
+        'ACAO_1, '
       
-        '   COD_LOCALIZACAO_3, COD_TECNICO, CODIGO, CODIGO_2, CODIGO_FABR' +
-        'ICANTE, '
+        '   COD_LOCALIZACAO_2, COD_LOCALIZACAO_3, COD_TECNICO, CODIGO, CO' +
+        'DIGO_2, '
       
-        '   CODIGO_INTERNO, CODIGO_NCM, COFINS, COM_VENDA_PCT, COM_VENDA_' +
-        'VLR, COMPLEMENTO, '
+        '   CODIGO_FABRICANTE, CODIGO_INTERNO, CODIGO_NCM, COFINS, COM_VE' +
+        'NDA_PCT, '
       
-        '   COMPLEMENTO_NF, COR, CSOSN, CTE, CTIE, CUSTO_AQUISICAO, CUSTO' +
-        '_INDEXADO, '
+        '   COM_VENDA_VLR, COMPLEMENTO, COMPLEMENTO_NF, COR, CSOSN, CTE, ' +
+        'CTIE, CUSTO_AQUISICAO, '
       
-        '   DEBITA_ICMS, DT_ULT_ATU_PRECO, DT_ULT_COMPRA, DT_ULT_VENDA, E' +
-        'ST_MAX, '
+        '   CUSTO_INDEXADO, DEBITA_ICMS, DT_ULT_ATU_PRECO, DT_ULT_COMPRA,' +
+        ' DT_ULT_VENDA, '
       
-        '   EST_MIN, ETIQUETA_ENT, FATOR_CONVERSAO, FORNECEDOR, GRUPO, IM' +
-        'G_1, IMG_2, '
+        '   EST_MAX, EST_MIN, ETIQUETA_ENT, FATOR_CONVERSAO, FORNECEDOR, ' +
+        'GRUPO, '
       
-        '   IMG_3, IMG_4, IPI, LOCALIZACAO_1, LOCALIZACAO_2, LOCALIZACAO_' +
-        '3, MARCA, '
+        '   IMG_1, IMG_2, IMG_3, IMG_4, IPI, LOCALIZACAO_1, LOCALIZACAO_2' +
+        ', LOCALIZACAO_3, '
       
-        '   MARGEM_BRUTA, MATERIAL, MODELO, NAO_COBR_JUR_ATE, NEG_QTDADE_' +
-        '2, NOME, '
+        '   MARCA, MARGEM_BRUTA, MATERIAL, MODELO, NAO_COBR_JUR_ATE, NEG_' +
+        'QTDADE_2, '
       
-        '   NOME_MARCA, NOME_MODELO, ORIGEM, PARTICIP_LUCRO, PERC_FRETE, ' +
-        'PESO_LIQ, '
+        '   NFE_EXP, NOME, NOME_MARCA, NOME_MODELO, ORIGEM, PARTICIP_LUCR' +
+        'O, PERC_FRETE, '
       
-        '   PIS, POSSUI_LOTE, PRC_CUSTO_ANT, PRC_CUSTO_CODIF, PRC_CUSTO_M' +
-        'ED, PRC_REPOS, '
+        '   PESO_LIQ, PIS, POSSUI_LOTE, PRC_CUSTO_ANT, PRC_CUSTO_CODIF, P' +
+        'RC_CUSTO_MED, '
       
-        '   PRC_VENDA, PRC_VENDA_ANT, PRC_VENDA_MED, PREVISAO_ENTREGA, PR' +
-        'OD_PESAVEL, '
+        '   PRC_REPOS, PRC_VENDA, PRC_VENDA_ANT, PRC_VENDA_MED, PREVISAO_' +
+        'ENTREGA, '
       
-        '   QNTDE_EXPOSTA, QNTDE_MAXIMA_VENDA, QNTDE_MINIMA_VENDA, QNTDE_' +
-        'PDR_CARGA, '
+        '   PROD_PESAVEL, QNTDE_EXPOSTA, QNTDE_MAXIMA_VENDA, QNTDE_MINIMA' +
+        '_VENDA, '
       
-        '   QNTDE_PEDIDA, QT_ULT_COMPRA, QTDADE_1, QTDADE_2, QTDADE_MAX, ' +
-        'QTDADE_MIN, '
+        '   QNTDE_PDR_CARGA, QNTDE_PEDIDA, QT_ULT_COMPRA, QTDADE_1, QTDAD' +
+        'E_2, QTDADE_MAX, '
       
-        '   REDUCAO, SECAO, SERIE, SERVICO, SINCRONIZA_FILIAIS, SUBGRUPO,' +
-        ' SUBUNIDADE, '
+        '   QTDADE_MIN, REDUCAO, SECAO, SELECIONADO, SERIE, SERVICO, SINC' +
+        'RONIZA_FILIAIS, '
       
-        '   TRIB_ALIQ_EST, TRIB_ALIQ_INT, TRIB_COFINS, TRIB_IPI, TRIB_MOD' +
-        'ALIDADE, '
+        '   SUBGRUPO, SUBUNIDADE, TRIB_ALIQ_EST, TRIB_ALIQ_INT, TRIB_COFI' +
+        'NS, TRIB_IPI, '
       
-        '   TRIB_PIS, ULTIMO_FORNECEDOR, UND_CARREGAMENTO, UND_PRIMARIA, ' +
-        'UNIDADE, '
+        '   TRIB_MODALIDADE, TRIB_PIS, ULTIMO_FORNECEDOR, UND_CARREGAMENT' +
+        'O, UND_PRIMARIA, '
       
-        '   VALIDA_MULT_QTDE_MIN, VALIDADE, VENCTO_PRC_VENDA, VENDE_FRACI' +
-        'ONADO, '
+        '   UNIDADE, VALIDA_MULT_QTDE_MIN, VALIDADE, VENCTO_PRC_VENDA, VE' +
+        'NDE_FRACIONADO, '
       '   VOLUME)'
       'values'
       
-        '  (:ALIQUOTA_ECF, :APLICACAO, :ATIVO, :ATUALIZA_ARQ_EXTERNO, :BC' +
-        'H_CODIGO, '
+        '  (:ALIQUOTA_ECF, :APLICACAO, :ATIVO, :ATUALIZA_ARQ_EXTERNO, :AT' +
+        'UALIZAR, '
       
-        '   :CNPJ, :CNPJ_AGRUP, :COD_AGRUP, :COD_GETIN, :COD_LOCALIZACAO_' +
-        '1, :COD_LOCALIZACAO_2, '
+        '   :BCH_CODIGO, :CNPJ, :CNPJ_AGRUP, :COD_AGRUP, :COD_CEST, :COD_' +
+        'GETIN, '
       
-        '   :COD_LOCALIZACAO_3, :COD_TECNICO, :CODIGO, :CODIGO_2, :CODIGO' +
-        '_FABRICANTE, '
+        '   :COD_LOCALIZACAO_1, :COD_LOCALIZACAO_2, :COD_LOCALIZACAO_3, :' +
+        'COD_TECNICO, '
       
-        '   :CODIGO_INTERNO, :CODIGO_NCM, :COFINS, :COM_VENDA_PCT, :COM_V' +
-        'ENDA_VLR, '
+        '   :CODIGO, :CODIGO_2, :CODIGO_FABRICANTE, :CODIGO_INTERNO, :COD' +
+        'IGO_NCM, '
       
-        '   :COMPLEMENTO, :COMPLEMENTO_NF, :COR, :CSOSN, :CTE, :CTIE, :CU' +
-        'STO_AQUISICAO, '
+        '   :COFINS, :COM_VENDA_PCT, :COM_VENDA_VLR, :COMPLEMENTO, :COMPL' +
+        'EMENTO_NF, '
       
-        '   :CUSTO_INDEXADO, :DEBITA_ICMS, :DT_ULT_ATU_PRECO, :DT_ULT_COM' +
-        'PRA, :DT_ULT_VENDA, '
+        '   :COR, :CSOSN, :CTE, :CTIE, :CUSTO_AQUISICAO, :CUSTO_INDEXADO,' +
+        ' :DEBITA_ICMS, '
       
-        '   :EST_MAX, :EST_MIN, :ETIQUETA_ENT, :FATOR_CONVERSAO, :FORNECE' +
-        'DOR, :GRUPO, '
+        '   :DT_ULT_ATU_PRECO, :DT_ULT_COMPRA, :DT_ULT_VENDA, :EST_MAX, :' +
+        'EST_MIN, '
       
-        '   :IMG_1, :IMG_2, :IMG_3, :IMG_4, :IPI, :LOCALIZACAO_1, :LOCALI' +
-        'ZACAO_2, '
+        '   :ETIQUETA_ENT, :FATOR_CONVERSAO, :FORNECEDOR, :GRUPO, :IMG_1,' +
+        ' :IMG_2, '
       
-        '   :LOCALIZACAO_3, :MARCA, :MARGEM_BRUTA, :MATERIAL, :MODELO, :N' +
-        'AO_COBR_JUR_ATE, '
+        '   :IMG_3, :IMG_4, :IPI, :LOCALIZACAO_1, :LOCALIZACAO_2, :LOCALI' +
+        'ZACAO_3, '
       
-        '   :NEG_QTDADE_2, :NOME, :NOME_MARCA, :NOME_MODELO, :ORIGEM, :PA' +
-        'RTICIP_LUCRO, '
+        '   :MARCA, :MARGEM_BRUTA, :MATERIAL, :MODELO, :NAO_COBR_JUR_ATE,' +
+        ' :NEG_QTDADE_2, '
+      
+        '   :NFE_EXP, :NOME, :NOME_MARCA, :NOME_MODELO, :ORIGEM, :PARTICI' +
+        'P_LUCRO, '
       
         '   :PERC_FRETE, :PESO_LIQ, :PIS, :POSSUI_LOTE, :PRC_CUSTO_ANT, :' +
         'PRC_CUSTO_CODIF, '
@@ -4091,10 +4130,10 @@ inherited frmCadProdutos: TfrmCadProdutos
         '_COMPRA, '
       
         '   :QTDADE_1, :QTDADE_2, :QTDADE_MAX, :QTDADE_MIN, :REDUCAO, :SE' +
-        'CAO, :SERIE, '
+        'CAO, :SELECIONADO, '
       
-        '   :SERVICO, :SINCRONIZA_FILIAIS, :SUBGRUPO, :SUBUNIDADE, :TRIB_' +
-        'ALIQ_EST, '
+        '   :SERIE, :SERVICO, :SINCRONIZA_FILIAIS, :SUBGRUPO, :SUBUNIDADE' +
+        ', :TRIB_ALIQ_EST, '
       
         '   :TRIB_ALIQ_INT, :TRIB_COFINS, :TRIB_IPI, :TRIB_MODALIDADE, :T' +
         'RIB_PIS, '
@@ -4103,14 +4142,15 @@ inherited frmCadProdutos: TfrmCadProdutos
         'E, :VALIDA_MULT_QTDE_MIN, '
       '   :VALIDADE, :VENCTO_PRC_VENDA, :VENDE_FRACIONADO, :VOLUME)')
     RefreshSQL.Strings = (
-      'Select * '
+      'Select *'
       'from est_produtos '
       'where'
       '  CNPJ = :CNPJ and'
       '  CODIGO = :CODIGO')
     SelectSQL.Strings = (
       'select * from pcd_lista_produto(:empresa, :CODIGO)'
-      'ORDER BY NOME')
+      'ORDER BY NOME'
+      '')
     ModifySQL.Strings = (
       'update est_produtos'
       'set'
@@ -4123,6 +4163,7 @@ inherited frmCadProdutos: TfrmCadProdutos
       '  CNPJ = :CNPJ,'
       '  CNPJ_AGRUP = :CNPJ_AGRUP,'
       '  COD_AGRUP = :COD_AGRUP,'
+      '  COD_CEST = :COD_CEST,'
       '  COD_GETIN = :COD_GETIN,'
       '  COD_LOCALIZACAO_1 = :COD_LOCALIZACAO_1,'
       '  COD_LOCALIZACAO_2 = :COD_LOCALIZACAO_2,'
@@ -4743,6 +4784,11 @@ inherited frmCadProdutos: TfrmCadProdutos
       Origin = '"PCD_LISTA_PRODUTO"."EST_DISPONIVEL"'
       Precision = 18
       Size = 4
+    end
+    object dtEditCOD_CEST: TIBStringField
+      FieldName = 'COD_CEST'
+      Origin = '"PCD_LISTA_PRODUTO"."COD_CEST"'
+      Size = 15
     end
   end
   inherited dtList: TIBQuery
@@ -6298,601 +6344,6 @@ inherited frmCadProdutos: TfrmCadProdutos
           'Styles'
           'Synchronization'
           'Tag')
-      end
-      item
-        Component = TVRegistroCODIGO
-        Properties.Strings = (
-          'AlternateCaption'
-          'BestFitMaxWidth'
-          'Caption'
-          'DataBinding'
-          'DateTimeGrouping'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FooterAlignmentHorz'
-          'GroupIndex'
-          'GroupSummaryAlignment'
-          'HeaderAlignmentHorz'
-          'HeaderAlignmentVert'
-          'HeaderGlyph'
-          'HeaderGlyphAlignmentHorz'
-          'HeaderGlyphAlignmentVert'
-          'MinWidth'
-          'Name'
-          'Options'
-          'Position'
-          'Properties'
-          'PropertiesClassName'
-          'RepositoryItem'
-          'SortIndex'
-          'SortOrder'
-          'Styles'
-          'Summary'
-          'Tag'
-          'Visible'
-          'VisibleForCustomization'
-          'Width')
-      end
-      item
-        Component = TVRegistroCODIGO_2
-        Properties.Strings = (
-          'AlternateCaption'
-          'BestFitMaxWidth'
-          'Caption'
-          'DataBinding'
-          'DateTimeGrouping'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FooterAlignmentHorz'
-          'GroupIndex'
-          'GroupSummaryAlignment'
-          'HeaderAlignmentHorz'
-          'HeaderAlignmentVert'
-          'HeaderGlyph'
-          'HeaderGlyphAlignmentHorz'
-          'HeaderGlyphAlignmentVert'
-          'MinWidth'
-          'Name'
-          'Options'
-          'Position'
-          'Properties'
-          'PropertiesClassName'
-          'RepositoryItem'
-          'SortIndex'
-          'SortOrder'
-          'Styles'
-          'Summary'
-          'Tag'
-          'Visible'
-          'VisibleForCustomization'
-          'Width')
-      end
-      item
-        Component = TVRegistroCODIGO_FABRICANTE
-        Properties.Strings = (
-          'AlternateCaption'
-          'BestFitMaxWidth'
-          'Caption'
-          'DataBinding'
-          'DateTimeGrouping'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FooterAlignmentHorz'
-          'GroupIndex'
-          'GroupSummaryAlignment'
-          'HeaderAlignmentHorz'
-          'HeaderAlignmentVert'
-          'HeaderGlyph'
-          'HeaderGlyphAlignmentHorz'
-          'HeaderGlyphAlignmentVert'
-          'MinWidth'
-          'Name'
-          'Options'
-          'Position'
-          'Properties'
-          'PropertiesClassName'
-          'RepositoryItem'
-          'SortIndex'
-          'SortOrder'
-          'Styles'
-          'Summary'
-          'Tag'
-          'Visible'
-          'VisibleForCustomization'
-          'Width')
-      end
-      item
-        Component = TVRegistroCOMPLEMENTO
-        Properties.Strings = (
-          'AlternateCaption'
-          'BestFitMaxWidth'
-          'Caption'
-          'DataBinding'
-          'DateTimeGrouping'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FooterAlignmentHorz'
-          'GroupIndex'
-          'GroupSummaryAlignment'
-          'HeaderAlignmentHorz'
-          'HeaderAlignmentVert'
-          'HeaderGlyph'
-          'HeaderGlyphAlignmentHorz'
-          'HeaderGlyphAlignmentVert'
-          'MinWidth'
-          'Name'
-          'Options'
-          'Position'
-          'Properties'
-          'PropertiesClassName'
-          'RepositoryItem'
-          'SortIndex'
-          'SortOrder'
-          'Styles'
-          'Summary'
-          'Tag'
-          'Visible'
-          'VisibleForCustomization'
-          'Width')
-      end
-      item
-        Component = TVRegistroLOCALIZACAO_1
-        Properties.Strings = (
-          'AlternateCaption'
-          'BestFitMaxWidth'
-          'Caption'
-          'DataBinding'
-          'DateTimeGrouping'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FooterAlignmentHorz'
-          'GroupIndex'
-          'GroupSummaryAlignment'
-          'HeaderAlignmentHorz'
-          'HeaderAlignmentVert'
-          'HeaderGlyph'
-          'HeaderGlyphAlignmentHorz'
-          'HeaderGlyphAlignmentVert'
-          'MinWidth'
-          'Name'
-          'Options'
-          'Position'
-          'Properties'
-          'PropertiesClassName'
-          'RepositoryItem'
-          'SortIndex'
-          'SortOrder'
-          'Styles'
-          'Summary'
-          'Tag'
-          'Visible'
-          'VisibleForCustomization'
-          'Width')
-      end
-      item
-        Component = TVRegistroLOCALIZACAO_2
-        Properties.Strings = (
-          'AlternateCaption'
-          'BestFitMaxWidth'
-          'Caption'
-          'DataBinding'
-          'DateTimeGrouping'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FooterAlignmentHorz'
-          'GroupIndex'
-          'GroupSummaryAlignment'
-          'HeaderAlignmentHorz'
-          'HeaderAlignmentVert'
-          'HeaderGlyph'
-          'HeaderGlyphAlignmentHorz'
-          'HeaderGlyphAlignmentVert'
-          'MinWidth'
-          'Name'
-          'Options'
-          'Position'
-          'Properties'
-          'PropertiesClassName'
-          'RepositoryItem'
-          'SortIndex'
-          'SortOrder'
-          'Styles'
-          'Summary'
-          'Tag'
-          'Visible'
-          'VisibleForCustomization'
-          'Width')
-      end
-      item
-        Component = TVRegistroLOCALIZACAO_3
-        Properties.Strings = (
-          'AlternateCaption'
-          'BestFitMaxWidth'
-          'Caption'
-          'DataBinding'
-          'DateTimeGrouping'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FooterAlignmentHorz'
-          'GroupIndex'
-          'GroupSummaryAlignment'
-          'HeaderAlignmentHorz'
-          'HeaderAlignmentVert'
-          'HeaderGlyph'
-          'HeaderGlyphAlignmentHorz'
-          'HeaderGlyphAlignmentVert'
-          'MinWidth'
-          'Name'
-          'Options'
-          'Position'
-          'Properties'
-          'PropertiesClassName'
-          'RepositoryItem'
-          'SortIndex'
-          'SortOrder'
-          'Styles'
-          'Summary'
-          'Tag'
-          'Visible'
-          'VisibleForCustomization'
-          'Width')
-      end
-      item
-        Component = TVRegistroMARCA
-        Properties.Strings = (
-          'AlternateCaption'
-          'BestFitMaxWidth'
-          'Caption'
-          'DataBinding'
-          'DateTimeGrouping'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FooterAlignmentHorz'
-          'GroupIndex'
-          'GroupSummaryAlignment'
-          'HeaderAlignmentHorz'
-          'HeaderAlignmentVert'
-          'HeaderGlyph'
-          'HeaderGlyphAlignmentHorz'
-          'HeaderGlyphAlignmentVert'
-          'MinWidth'
-          'Name'
-          'Options'
-          'Position'
-          'Properties'
-          'PropertiesClassName'
-          'RepositoryItem'
-          'SortIndex'
-          'SortOrder'
-          'Styles'
-          'Summary'
-          'Tag'
-          'Visible'
-          'VisibleForCustomization'
-          'Width')
-      end
-      item
-        Component = TVRegistroMDL_CODIGO
-        Properties.Strings = (
-          'AlternateCaption'
-          'BestFitMaxWidth'
-          'Caption'
-          'DataBinding'
-          'DateTimeGrouping'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FooterAlignmentHorz'
-          'GroupIndex'
-          'GroupSummaryAlignment'
-          'HeaderAlignmentHorz'
-          'HeaderAlignmentVert'
-          'HeaderGlyph'
-          'HeaderGlyphAlignmentHorz'
-          'HeaderGlyphAlignmentVert'
-          'MinWidth'
-          'Name'
-          'Options'
-          'Position'
-          'Properties'
-          'PropertiesClassName'
-          'RepositoryItem'
-          'SortIndex'
-          'SortOrder'
-          'Styles'
-          'Summary'
-          'Tag'
-          'Visible'
-          'VisibleForCustomization'
-          'Width')
-      end
-      item
-        Component = TVRegistroMODELO
-        Properties.Strings = (
-          'AlternateCaption'
-          'BestFitMaxWidth'
-          'Caption'
-          'DataBinding'
-          'DateTimeGrouping'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FooterAlignmentHorz'
-          'GroupIndex'
-          'GroupSummaryAlignment'
-          'HeaderAlignmentHorz'
-          'HeaderAlignmentVert'
-          'HeaderGlyph'
-          'HeaderGlyphAlignmentHorz'
-          'HeaderGlyphAlignmentVert'
-          'MinWidth'
-          'Name'
-          'Options'
-          'Position'
-          'Properties'
-          'PropertiesClassName'
-          'RepositoryItem'
-          'SortIndex'
-          'SortOrder'
-          'Styles'
-          'Summary'
-          'Tag'
-          'Visible'
-          'VisibleForCustomization'
-          'Width')
-      end
-      item
-        Component = TVRegistroNOME
-        Properties.Strings = (
-          'AlternateCaption'
-          'BestFitMaxWidth'
-          'Caption'
-          'DataBinding'
-          'DateTimeGrouping'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FooterAlignmentHorz'
-          'GroupIndex'
-          'GroupSummaryAlignment'
-          'HeaderAlignmentHorz'
-          'HeaderAlignmentVert'
-          'HeaderGlyph'
-          'HeaderGlyphAlignmentHorz'
-          'HeaderGlyphAlignmentVert'
-          'MinWidth'
-          'Name'
-          'Options'
-          'Position'
-          'Properties'
-          'PropertiesClassName'
-          'RepositoryItem'
-          'SortIndex'
-          'SortOrder'
-          'Styles'
-          'Summary'
-          'Tag'
-          'Visible'
-          'VisibleForCustomization'
-          'Width')
-      end
-      item
-        Component = TVRegistroPRC_REPOS
-        Properties.Strings = (
-          'AlternateCaption'
-          'BestFitMaxWidth'
-          'Caption'
-          'DataBinding'
-          'DateTimeGrouping'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FooterAlignmentHorz'
-          'GroupIndex'
-          'GroupSummaryAlignment'
-          'HeaderAlignmentHorz'
-          'HeaderAlignmentVert'
-          'HeaderGlyph'
-          'HeaderGlyphAlignmentHorz'
-          'HeaderGlyphAlignmentVert'
-          'MinWidth'
-          'Name'
-          'Options'
-          'Position'
-          'Properties'
-          'PropertiesClassName'
-          'RepositoryItem'
-          'SortIndex'
-          'SortOrder'
-          'Styles'
-          'Summary'
-          'Tag'
-          'Visible'
-          'VisibleForCustomization'
-          'Width')
-      end
-      item
-        Component = TVRegistroPRC_VENDA
-        Properties.Strings = (
-          'AlternateCaption'
-          'BestFitMaxWidth'
-          'Caption'
-          'DataBinding'
-          'DateTimeGrouping'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FooterAlignmentHorz'
-          'GroupIndex'
-          'GroupSummaryAlignment'
-          'HeaderAlignmentHorz'
-          'HeaderAlignmentVert'
-          'HeaderGlyph'
-          'HeaderGlyphAlignmentHorz'
-          'HeaderGlyphAlignmentVert'
-          'MinWidth'
-          'Name'
-          'Options'
-          'Position'
-          'Properties'
-          'PropertiesClassName'
-          'RepositoryItem'
-          'SortIndex'
-          'SortOrder'
-          'Styles'
-          'Summary'
-          'Tag'
-          'Visible'
-          'VisibleForCustomization'
-          'Width')
-      end
-      item
-        Component = TVRegistroQTDADE_1
-        Properties.Strings = (
-          'AlternateCaption'
-          'BestFitMaxWidth'
-          'Caption'
-          'DataBinding'
-          'DateTimeGrouping'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FooterAlignmentHorz'
-          'GroupIndex'
-          'GroupSummaryAlignment'
-          'HeaderAlignmentHorz'
-          'HeaderAlignmentVert'
-          'HeaderGlyph'
-          'HeaderGlyphAlignmentHorz'
-          'HeaderGlyphAlignmentVert'
-          'MinWidth'
-          'Name'
-          'Options'
-          'Position'
-          'Properties'
-          'PropertiesClassName'
-          'RepositoryItem'
-          'SortIndex'
-          'SortOrder'
-          'Styles'
-          'Summary'
-          'Tag'
-          'Visible'
-          'VisibleForCustomization'
-          'Width')
-      end
-      item
-        Component = TVRegistroQTDADE_2
-        Properties.Strings = (
-          'AlternateCaption'
-          'BestFitMaxWidth'
-          'Caption'
-          'DataBinding'
-          'DateTimeGrouping'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FooterAlignmentHorz'
-          'GroupIndex'
-          'GroupSummaryAlignment'
-          'HeaderAlignmentHorz'
-          'HeaderAlignmentVert'
-          'HeaderGlyph'
-          'HeaderGlyphAlignmentHorz'
-          'HeaderGlyphAlignmentVert'
-          'MinWidth'
-          'Name'
-          'Options'
-          'Position'
-          'Properties'
-          'PropertiesClassName'
-          'RepositoryItem'
-          'SortIndex'
-          'SortOrder'
-          'Styles'
-          'Summary'
-          'Tag'
-          'Visible'
-          'VisibleForCustomization'
-          'Width')
-      end
-      item
-        Component = TVRegistroSECAO
-        Properties.Strings = (
-          'AlternateCaption'
-          'BestFitMaxWidth'
-          'Caption'
-          'DataBinding'
-          'DateTimeGrouping'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FooterAlignmentHorz'
-          'GroupIndex'
-          'GroupSummaryAlignment'
-          'HeaderAlignmentHorz'
-          'HeaderAlignmentVert'
-          'HeaderGlyph'
-          'HeaderGlyphAlignmentHorz'
-          'HeaderGlyphAlignmentVert'
-          'MinWidth'
-          'Name'
-          'Options'
-          'Position'
-          'Properties'
-          'PropertiesClassName'
-          'RepositoryItem'
-          'SortIndex'
-          'SortOrder'
-          'Styles'
-          'Summary'
-          'Tag'
-          'Visible'
-          'VisibleForCustomization'
-          'Width')
-      end
-      item
-        Component = TVRegistroSERIE
-        Properties.Strings = (
-          'AlternateCaption'
-          'BestFitMaxWidth'
-          'Caption'
-          'DataBinding'
-          'DateTimeGrouping'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FooterAlignmentHorz'
-          'GroupIndex'
-          'GroupSummaryAlignment'
-          'HeaderAlignmentHorz'
-          'HeaderAlignmentVert'
-          'HeaderGlyph'
-          'HeaderGlyphAlignmentHorz'
-          'HeaderGlyphAlignmentVert'
-          'MinWidth'
-          'Name'
-          'Options'
-          'Position'
-          'Properties'
-          'PropertiesClassName'
-          'RepositoryItem'
-          'SortIndex'
-          'SortOrder'
-          'Styles'
-          'Summary'
-          'Tag'
-          'Visible'
-          'VisibleForCustomization'
-          'Width')
       end>
   end
   inherited dsRegistroDet2: TDataSource

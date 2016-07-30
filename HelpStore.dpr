@@ -582,7 +582,6 @@ uses
   untListaPadrao in 'untListaPadrao.pas' {frmListaPadrao},
   untListaControleTonner in 'untListaControleTonner.pas' {frmListaControleTonner},
   UntCartaCorrecao in 'UntCartaCorrecao.pas' {FrmCartaCorrecao},
-  UntCadProduto in 'UntCadProduto.pas' {frmCadProduto},
   untConfAtualizacao in 'untConfAtualizacao.pas' {frmConfAtualizacao};
 
 {$R *.RES}

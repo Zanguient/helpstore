@@ -4,12 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, Grids, DBGrids, Db, ActnList, dxDBGrid, dxTL, dxDBCtrl,
-  dxCntner,   Buttons, ExtCtrls, dxGrClms, dxExEdtr, dxEditor,
-  dxEdLib,   IBQuery,  IBCustomDataSet, cxPropertiesStore,
-  dxDBTLCl, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
-  cxContainer, cxEdit, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinCaramel,
-  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy,
+  StdCtrls, Grids, DBGrids, Db, ActnList, Buttons, ExtCtrls, IBQuery,  IBCustomDataSet, cxPropertiesStore,
+  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxEdit, Menus, cxButtons, cxLabel, cxStyles,
+  dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage,
+  cxDBData, cxGroupBox, cxGridLevel, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxClasses, cxGridCustomView, cxGrid,
+  cxTextEdit, cxRadioGroup, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy,
   dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
   dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
   dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
@@ -17,50 +19,67 @@ uses
   dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinPumpkin, dxSkinSeven,
   dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
   dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinXmas2008Blue, Menus, cxButtons, cxLabel;
+  dxSkinXmas2008Blue;
 
 type
   TFrmLocProdutoCadastro_Auto = class(TForm)
-    pnlClient: TPanel;
-    Bevel3: TBevel;
-    pnlTop: TPanel;
     Actions: TActionList;
     ActOk: TAction;
     ActCancelar: TAction;
     DSource: TDataSource;
-    Panel2: TPanel;
+    stgLocalizarProduto: TcxPropertiesStore;
+    pnlTop: TcxGroupBox;
+    Label6: TcxLabel;
+    Label1: TcxLabel;
+    Label2: TcxLabel;
+    cxLabel1: TcxLabel;
+    EdCodigo: TcxTextEdit;
+    EdNome: TcxTextEdit;
+    EdCodigoFab: TcxTextEdit;
+    EdCodigoSec: TcxTextEdit;
+    GRID: TcxGrid;
+    GRIDDBTableView1: TcxGridDBTableView;
+    GRIDLevel1: TcxGridLevel;
+    cxGroupBox1: TcxGroupBox;
+    RdCodigo: TcxRadioButton;
+    RDNOME: TcxRadioButton;
     RzBitBtn1: TcxButton;
     BtnCancelar: TcxButton;
-    RDNOME: TRadioButton;
-    RdCodigo: TRadioButton;
-    GRID: TdxDBGrid;
-    GRIDCODIGO: TdxDBGridMaskColumn;
-    GRIDNOME: TdxDBGridMaskColumn;
-    GRIDQTDADE_2: TdxDBGridMaskColumn;
-    GRIDQTDADE_1: TdxDBGridMaskColumn;
-    GRIDPRC_VENDA: TdxDBGridMaskColumn;
-    GRIDCODIGO_2: TdxDBGridMaskColumn;
-    GRIDMARCA: TdxDBGridMaskColumn;
-    GRIDSERIE: TdxDBGridColumn;
-    GRIDMODELO: TdxDBGridColumn;
-    stgLocalizarProduto: TcxPropertiesStore;
-    GRIDPRECO_TABELA: TdxDBGridCurrencyColumn;
-    GRIDSECAO: TdxDBGridMaskColumn;
-    GRIDLOCALIZACAO_1: TdxDBGridMaskColumn;
-    GRIDLOCALIZACAO_2: TdxDBGridMaskColumn;
-    GRIDLOCALIZACAO_3: TdxDBGridMaskColumn;
-    GRIDCODIGO_FABRICANTE: TdxDBGridMaskColumn;
-    GRIDCOMPLEMENTO: TdxDBGridMaskColumn;
-    Label6: TcxLabel;
-    EdCodigo: TdxEdit;
-    Label1: TcxLabel;
-    EdNome: TdxEdit;
-    Label2: TcxLabel;
-    EdCodigoFab: TdxEdit;
-    LblTitulo: TcxLabel;
-    Bevel2: TBevel;
-    EdCodigoSec: TdxEdit;
-    cxLabel1: TcxLabel;
+    qryLocalizarProduto: TIBQuery;
+    qryLocalizarProdutoCODIGO: TIBStringField;
+    qryLocalizarProdutoNOME: TIBStringField;
+    qryLocalizarProdutoQTDADE_2: TFloatField;
+    qryLocalizarProdutoQTDADE_1: TFloatField;
+    qryLocalizarProdutoPRC_VENDA: TFloatField;
+    qryLocalizarProdutoCODIGO_2: TIBStringField;
+    qryLocalizarProdutoPRC_REPOS: TFloatField;
+    qryLocalizarProdutoMARCA: TIBStringField;
+    qryLocalizarProdutoSERIE: TIBStringField;
+    qryLocalizarProdutoMDL_CODIGO: TIntegerField;
+    qryLocalizarProdutoMODELO: TIBStringField;
+    qryLocalizarProdutoSECAO: TIBStringField;
+    qryLocalizarProdutoLOCALIZACAO_1: TIBStringField;
+    qryLocalizarProdutoLOCALIZACAO_2: TIBStringField;
+    qryLocalizarProdutoLOCALIZACAO_3: TIBStringField;
+    qryLocalizarProdutoCODIGO_FABRICANTE: TIBStringField;
+    qryLocalizarProdutoCOMPLEMENTO: TIBStringField;
+    GRIDDBTableView1CODIGO: TcxGridDBColumn;
+    GRIDDBTableView1NOME: TcxGridDBColumn;
+    GRIDDBTableView1QTDADE_2: TcxGridDBColumn;
+    GRIDDBTableView1QTDADE_1: TcxGridDBColumn;
+    GRIDDBTableView1PRC_VENDA: TcxGridDBColumn;
+    GRIDDBTableView1CODIGO_2: TcxGridDBColumn;
+    GRIDDBTableView1PRC_REPOS: TcxGridDBColumn;
+    GRIDDBTableView1MARCA: TcxGridDBColumn;
+    GRIDDBTableView1SERIE: TcxGridDBColumn;
+    GRIDDBTableView1MDL_CODIGO: TcxGridDBColumn;
+    GRIDDBTableView1MODELO: TcxGridDBColumn;
+    GRIDDBTableView1SECAO: TcxGridDBColumn;
+    GRIDDBTableView1LOCALIZACAO_1: TcxGridDBColumn;
+    GRIDDBTableView1LOCALIZACAO_2: TcxGridDBColumn;
+    GRIDDBTableView1LOCALIZACAO_3: TcxGridDBColumn;
+    GRIDDBTableView1CODIGO_FABRICANTE: TcxGridDBColumn;
+    GRIDDBTableView1COMPLEMENTO: TcxGridDBColumn;
     procedure FormShow(Sender: TObject);
     procedure GridKeyPress(Sender: TObject; var Key: Char);
     procedure GridDblClick(Sender: TObject);
@@ -107,7 +126,7 @@ uses
     Application_DM,
     Funcoes,
     Main,
-    Cadastros_DM, Usuarios_DM, Produtos_Form;
+    Usuarios_DM, Produtos_Form;
 
 
 {$R *.DFM}
@@ -152,7 +171,7 @@ end;
 
 procedure TFrmLocProdutoCadastro_Auto.ActOkExecute(Sender: TObject);
 begin
-  If (dmCadastros.qryLocalizarProdutoCODIGO.asString <> '') then
+  If (qryLocalizarProdutoCodigo.asString <> '') then
   begin
     CampTrecho           := GetTrecho;
     CampTrechoNome       := GetTrechoNome;
@@ -198,12 +217,12 @@ procedure TFrmLocProdutoCadastro_Auto.FormCreate(Sender: TObject);
 begin
   // Se o Usuário for Supervisor
   if DMUsuarios.Direito = 'SUPERVISOR' then
-     DMApp.Verifica_Modulo(FileName(Application.ExeName), Self.Name, LblTitulo.Caption, ListaActions(Actions))
+     DMApp.Verifica_Modulo(FileName(Application.ExeName), Self.Name, FrmLocProdutoCadastro_Auto.Caption, ListaActions(Actions))
   else If DMUsuarios.Objeto = Self.Name then
      AtivaActions(Actions, DMUsuarios.Direito);
 
-  DSource.DataSet := DMCadastros.qryLocalizarProduto;
-  sqlOriginal := DMCadastros.qryLocalizarProduto.sql.text;
+  DSource.DataSet := qryLocalizarProduto;
+  sqlOriginal := qryLocalizarProduto.sql.text;
   Vendedor := 0; //Necessário por conta da tabela de preços que é por vendedor
 end;
 
@@ -231,7 +250,7 @@ end;
 procedure TFrmLocProdutoCadastro_Auto.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  dmCadastros.qryLocalizarProduto.sql.text := sqlOriginal;
+  qryLocalizarProduto.sql.text := sqlOriginal;
 end;
 
 function TFrmLocProdutoCadastro_Auto.GetTrechoNome: String;
@@ -293,17 +312,14 @@ begin
       EdCodigo.Text := Aux ;
 
 	  //FECHA O REGISTRO E TRAZ OS NOVOS REGISTROS
-       with DmCadastros do
-       begin
-         qryLocalizarProduto.Close;
-         if (FrmProdutos = nil) then
-           qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and prd.ativo = ''S'' and prd.codigo like '+QuotedStr(trim(EdCodigo.Text)+'%')+' order by prd.codigo '
-         else
-           qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and prd.codigo like '+QuotedStr(trim(EdCodigo.Text)+'%')+' order by prd.codigo ';
+       qryLocalizarProduto.Close;
+       if (FrmProdutos = nil) then
+         qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and prd.ativo = ''S'' and prd.codigo like '+QuotedStr(trim(EdCodigo.Text)+'%')+' order by prd.codigo '
+       else
+         qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and prd.codigo like '+QuotedStr(trim(EdCodigo.Text)+'%')+' order by prd.codigo ';
 
-        // qryLocalizarProduto.parambyname('vendedor').value := vendedor;
-         qryLocalizarProduto.Open;
-       end;
+      // qryLocalizarProduto.parambyname('vendedor').value := vendedor;
+       qryLocalizarProduto.Open;
        LimpaEdit;
     end;
 end;
@@ -317,15 +333,12 @@ begin
      else
        sql := sqlOriginal + ' where prd.cnpj = :cnpj and prd.ativo = ''S'' and prd.nome like ''%''||'+QuoTedStr(EdNome.text)+'||''%''  order by prd.nome ';
 
-     with DmCadastros do
-     begin
-       qryLocalizarProduto.Close;
-       qryLocalizarProduto.sql.text := sql;
-       qryLocalizarProduto.Open;
-     end;
+     qryLocalizarProduto.Close;
+     qryLocalizarProduto.sql.text := sql;
+     qryLocalizarProduto.Open;
 
      //LocateNext = Apos a Posicao corrente do Cursor
-     if dmCadastros.qryLocalizarProdutoCodigo.asString = '' Then
+     if qryLocalizarProdutoCodigo.asString = '' Then
         MessageDlg('Produto Não Encontrado!', mtInformation, [mbOK], 0);
 
      LimpaEdit;
@@ -336,18 +349,16 @@ procedure TFrmLocProdutoCadastro_Auto.FiltraCodigoFab;
 Var
    Aux : String;
 begin
-       with DmCadastros do
-       begin
-         qryLocalizarProduto.Close;
-         if (FrmProdutos = nil) then
-           qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and prd.ativo = ''S'' and prd.codigo_fabricante like '+QuotedStr(trim(EdCodigoFab.Text)+'%')+' order by prd.codigo_fabricante '
-         else
-           qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and codigo_fabricante like '+QuotedStr(trim(EdCodigoFab.Text)+'%')+' order by codigo_fabricante ';
+  qryLocalizarProduto.Close;
 
-        // qryLocalizarProduto.parambyname('vendedor').value := vendedor;
-         qryLocalizarProduto.Open;
-       end;
-       LimpaEdit;
+  if (FrmProdutos = nil) then
+    qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and prd.ativo = ''S'' and prd.codigo_fabricante like '+QuotedStr(trim(EdCodigoFab.Text)+'%')+' order by prd.codigo_fabricante '
+  else
+    qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and codigo_fabricante like '+QuotedStr(trim(EdCodigoFab.Text)+'%')+' order by codigo_fabricante ';
+
+  // qryLocalizarProduto.parambyname('vendedor').value := vendedor;
+  qryLocalizarProduto.Open;
+  LimpaEdit;
 
 end;
 
@@ -359,18 +370,15 @@ end;
 
 procedure TFrmLocProdutoCadastro_Auto.FiltraTodos;
 begin
-       with DmCadastros do
-       begin
-         qryLocalizarProduto.Close;
-         if (FrmProdutos = nil) then
-           qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and prd.ativo = ''S''  order by prd.nome '
-         else
-           qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj order by prd.nome ';
+  qryLocalizarProduto.Close;
+  if (FrmProdutos = nil) then
+    qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and prd.ativo = ''S''  order by prd.nome '
+  else
+    qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj order by prd.nome ';
 
-        // qryLocalizarProduto.parambyname('vendedor').value := vendedor;
-         qryLocalizarProduto.Open;
-       end;
-       LimpaEdit;
+  // qryLocalizarProduto.parambyname('vendedor').value := vendedor;
+  qryLocalizarProduto.Open;
+  LimpaEdit;
 end;
 
 procedure TFrmLocProdutoCadastro_Auto.LimpaEdit;
@@ -390,15 +398,12 @@ begin
   else
     sql := sqlOriginal + ' where prd.cnpj = :cnpj and prd.ativo = ''S'' and  prd.codigo_2 like ''%''||'+QuoTedStr(trim(EdCodigoSec.text))+'||''%''  order by  prd.codigo_2 ';
 
-  with DmCadastros do
-  begin
-    qryLocalizarProduto.Close;
-    qryLocalizarProduto.sql.text := sql;
-    qryLocalizarProduto.Open;
-  end;
+  qryLocalizarProduto.Close;
+  qryLocalizarProduto.sql.text := sql;
+  qryLocalizarProduto.Open;
 
   //LocateNext = Apos a Posicao corrente do Cursor
-  if dmCadastros.qryLocalizarProdutoCodigo.asString = '' Then
+  if qryLocalizarProdutoCodigo.asString = '' Then
     MessageDlg('Produto Não Encontrado!', mtInformation, [mbOK], 0);
 
   LimpaEdit;

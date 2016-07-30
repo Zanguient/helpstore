@@ -886,7 +886,7 @@ begin
   if FrmLocProdutoCadastro_Auto.Showmodal = mrok then
   begin
      edProduto.Text := (FrmLocProdutoCadastro_Auto.CampTrecho);
-     lblProduto.Caption := DMCadastros.qryLocalizarProdutoNOME.value;
+     lblProduto.Caption := FrmLocProdutoCadastro_Auto.qryLocalizarProdutoNOME.value;
      mtbFiltroPRODUTO.value := ( FrmLocProdutoCadastro_Auto.CampTrecho );
   end;
 

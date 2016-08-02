@@ -102,7 +102,7 @@ var
 implementation
 
 uses Cadastros_DM, Listagens_DM, Application_DM, Main, Usuarios_DM, Funcoes,
-  PessoasFJ_Form;
+  untCadPessoas;
 
 {$R *.DFM}
 
@@ -308,19 +308,19 @@ begin
 
   //
   { * * * * * }
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmPessoasFJ', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmCadPessoas', False);
 
   { * * * * * }
   //
-  FrmPessoasFJ := TFrmPessoasFJ.Create(Self);
-  FrmPessoasFJ.ShowModal;
+  FrmCadPessoas := TFrmCadPessoas.Create(Self);
+  FrmCadPessoas.ShowModal;
   //
-  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := FrmMain.Codigo_Int;
+  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := FrmCadPessoas.Codigo;
 
   DsPessoasFj.DataSet.Tag := DsPessoasFj.DataSet.Tag - 1;
 
-  FrmPessoasFJ.Free;
-  FrmPessoasFJ := Nil;
+  FrmCadPessoas.Free;
+  FrmCadPessoas := Nil;
   // Fechando Datasets desnecessários
   DMCadastros.Logradouros.Close;
   DMCadastros.Bairros.Close;

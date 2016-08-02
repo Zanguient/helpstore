@@ -143,7 +143,7 @@ var
 
 implementation
 
-uses untCadCRMStatus, untCadVendedor2, Application_DM;
+uses untCadCRMStatus, untCadVendedor, Application_DM;
 
 {$R *.dfm}
 
@@ -156,7 +156,7 @@ end;
 procedure TfrmCadCRMAtividades.btnTecnicoClick(Sender: TObject);
 begin
   inherited;
-  CadastroLookup(TfrmCadVendedor2,dtEdit,'COD_VENDEDOR',QryVendedor)
+  CadastroLookup(TfrmCadVendedor,dtEdit,'COD_VENDEDOR',QryVendedor)
 end;
 
 procedure TfrmCadCRMAtividades.TVRegistroSTATUSCustomDrawCell(

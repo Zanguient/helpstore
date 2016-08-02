@@ -165,8 +165,7 @@ uses Cadastros_DM,
      Filtra_Baixa_Form,
      Centro_Custo_Form,
      Localizar_Fornecedor,
-     Fornecedores_Form,
-     Dados_Baixa_Parcial_Form, Plano_DM ;
+     Dados_Baixa_Parcial_Form, Plano_DM , untCadFornecedores;
 
 
 {$R *.DFM}
@@ -339,7 +338,7 @@ begin
      Datasource.DataSet.Edit;
   //
   { * * * * * }
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmFornecedores', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'frmCadFornecedores', False);
   { * * * * * }
 { If DMCadastros = Nil
   then
@@ -354,11 +353,11 @@ begin
       DMPLANO.Tag := DMPLANO.Tag + 1;
 
   //
-  FrmFornecedores := TFrmFornecedores.Create(Application);
+  frmCadFornecedores := TfrmCadFornecedores.Create(Application);
 
-  FrmFornecedores.Showmodal ;
+  frmCadFornecedores.Showmodal ;
   //
-  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := FrmMain.Codigo_Int;
+  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := frmCadFornecedores.Codigo;
 
   DsPessoas.DataSet.Close ;
   DsPessoas.DataSet.Open  ;

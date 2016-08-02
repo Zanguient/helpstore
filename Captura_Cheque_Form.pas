@@ -110,7 +110,7 @@ var
 implementation
 
 uses Cadastros_DM, Application_DM, Funcoes, Financeiro_Dm,
-  SelFin_Cheques_Form, Localizar_Cliente, Clientes_Form, Main,
+  SelFin_Cheques_Form, Localizar_Cliente, Main,
   untCadClientes;
 
 {$R *.DFM}

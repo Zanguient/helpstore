@@ -102,7 +102,6 @@ uses Cadastros_DM,
      Main,
      Usuarios_DM,
      Funcoes,
-     PessoasFJ_Form,
      Bancos_Form,
      LocalizarProd_DM, Localizar_Produto_Cadastro_Auto;
 

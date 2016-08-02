@@ -117,7 +117,7 @@ uses Cadastros_DM,
      Main,
      Usuarios_DM,
      Funcoes,
-     PessoasFJ_Form, Vendedores_Form, Cidades_Form, Localizar_Generico;
+     Cidades_Form, Localizar_Generico, untCadCidades;
 
 {$R *.DFM}
 
@@ -386,7 +386,7 @@ begin
      Datasource.DataSet.Edit;
   //
   { * * * * * }
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmVendedores', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'frmCadVendedor', False);
   { * * * * * }
   //
   FrmRotas.Tag             := 1;
@@ -395,12 +395,12 @@ begin
   Datasource.DataSet.Tag   := 1;
 
   //
-  FrmVendedores := TFrmVendedores.Create(Self);
+  frmCadVendedor := TfrmCadVendedor.Create(Self);
   //
   //
-  FrmVendedores.Showmodal ;
+  frmCadVendedor.Showmodal ;
   //
-  Datasource.DataSet.FieldByName('VENDEDOR').asInteger := FrmMain.Codigo_Int;
+  Datasource.DataSet.FieldByName('VENDEDOR').asInteger := frmCadVendedor.Codigo;
 
   dsRotasCidades.DataSet.Close ;
   dsRotasCidades.DataSet.Open  ;
@@ -451,11 +451,11 @@ begin
   dsCidades.DataSet.Tag := dsCidades.DataSet.Tag + 1;
 
   { * * * * * }
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmCidades', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmCadCidades', False);
   { * * * * * }
   //
-  FrmCidades := TFrmCidades.Create(Self);
-  FrmCidades.ShowModal;
+  FrmCadCidades := TFrmCadCidades.Create(Self);
+  FrmCadCidades.ShowModal;
   //
 {  If DMCadastros.Tag = 0
   then begin
@@ -465,8 +465,8 @@ begin
   else
       DMCadastros.Tag := DMCadastros.Tag - 1;}
 
-  FrmCidades.Free;
-  FrmCidades := Nil;
+  FrmCadCidades.Free;
+  FrmCadCidades := Nil;
   //
   dsCidades.DataSet.Tag := dsCidades.DataSet.Tag - 1;
 

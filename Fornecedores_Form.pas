@@ -230,7 +230,6 @@ uses
     Funcoes,
     Localizar_Cliente,
     Atividades_Form,
-    Logradouros_Form,
     Bairros_Form,
     Cidades_Form,
     Estoque_Dm, FormasPagto_Form, Plano_DM, Plano_Form, Localizar_Conta ;

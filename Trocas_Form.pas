@@ -236,8 +236,6 @@ uses Vendas_DM,
      Usuarios_DM,
      Funcoes,
      Cadastros_DM,
-     Vendedores_Form,
-     Clientes_Form,
      FormasPagto_Form,
      Localizar_Cliente,
      Localizar_Vendedor,
@@ -853,15 +851,15 @@ begin
   DsVendedores.DataSet.Tag := DsVendedores.DataSet.Tag + 1;
 
   { * * * * * }
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmVendedores', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'frmCadVendedor', False);
   { * * * * * }
 
   //
-  FrmVendedores := TFrmVendedores.Create(Application);
+  frmCadVendedor := TfrmCadVendedor.Create(Application);
 
-  FrmVendedores.Showmodal ;
+  frmCadVendedor.Showmodal ;
 
-  Datasource.DataSet.FieldByName('VENDEDOR').asInteger := FrmMain.Codigo_Int;
+  Datasource.DataSet.FieldByName('VENDEDOR').asInteger := frmCadVendedor.Codigo;
 
   If DMCadastros <> Nil
   then

@@ -241,13 +241,12 @@ uses Cadastros_DM,
      Filtra_Baixa_Form,
      Centro_Custo_Form,
      Localizar_Fornecedor,
-     Fornecedores_Form,
      Dados_Baixa_Form,
      Dados_Baixa_Parcial_Form,
      ConfirmaExtorno_Form,  Plano_DM,
   Receber_Parcelamento_Form, Dados_Baixa_Pagar_Multiplos_Form,
   Baixa_Pagar_Multiplos_Form, Cheque_Contabilidade, Tipo_Documento_Form,
-  ConfigFin_Form, Financeiro_Dm2;
+  ConfigFin_Form, Financeiro_Dm2, untCadFornecedores;
 
 {$R *.DFM}
 
@@ -481,12 +480,12 @@ begin
   If Datasource.DataSet.State = dsBrowse Then
      Datasource.DataSet.Edit;
 
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmFornecedores', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'frmCadFornecedores', False);
 
-  FrmFornecedores := TFrmFornecedores.Create(Application);
+  frmCadFornecedores := TfrmCadFornecedores.Create(Application);
 
-  FrmFornecedores.Showmodal ;
-  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := FrmMain.Codigo_Int;
+  frmCadFornecedores.Showmodal ;
+  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := frmCadFornecedores.Codigo;
 
   DsPessoas.DataSet.Close ;
   DsPessoas.DataSet.Open  ;

@@ -99,7 +99,6 @@ uses Cadastros_DM,
      Main,
      Usuarios_DM,
      Funcoes,
-     PessoasFJ_Form,
      Bancos_Form;
 
 {$R *.DFM}

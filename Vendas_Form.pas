@@ -745,8 +745,6 @@ uses Vendas_DM,
      VendasItens_Form,
      Cadastros_DM,
      NaturezaOper_Form,
-     Vendedores_Form,
-     Clientes_Form,
      Terceiros_Form,
      FormasPagto_Form,
      SelVendas_Form,
@@ -1646,15 +1644,15 @@ begin
   DsVendedores.DataSet.Tag := DsVendedores.DataSet.Tag + 1;
 
   { * * * * * }
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmVendedores', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'frmCadVendedor', False);
   { * * * * * }
 
   //
-  FrmVendedores := TFrmVendedores.Create(Application);
+  frmCadVendedor := TfrmCadVendedor.Create(Application);
 
-  FrmVendedores.Showmodal ;
+  frmCadVendedor.Showmodal ;
 
-  Datasource.DataSet.FieldByName('VENDEDOR').asInteger := FrmMain.Codigo_Int;
+  Datasource.DataSet.FieldByName('VENDEDOR').asInteger := frmCadVendedor.Codigo;
 
   If DMCadastros <> Nil
   then

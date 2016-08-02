@@ -782,7 +782,6 @@ type
     procedure MovimentoBancarioClick(Sender: TObject);
     procedure TiposDctosClick(Sender: TObject);
     procedure RazaoClick(Sender: TObject);
-    procedure VendedoresClick(Sender: TObject);
     procedure opSaidaProdutosClick(Sender: TObject);
     procedure opVendedoresClick(Sender: TObject);
     procedure PendenciasClick(Sender: TObject);
@@ -872,7 +871,6 @@ type
     procedure OpMotivoDevClick(Sender: TObject);
     procedure OpManutencaoChequesClick(Sender: TObject);
     procedure OpComissoesVendedoresClick(Sender: TObject);
-    procedure OpTransportadorasClick(Sender: TObject);
     procedure ActTrocasExecute(Sender: TObject);
     procedure OpCaixasFechadosClick(Sender: TObject);
     procedure OpCotasRelClick(Sender: TObject);
@@ -1125,12 +1123,10 @@ implementation
 uses
     Cadastros_DM,
     Listagens_DM,
-    PessoasFJ_Form,
     Splash_Form,
     Application_DM,
     Funcoes,
     OpUsuario_Form,
-    Clientes_Form,
     Funcionarios_Form,
     Atividades_Form,
     Marcas_Form,
@@ -1147,7 +1143,6 @@ uses
     Receber_Form,
     Financeiro_Dm,
     ConsultaReceber_Form,
-    Fornecedores_Form,
     Extorna_Receber_Form,
     FormasPagto_Form,
     Entradas_DM,
@@ -1155,17 +1150,13 @@ uses
     Filtra_Receber_Form,
     Entra_Periodo_Form,
     Pagar_Form,
-
     Extorna_Pagar_Form,
     Baixa_Pagar_Multiplos_Form,
-   
-
     Plano_DM,
     Plano_Form,
     Movimento_Contabil_Form,
     Bancos_Form,
     Movimento_Form,
-    Vendedores_Form,
     SelEntradas_Form,
     SelVendas_Form,
     Vendas_Dm,
@@ -1226,18 +1217,14 @@ uses
     ConfiguraDuplicata_Form,
     ConsultaConveniados_Form,
     SelCotacoes_Form,
-    
     ConfiguradorBackup_Frm,
     SelAlteraVendas_Form,
-    Bairros_Form,
     Cidades_Form,
-    Logradouros_Form,
     Administradoras_Form,
     Cheque_Manual_Form,
     Rel_Pagas_Centro_Form,
     Cheques_FRel,
     Moedas_Form,
-    Estados_Form,
     ConfiguraNotaPromissoria_Form,
     Baixa_Receber_Convenio_Form,
     Fatura_Futura_FRel,
@@ -1248,7 +1235,6 @@ uses
     SelFin_Cheques_Form,
     Usuarios_DM,
     ComissoesVendedor_FRel,
-    Transportadoras_Form,
     SelTrocas_Form,
     CotasVendedor_FRel,
     Servicos_Form,
@@ -1320,7 +1306,7 @@ uses
   VendasAnalise_Cliente_FRel, 
   ComissoesVendedor_Rec_FRel, Filtra_Fluxo_Caixa_Form,
   Log_Transacoes_Form, VendasgrupoSel_FRel, Local_Cobranca_Form,
-  Localizar_Precos_Servicos, PosicaoEstoqueGrade_FRel, Propriedades_Form,
+  Localizar_Precos_Servicos, PosicaoEstoqueGrade_FRel, 
   Tipo_Contrato_Form,  PosicaoEstoqueGrade_Marca_FRel, RecibosPagar, ContagemGrade_Form,
   Rel_Vendas_Servicos_FRel, Saldo_Contas_FRel,
   ClientesInativos_FRel,
@@ -1335,7 +1321,7 @@ uses
   Filtra_RelTerceiros_Form, Receber_FRel2, 
   EstoqueComprometido_FRel, Pagar_FRel2, ManutencaoBoletos_Form,
   Perfil_Com_Form, Perfil_Pagto_Form, Comissoes_FRel,
-  ManutencaoComissoes_Form, Sugestao_FRel, Localizar_Produto_Cadastro_Auto,  Paises_Form,
+  ManutencaoComissoes_Form, Sugestao_FRel, Localizar_Produto_Cadastro_Auto,  
     Secoes_Produto_Form,
   Rel_Rechamados, Equipamentos_FRel2, SelCarga, SeriesCustomizaveis,
   SelKardex, EstoquePendencias, Rel_CargaVenda, AlteraPreco_Form,
@@ -1360,7 +1346,7 @@ uses
   ClienteCidades_FRel, ClientesCategoria_Form, Representante_Form,
   ContratosConstru_Form, Rel_ContratoObra, untCadLogradouro, untCadBairros,
   untCadCidades, untCadEstados, untCadMoedas, untCadPaises,
-  untCadAtividades, untCadPessoas, untCadRegioes, untCadVendedor2,
+  untCadAtividades, untCadPessoas, untCadRegioes, untCadVendedor,
   UntCadCobradores, UntCadTerceiros, UntCadCategoriaClientes,
   UntCadTecnicos, UntCadUsuarios, untCadUnidadesMedidas, UntCadMarcas,
   UntCadModelo, UntCadSecoesProdutos, UntCadLocalizacaoEstoque, UntCadCor,
@@ -1523,27 +1509,6 @@ begin
      FrmCadPessoas.ShowMODAL ;
      FrmCadPessoas.Free      ;
      FrmCadPessoas := Nil    ;
-  end;
-  exit;
-
-  { * * * * * }
-  If Not(DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmPessoasFJ', True)) Then
-     Exit;
-  { * * * * * }
-  If DMApp.SelecionarEmpresa = 'N' Then
-     Exit;
-  { * * * * * }
-  If FrmPessoasFJ = Nil Then
-  Begin
-       //
-       If FrmMain.MDIChildCount > 0 Then
-          opFechar.OnClick(opFechar);
-
-       Application.ProcessMessages;
-       FrmPessoasFJ := TFrmPessoasFJ.Create(Self);
-       FrmPessoasFJ.ShowModal;
-       FrmPessoasFJ.Free;
-       FrmPessoasFJ := Nil;
   end;
 end;
 
@@ -2009,21 +1974,6 @@ begin
        frmCadFornecedores.Free      ;
        frmCadFornecedores := Nil    ;
      End;
-  exit;
-///
-  If Not(DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmFornecedores', True)) Then
-     Exit;
-
-  If DMApp.SelecionarEmpresa = 'N' Then
-     Exit;
-
-  if frmCadFornecedores = Nil Then
-  begin
-     frmCadFornecedores := TfrmCadFornecedores.Create(Self);
-     frmCadFornecedores.ShowMODAL ;
-     frmCadFornecedores.Free      ;
-     frmCadFornecedores := Nil    ;
-  end;
 end;
 
 procedure TFrmMain.EstornaRecClick(Sender: TObject);
@@ -2369,30 +2319,6 @@ begin
   { * * * * * }
 end;
 
-procedure TFrmMain.VendedoresClick(Sender: TObject);
-begin
-  { * * * * * }
-  If Not(DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmVendedores', True)) Then
-     Exit;
-  { * * * * * }
-  If DMApp.SelecionarEmpresa = 'N' Then
-     Exit;
-  { * * * * * }
-  If FrmVendedores = Nil Then
-  Begin
-       //
-       If FrmMain.MDIChildCount > 0 Then
-          opFechar.OnClick(opFechar);
-       //
-       Application.ProcessMessages;
-       FrmVendedores  := TFrmVendedores.Create(Self);
-       FrmVendedores.FormStyle   := fsMDIChild;
-       FrmVendedores.WindowState := wsMaximized;
-       FrmVendedores.BorderStyle := bsNone;
-       PnlClient.Visible         := False;
-  end;
-end;
-
 procedure TFrmMain.opSaidaProdutosClick(Sender: TObject);
 begin
   If FrmMain.MDIChildCount <= 0  then
@@ -2458,24 +2384,24 @@ end;
 
 procedure TFrmMain.opVendedoresClick(Sender: TObject);
 begin
-   if Not(DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmCadVendedor2', True)) Then
+   if Not(DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmCadVendedor', True)) Then
      Exit;
 
   if DMApp.SelecionarEmpresa = 'N' Then
      Exit;
 
-  if FrmCadVendedor2 <> Nil Then
+  if FrmCadVendedor <> Nil Then
   begin
-     FrmCadVendedor2.Free      ;
-     FrmCadVendedor2 := Nil    ;
+     FrmCadVendedor.Free      ;
+     FrmCadVendedor := Nil    ;
   end;
 
-  if FrmCadVendedor2 = Nil Then
+  if FrmCadVendedor = Nil Then
   begin
-     FrmCadVendedor2 := TFrmCadVendedor2.Create(Self);
-     FrmCadVendedor2.ShowMODAL ;
-     FrmCadVendedor2.Free      ;
-     FrmCadVendedor2 := Nil    ;
+     FrmCadVendedor := TFrmCadVendedor.Create(Self);
+     FrmCadVendedor.ShowMODAL ;
+     FrmCadVendedor.Free      ;
+     FrmCadVendedor := Nil    ;
   end;
 end;
 
@@ -4361,8 +4287,6 @@ begin
      FrmCadLogradouro.Free      ;
      FrmCadLogradouro := Nil    ;
   end;
-
-  
 end;
 
 procedure TFrmMain.OpCalculadoraClick(Sender: TObject);
@@ -4739,33 +4663,6 @@ begin
        //
        FRelComissoesVendedor := TFRelComissoesVendedor.Create(Self);
        FRelComissoesVendedor.ShowModal;
-     End;
-end;
-
-procedure TFrmMain.OpTransportadorasClick(Sender: TObject);
-begin
-  { * * * * * }
-  If Not(DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmTransportadoras', True)) Then
-     Exit;
-  { * * * * * }
-  If DMApp.SelecionarEmpresa = 'N' Then
-     Exit;
-  { * * * * * }
-  If FrmTransportadoras = Nil Then
-     Begin
-       //
-       If FrmMain.MDIChildCount > 0 Then
-          opFechar.OnClick(opFechar);
-       //
-       Application.ProcessMessages;
-       //
-//       DMCadastros := TDMCadastros.Create(Self);
-       FrmTransportadoras   := TFrmTransportadoras.Create(Self);
-       //
-       FrmTransportadoras.FormStyle   := fsMDIChild;
-       FrmTransportadoras.WindowState := wsMaximized;
-       FrmTransportadoras.BorderStyle := bsNone;
-       PnlClient.Visible     := False;
      End;
 end;
 

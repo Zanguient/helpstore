@@ -646,7 +646,7 @@ implementation
 uses Cadastros_DM, Listagens_DM, Application_DM, Main, Usuarios_DM, Funcoes,
   Marcas_Form, Grupos_Form, Reducoes_Form, Unidades_Form,
   Lotes_Form, LocalizarProd_DM, Estoque_Dm, Agrupador_Form, Grades_Form,
-  Produtos_Tribut_Revenda_Form, Cadastros_Dm2, Clientes_Form, Produtos_Form,
+  Produtos_Tribut_Revenda_Form, Cadastros_Dm2, Produtos_Form,
   Tipo_Contrato_Form, Localizar_Cliente, Vendas_Dm, ContratosItens_Form,
   Localizar_Contratos, Financeiro_Dm2, Moedas_Form,
   Localizar_Contratos_Copias, Localizar_Contratos_Obras, Empresas_DM;

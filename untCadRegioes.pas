@@ -26,7 +26,7 @@ uses
 
 type
   TfrmCadRegiao = class(TfrmCadPadrao)
-    aTfrmCadVendedor2: TcxDBLookupComboBox;
+    aTfrmCadVendedor: TcxDBLookupComboBox;
     cxLabel9: TcxLabel;
     btnVendedor: TcxButtonEdit;
     btnTecnico: TcxButtonEdit;
@@ -116,7 +116,7 @@ end;
 procedure TfrmCadRegiao.btnVendedorClick(Sender: TObject);
 begin
   inherited;
-  CadastroLookup(TfrmCadVendedor2,dtEdit,'VENDEDOR',QryVendedor);
+  CadastroLookup(TfrmCadVendedor,dtEdit,'VENDEDOR',QryVendedor);
 end;
 
 initialization

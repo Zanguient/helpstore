@@ -24,7 +24,7 @@ object FrmRotas: TFrmRotas
     Left = 0
     Top = 0
     Width = 527
-    Height = 443
+    Height = 439
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -39,7 +39,7 @@ object FrmRotas: TFrmRotas
     OnResize = pnlClientResize
     object Bevel1: TBevel
       Left = 2
-      Top = 409
+      Top = 405
       Width = 523
       Height = 2
       Align = alBottom
@@ -169,7 +169,7 @@ object FrmRotas: TFrmRotas
     end
     object pnlBottom: TPanel
       Left = 2
-      Top = 411
+      Top = 407
       Width = 523
       Height = 30
       Align = alBottom
@@ -200,16 +200,16 @@ object FrmRotas: TFrmRotas
       Height = 364
       ActivePage = dxTabSheet1
       TabOrder = 1
-      ClientRectBottom = 359
-      ClientRectLeft = 2
-      ClientRectRight = 508
-      ClientRectTop = 24
+      ClientRectBottom = 360
+      ClientRectLeft = 4
+      ClientRectRight = 509
+      ClientRectTop = 27
       object dxTabSheet1: TcxTabSheet
         Caption = ' Rotas '
         object Shape1: TShape
           Left = 0
           Top = 0
-          Width = 506
+          Width = 505
           Height = 1
           Align = alTop
           Pen.Color = clBtnShadow
@@ -475,8 +475,8 @@ object FrmRotas: TFrmRotas
     AllowReset = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
     CanCustomize = False
     Categories.Strings = (

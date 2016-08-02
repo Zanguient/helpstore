@@ -1,4 +1,4 @@
-inherited frmCadVendedor2: TfrmCadVendedor2
+inherited frmCadVendedor: TfrmCadVendedor
   Left = 276
   Top = 133
   Width = 905
@@ -8,15 +8,15 @@ inherited frmCadVendedor2: TfrmCadVendedor2
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcCadastro: TcxPageControl
-    Width = 889
-    Height = 418
-    ClientRectBottom = 414
-    ClientRectRight = 885
+    Width = 897
+    Height = 425
+    ClientRectBottom = 421
+    ClientRectRight = 893
     inherited tbsLista: TcxTabSheet
       inherited Grid: TcxGrid
         Top = 0
         Width = 889
-        Height = 398
+        Height = 394
         inherited TVRegistro: TcxGridDBBandedTableView
           object TVRegistroCNPJ: TcxGridDBBandedColumn
             DataBinding.FieldName = 'CNPJ'
@@ -93,20 +93,20 @@ inherited frmCadVendedor2: TfrmCadVendedor2
     end
     inherited tbsEdita: TcxTabSheet
       inherited Panel2: TPanel
-        Width = 881
-        Height = 387
+        Width = 889
+        Height = 394
         inherited pnlSubCad: TPanel
-          Top = 109
-          Width = 879
+          Top = 116
+          Width = 887
           inherited PgcDetalhe: TcxPageControl
-            Width = 879
-            ClientRectRight = 875
+            Width = 887
+            ClientRectRight = 883
             inherited tbsDetalhe1: TcxTabSheet
               Caption = '  Faixas de Comiss'#227'o     '
               inherited PGCSub1: TcxPageControl
-                Width = 871
+                Width = 879
                 ActivePage = tbsListaSub1
-                ClientRectRight = 867
+                ClientRectRight = 875
                 inherited tbsListaSub1: TcxTabSheet
                   inherited GridDet1: TcxGrid
                     Width = 863
@@ -284,8 +284,8 @@ inherited frmCadVendedor2: TfrmCadVendedor2
             inherited tbsDetalhe2: TcxTabSheet
               TabVisible = False
               inherited PGCSub2: TcxPageControl
-                Width = 871
-                ClientRectRight = 867
+                Width = 879
+                ClientRectRight = 875
                 inherited tbsListaSub2: TcxTabSheet
                   inherited GridDet2: TcxGrid
                     Width = 863
@@ -296,8 +296,8 @@ inherited frmCadVendedor2: TfrmCadVendedor2
             inherited tbsDetalhe3: TcxTabSheet
               TabVisible = False
               inherited PGCSub3: TcxPageControl
-                Width = 871
-                ClientRectRight = 867
+                Width = 879
+                ClientRectRight = 875
                 inherited tbsListaSub3: TcxTabSheet
                   inherited GridDet3: TcxGrid
                     Width = 863
@@ -308,48 +308,48 @@ inherited frmCadVendedor2: TfrmCadVendedor2
             inherited tbsDetalhe4: TcxTabSheet
               TabVisible = False
               inherited PGCSub4: TcxPageControl
-                Width = 871
-                ClientRectRight = 867
+                Width = 879
+                ClientRectRight = 875
               end
             end
             inherited tbsDetalhe5: TcxTabSheet
               TabVisible = False
               inherited PGCSub5: TcxPageControl
-                Width = 871
-                ClientRectRight = 867
+                Width = 879
+                ClientRectRight = 875
               end
             end
             inherited tbsDetalhe6: TcxTabSheet
               TabVisible = False
               inherited PGCSub6: TcxPageControl
-                Width = 871
-                ClientRectRight = 867
+                Width = 879
+                ClientRectRight = 875
               end
             end
             inherited tbsDetalhe7: TcxTabSheet
               TabVisible = False
               inherited PGCSub7: TcxPageControl
-                Width = 871
-                ClientRectRight = 867
+                Width = 879
+                ClientRectRight = 875
               end
             end
             inherited tbsDetalhe8: TcxTabSheet
               TabVisible = False
               inherited PGCSub8: TcxPageControl
-                Width = 871
-                ClientRectRight = 867
+                Width = 879
+                ClientRectRight = 875
               end
             end
           end
         end
         inherited pnlMaster: TPanel
-          Width = 879
-          Height = 108
+          Width = 887
+          Height = 115
           inherited PgcMaster: TcxPageControl
-            Width = 879
-            Height = 108
-            ClientRectBottom = 104
-            ClientRectRight = 875
+            Width = 887
+            Height = 115
+            ClientRectBottom = 111
+            ClientRectRight = 883
             inherited tbsMaster1: TcxTabSheet
               Caption = 'Vendedor'
               inherited edtCodigo: TcxDBTextEdit

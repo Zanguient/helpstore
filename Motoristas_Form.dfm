@@ -23,7 +23,7 @@ object FrmMotoristas: TFrmMotoristas
     Left = 0
     Top = 0
     Width = 468
-    Height = 267
+    Height = 263
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -38,7 +38,7 @@ object FrmMotoristas: TFrmMotoristas
     OnResize = pnlClientResize
     object Bevel1: TBevel
       Left = 2
-      Top = 233
+      Top = 229
       Width = 464
       Height = 2
       Align = alBottom
@@ -168,7 +168,7 @@ object FrmMotoristas: TFrmMotoristas
     end
     object pnlBottom: TPanel
       Left = 2
-      Top = 235
+      Top = 231
       Width = 464
       Height = 30
       Align = alBottom
@@ -199,15 +199,16 @@ object FrmMotoristas: TFrmMotoristas
       Height = 182
       ActivePage = dxTabSheet1
       TabOrder = 1
-      ClientRectBottom = 182
-      ClientRectRight = 449
-      ClientRectTop = 24
+      ClientRectBottom = 178
+      ClientRectLeft = 4
+      ClientRectRight = 445
+      ClientRectTop = 27
       object dxTabSheet1: TcxTabSheet
         Caption = ' Motoristas '
         object Shape1: TShape
           Left = 0
           Top = 0
-          Width = 449
+          Width = 441
           Height = 1
           Align = alTop
           Pen.Color = clBtnShadow
@@ -379,8 +380,8 @@ object FrmMotoristas: TFrmMotoristas
     AllowReset = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
     CanCustomize = False
     Categories.Strings = (

@@ -22,8 +22,8 @@ object FrmTerceiros: TFrmTerceiros
   object pnlClient: TPanel
     Left = 0
     Top = 0
-    Width = 460
-    Height = 256
+    Width = 468
+    Height = 263
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -38,8 +38,8 @@ object FrmTerceiros: TFrmTerceiros
     OnResize = pnlClientResize
     object Bevel1: TBevel
       Left = 2
-      Top = 222
-      Width = 456
+      Top = 229
+      Width = 464
       Height = 2
       Align = alBottom
       Shape = bsTopLine
@@ -167,8 +167,8 @@ object FrmTerceiros: TFrmTerceiros
     end
     object pnlBottom: TPanel
       Left = 2
-      Top = 224
-      Width = 456
+      Top = 231
+      Width = 464
       Height = 30
       Align = alBottom
       BevelOuter = bvNone
@@ -176,7 +176,7 @@ object FrmTerceiros: TFrmTerceiros
       object dxBarDockControl1: TdxBarDockControl
         Left = 0
         Top = 2
-        Width = 456
+        Width = 464
         Height = 26
         Align = dalTop
         BarManager = BarMgr
@@ -184,7 +184,7 @@ object FrmTerceiros: TFrmTerceiros
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 456
+        Width = 464
         Height = 2
         Align = alTop
         BevelOuter = bvNone
@@ -198,10 +198,10 @@ object FrmTerceiros: TFrmTerceiros
       Height = 182
       ActivePage = dxTabSheet1
       TabOrder = 1
-      ClientRectBottom = 177
-      ClientRectLeft = 2
-      ClientRectRight = 444
-      ClientRectTop = 24
+      ClientRectBottom = 178
+      ClientRectLeft = 4
+      ClientRectRight = 445
+      ClientRectTop = 27
       object dxTabSheet1: TcxTabSheet
         Caption = ' Terceiros '
         object btnPessoaFJ: TSpeedButton
@@ -242,7 +242,7 @@ object FrmTerceiros: TFrmTerceiros
         object Shape1: TShape
           Left = 0
           Top = 0
-          Width = 442
+          Width = 441
           Height = 1
           Align = alTop
           Pen.Color = clBtnShadow
@@ -920,7 +920,7 @@ object FrmTerceiros: TFrmTerceiros
     DataPipeline = ppFormaPagto
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PaperName = 'A4 210x297 mm'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
     PrinterSetup.mmMarginBottom = 6350

@@ -211,14 +211,13 @@ uses
      Funcoes,
 
      Filtra_Baixa_Form,
-     PessoasFJ_Form,
      Plano_DM,
      Financeiro_Dm,
      Cadastros_DM,
-     Fornecedores_Form,
      Filtra_Cheques_Form,
      ImpCheques_Form,
-     Localizar_Fornecedor , Caixas_Form, Plano_Form, Variants;
+     Localizar_Fornecedor , Caixas_Form, Plano_Form, Variants,
+  untCadFornecedores;
 
 {$R *.DFM}
 procedure TFrmCheques_Ctb.Save(ADefaultExt, AFilter, AFileName: String;
@@ -482,17 +481,17 @@ begin
      Datasource.DataSet.Edit;
   //
   { * * * * * }
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmFornecedores', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'frmCadFornecedores', False);
 
   If DMPLANO = Nil then
       DMPLANO := TDMPLANO.Create(Self)
   else
       DMPLANO.Tag := DMPLANO.Tag + 1;
 
-  FrmFornecedores := TFrmFornecedores.Create(Application);
+  frmCadFornecedores := TfrmCadFornecedores.Create(Application);
 
-  FrmFornecedores.Showmodal ;
-  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := FrmMain.Codigo_Int;
+  frmCadFornecedores.Showmodal ;
+  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := frmCadFornecedores.Codigo;
   DsFornecedor.DataSet.Close ;
   DsFornecedor.DataSet.Open  ;
 

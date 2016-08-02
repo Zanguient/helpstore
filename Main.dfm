@@ -4877,7 +4877,6 @@ object FrmMain: TFrmMain
       Category = 6
       Hint = 'Transportador'
       Visible = ivAlways
-      OnClick = OpTransportadorasClick
     end
     object dxBarButton13: TdxBarButton
       Caption = 'Manuten'#231#227'o'

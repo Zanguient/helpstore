@@ -128,8 +128,7 @@ uses Cadastros_DM,
      Main,
      Usuarios_DM,
      Funcoes,
-     PessoasFJ_Form,
-     Financeiro_Dm, Relatorios_DM2;
+     Financeiro_Dm, Relatorios_DM2, untCadPessoas;
 
 {$R *.DFM}
 
@@ -308,13 +307,13 @@ begin
   DsPessoas.DataSet.Tag := DsPessoas.DataSet.Tag + 1;
 
   { * * * * * }
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmPessoasFJ', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmCadPessoas', False);
   { * * * * * }
   //
-  FrmPessoasFJ := TFrmPessoasFJ.Create(Self);
-  FrmPessoasFJ.ShowModal;
+  FrmCadPessoas := TFrmCadPessoas.Create(Self);
+  FrmCadPessoas.ShowModal;
   //
-  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := FrmMain.Codigo_Int;
+  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := FrmCadPessoas.Codigo;
 
   DsPessoas.DataSet.Tag := DsPessoas.DataSet.Tag - 1;
   DMCadastros.Tag := DMCadastros.Tag - 1;

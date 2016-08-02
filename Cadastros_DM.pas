@@ -1934,9 +1934,8 @@ uses Application_DM,
      Plano_DM,
      FormasPagto_Form,
      Funcoes,
-     PessoasFJ_Form,
-     Clientes_Form,
-     Vendas_Dm, EntraDescricao_Form, Produtos_Form, Variants;
+     Vendas_Dm, EntraDescricao_Form, Variants,
+  untCadPessoas, Produtos_Form;
 
 {$R *.DFM}
 
@@ -3130,7 +3129,7 @@ end;
 
 procedure TDMCadastros.VeiculoNewRecord(DataSet: TDataSet);
 begin
-     IF FrmPessoasFJ <> nIL
+     IF {FrmPessoasFJ} FrmCadPessoas <> nIL
      THEN BEGIN
           VeiculoPESSOA_FJ.Value := Pessoas_FJCODIGO.Value;
      //     VeiculoCODIGO.Value    := DMApp.GerarCodigoVeiculo(Pessoas_FJCODIGO.Value);

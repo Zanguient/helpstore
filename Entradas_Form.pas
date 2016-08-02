@@ -343,10 +343,11 @@ implementation
 
 uses Entradas_DM, Listagens_DM, Application_DM, Main, Usuarios_DM, Funcoes,
   EntradasItens_Form, EntradasFat_Form, Cadastros_DM, NaturezaOper_Form,
-  Fornecedores_Form, Localizar_Natureza, Localizar_Fornecedor,
+   Localizar_Natureza, Localizar_Fornecedor,
   Tipo_Documento_Form, Centro_Custo_Form, Plano_DM,
   Entrada_Parcelamento_Form, Financeiro_Dm, Vendas_Dm, Localizar_Forma,
-  FormasPagto_Form, ConfigFin_Form, Cadastros_Dm2, PessoasFJ_Form;
+  FormasPagto_Form, ConfigFin_Form, Cadastros_Dm2, untCadPessoas,
+  untCadFornecedores;
 
   {$R *.DFM}
 
@@ -1116,7 +1117,7 @@ begin
      Datasource.DataSet.Edit;
   //
   { * * * * * }
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmFornecedores', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'frmCadFornecedores', False);
 
 
   If DMPLANO = Nil
@@ -1126,11 +1127,11 @@ begin
       DMPLANO.Tag := DMPLANO.Tag + 1;
 
 
-  FrmFornecedores := TFrmFornecedores.Create(Application);
+  frmCadFornecedores := TfrmCadFornecedores.Create(Application);
 
-  FrmFornecedores.Showmodal ;
+  frmCadFornecedores.Showmodal ;
 
-  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := FrmMain.Codigo_Int;
+  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := frmCadFornecedores.Codigo;
 end;
 
 procedure TFrmEntradas.btnNaturezaClick(Sender: TObject);
@@ -1742,14 +1743,14 @@ begin
      Datasource.DataSet.Edit;
 
 
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmPessoasFJ', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmCadPessoas', False);
 
 
-  FrmPessoasFJ := TFrmPessoasFJ.Create(Application);
+  FrmCadPessoas := TFrmCadPessoas.Create(Application);
 
-  FrmPessoasFJ.Showmodal ;
+  FrmCadPessoas.Showmodal ;
 
-  Datasource.DataSet.FieldByName('COD_CREDOR').asInteger := FrmMain.Codigo_Int;
+  Datasource.DataSet.FieldByName('COD_CREDOR').asInteger := FrmCadPessoas.Codigo;
 end;
 
 function TFrmEntradas.VerificaCentroCusto: Boolean;

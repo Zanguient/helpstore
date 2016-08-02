@@ -69,7 +69,6 @@ implementation
 uses Cadastros_DM,
      Application_DM,
      Funcoes,
-     PessoasFj_Form,
      Financeiro_Dm;
 
 {$R *.DFM}

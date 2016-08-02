@@ -4,6 +4,7 @@ inherited frmCadRegiao: TfrmCadRegiao
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcCadastro: TcxPageControl
+    ActivePage = tbsEdita
     inherited tbsLista: TcxTabSheet
       inherited Grid: TcxGrid
         inherited GridDBBandedTableView2: TcxGridDBBandedTableView
@@ -84,7 +85,7 @@ inherited frmCadRegiao: TfrmCadRegiao
         inherited edtCodigo: TcxDBTextEdit
           DataBinding.DataField = 'CODIGO'
         end
-        object aTfrmCadVendedor2: TcxDBLookupComboBox
+        object aTfrmCadVendedor: TcxDBLookupComboBox
           Left = 312
           Top = 72
           DataBinding.DataField = 'VENDEDOR'

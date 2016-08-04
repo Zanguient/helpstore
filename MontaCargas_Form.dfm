@@ -24,7 +24,7 @@ object FrmMontaCargas: TFrmMontaCargas
     Left = 0
     Top = 0
     Width = 648
-    Height = 483
+    Height = 479
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -39,7 +39,7 @@ object FrmMontaCargas: TFrmMontaCargas
     OnResize = pnlClientResize
     object Bevel1: TBevel
       Left = 2
-      Top = 449
+      Top = 445
       Width = 644
       Height = 2
       Align = alBottom
@@ -169,7 +169,7 @@ object FrmMontaCargas: TFrmMontaCargas
     end
     object pnlBottom: TPanel
       Left = 2
-      Top = 451
+      Top = 447
       Width = 644
       Height = 30
       Align = alBottom
@@ -201,15 +201,16 @@ object FrmMontaCargas: TFrmMontaCargas
       ActivePage = dxTabSheet1
       TabOrder = 1
       OnChange = pcChange
-      ClientRectBottom = 407
-      ClientRectRight = 625
-      ClientRectTop = 24
+      ClientRectBottom = 403
+      ClientRectLeft = 4
+      ClientRectRight = 621
+      ClientRectTop = 27
       object dxTabSheet1: TcxTabSheet
         Caption = ' Cargas '
         object Shape1: TShape
           Left = 0
           Top = 0
-          Width = 625
+          Width = 617
           Height = 1
           Align = alTop
           Pen.Color = clBtnShadow
@@ -959,8 +960,8 @@ object FrmMontaCargas: TFrmMontaCargas
     AllowReset = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
     CanCustomize = False
     Categories.Strings = (

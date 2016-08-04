@@ -463,8 +463,9 @@ implementation
 
 uses ACBRDFEUTIL, ACBrHTMLtoXML, pcnNFe, Application_DM,
   Localizar_Produto_Cadastro_Auto, NaturezaOper_Form, Main,
-  Localizar_Natureza, Localizar_Fornecedor, Entradas_DM, Fornecedores_Form,
-  Funcoes, SelEntradas_Form, Entradas_Form, Empresas_DM;
+  Localizar_Natureza, Localizar_Fornecedor, Entradas_DM, 
+  Funcoes, SelEntradas_Form, Entradas_Form, Empresas_DM,
+  untCadFornecedores;
 
 {$R *.dfm}
 
@@ -1065,13 +1066,13 @@ begin
   If Datasource.DataSet.State = dsBrowse Then
      Datasource.DataSet.Edit;
 
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmFornecedores', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'frmCadFornecedores', False);
 
 
-  FrmFornecedores := TFrmFornecedores.Create(Application);
-  FrmFornecedores.Showmodal ;
+  frmCadFornecedores := TfrmCadFornecedores.Create(Application);
+  frmCadFornecedores.Showmodal ;
   mtbCabNF.Edit;
-  mtbCabNFDIC_COD_FORNECEDOR.value := FrmMain.Codigo_Int;
+  mtbCabNFDIC_COD_FORNECEDOR.value := frmCadFornecedores.Codigo;
 end;
 
 procedure TfrmImportaNFe.AbreCFOPs;

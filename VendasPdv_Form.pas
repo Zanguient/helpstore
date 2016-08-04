@@ -180,8 +180,6 @@ uses Application_DM,
      Funcoes,
      Vendas_Dm,
      VendasPdvItens_Form,
-     Clientes_Form,
-     Vendedores_Form,
      Localizar_Cliente,
      VendasItens_Form,
      Cadastros_DM,
@@ -197,7 +195,7 @@ uses Application_DM,
      Cheque_Venda_Form,
      Financeiro_Dm,
      Cartao_Venda_Form, Localizar_Garantias, Localizar_Natureza, Vendas_DM2,
-  untCadClientes;
+  untCadClientes, untCadVendedor;
 
 {$R *.DFM}
 
@@ -918,16 +916,16 @@ begin
       DMCadastros.tAG := DMCadastros.tAG + 1;}
 
   { * * * * * }
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmVendedores', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'frmCadVendedor', False);
   { * * * * * }
 
   DsVendedores.DataSet.Tag := DsVendedores.DataSet.Tag - 1;
   //
-  FrmVendedores := TFrmVendedores.Create(Application);
+  frmCadVendedor := TfrmCadVendedor.Create(Application);
 
-  FrmVendedores.Showmodal ;
+  frmCadVendedor.Showmodal ;
 
-  Datasource.DataSet.FieldByName('VENDEDOR').asInteger := FrmMain.Codigo_Int;
+  Datasource.DataSet.FieldByName('VENDEDOR').asInteger := frmCadVendedor.Codigo;
   EdVendedor.SetFocus;
 
   DsVendedores.DataSet.Close;

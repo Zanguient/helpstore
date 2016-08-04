@@ -798,9 +798,9 @@ var
 implementation
 
 uses Empresas_DM, Application_DM, Main, Usuarios_DM, Funcoes, Cadastros_DM,
-  Produtos_Form, Logradouros_Form, Bairros_Form, Cidades_Form,
+  Produtos_Form, Cidades_Form,
   FormasPagto_Form, NaturezaOper_Form,
-  Centro_Custo_Form;
+  Centro_Custo_Form, untCadLogradouro, untCadBairros, untCadCidades;
 
 const
   SELDIRHELP = 1000;  
@@ -1350,17 +1350,17 @@ begin
   If DsEmpresas.DataSet.State = dsBrowse Then
      DsEmpresas.DataSet.Edit;
 
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmLogradouros', False);
-  FrmLogradouros := TFrmLogradouros.Create(Self);
-  FrmLogradouros.ShowModal;
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmCadLogradouro', False);
+  FrmCadLogradouro := TFrmCadLogradouro.Create(Self);
+  FrmCadLogradouro.ShowModal;
 
   dsLogradouros.Dataset.Close;
   dsLogradouros.Dataset.Open;
 
-  DsEmpresas.DataSet.FieldByName('COD_LOGRADOURO').asInteger := FrmMain.Codigo_Int;
+  DsEmpresas.DataSet.FieldByName('COD_LOGRADOURO').asInteger := FrmCadLogradouro.Codigo;
 
-  FrmLogradouros.Free;
-  FrmLogradouros := Nil;
+  FrmCadLogradouro.Free;
+  FrmCadLogradouro := Nil;
   cmbLogradouro.SetFocus;
 end;
 
@@ -1373,18 +1373,18 @@ begin
      DsEmpresas.DataSet.Edit;
 
 
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmBairros', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'frmCadBairros', False);
 
-  FrmBairros := TFrmBairros.Create(Self);
+  frmCadBairros := TfrmCadBairros.Create(Self);
 
-  FrmBairros.ShowModal;
+  frmCadBairros.ShowModal;
   dsBairros.Dataset.Close;
   dsBairros.Dataset.Open;
 
-  DsEmpresas.DataSet.FieldByName('COD_BAIRRO').asInteger := FrmMain.Codigo_Int;
+  DsEmpresas.DataSet.FieldByName('COD_BAIRRO').asInteger := frmCadBairros.Codigo;
 
-  FrmBairros.Free;
-  FrmBairros := Nil;
+  frmCadBairros.Free;
+  frmCadBairros := Nil;
 
   cmbBairro.SetFocus;
 end;
@@ -1397,17 +1397,17 @@ begin
   If DsEmpresas.DataSet.State = dsBrowse Then
      DsEmpresas.DataSet.Edit;
 
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmCidades', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmCadCidades', False);
 
-  FrmCidades := TFrmCidades.Create(Self);
-  FrmCidades.ShowModal;
+  FrmCadCidades := TFrmCadCidades.Create(Self);
+  FrmCadCidades.ShowModal;
   dsCidades.Dataset.Close;
   dsCidades.Dataset.Open;
 
-  DsEmpresas.DataSet.FieldByName('COD_CIDADE').asInteger := FrmMain.Codigo_Int;
+  DsEmpresas.DataSet.FieldByName('COD_CIDADE').asInteger := FrmCadCidades.Codigo;
 
-  FrmCidades.Free;
-  FrmCidades := Nil;
+  FrmCadCidades.Free;
+  FrmCadCidades := Nil;
   cmbCidade.SetFocus;
 end;
 

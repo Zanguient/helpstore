@@ -121,7 +121,7 @@ uses Caixa_DM,
      Funcoes,
      Localizar_Cliente,
      Cadastros_DM,
-     Clientes_Form, Localizar_Conta, Plano_DM, Financeiro_Dm,
+     Localizar_Conta, Plano_DM, Financeiro_Dm,
   Centro_Custo_Form, untCadClientes;
 
 {$R *.DFM}

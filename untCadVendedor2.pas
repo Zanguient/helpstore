@@ -26,7 +26,7 @@ uses
   cxButtonEdit, cxMaskEdit, cxCalc, dxmdaset;
 
 type
-  TfrmCadVendedor2 = class(TfrmCadPadraoMaster)
+  TfrmCadVendedor = class(TfrmCadPadraoMaster)
     cxDBCalcEdit2: TcxDBCalcEdit;
     cxLabel10: TcxLabel;
     cxLabel11: TcxLabel;
@@ -108,7 +108,7 @@ type
   end;
 
 var
-  frmCadVendedor2: TfrmCadVendedor2;
+  frmCadVendedor: TfrmCadVendedor;
 
 implementation
 
@@ -116,13 +116,13 @@ uses untCadPessoas;
 
 {$R *.dfm}
 
-procedure TfrmCadVendedor2.dtEditDet1BeforePost(DataSet: TDataSet);
+procedure TfrmCadVendedor.dtEditDet1BeforePost(DataSet: TDataSet);
 begin
   inherited;
   dtEditDet1CODIGO.Value := dtEditCODIGO.value;
 end;
 
-procedure TfrmCadVendedor2.cxDBCalcEdit5KeyDown(Sender: TObject;
+procedure TfrmCadVendedor.cxDBCalcEdit5KeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
   if key = 13 then
@@ -130,13 +130,13 @@ begin
 
 end;
 
-procedure TfrmCadVendedor2.btnLogradouroClick(Sender: TObject);
+procedure TfrmCadVendedor.btnLogradouroClick(Sender: TObject);
 begin
   inherited;
   CadastroLookup(TfrmCadPessoas,dtEdit,'PESSOA_FJ',QryPessoa);
 end;
 
-procedure TfrmCadVendedor2.dtEditBeforePost(DataSet: TDataSet);
+procedure TfrmCadVendedor.dtEditBeforePost(DataSet: TDataSet);
 begin
   inherited;
 
@@ -150,6 +150,6 @@ begin
 end;
 
 initialization
- RegisterClass(TfrmCadVendedor2);
+ RegisterClass(TfrmCadVendedor);
 
 end.

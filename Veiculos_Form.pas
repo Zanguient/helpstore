@@ -95,8 +95,7 @@ uses Cadastros_DM,
      Application_DM,
      Main,
      Usuarios_DM,
-     Funcoes,
-     PessoasFJ_Form;
+     Funcoes;
 
 {$R *.DFM}
 

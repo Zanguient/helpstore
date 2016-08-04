@@ -138,7 +138,7 @@ var
 
 implementation
 
-uses Cadastros_DM, Application_DM, Funcoes, PessoasFj_Form, Vendas_Dm;
+uses Cadastros_DM, Application_DM, Funcoes, Vendas_Dm;
 
 {$R *.DFM}
 

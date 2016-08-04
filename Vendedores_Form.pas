@@ -134,7 +134,7 @@ uses Cadastros_DM,
      Main,
      Usuarios_DM,
      Funcoes,
-     PessoasFJ_Form, Financeiro_Dm2, Perfil_Com_Form, Perfil_Pagto_Form;
+     Financeiro_Dm2, Perfil_Com_Form, Perfil_Pagto_Form, untCadPessoas;
 
 {$R *.DFM}
 
@@ -460,18 +460,18 @@ begin
   If Datasource.DataSet.State = dsBrowse Then
      Datasource.DataSet.Edit;
 
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmPessoasFJ', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmCadPessoas', False);
 
   // Informando quais datasets estão em uso
   dsPessoasFJ.DataSet.Tag := dsPessoasFJ.DataSet.Tag + 1;
 
-  FrmPessoasFJ := TFrmPessoasFJ.Create(Application);
-  FrmPessoasFJ.Showmodal ;
+  FrmCadPessoas := TFrmCadPessoas.Create(Application);
+  FrmCadPessoas.Showmodal ;
 
   If not ( Datasource.DataSet.State in [ dsinsert, dsedit ]) then
     Datasource.DataSet.edit ;
 
-  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := FrmMain.Codigo_Int;
+  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := FrmCadPessoas.Codigo;
   dsPessoasFJ.DataSet.close ;
   dsPessoasFJ.DataSet.open  ;
 

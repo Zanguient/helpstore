@@ -116,7 +116,7 @@ uses Cadastros_DM,
      Main,
      Usuarios_DM,
      Funcoes,
-     PessoasFJ_Form, Motoristas_Form, Veiculos_Form, Rotas_Form;
+     Motoristas_Form, Veiculos_Form, Rotas_Form;
 
 {$R *.DFM}
 

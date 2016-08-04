@@ -146,7 +146,7 @@ var
 implementation
 
 uses  funcoes, Application_DM, Main, Servicos_DM, Usuarios_DM,
-  Clientes_Form, Cadastros_Dm2, Produtos_Form, Cadastros_DM,
+  Cadastros_Dm2, Produtos_Form, Cadastros_DM,
   Tipo_Contrato_Form, Localizar_Cliente, Vendas_Dm,FileCtrl,
   untCadClientes;
 

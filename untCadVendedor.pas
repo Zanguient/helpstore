@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, untCadPadrao, cxGraphics, cxControls, cxLookAndFeels,
+  Dialogs, untCadPadraoMaster, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, dxSkinsCore, dxSkinBlack, dxSkinBlue,
   dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy,
   dxSkinGlassOceans, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
@@ -19,14 +19,23 @@ uses
   dxSkinsdxBarPainter, cxIntlBase, cxintl, cxPropertiesStore, ACBrBase,
   ACBrEnterTab, cxGridCustomPopupMenu, cxGridPopupMenu, dxBarDBNav,
   ImgList, ActnList, dxBar, cxClasses, IBQuery, IBCustomDataSet, cxLabel,
-  cxTextEdit, cxDBEdit, ExtCtrls, cxGridLevel, cxGridCustomView,
-  cxGridCustomTableView, cxGridTableView, cxGridBandedTableView,
-  cxGridDBBandedTableView, cxGrid, cxPC, cxCheckBox, cxDropDownEdit,
-  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxMaskEdit,
-  cxButtonEdit, cxCalc;
+  cxTextEdit, cxDBEdit, cxGridDBTableView, ExtCtrls, cxGridLevel,
+  cxGridCustomView, cxGridCustomTableView, cxGridTableView,
+  cxGridBandedTableView, cxGridDBBandedTableView, cxGrid, cxPC,
+  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
+  cxButtonEdit, cxMaskEdit, cxCalc, dxmdaset;
 
 type
-  TfrmCadVendedor = class(TfrmCadPadrao)
+  TfrmCadVendedor = class(TfrmCadPadraoMaster)
+    cxDBCalcEdit2: TcxDBCalcEdit;
+    cxLabel10: TcxLabel;
+    cxLabel11: TcxLabel;
+    cxDBCalcEdit1: TcxDBCalcEdit;
+    btnLogradouro: TcxButtonEdit;
+    aTfrmCadPessoas: TcxDBLookupComboBox;
+    cxLabel12: TcxLabel;
+    edtNome: TcxDBTextEdit;
+    cxLabel13: TcxLabel;
     dtListCNPJ: TIBStringField;
     dtListCODIGO: TIntegerField;
     dtListNOME: TIBStringField;
@@ -35,16 +44,20 @@ type
     dtListPESSOA_FJ: TIntegerField;
     dtListSENHA: TIBStringField;
     dtListATIVO: TIBStringField;
+    dtListCOD_PERFIL: TIntegerField;
+    dtListCOD_PERFIL_PAGTO: TIntegerField;
     dtListNOME_PESSOA: TIBStringField;
-    GridDBBandedTableView2CNPJ: TcxGridDBBandedColumn;
-    GridDBBandedTableView2CODIGO: TcxGridDBBandedColumn;
-    GridDBBandedTableView2NOME: TcxGridDBBandedColumn;
-    GridDBBandedTableView2COM_VISTA: TcxGridDBBandedColumn;
-    GridDBBandedTableView2COM_PRAZO: TcxGridDBBandedColumn;
-    GridDBBandedTableView2PESSOA_FJ: TcxGridDBBandedColumn;
-    GridDBBandedTableView2SENHA: TcxGridDBBandedColumn;
-    GridDBBandedTableView2ATIVO: TcxGridDBBandedColumn;
-    GridDBBandedTableView2NOME_PESSOA: TcxGridDBBandedColumn;
+    TVRegistroCNPJ: TcxGridDBBandedColumn;
+    TVRegistroCODIGO: TcxGridDBBandedColumn;
+    TVRegistroNOME: TcxGridDBBandedColumn;
+    TVRegistroCOM_VISTA: TcxGridDBBandedColumn;
+    TVRegistroCOM_PRAZO: TcxGridDBBandedColumn;
+    TVRegistroPESSOA_FJ: TcxGridDBBandedColumn;
+    TVRegistroSENHA: TcxGridDBBandedColumn;
+    TVRegistroATIVO: TcxGridDBBandedColumn;
+    TVRegistroCOD_PERFIL: TcxGridDBBandedColumn;
+    TVRegistroCOD_PERFIL_PAGTO: TcxGridDBBandedColumn;
+    TVRegistroNOME_PESSOA: TcxGridDBBandedColumn;
     dtEditCNPJ: TIBStringField;
     dtEditCODIGO: TIntegerField;
     dtEditNOME: TIBStringField;
@@ -55,52 +68,39 @@ type
     dtEditATIVO: TIBStringField;
     dtEditCOD_PERFIL: TIntegerField;
     dtEditCOD_PERFIL_PAGTO: TIntegerField;
-    btnLogradouro: TcxButtonEdit;
-    cbPessoaFJ: TcxDBLookupComboBox;
-    cxLabel9: TcxLabel;
-    cxDBCalcEdit1: TcxDBCalcEdit;
-    cxLabel3: TcxLabel;
-    cxDBCalcEdit2: TcxDBCalcEdit;
-    cxLabel4: TcxLabel;
+    dtListDet1CNPJ: TIBStringField;
+    dtListDet1CODIGO: TIntegerField;
+    dtListDet1PRAZO: TFloatField;
+    dtListDet1VALOR: TFloatField;
+    dtListDet1VISTA: TFloatField;
+    dtEditDet1CNPJ: TIBStringField;
+    dtEditDet1CODIGO: TIntegerField;
+    dtEditDet1PRAZO: TFloatField;
+    dtEditDet1VALOR: TFloatField;
+    dtEditDet1VISTA: TFloatField;
+    cxDBCalcEdit3: TcxDBCalcEdit;
+    cxLabel14: TcxLabel;
+    cxDBCalcEdit4: TcxDBCalcEdit;
+    cxLabel15: TcxLabel;
+    cxDBCalcEdit5: TcxDBCalcEdit;
+    cxLabel16: TcxLabel;
+    dtEditDet1ID: TIntegerField;
+    dtListDet1ID: TIntegerField;
     dsPessoa: TDataSource;
     QryPessoa: TIBQuery;
     QryPessoaCODIGO: TIntegerField;
     QryPessoaNOME_RAZAO: TIBStringField;
-    pnlSubCad: TPanel;
-    PgcComplementar: TcxPageControl;
-    cxTabSheet1: TcxTabSheet;
-    PGCSub1: TcxPageControl;
-    tbsListaComp1: TcxTabSheet;
-    cxGrid1: TcxGrid;
-    cxGrid1DBBandedTableView1: TcxGridDBBandedTableView;
-    cxGrid1DBBandedTableView1CODIGO: TcxGridDBBandedColumn;
-    cxGrid1DBBandedTableView1PRODUTO: TcxGridDBBandedColumn;
-    cxGrid1DBBandedTableView1QTDE: TcxGridDBBandedColumn;
-    cxGrid1DBBandedTableView1VALOR: TcxGridDBBandedColumn;
-    cxGrid1DBBandedTableView1TOTAL: TcxGridDBBandedColumn;
-    cxGrid1DBBandedTableView1NOTA_FISCAL: TcxGridDBBandedColumn;
-    cxGrid1DBBandedTableView1NOME_PRODUTO: TcxGridDBBandedColumn;
-    cxGrid1DBBandedTableView1QTDE_QUEBRA: TcxGridDBBandedColumn;
-    cxGrid1DBBandedTableView1QTDE_LIQUIDA: TcxGridDBBandedColumn;
-    cxGridLevel1: TcxGridLevel;
-    tbsEditaComp1: TcxTabSheet;
-    edtCodigoEnd: TcxDBTextEdit;
-    cxLabel8: TcxLabel;
-    cbProduto: TcxDBLookupComboBox;
-    cxLabel5: TcxLabel;
-    btnProduto: TcxButtonEdit;
-    cxDBCalcEdit6: TcxDBCalcEdit;
-    cxLabel10: TcxLabel;
-    cxDBCalcEdit7: TcxDBCalcEdit;
-    cxLabel11: TcxLabel;
-    cxDBCalcEdit8: TcxDBCalcEdit;
-    cxLabel12: TcxLabel;
-    cxDBCalcEdit9: TcxDBCalcEdit;
-    cxLabel13: TcxLabel;
-    cxDBCalcEdit10: TcxDBCalcEdit;
-    cxLabel14: TcxLabel;
+    TVDet1CNPJ: TcxGridDBBandedColumn;
+    TVDet1CODIGO: TcxGridDBBandedColumn;
+    TVDet1VALOR: TcxGridDBBandedColumn;
+    TVDet1PRAZO: TcxGridDBBandedColumn;
+    TVDet1VISTA: TcxGridDBBandedColumn;
+    TVDet1ID: TcxGridDBBandedColumn;
+    procedure dtEditDet1BeforePost(DataSet: TDataSet);
+    procedure cxDBCalcEdit5KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
     procedure btnLogradouroClick(Sender: TObject);
-    procedure ActCadLookupExecute(Sender: TObject);
+    procedure dtEditBeforePost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -116,26 +116,40 @@ uses untCadPessoas;
 
 {$R *.dfm}
 
+procedure TfrmCadVendedor.dtEditDet1BeforePost(DataSet: TDataSet);
+begin
+  inherited;
+  dtEditDet1CODIGO.Value := dtEditCODIGO.value;
+end;
+
+procedure TfrmCadVendedor.cxDBCalcEdit5KeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if key = 13 then
+    edtCodDet1.SetFocus;
+
+end;
+
 procedure TfrmCadVendedor.btnLogradouroClick(Sender: TObject);
 begin
   inherited;
-
-  frmCadPessoas := TfrmCadPessoas.Create(Self);
-  frmCadPessoas.ShowMODAL ;
-
-  AbreDataSet(TDataSet(QryPessoa));
-
-  dtEditPESSOA_FJ.Value := frmCadPessoas.Codigo;
-
-  frmCadPessoas.Free;
-  frmCadPessoas := nil;
+  CadastroLookup(TfrmCadPessoas,dtEdit,'PESSOA_FJ',QryPessoa);
 end;
 
-procedure TfrmCadVendedor.ActCadLookupExecute(Sender: TObject);
+procedure TfrmCadVendedor.dtEditBeforePost(DataSet: TDataSet);
 begin
   inherited;
-  if cbPessoaFJ.Focused then
-    cbPessoaFJ.OnClick(Self);
+
+  if dtEditPESSOA_FJ.asinteger = 0 then
+  begin
+    Application.MessageBox('Impossível salvar alterações. Campo Pessoa, não preenchido.','Aviso',mb_iconerror + mb_ok);
+    aTfrmCadPessoas.setfocus;
+    abort;
+    exit;
+  end;
 end;
+
+initialization
+ RegisterClass(TfrmCadVendedor);
 
 end.

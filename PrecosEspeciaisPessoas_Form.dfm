@@ -22,7 +22,7 @@ object FrmPrecosEspeciais: TFrmPrecosEspeciais
     Left = 0
     Top = 0
     Width = 434
-    Height = 371
+    Height = 367
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -37,7 +37,7 @@ object FrmPrecosEspeciais: TFrmPrecosEspeciais
     OnResize = pnlClientResize
     object Bevel1: TBevel
       Left = 2
-      Top = 337
+      Top = 333
       Width = 430
       Height = 2
       Align = alBottom
@@ -195,7 +195,7 @@ object FrmPrecosEspeciais: TFrmPrecosEspeciais
     end
     object pnlBottom: TPanel
       Left = 2
-      Top = 339
+      Top = 335
       Width = 430
       Height = 30
       Align = alBottom
@@ -418,8 +418,8 @@ object FrmPrecosEspeciais: TFrmPrecosEspeciais
     AllowReset = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
     CanCustomize = False
     Categories.Strings = (

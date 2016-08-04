@@ -141,7 +141,6 @@ uses
      Usuarios_DM,
      Funcoes,
      Financeiro_Dm,
-     Clientes_Form,
      Administradoras_Form,
      Filtra_Cartao_Form,
      Localizar_Cliente,

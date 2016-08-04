@@ -247,7 +247,7 @@ type
     cxLabel16: TcxLabel;
     cxDBMaskEdit11: TcxDBMaskEdit;
     cxLabel29: TcxLabel;
-    aTfrmCadVendedor2: TcxDBLookupComboBox;
+    aTfrmCadVendedor: TcxDBLookupComboBox;
     cxLabel42: TcxLabel;
     cmbForma: TcxDBLookupComboBox;
     cxLabel45: TcxLabel;
@@ -699,7 +699,7 @@ type
     aTfrmCadTecnicos: TcxDBLookupComboBox;
     cxLabel41: TcxLabel;
     btnVendedor: TcxButton;
-    bTfrmCadVendedor2: TcxDBLookupComboBox;
+    bTfrmCadVendedor: TcxDBLookupComboBox;
     cxLabel43: TcxLabel;
     QryVendedorProp: TIBQuery;
     dsVendedorProp: TDataSource;
@@ -882,7 +882,7 @@ var
 implementation
 
 uses UntCadCategoriaClientes, untCadPessoas, UntCadClassificacao,
-  untCadVendedor2, untCadAtividades, untCadLogradouro, untCadCidades,
+  untCadVendedor, untCadAtividades, untCadLogradouro, untCadCidades,
   Application_DM, Funcoes, untCadTipoVeitulo, untCadMarcaVeiculo,
   untCadBairros, untCadRegioes, UntCadTecnicos, UntCadBancos;
 
@@ -909,7 +909,7 @@ end;
 procedure TfrmCadClientes.btnCadVendedorClick(Sender: TObject);
 begin
   inherited;
-  CadastroLookup(TfrmCadVendedor2,dtEdit,'COD_VEND',QryVendedor);
+  CadastroLookup(TfrmCadVendedor,dtEdit,'COD_VEND',QryVendedor);
 end;
 
 procedure TfrmCadClientes.BtnAtividadeClick(Sender: TObject);

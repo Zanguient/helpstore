@@ -131,8 +131,8 @@ var
 implementation
 
 uses Cadastros_DM, Listagens_DM, Application_DM, Main, Usuarios_DM, Funcoes,
-  Logradouros_Form, Bairros_Form, Cidades_Form, Tipo_Contrato_Form,
-  Modelo_Propriedade_Form;
+  Cidades_Form, Tipo_Contrato_Form,
+  Modelo_Propriedade_Form, untCadLogradouro;
 
 {$R *.DFM}
 
@@ -422,21 +422,21 @@ begin
 
   //
   { * * * * * }
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmLogradouros', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmCadLogradouro', False);
   { * * * * * }
   //
-  FrmLogradouros := TFrmLogradouros.Create(Self);
-  FrmLogradouros.ShowModal;
+  FrmCadLogradouro := TFrmCadLogradouro.Create(Self);
+  FrmCadLogradouro.ShowModal;
 
-  DataSource.DataSet.FieldByName('ENDERECO').asInteger := FrmMain.Codigo_Int ;
+  DataSource.DataSet.FieldByName('ENDERECO').asInteger := FrmCadLogradouro.Codigo;
 
   //
   DMCadastros.Tag := DMCadastros.Tag - 1;
   //
   dsLogradouros.DataSet.Tag := dsLogradouros.DataSet.Tag - 1;
 
-  FrmLogradouros.Free;
-  FrmLogradouros := Nil;
+  FrmCadLogradouro.Free;
+  FrmCadLogradouro := Nil;
   //
   cmbLogradouroPro.SetFocus;
 end;

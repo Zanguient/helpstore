@@ -162,7 +162,6 @@ uses Cadastros_DM,
      Financeiro_Dm,
      Localizar_Cliente,
      Captura_Cheque_Form,
-     Clientes_Form,
      Entra_Conciliacao_Cheque_Form, untCadClientes;
 
 {$R *.DFM}

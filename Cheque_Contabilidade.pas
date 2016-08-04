@@ -131,7 +131,7 @@ uses Cadastros_DM,
      Usuarios_DM,
      Funcoes,
      Bancos_Form, Financeiro_Dm, Localizar_Fornecedor, Plano_DM,
-     Fornecedores_Form;// ,  Financeiro_Dm;
+     untCadFornecedores;// ,  Financeiro_Dm;
 
 {$R *.DFM}
 
@@ -417,17 +417,17 @@ begin
      Datasource.DataSet.Edit;
   //
   { * * * * * }
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmFornecedores', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'frmCadFornecedores', False);
 
   If DMPLANO = Nil then
       DMPLANO := TDMPLANO.Create(Self)
   else
       DMPLANO.Tag := DMPLANO.Tag + 1;
 
-  FrmFornecedores := TFrmFornecedores.Create(Application);
+  frmCadFornecedores := TfrmCadFornecedores.Create(Application);
 
-  FrmFornecedores.Showmodal ;
-  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := FrmMain.Codigo_Int;
+  frmCadFornecedores.Showmodal ;
+  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := frmCadFornecedores.Codigo;
   DsFornecedor.DataSet.Close ;
   DsFornecedor.DataSet.Open  ;
 

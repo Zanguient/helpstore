@@ -1,490 +1,492 @@
 inherited frmCadVendedor: TfrmCadVendedor
+  Left = 276
+  Top = 133
+  Width = 905
+  Height = 482
   Caption = 'Vendedores'
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcCadastro: TcxPageControl
-    ActivePage = tbsLista
+    Width = 897
+    Height = 425
+    ActivePage = tbsEdita
+    ClientRectBottom = 421
+    ClientRectRight = 893
     inherited tbsLista: TcxTabSheet
       inherited Grid: TcxGrid
-        inherited GridDBBandedTableView2: TcxGridDBBandedTableView
-          object GridDBBandedTableView2CNPJ: TcxGridDBBandedColumn
+        Top = 0
+        Width = 889
+        Height = 394
+        inherited TVRegistro: TcxGridDBBandedTableView
+          object TVRegistroCNPJ: TcxGridDBBandedColumn
             DataBinding.FieldName = 'CNPJ'
             Position.BandIndex = 0
             Position.ColIndex = 0
             Position.RowIndex = 0
           end
-          object GridDBBandedTableView2CODIGO: TcxGridDBBandedColumn
+          object TVRegistroCODIGO: TcxGridDBBandedColumn
             DataBinding.FieldName = 'CODIGO'
             Position.BandIndex = 0
             Position.ColIndex = 1
             Position.RowIndex = 0
           end
-          object GridDBBandedTableView2NOME: TcxGridDBBandedColumn
+          object TVRegistroNOME: TcxGridDBBandedColumn
             DataBinding.FieldName = 'NOME'
-            Width = 50
             Position.BandIndex = 0
             Position.ColIndex = 2
             Position.RowIndex = 0
           end
-          object GridDBBandedTableView2COM_VISTA: TcxGridDBBandedColumn
+          object TVRegistroCOM_VISTA: TcxGridDBBandedColumn
             DataBinding.FieldName = 'COM_VISTA'
             Position.BandIndex = 0
             Position.ColIndex = 3
             Position.RowIndex = 0
           end
-          object GridDBBandedTableView2COM_PRAZO: TcxGridDBBandedColumn
+          object TVRegistroCOM_PRAZO: TcxGridDBBandedColumn
             DataBinding.FieldName = 'COM_PRAZO'
             Position.BandIndex = 0
             Position.ColIndex = 4
             Position.RowIndex = 0
           end
-          object GridDBBandedTableView2PESSOA_FJ: TcxGridDBBandedColumn
+          object TVRegistroPESSOA_FJ: TcxGridDBBandedColumn
             DataBinding.FieldName = 'PESSOA_FJ'
             Position.BandIndex = 0
             Position.ColIndex = 5
             Position.RowIndex = 0
           end
-          object GridDBBandedTableView2SENHA: TcxGridDBBandedColumn
+          object TVRegistroSENHA: TcxGridDBBandedColumn
             DataBinding.FieldName = 'SENHA'
             Position.BandIndex = 0
             Position.ColIndex = 6
             Position.RowIndex = 0
           end
-          object GridDBBandedTableView2ATIVO: TcxGridDBBandedColumn
+          object TVRegistroATIVO: TcxGridDBBandedColumn
             DataBinding.FieldName = 'ATIVO'
-            PropertiesClassName = 'TcxCheckBoxProperties'
-            Properties.ValueChecked = 'S'
-            Properties.ValueUnchecked = 'N'
-            Width = 44
             Position.BandIndex = 0
             Position.ColIndex = 7
             Position.RowIndex = 0
           end
-          object GridDBBandedTableView2NOME_PESSOA: TcxGridDBBandedColumn
-            DataBinding.FieldName = 'NOME_PESSOA'
+          object TVRegistroCOD_PERFIL: TcxGridDBBandedColumn
+            DataBinding.FieldName = 'COD_PERFIL'
             Position.BandIndex = 0
             Position.ColIndex = 8
             Position.RowIndex = 0
           end
+          object TVRegistroCOD_PERFIL_PAGTO: TcxGridDBBandedColumn
+            DataBinding.FieldName = 'COD_PERFIL_PAGTO'
+            Position.BandIndex = 0
+            Position.ColIndex = 9
+            Position.RowIndex = 0
+          end
+          object TVRegistroNOME_PESSOA: TcxGridDBBandedColumn
+            DataBinding.FieldName = 'NOME_PESSOA'
+            Position.BandIndex = 0
+            Position.ColIndex = 10
+            Position.RowIndex = 0
+          end
         end
+      end
+      inherited pnlFiltro: TPanel
+        Width = 889
+        Height = 0
       end
     end
     inherited tbsEdita: TcxTabSheet
       inherited Panel2: TPanel
-        Height = 129
-        Align = alTop
-        inherited edtNome: TcxDBTextEdit
-          DataBinding.DataField = 'NOME'
-        end
-        inherited edtCodigo: TcxDBTextEdit
-          DataBinding.DataField = 'CODIGO'
-        end
-        object btnLogradouro: TcxButtonEdit
-          Left = 371
-          Top = 72
-          Properties.Buttons = <
-            item
-              Caption = 'F4'
-              Default = True
-              Kind = bkText
-            end>
-          Properties.ViewStyle = vsButtonsOnly
-          TabOrder = 7
-          Text = 'btnPessoa'
-          OnClick = btnLogradouroClick
-          Width = 25
-        end
-        object cbPessoaFJ: TcxDBLookupComboBox
-          Left = 8
-          Top = 72
-          DataBinding.DataField = 'PESSOA_FJ'
-          DataBinding.DataSource = dsRegistro
-          Properties.CharCase = ecUpperCase
-          Properties.KeyFieldNames = 'CODIGO'
-          Properties.ListColumns = <
-            item
-              FieldName = 'NOME_RAZAO'
-            end>
-          Properties.ListSource = dsPessoa
-          TabOrder = 2
-          Width = 363
-        end
-        object cxLabel9: TcxLabel
-          Left = 8
-          Top = 56
-          Caption = 'Pessoa '
-          Transparent = True
-        end
-        object cxDBCalcEdit1: TcxDBCalcEdit
-          Left = 400
-          Top = 72
-          DataBinding.DataField = 'COM_VISTA'
-          DataBinding.DataSource = dsRegistro
-          Properties.ButtonGlyph.Data = {
-            46020000424D460200000000000036000000280000000E0000000C0000000100
-            1800000000001002000000000000000000000000000000000000CED3D6000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            00CED3D600008486008486008400008400008400008400008400008400008400
-            008400008400008400008400000000000000848600FFFFFF8486008486008486
-            0084860084860084860084860084860084860084860084000000000000008486
-            00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
-            00008400000000000000848600FFFFFF84860084860084860084860084860084
-            86008486008486008486008486008400000000000000848600FFFF0084860000
-            0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
-            0000848600FFFFFF848600848600848600848600848600848600848600848600
-            8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
-            C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
-            000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
-            000000000000848600FFFF000000000000000000000000000000000000000000
-            000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
-            00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
-            D684860084860084860084860084860084860084860084860084860084860084
-            8600848600CED3D60000}
-          Style.LookAndFeel.Kind = lfOffice11
-          Style.ButtonStyle = btsFlat
-          StyleDisabled.LookAndFeel.Kind = lfOffice11
-          StyleFocused.LookAndFeel.Kind = lfOffice11
-          StyleHot.LookAndFeel.Kind = lfOffice11
-          TabOrder = 3
-          Width = 83
-        end
-        object cxLabel3: TcxLabel
-          Left = 400
-          Top = 56
-          Caption = 'Com '#224' Vista (%)'
-          Transparent = True
-        end
-        object cxDBCalcEdit2: TcxDBCalcEdit
-          Left = 488
-          Top = 72
-          DataBinding.DataField = 'COM_PRAZO'
-          DataBinding.DataSource = dsRegistro
-          Properties.ButtonGlyph.Data = {
-            46020000424D460200000000000036000000280000000E0000000C0000000100
-            1800000000001002000000000000000000000000000000000000CED3D6000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            00CED3D600008486008486008400008400008400008400008400008400008400
-            008400008400008400008400000000000000848600FFFFFF8486008486008486
-            0084860084860084860084860084860084860084860084000000000000008486
-            00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
-            00008400000000000000848600FFFFFF84860084860084860084860084860084
-            86008486008486008486008486008400000000000000848600FFFF0084860000
-            0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
-            0000848600FFFFFF848600848600848600848600848600848600848600848600
-            8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
-            C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
-            000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
-            000000000000848600FFFF000000000000000000000000000000000000000000
-            000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
-            00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
-            D684860084860084860084860084860084860084860084860084860084860084
-            8600848600CED3D60000}
-          Style.LookAndFeel.Kind = lfOffice11
-          Style.ButtonStyle = btsFlat
-          StyleDisabled.LookAndFeel.Kind = lfOffice11
-          StyleFocused.LookAndFeel.Kind = lfOffice11
-          StyleHot.LookAndFeel.Kind = lfOffice11
-          TabOrder = 4
-          Width = 83
-        end
-        object cxLabel4: TcxLabel
-          Left = 488
-          Top = 56
-          Caption = 'Com '#224' Prazo (%)'
-          Transparent = True
-        end
-      end
-      object pnlSubCad: TPanel
-        Left = 0
-        Top = 129
-        Width = 767
-        Height = 220
-        Align = alClient
-        BevelOuter = bvNone
-        TabOrder = 1
-        object PgcComplementar: TcxPageControl
-          Left = 0
-          Top = 0
-          Width = 767
-          Height = 220
-          ActivePage = cxTabSheet1
-          Align = alClient
-          ShowFrame = True
-          TabOrder = 0
-          ClientRectBottom = 216
-          ClientRectLeft = 4
-          ClientRectRight = 763
-          ClientRectTop = 27
-          object cxTabSheet1: TcxTabSheet
-            Caption = '  Faixas de Comiss'#227'o     '
-            ImageIndex = 0
-            object PGCSub1: TcxPageControl
-              Left = 0
-              Top = 0
-              Width = 759
-              Height = 189
-              ActivePage = tbsListaComp1
-              Align = alClient
-              HideTabs = True
-              TabOrder = 0
-              ClientRectBottom = 188
-              ClientRectLeft = 1
-              ClientRectRight = 758
-              ClientRectTop = 1
-              object tbsListaComp1: TcxTabSheet
-                Caption = 'Pesquisa'
-                ImageIndex = 0
-                object cxGrid1: TcxGrid
-                  Left = 0
-                  Top = 0
-                  Width = 757
-                  Height = 187
-                  Align = alClient
-                  TabOrder = 0
-                  object cxGrid1DBBandedTableView1: TcxGridDBBandedTableView
-                    OnKeyDown = GridDBBandedTableView2KeyDown
-                    NavigatorButtons.ConfirmDelete = False
-                    DataController.Summary.DefaultGroupSummaryItems = <
-                      item
-                        Kind = skSum
-                        Position = spFooter
-                        Column = cxGrid1DBBandedTableView1TOTAL
+        Width = 889
+        Height = 394
+        inherited pnlSubCad: TPanel
+          Top = 116
+          Width = 887
+          inherited PgcDetalhe: TcxPageControl
+            Width = 887
+            ClientRectRight = 883
+            inherited tbsDetalhe1: TcxTabSheet
+              Caption = '  Faixas de Comiss'#227'o     '
+              inherited PGCSub1: TcxPageControl
+                Width = 879
+                ActivePage = tbsListaSub1
+                ClientRectRight = 875
+                inherited tbsListaSub1: TcxTabSheet
+                  inherited GridDet1: TcxGrid
+                    Width = 871
+                    inherited TVDet1: TcxGridDBBandedTableView
+                      DataController.DetailKeyFieldNames = 'CODIGO'
+                      object TVDet1CNPJ: TcxGridDBBandedColumn
+                        DataBinding.FieldName = 'CNPJ'
+                        Visible = False
+                        Position.BandIndex = 0
+                        Position.ColIndex = 0
+                        Position.RowIndex = 0
                       end
-                      item
-                        Kind = skSum
-                        Column = cxGrid1DBBandedTableView1TOTAL
-                      end>
-                    DataController.Summary.FooterSummaryItems = <
-                      item
-                        Kind = skSum
-                        Column = cxGrid1DBBandedTableView1TOTAL
-                      end>
-                    DataController.Summary.SummaryGroups = <>
-                    OptionsBehavior.IncSearch = True
-                    OptionsData.CancelOnExit = False
-                    OptionsData.Deleting = False
-                    OptionsData.DeletingConfirmation = False
-                    OptionsData.Editing = False
-                    OptionsData.Inserting = False
-                    OptionsView.Footer = True
-                    OptionsView.GroupByBox = False
-                    OptionsView.GroupFooters = gfAlwaysVisible
-                    OptionsView.BandHeaders = False
-                    Bands = <
-                      item
-                      end>
-                    object cxGrid1DBBandedTableView1CODIGO: TcxGridDBBandedColumn
-                      DataBinding.FieldName = 'CODIGO'
-                      Position.BandIndex = 0
-                      Position.ColIndex = 0
-                      Position.RowIndex = 0
-                    end
-                    object cxGrid1DBBandedTableView1PRODUTO: TcxGridDBBandedColumn
-                      DataBinding.FieldName = 'PRODUTO'
-                      Position.BandIndex = 0
-                      Position.ColIndex = 1
-                      Position.RowIndex = 0
-                    end
-                    object cxGrid1DBBandedTableView1QTDE: TcxGridDBBandedColumn
-                      DataBinding.FieldName = 'QTDE'
-                      Position.BandIndex = 0
-                      Position.ColIndex = 2
-                      Position.RowIndex = 0
-                    end
-                    object cxGrid1DBBandedTableView1VALOR: TcxGridDBBandedColumn
-                      DataBinding.FieldName = 'VALOR'
-                      Position.BandIndex = 0
-                      Position.ColIndex = 3
-                      Position.RowIndex = 0
-                    end
-                    object cxGrid1DBBandedTableView1TOTAL: TcxGridDBBandedColumn
-                      DataBinding.FieldName = 'TOTAL'
-                      Width = 107
-                      Position.BandIndex = 0
-                      Position.ColIndex = 4
-                      Position.RowIndex = 0
-                    end
-                    object cxGrid1DBBandedTableView1NOTA_FISCAL: TcxGridDBBandedColumn
-                      DataBinding.FieldName = 'NOTA_FISCAL'
-                      Position.BandIndex = 0
-                      Position.ColIndex = 5
-                      Position.RowIndex = 0
-                    end
-                    object cxGrid1DBBandedTableView1NOME_PRODUTO: TcxGridDBBandedColumn
-                      DataBinding.FieldName = 'NOME_PRODUTO'
-                      Position.BandIndex = 0
-                      Position.ColIndex = 6
-                      Position.RowIndex = 0
-                    end
-                    object cxGrid1DBBandedTableView1QTDE_QUEBRA: TcxGridDBBandedColumn
-                      DataBinding.FieldName = 'QTDE_QUEBRA'
-                      Position.BandIndex = 0
-                      Position.ColIndex = 7
-                      Position.RowIndex = 0
-                    end
-                    object cxGrid1DBBandedTableView1QTDE_LIQUIDA: TcxGridDBBandedColumn
-                      DataBinding.FieldName = 'QTDE_LIQUIDA'
-                      Position.BandIndex = 0
-                      Position.ColIndex = 8
-                      Position.RowIndex = 0
+                      object TVDet1CODIGO: TcxGridDBBandedColumn
+                        DataBinding.FieldName = 'CODIGO'
+                        Visible = False
+                        Position.BandIndex = 0
+                        Position.ColIndex = 2
+                        Position.RowIndex = 0
+                      end
+                      object TVDet1VALOR: TcxGridDBBandedColumn
+                        DataBinding.FieldName = 'VALOR'
+                        Position.BandIndex = 0
+                        Position.ColIndex = 3
+                        Position.RowIndex = 0
+                      end
+                      object TVDet1PRAZO: TcxGridDBBandedColumn
+                        DataBinding.FieldName = 'PRAZO'
+                        Position.BandIndex = 0
+                        Position.ColIndex = 4
+                        Position.RowIndex = 0
+                      end
+                      object TVDet1VISTA: TcxGridDBBandedColumn
+                        DataBinding.FieldName = 'VISTA'
+                        Position.BandIndex = 0
+                        Position.ColIndex = 5
+                        Position.RowIndex = 0
+                      end
+                      object TVDet1ID: TcxGridDBBandedColumn
+                        DataBinding.FieldName = 'ID'
+                        Position.BandIndex = 0
+                        Position.ColIndex = 1
+                        Position.RowIndex = 0
+                      end
                     end
                   end
-                  object cxGridLevel1: TcxGridLevel
-                    GridView = cxGrid1DBBandedTableView1
+                end
+                inherited tbsEditaSub1: TcxTabSheet
+                  inherited edtCodDet1: TcxDBTextEdit
+                    TabStop = True
+                    DataBinding.DataField = 'ID'
+                    Style.Color = clBtnShadow
+                    Width = 49
+                  end
+                  object cxDBCalcEdit3: TcxDBCalcEdit
+                    Left = 60
+                    Top = 24
+                    DataBinding.DataField = 'VALOR'
+                    DataBinding.DataSource = dsRegistroDet1
+                    Properties.ButtonGlyph.Data = {
+                      46020000424D460200000000000036000000280000000E0000000C0000000100
+                      1800000000001002000000000000000000000000000000000000CED3D6000000
+                      0000000000000000000000000000000000000000000000000000000000000000
+                      00CED3D600008486008486008400008400008400008400008400008400008400
+                      008400008400008400008400000000000000848600FFFFFF8486008486008486
+                      0084860084860084860084860084860084860084860084000000000000008486
+                      00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
+                      00008400000000000000848600FFFFFF84860084860084860084860084860084
+                      86008486008486008486008486008400000000000000848600FFFF0084860000
+                      0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
+                      0000848600FFFFFF848600848600848600848600848600848600848600848600
+                      8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
+                      C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
+                      000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
+                      000000000000848600FFFF000000000000000000000000000000000000000000
+                      000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
+                      00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
+                      D684860084860084860084860084860084860084860084860084860084860084
+                      8600848600CED3D60000}
+                    Style.LookAndFeel.Kind = lfOffice11
+                    Style.ButtonStyle = btsFlat
+                    StyleDisabled.LookAndFeel.Kind = lfOffice11
+                    StyleFocused.LookAndFeel.Kind = lfOffice11
+                    StyleHot.LookAndFeel.Kind = lfOffice11
+                    TabOrder = 1
+                    Width = 125
+                  end
+                  object cxLabel14: TcxLabel
+                    Left = 60
+                    Top = 8
+                    Caption = 'Valor'
+                    Transparent = True
+                  end
+                  object cxDBCalcEdit4: TcxDBCalcEdit
+                    Left = 188
+                    Top = 24
+                    DataBinding.DataField = 'VISTA'
+                    DataBinding.DataSource = dsRegistroDet1
+                    Properties.ButtonGlyph.Data = {
+                      46020000424D460200000000000036000000280000000E0000000C0000000100
+                      1800000000001002000000000000000000000000000000000000CED3D6000000
+                      0000000000000000000000000000000000000000000000000000000000000000
+                      00CED3D600008486008486008400008400008400008400008400008400008400
+                      008400008400008400008400000000000000848600FFFFFF8486008486008486
+                      0084860084860084860084860084860084860084860084000000000000008486
+                      00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
+                      00008400000000000000848600FFFFFF84860084860084860084860084860084
+                      86008486008486008486008486008400000000000000848600FFFF0084860000
+                      0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
+                      0000848600FFFFFF848600848600848600848600848600848600848600848600
+                      8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
+                      C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
+                      000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
+                      000000000000848600FFFF000000000000000000000000000000000000000000
+                      000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
+                      00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
+                      D684860084860084860084860084860084860084860084860084860084860084
+                      8600848600CED3D60000}
+                    Style.LookAndFeel.Kind = lfOffice11
+                    Style.ButtonStyle = btsFlat
+                    StyleDisabled.LookAndFeel.Kind = lfOffice11
+                    StyleFocused.LookAndFeel.Kind = lfOffice11
+                    StyleHot.LookAndFeel.Kind = lfOffice11
+                    TabOrder = 2
+                    Width = 83
+                  end
+                  object cxLabel15: TcxLabel
+                    Left = 188
+                    Top = 8
+                    Caption = 'Com '#224' Vista (%)'
+                    Transparent = True
+                  end
+                  object cxDBCalcEdit5: TcxDBCalcEdit
+                    Left = 273
+                    Top = 24
+                    DataBinding.DataField = 'PRAZO'
+                    DataBinding.DataSource = dsRegistroDet1
+                    Properties.ButtonGlyph.Data = {
+                      46020000424D460200000000000036000000280000000E0000000C0000000100
+                      1800000000001002000000000000000000000000000000000000CED3D6000000
+                      0000000000000000000000000000000000000000000000000000000000000000
+                      00CED3D600008486008486008400008400008400008400008400008400008400
+                      008400008400008400008400000000000000848600FFFFFF8486008486008486
+                      0084860084860084860084860084860084860084860084000000000000008486
+                      00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
+                      00008400000000000000848600FFFFFF84860084860084860084860084860084
+                      86008486008486008486008486008400000000000000848600FFFF0084860000
+                      0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
+                      0000848600FFFFFF848600848600848600848600848600848600848600848600
+                      8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
+                      C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
+                      000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
+                      000000000000848600FFFF000000000000000000000000000000000000000000
+                      000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
+                      00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
+                      D684860084860084860084860084860084860084860084860084860084860084
+                      8600848600CED3D60000}
+                    Style.LookAndFeel.Kind = lfOffice11
+                    Style.ButtonStyle = btsFlat
+                    StyleDisabled.LookAndFeel.Kind = lfOffice11
+                    StyleFocused.LookAndFeel.Kind = lfOffice11
+                    StyleHot.LookAndFeel.Kind = lfOffice11
+                    TabOrder = 3
+                    OnKeyDown = cxDBCalcEdit5KeyDown
+                    Width = 83
+                  end
+                  object cxLabel16: TcxLabel
+                    Left = 273
+                    Top = 8
+                    Caption = 'Com '#224' Prazo (%)'
+                    Transparent = True
                   end
                 end
               end
-              object tbsEditaComp1: TcxTabSheet
-                Caption = 'Registro'
-                ImageIndex = 1
-                object edtCodigoEnd: TcxDBTextEdit
-                  Left = 9
-                  Top = 24
-                  TabStop = False
-                  DataBinding.DataField = 'CODIGO'
-                  Properties.CharCase = ecUpperCase
-                  Properties.ReadOnly = True
-                  Style.Color = clInactiveBorder
-                  TabOrder = 0
-                  Width = 65
+            end
+            inherited tbsDetalhe2: TcxTabSheet
+              TabVisible = False
+              inherited PGCSub2: TcxPageControl
+                Width = 879
+                ClientRectRight = 875
+                inherited tbsListaSub2: TcxTabSheet
+                  inherited GridDet2: TcxGrid
+                    Width = 863
+                  end
                 end
-                object cxLabel8: TcxLabel
-                  Left = 8
-                  Top = 8
-                  Caption = 'C'#243'digo'
-                  Transparent = True
+              end
+            end
+            inherited tbsDetalhe3: TcxTabSheet
+              TabVisible = False
+              inherited PGCSub3: TcxPageControl
+                Width = 879
+                ClientRectRight = 875
+                inherited tbsListaSub3: TcxTabSheet
+                  inherited GridDet3: TcxGrid
+                    Width = 863
+                  end
                 end
-                object cbProduto: TcxDBLookupComboBox
-                  Left = 74
-                  Top = 24
-                  DataBinding.DataField = 'PRODUTO'
-                  Properties.CharCase = ecUpperCase
-                  Properties.DropDownAutoSize = True
-                  Properties.KeyFieldNames = 'CODIGO'
-                  Properties.ListColumns = <
-                    item
-                      FieldName = 'NOME'
-                    end
-                    item
-                      FieldName = 'CODIGO'
-                    end>
-                  TabOrder = 1
-                  Width = 375
-                end
-                object cxLabel5: TcxLabel
-                  Left = 72
-                  Top = 8
-                  Caption = 'Produto'
-                  Transparent = True
-                end
-                object btnProduto: TcxButtonEdit
-                  Left = 448
-                  Top = 24
-                  TabStop = False
-                  Properties.Buttons = <
-                    item
-                      Caption = 'F9'
-                      Default = True
-                      Kind = bkText
-                    end>
-                  Properties.ViewStyle = vsButtonsOnly
-                  TabOrder = 9
-                  Text = 'btnProduto'
-                  Width = 25
-                end
-                object cxDBCalcEdit6: TcxDBCalcEdit
-                  Left = 581
-                  Top = 23
-                  DataBinding.DataField = 'VALOR'
-                  Style.LookAndFeel.Kind = lfOffice11
-                  Style.ButtonStyle = btsFlat
-                  StyleDisabled.LookAndFeel.Kind = lfOffice11
-                  StyleFocused.LookAndFeel.Kind = lfOffice11
-                  StyleHot.LookAndFeel.Kind = lfOffice11
-                  TabOrder = 3
-                  Width = 103
-                end
-                object cxLabel10: TcxLabel
-                  Left = 581
-                  Top = 7
-                  Caption = 'Valor Unit'#225'rio'
-                  Transparent = True
-                end
-                object cxDBCalcEdit7: TcxDBCalcEdit
-                  Left = 474
-                  Top = 24
-                  DataBinding.DataField = 'QTDE'
-                  Style.LookAndFeel.Kind = lfOffice11
-                  Style.ButtonStyle = btsFlat
-                  StyleDisabled.LookAndFeel.Kind = lfOffice11
-                  StyleFocused.LookAndFeel.Kind = lfOffice11
-                  StyleHot.LookAndFeel.Kind = lfOffice11
-                  TabOrder = 2
-                  Width = 103
-                end
-                object cxLabel11: TcxLabel
-                  Left = 472
-                  Top = 8
-                  Caption = 'Quantidade (KG)'
-                  Transparent = True
-                end
-                object cxDBCalcEdit8: TcxDBCalcEdit
-                  Left = 685
-                  Top = 23
-                  DataBinding.DataField = 'TOTAL'
-                  Properties.ReadOnly = True
-                  Style.Color = clInactiveBorder
-                  Style.LookAndFeel.Kind = lfOffice11
-                  Style.ButtonStyle = btsFlat
-                  StyleDisabled.LookAndFeel.Kind = lfOffice11
-                  StyleFocused.LookAndFeel.Kind = lfOffice11
-                  StyleHot.LookAndFeel.Kind = lfOffice11
-                  TabOrder = 4
-                  Width = 103
-                end
-                object cxLabel12: TcxLabel
-                  Left = 685
-                  Top = 7
-                  Caption = 'Total(KG)'
-                  Transparent = True
-                end
-                object cxDBCalcEdit9: TcxDBCalcEdit
-                  Left = 10
-                  Top = 66
-                  DataBinding.DataField = 'QTDE_QUEBRA'
-                  Style.LookAndFeel.Kind = lfOffice11
-                  Style.ButtonStyle = btsFlat
-                  StyleDisabled.LookAndFeel.Kind = lfOffice11
-                  StyleFocused.LookAndFeel.Kind = lfOffice11
-                  StyleHot.LookAndFeel.Kind = lfOffice11
-                  TabOrder = 5
-                  Width = 103
-                end
-                object cxLabel13: TcxLabel
-                  Left = 7
-                  Top = 50
-                  Caption = 'Descto/Quebra(KG) '
-                  Transparent = True
-                end
-                object cxDBCalcEdit10: TcxDBCalcEdit
-                  Left = 115
-                  Top = 66
-                  DataBinding.DataField = 'QTDE_LIQUIDA'
-                  Style.LookAndFeel.Kind = lfOffice11
-                  Style.ButtonStyle = btsFlat
-                  StyleDisabled.LookAndFeel.Kind = lfOffice11
-                  StyleFocused.LookAndFeel.Kind = lfOffice11
-                  StyleHot.LookAndFeel.Kind = lfOffice11
-                  TabOrder = 6
-                  Width = 103
-                end
-                object cxLabel14: TcxLabel
-                  Left = 116
-                  Top = 50
-                  Caption = 'Qtde. Liquida'
-                  Transparent = True
-                end
+              end
+            end
+            inherited tbsDetalhe4: TcxTabSheet
+              TabVisible = False
+              inherited PGCSub4: TcxPageControl
+                Width = 879
+                ClientRectRight = 875
+              end
+            end
+            inherited tbsDetalhe5: TcxTabSheet
+              TabVisible = False
+              inherited PGCSub5: TcxPageControl
+                Width = 879
+                ClientRectRight = 875
+              end
+            end
+            inherited tbsDetalhe6: TcxTabSheet
+              TabVisible = False
+              inherited PGCSub6: TcxPageControl
+                Width = 879
+                ClientRectRight = 875
+              end
+            end
+            inherited tbsDetalhe7: TcxTabSheet
+              TabVisible = False
+              inherited PGCSub7: TcxPageControl
+                Width = 879
+                ClientRectRight = 875
+              end
+            end
+            inherited tbsDetalhe8: TcxTabSheet
+              TabVisible = False
+              inherited PGCSub8: TcxPageControl
+                Width = 879
+                ClientRectRight = 875
+              end
+            end
+          end
+        end
+        inherited pnlMaster: TPanel
+          Width = 887
+          Height = 115
+          inherited PgcMaster: TcxPageControl
+            Width = 887
+            Height = 115
+            ClientRectBottom = 111
+            ClientRectRight = 883
+            inherited tbsMaster1: TcxTabSheet
+              Caption = 'Vendedor'
+              inherited edtCodigo: TcxDBTextEdit
+                DataBinding.DataField = 'CODIGO'
+                TabOrder = 5
+              end
+              object cxDBCalcEdit2: TcxDBCalcEdit
+                Left = 488
+                Top = 57
+                DataBinding.DataField = 'COM_PRAZO'
+                DataBinding.DataSource = dsRegistro
+                Properties.ButtonGlyph.Data = {
+                  46020000424D460200000000000036000000280000000E0000000C0000000100
+                  1800000000001002000000000000000000000000000000000000CED3D6000000
+                  0000000000000000000000000000000000000000000000000000000000000000
+                  00CED3D600008486008486008400008400008400008400008400008400008400
+                  008400008400008400008400000000000000848600FFFFFF8486008486008486
+                  0084860084860084860084860084860084860084860084000000000000008486
+                  00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
+                  00008400000000000000848600FFFFFF84860084860084860084860084860084
+                  86008486008486008486008486008400000000000000848600FFFF0084860000
+                  0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
+                  0000848600FFFFFF848600848600848600848600848600848600848600848600
+                  8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
+                  C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
+                  000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
+                  000000000000848600FFFF000000000000000000000000000000000000000000
+                  000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
+                  00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
+                  D684860084860084860084860084860084860084860084860084860084860084
+                  8600848600CED3D60000}
+                Style.LookAndFeel.Kind = lfOffice11
+                Style.ButtonStyle = btsFlat
+                StyleDisabled.LookAndFeel.Kind = lfOffice11
+                StyleFocused.LookAndFeel.Kind = lfOffice11
+                StyleHot.LookAndFeel.Kind = lfOffice11
+                TabOrder = 4
+                Width = 83
+              end
+              object cxLabel10: TcxLabel
+                Left = 488
+                Top = 41
+                Caption = 'Com '#224' Prazo (%)'
+                Transparent = True
+              end
+              object cxLabel11: TcxLabel
+                Left = 400
+                Top = 41
+                Caption = 'Com '#224' Vista (%)'
+                Transparent = True
+              end
+              object cxDBCalcEdit1: TcxDBCalcEdit
+                Left = 400
+                Top = 57
+                DataBinding.DataField = 'COM_VISTA'
+                DataBinding.DataSource = dsRegistro
+                Properties.ButtonGlyph.Data = {
+                  46020000424D460200000000000036000000280000000E0000000C0000000100
+                  1800000000001002000000000000000000000000000000000000CED3D6000000
+                  0000000000000000000000000000000000000000000000000000000000000000
+                  00CED3D600008486008486008400008400008400008400008400008400008400
+                  008400008400008400008400000000000000848600FFFFFF8486008486008486
+                  0084860084860084860084860084860084860084860084000000000000008486
+                  00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
+                  00008400000000000000848600FFFFFF84860084860084860084860084860084
+                  86008486008486008486008486008400000000000000848600FFFF0084860000
+                  0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
+                  0000848600FFFFFF848600848600848600848600848600848600848600848600
+                  8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
+                  C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
+                  000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
+                  000000000000848600FFFF000000000000000000000000000000000000000000
+                  000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
+                  00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
+                  D684860084860084860084860084860084860084860084860084860084860084
+                  8600848600CED3D60000}
+                Style.LookAndFeel.Kind = lfOffice11
+                Style.ButtonStyle = btsFlat
+                StyleDisabled.LookAndFeel.Kind = lfOffice11
+                StyleFocused.LookAndFeel.Kind = lfOffice11
+                StyleHot.LookAndFeel.Kind = lfOffice11
+                TabOrder = 3
+                Width = 83
+              end
+              object btnLogradouro: TcxButtonEdit
+                Tag = 4
+                Left = 371
+                Top = 57
+                TabStop = False
+                Properties.Buttons = <
+                  item
+                    Caption = 'F4'
+                    Default = True
+                    Kind = bkText
+                  end>
+                Properties.ViewStyle = vsButtonsOnly
+                TabOrder = 8
+                Text = 'btnPessoa'
+                OnClick = btnLogradouroClick
+                Width = 25
+              end
+              object aTfrmCadPessoas: TcxDBLookupComboBox
+                Left = 8
+                Top = 57
+                DataBinding.DataField = 'PESSOA_FJ'
+                DataBinding.DataSource = dsRegistro
+                Properties.CharCase = ecUpperCase
+                Properties.KeyFieldNames = 'CODIGO'
+                Properties.ListColumns = <
+                  item
+                    FieldName = 'NOME_RAZAO'
+                  end>
+                Properties.ListSource = dsPessoa
+                TabOrder = 2
+                Width = 363
+              end
+              object cxLabel12: TcxLabel
+                Left = 8
+                Top = 41
+                Caption = 'Pessoa '
+                Transparent = True
+              end
+              object edtNome: TcxDBTextEdit
+                Left = 75
+                Top = 16
+                DataBinding.DataField = 'NOME'
+                DataBinding.DataSource = dsRegistro
+                Properties.CharCase = ecUpperCase
+                TabOrder = 1
+                Width = 493
+              end
+              object cxLabel13: TcxLabel
+                Left = 75
+                Top = -1
+                Caption = 'Nome'
+                Transparent = True
               end
             end
           end
@@ -526,7 +528,8 @@ inherited frmCadVendedor: TfrmCadVendedor
       '  CNPJ = :CNPJ and'
       '  CODIGO = :CODIGO')
     SelectSQL.Strings = (
-      'SELECT CNPJ, '
+      'SELECT'
+      '               CNPJ, '
       '               CODIGO, '
       '               NOME, '
       '               COM_VISTA, '
@@ -611,7 +614,6 @@ inherited frmCadVendedor: TfrmCadVendedor
   end
   inherited dtList: TIBQuery
     SQL.Strings = (
-      ''
       'select vdd.*, psa.nome_razao nome_pessoa'
       'from fat_vendedor vdd'
       
@@ -619,12 +621,11 @@ inherited frmCadVendedor: TfrmCadVendedor
         'ssoa_fj = psa.codigo)'
       'where vdd.cnpj = :cnpj'
       'order by nome')
-    Left = 97
-    Top = 12
+    Left = 113
     ParamData = <
       item
         DataType = ftUnknown
-        Name = 'CNPJ'
+        Name = 'cnpj'
         ParamType = ptUnknown
       end>
     object dtListCNPJ: TIBStringField
@@ -654,30 +655,36 @@ inherited frmCadVendedor: TfrmCadVendedor
       Origin = '"FAT_VENDEDOR"."COM_VISTA"'
     end
     object dtListCOM_PRAZO: TFloatField
-      DisplayLabel = 'Com. '#224' Vista (%)'
+      DisplayLabel = 'Com. '#224' Prazo (%)'
       FieldName = 'COM_PRAZO'
       Origin = '"FAT_VENDEDOR"."COM_PRAZO"'
     end
     object dtListPESSOA_FJ: TIntegerField
-      DisplayLabel = 'C'#243'd. Cad. Pessoa'
+      DisplayLabel = 'C'#243'd. Pessoa FJ'
       FieldName = 'PESSOA_FJ'
       Origin = '"FAT_VENDEDOR"."PESSOA_FJ"'
     end
     object dtListSENHA: TIBStringField
-      DisplayLabel = 'Senha'
       FieldName = 'SENHA'
       Origin = '"FAT_VENDEDOR"."SENHA"'
       Size = 6
     end
     object dtListATIVO: TIBStringField
-      DisplayLabel = 'Ativo'
       FieldName = 'ATIVO'
       Origin = '"FAT_VENDEDOR"."ATIVO"'
       FixedChar = True
       Size = 1
     end
+    object dtListCOD_PERFIL: TIntegerField
+      FieldName = 'COD_PERFIL'
+      Origin = '"FAT_VENDEDOR"."COD_PERFIL"'
+    end
+    object dtListCOD_PERFIL_PAGTO: TIntegerField
+      FieldName = 'COD_PERFIL_PAGTO'
+      Origin = '"FAT_VENDEDOR"."COD_PERFIL_PAGTO"'
+    end
     object dtListNOME_PESSOA: TIBStringField
-      DisplayLabel = 'Nome Cad. Pessoa'
+      DisplayLabel = 'Nome Pessoa FJ'
       FieldName = 'NOME_PESSOA'
       Origin = '"GLO_PESSOAS_FJ"."NOME_RAZAO"'
       Size = 50
@@ -696,87 +703,13 @@ inherited frmCadVendedor: TfrmCadVendedor
       0
       26)
   end
-  inherited ActionList1: TActionList
-    inherited ActCadLookup: TAction
-      OnExecute = ActCadLookupExecute
-    end
-  end
   inherited cxImageList1: TcxImageList
     FormatVersion = 1
   end
   inherited cxPropertiesStore: TcxPropertiesStore
     Components = <
       item
-        Component = Grid
-        Properties.Strings = (
-          'Align'
-          'Anchors'
-          'BevelEdges'
-          'BevelInner'
-          'BevelKind'
-          'BevelOuter'
-          'BevelWidth'
-          'BorderStyle'
-          'BorderWidth'
-          'Constraints'
-          'Cursor'
-          'DragCursor'
-          'DragKind'
-          'DragMode'
-          'DragOpening'
-          'DragOpeningWaitTime'
-          'Enabled'
-          'Font'
-          'Height'
-          'HelpContext'
-          'HelpKeyword'
-          'HelpType'
-          'Hint'
-          'Left'
-          'LevelTabs'
-          'LookAndFeel'
-          'Name'
-          'ParentFont'
-          'PopupMenu'
-          'RootLevelOptions'
-          'RootLevelStyles'
-          'TabOrder'
-          'TabStop'
-          'Tag'
-          'Top'
-          'Visible'
-          'Width')
-      end
-      item
-        Component = GridDBBandedTableView2
-        Properties.Strings = (
-          'BackgroundBitmaps'
-          'Bands'
-          'DataController'
-          'DateTimeHandling'
-          'DragMode'
-          'FakeComponentLink1'
-          'FakeComponentLink2'
-          'FakeComponentLink3'
-          'FilterBox'
-          'Filtering'
-          'FilterRow'
-          'Name'
-          'NavigatorButtons'
-          'NewItemRow'
-          'OptionsBehavior'
-          'OptionsCustomize'
-          'OptionsData'
-          'OptionsSelection'
-          'OptionsView'
-          'PopupMenu'
-          'Preview'
-          'Styles'
-          'Synchronization'
-          'Tag')
-      end
-      item
-        Component = GridDBBandedTableView2ATIVO
+        Component = TVRegistroATIVO
         Properties.Strings = (
           'AlternateCaption'
           'BestFitMaxWidth'
@@ -811,7 +744,7 @@ inherited frmCadVendedor: TfrmCadVendedor
           'Width')
       end
       item
-        Component = GridDBBandedTableView2CNPJ
+        Component = TVRegistroCNPJ
         Properties.Strings = (
           'AlternateCaption'
           'BestFitMaxWidth'
@@ -846,7 +779,7 @@ inherited frmCadVendedor: TfrmCadVendedor
           'Width')
       end
       item
-        Component = GridDBBandedTableView2CODIGO
+        Component = TVRegistroCOD_PERFIL
         Properties.Strings = (
           'AlternateCaption'
           'BestFitMaxWidth'
@@ -881,7 +814,7 @@ inherited frmCadVendedor: TfrmCadVendedor
           'Width')
       end
       item
-        Component = GridDBBandedTableView2COM_PRAZO
+        Component = TVRegistroCOD_PERFIL_PAGTO
         Properties.Strings = (
           'AlternateCaption'
           'BestFitMaxWidth'
@@ -916,7 +849,7 @@ inherited frmCadVendedor: TfrmCadVendedor
           'Width')
       end
       item
-        Component = GridDBBandedTableView2COM_VISTA
+        Component = TVRegistroCODIGO
         Properties.Strings = (
           'AlternateCaption'
           'BestFitMaxWidth'
@@ -951,7 +884,7 @@ inherited frmCadVendedor: TfrmCadVendedor
           'Width')
       end
       item
-        Component = GridDBBandedTableView2NOME
+        Component = TVRegistroCOM_PRAZO
         Properties.Strings = (
           'AlternateCaption'
           'BestFitMaxWidth'
@@ -986,7 +919,7 @@ inherited frmCadVendedor: TfrmCadVendedor
           'Width')
       end
       item
-        Component = GridDBBandedTableView2NOME_PESSOA
+        Component = TVRegistroCOM_VISTA
         Properties.Strings = (
           'AlternateCaption'
           'BestFitMaxWidth'
@@ -1021,7 +954,7 @@ inherited frmCadVendedor: TfrmCadVendedor
           'Width')
       end
       item
-        Component = GridDBBandedTableView2PESSOA_FJ
+        Component = TVRegistroNOME
         Properties.Strings = (
           'AlternateCaption'
           'BestFitMaxWidth'
@@ -1056,7 +989,77 @@ inherited frmCadVendedor: TfrmCadVendedor
           'Width')
       end
       item
-        Component = GridDBBandedTableView2SENHA
+        Component = TVRegistroNOME_PESSOA
+        Properties.Strings = (
+          'AlternateCaption'
+          'BestFitMaxWidth'
+          'Caption'
+          'DataBinding'
+          'DateTimeGrouping'
+          'FakeComponentLink1'
+          'FakeComponentLink2'
+          'FakeComponentLink3'
+          'FooterAlignmentHorz'
+          'GroupIndex'
+          'GroupSummaryAlignment'
+          'HeaderAlignmentHorz'
+          'HeaderAlignmentVert'
+          'HeaderGlyph'
+          'HeaderGlyphAlignmentHorz'
+          'HeaderGlyphAlignmentVert'
+          'MinWidth'
+          'Name'
+          'Options'
+          'Position'
+          'Properties'
+          'PropertiesClassName'
+          'RepositoryItem'
+          'SortIndex'
+          'SortOrder'
+          'Styles'
+          'Summary'
+          'Tag'
+          'Visible'
+          'VisibleForCustomization'
+          'Width')
+      end
+      item
+        Component = TVRegistroPESSOA_FJ
+        Properties.Strings = (
+          'AlternateCaption'
+          'BestFitMaxWidth'
+          'Caption'
+          'DataBinding'
+          'DateTimeGrouping'
+          'FakeComponentLink1'
+          'FakeComponentLink2'
+          'FakeComponentLink3'
+          'FooterAlignmentHorz'
+          'GroupIndex'
+          'GroupSummaryAlignment'
+          'HeaderAlignmentHorz'
+          'HeaderAlignmentVert'
+          'HeaderGlyph'
+          'HeaderGlyphAlignmentHorz'
+          'HeaderGlyphAlignmentVert'
+          'MinWidth'
+          'Name'
+          'Options'
+          'Position'
+          'Properties'
+          'PropertiesClassName'
+          'RepositoryItem'
+          'SortIndex'
+          'SortOrder'
+          'Styles'
+          'Summary'
+          'Tag'
+          'Visible'
+          'VisibleForCustomization'
+          'Width')
+      end
+      item
+        Component = TVRegistroSENHA
         Properties.Strings = (
           'AlternateCaption'
           'BestFitMaxWidth'
@@ -1091,22 +1094,163 @@ inherited frmCadVendedor: TfrmCadVendedor
           'Width')
       end>
   end
+  inherited dtListDet1: TIBQuery
+    SQL.Strings = (
+      'select CNPJ, '
+      '           CODIGO, '
+      '            PRAZO, '
+      '            VALOR, '
+      '            VISTA ,'
+      'ID'
+      'from FAT_VENDEDOR_FAIXAS'
+      'WHERE CNPJ = :CNPJ AND CODIGO = :CODIGO'
+      'ORDER BY VALOR')
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'CNPJ'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'CODIGO'
+        ParamType = ptUnknown
+      end>
+    object dtListDet1CNPJ: TIBStringField
+      FieldName = 'CNPJ'
+      Origin = '"FAT_VENDEDOR_FAIXAS"."CNPJ"'
+      FixedChar = True
+      Size = 14
+    end
+    object dtListDet1CODIGO: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'CODIGO'
+      Origin = '"FAT_VENDEDOR_FAIXAS"."CODIGO"'
+    end
+    object dtListDet1VALOR: TFloatField
+      DisplayLabel = 'Valor (R$)'
+      FieldName = 'VALOR'
+      Origin = '"FAT_VENDEDOR_FAIXAS"."VALOR"'
+      DisplayFormat = '###,##0.00'
+    end
+    object dtListDet1PRAZO: TFloatField
+      DisplayLabel = #224' Prazo (%)'
+      FieldName = 'PRAZO'
+      Origin = '"FAT_VENDEDOR_FAIXAS"."PRAZO"'
+      DisplayFormat = '###,##0.00'
+    end
+    object dtListDet1VISTA: TFloatField
+      DisplayLabel = #224' Vista (%)'
+      FieldName = 'VISTA'
+      Origin = '"FAT_VENDEDOR_FAIXAS"."VISTA"'
+      DisplayFormat = '###,##0.00'
+    end
+    object dtListDet1ID: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'ID'
+      Origin = '"FAT_VENDEDOR_FAIXAS"."ID"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+  end
+  inherited dtEditDet1: TIBDataSet
+    BeforePost = dtEditDet1BeforePost
+    DeleteSQL.Strings = (
+      'delete from FAT_VENDEDOR_FAIXAS'
+      'where'
+      '  CNPJ = :OLD_CNPJ and'
+      '  ID = :OLD_ID')
+    InsertSQL.Strings = (
+      'insert into FAT_VENDEDOR_FAIXAS'
+      '  (CNPJ, CODIGO, ID, PRAZO, VALOR, VISTA)'
+      'values'
+      '  (:CNPJ, :CODIGO, :ID, :PRAZO, :VALOR, :VISTA)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  ID,'
+      '  CNPJ,'
+      '  CODIGO,'
+      '  VALOR,'
+      '  VISTA,'
+      '  PRAZO'
+      'from FAT_VENDEDOR_FAIXAS '
+      'where'
+      '  CNPJ = :CNPJ and'
+      '  ID = :ID')
+    SelectSQL.Strings = (
+      'select CNPJ, '
+      '           ID,'
+      '           CODIGO, '
+      '            PRAZO, '
+      '            VALOR, '
+      '            VISTA '
+      'from FAT_VENDEDOR_FAIXAS'
+      'WHERE CNPJ = :CNPJ AND ID = :ID'
+      '')
+    ModifySQL.Strings = (
+      'update FAT_VENDEDOR_FAIXAS'
+      'set'
+      '  CNPJ = :CNPJ,'
+      '  CODIGO = :CODIGO,'
+      '  ID = :ID,'
+      '  PRAZO = :PRAZO,'
+      '  VALOR = :VALOR,'
+      '  VISTA = :VISTA'
+      'where'
+      '  CNPJ = :OLD_CNPJ and'
+      '  ID = :OLD_ID')
+    GeneratorField.Field = 'ID'
+    GeneratorField.Generator = 'GEN_FAT_VENDEDOR_FAIXAS_ID'
+    object dtEditDet1CNPJ: TIBStringField
+      FieldName = 'CNPJ'
+      Origin = '"FAT_VENDEDOR_FAIXAS"."CNPJ"'
+      FixedChar = True
+      Size = 14
+    end
+    object dtEditDet1CODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = '"FAT_VENDEDOR_FAIXAS"."CODIGO"'
+    end
+    object dtEditDet1PRAZO: TFloatField
+      FieldName = 'PRAZO'
+      Origin = '"FAT_VENDEDOR_FAIXAS"."PRAZO"'
+      DisplayFormat = '###,##0.00'
+    end
+    object dtEditDet1VALOR: TFloatField
+      FieldName = 'VALOR'
+      Origin = '"FAT_VENDEDOR_FAIXAS"."VALOR"'
+      DisplayFormat = '###,##0.00'
+    end
+    object dtEditDet1VISTA: TFloatField
+      FieldName = 'VISTA'
+      Origin = '"FAT_VENDEDOR_FAIXAS"."VISTA"'
+      DisplayFormat = '###,##0.00'
+    end
+    object dtEditDet1ID: TIntegerField
+      FieldName = 'ID'
+      Origin = '"FAT_VENDEDOR_FAIXAS"."ID"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+  end
   object dsPessoa: TDataSource
     AutoEdit = False
     DataSet = QryPessoa
-    Left = 19
-    Top = 120
+    Left = 331
+    Top = 152
   end
   object QryPessoa: TIBQuery
+    Tag = 4
     Database = DmApp.Database
     Transaction = DmApp.Transaction
+    BeforeOpen = dtListBeforeOpen
     DataSource = dsPesquisa
     SQL.Strings = (
       'select psa.codigo, psa.nome_razao from glo_pessoas_fj psa'
       'where psa.cnpj = :cnpj'
       'order by psa.nome_razao')
-    Left = 48
-    Top = 120
+    Left = 360
+    Top = 152
     ParamData = <
       item
         DataType = ftString

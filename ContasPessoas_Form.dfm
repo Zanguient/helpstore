@@ -22,7 +22,7 @@ object FrmContasPessoas: TFrmContasPessoas
     Left = 0
     Top = 0
     Width = 377
-    Height = 259
+    Height = 255
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -37,7 +37,7 @@ object FrmContasPessoas: TFrmContasPessoas
     OnResize = pnlClientResize
     object Bevel1: TBevel
       Left = 2
-      Top = 225
+      Top = 221
       Width = 373
       Height = 2
       Align = alBottom
@@ -223,7 +223,7 @@ object FrmContasPessoas: TFrmContasPessoas
     end
     object pnlBottom: TPanel
       Left = 2
-      Top = 227
+      Top = 223
       Width = 373
       Height = 30
       Align = alBottom
@@ -413,8 +413,8 @@ object FrmContasPessoas: TFrmContasPessoas
     AllowReset = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
     CanCustomize = False
     Categories.Strings = (

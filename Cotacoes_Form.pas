@@ -154,11 +154,10 @@ uses Vendas_DM,
      Funcoes,
      CotacoesItens_Form,
      Cadastros_DM,
-     Clientes_Form,
      FormasPagto_Form,
-     Localizar_Cliente, SelVendas_Form, Cotacao_FRel, Transportadoras_Form,
-  Localizar_Transportadora, SelCotacoes_Form, Fornecedores_Form,
-  Localizar_Fornecedor, Plano_DM ;
+     Localizar_Cliente, SelVendas_Form, Cotacao_FRel, 
+  Localizar_Transportadora, SelCotacoes_Form, 
+  Localizar_Fornecedor, Plano_DM , untCadFornecedores;
 
   {$R *.DFM}
 
@@ -554,16 +553,16 @@ begin
      Datasource.DataSet.Edit;
   //
   { * * * * * }
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmFornecedores', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'frmCadFornecedores', False);
   { * * * * * }
   //
   dmPlano := TdmPlano.create(Self);
   FrmCotacoes.Tag := 1;
-  FrmFornecedores := TFrmFornecedores.Create(Self);
+  frmCadFornecedores := TfrmCadFornecedores.Create(Self);
 
-  FrmFornecedores.Showmodal ;
+  frmCadFornecedores.Showmodal ;
   //
-  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := FrmMain.Codigo_Int;
+  Datasource.DataSet.FieldByName('PESSOA_FJ').asInteger := frmCadFornecedores.Codigo;
 
   If DMCadastros <> Nil
   then
@@ -738,13 +737,13 @@ begin
 
 
   { * * * * * }
-  DMApp.Verificar_Login(FileName(Application.ExeName), 'FrmTransportadoras', False);
+  DMApp.Verificar_Login(FileName(Application.ExeName), 'frmCadTransportadoras', False);
   { * * * * * }
 
   //
-  FrmTransportadoras := TFrmTransportadoras.Create(Application);
+  frmCadTransportadoras := TfrmCadTransportadoras.Create(Application);
 
-  FrmTransportadoras.Showmodal ;
+  frmCadTransportadoras.Showmodal ;
 
   Datasource.DataSet.FieldByName('TRANSPORTADORA').asInteger := FrmMain.Codigo_Int;
 

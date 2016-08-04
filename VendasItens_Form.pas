@@ -690,7 +690,7 @@ begin
         Datasource.DataSet.FieldByName('PRODUTOFIS').asString := (FrmLocProdutoCadastro_Auto.CampTrecho);
 
 
-     FrmLocProdutoCadastro_Auto.LblTitulo.Caption := 'Localizar Produto' ;
+     FrmLocProdutoCadastro_Auto.Caption := 'Localizar Produto' ;
 
      IF CancelaQtd then
      begin

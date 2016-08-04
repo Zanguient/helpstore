@@ -97,7 +97,7 @@ var
 implementation
 
 uses Cadastros_DM, Listagens_DM, Application_DM, Main, Usuarios_DM, Funcoes,
-  Logradouros_Form, Bairros_Form, Cidades_Form;
+  Cidades_Form;
 
 {$R *.DFM}
 

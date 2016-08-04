@@ -3,7 +3,6 @@ object DmApp: TDmApp
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
   Left = 319
-  Top = 3
   Height = 728
   Width = 808
   object Database: TIBDatabase
@@ -5590,7 +5589,7 @@ object DmApp: TDmApp
     ExibirEAN = False
     QuebraLinhaEmDetalhamentoEspecifico = True
     ExibeCampoFatura = False
-    Left = 536
+    Left = 552
     Top = 512
   end
 end

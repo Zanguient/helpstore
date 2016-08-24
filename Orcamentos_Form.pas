@@ -255,7 +255,7 @@ uses Vendas_DM,
      SelVendas_Form,
      Tipo_Impressora_Form,
      EntraNumeroReal_Form,
-      Vendas_DM2, MensagemFaturamento_Form, untCadClientes;
+      Vendas_DM2, MensagemFaturamento_Form, untCadClientes, untCadVendedor;
 
   {$R *.DFM}
 

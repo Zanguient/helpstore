@@ -96,7 +96,7 @@ uses Cadastros_DM,
      Application_DM,
      Main,
      Usuarios_DM,
-     Funcoes,
+     Funcoes;
 
 {$R *.DFM}
 

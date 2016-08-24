@@ -236,7 +236,8 @@ uses
      GarantiasItens_Form,
      Localizar_Forma,
      EnviagarantiaCaixa_FRel,
-     SelGarantias_Form, Dados_Desconto_Form, Servicos_DM, untCadClientes;
+     SelGarantias_Form, Dados_Desconto_Form, Servicos_DM, untCadClientes,
+  untCadVendedor;
 
   {$R *.DFM}
 

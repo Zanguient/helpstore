@@ -23,8 +23,8 @@ object FrmRotas: TFrmRotas
   object pnlClient: TPanel
     Left = 0
     Top = 0
-    Width = 527
-    Height = 439
+    Width = 519
+    Height = 431
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -39,8 +39,8 @@ object FrmRotas: TFrmRotas
     OnResize = pnlClientResize
     object Bevel1: TBevel
       Left = 2
-      Top = 405
-      Width = 523
+      Top = 397
+      Width = 515
       Height = 2
       Align = alBottom
       Shape = bsTopLine
@@ -169,8 +169,8 @@ object FrmRotas: TFrmRotas
     end
     object pnlBottom: TPanel
       Left = 2
-      Top = 407
-      Width = 523
+      Top = 399
+      Width = 515
       Height = 30
       Align = alBottom
       BevelOuter = bvNone
@@ -178,7 +178,7 @@ object FrmRotas: TFrmRotas
       object dxBarDockControl1: TdxBarDockControl
         Left = 0
         Top = 2
-        Width = 523
+        Width = 515
         Height = 26
         Align = dalTop
         BarManager = BarMgr
@@ -186,7 +186,7 @@ object FrmRotas: TFrmRotas
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 523
+        Width = 515
         Height = 2
         Align = alTop
         BevelOuter = bvNone

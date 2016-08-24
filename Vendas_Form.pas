@@ -764,7 +764,7 @@ uses Vendas_DM,
   ACBrNFeNotasFiscais, Localizar_Lote, VendasPdv_Form,
   Entra_Dados_Consumidor_Form, ConsultaCobrancas_Form,
   MensagemClassificacao_Form, EntraSenha_Form, UntCadTransportadoras,
-  untCadClientes;
+  untCadClientes, untCadVendedor;
   {$R *.DFM}
 
 procedure TFrmVendas.Calcular_Itens;

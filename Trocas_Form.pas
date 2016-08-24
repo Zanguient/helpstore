@@ -244,7 +244,8 @@ uses Vendas_DM,
      Localizar_Forma,
      EnviaTrocaCaixa_FRel,
      SelTrocas_Form, Dados_Desconto_Form, FaturaTroca_Form,
-  Cheque_Venda_Form, Cartao_Venda_Form, Vendas_DM2, untCadClientes;
+  Cheque_Venda_Form, Cartao_Venda_Form, Vendas_DM2, untCadClientes,
+  untCadVendedor;
 
   {$R *.DFM}
 

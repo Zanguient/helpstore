@@ -117,7 +117,7 @@ uses Cadastros_DM,
      Main,
      Usuarios_DM,
      Funcoes,
-     Cidades_Form, Localizar_Generico, untCadCidades;
+     Cidades_Form, Localizar_Generico, untCadCidades, untCadVendedor;
 
 {$R *.DFM}
 

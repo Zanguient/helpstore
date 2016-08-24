@@ -157,7 +157,8 @@ uses Vendas_DM,
      FormasPagto_Form,
      Localizar_Cliente, SelVendas_Form, Cotacao_FRel, 
   Localizar_Transportadora, SelCotacoes_Form, 
-  Localizar_Fornecedor, Plano_DM , untCadFornecedores;
+  Localizar_Fornecedor, Plano_DM , untCadFornecedores,
+  UntCadTransportadoras;
 
   {$R *.DFM}
 

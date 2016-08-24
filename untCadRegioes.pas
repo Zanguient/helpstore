@@ -97,7 +97,7 @@ var
 
 implementation
 
-uses UntCadTecnicos, UntCadTerceiros, untCadVendedor2;
+uses UntCadTecnicos, UntCadTerceiros, untCadVendedor;
 
 {$R *.dfm}
 

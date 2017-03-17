@@ -1359,7 +1359,8 @@ uses
   untCadProdutos, UntCadGrupos, UntCadPerfilGrades, UntCadReducoes,
   UntRelOrcamento, UntCadTransportadoras, untCadCRMAtividades,
   untCadCRMStatus, untGeraVisitaPreventiva, untCadHelp,
-  untCadControleTonner, untListaControleTonner, untConfAtualizacao;
+  untCadControleTonner, untListaControleTonner, untConfAtualizacao,
+  CaixaGeral_FRel;
 
 {$R *.DFM}
 

@@ -1,6 +1,6 @@
 object FRelPosicaoEstoqueGrade: TFRelPosicaoEstoqueGrade
-  Left = 591
-  Top = 464
+  Left = 568
+  Top = 243
   BorderStyle = bsDialog
   Caption = ' List de Pos. de Estoque por Grade'
   ClientHeight = 264
@@ -442,7 +442,7 @@ object FRelPosicaoEstoqueGrade: TFRelPosicaoEstoqueGrade
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
     PrinterSetup.Orientation = poLandscape
-    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PaperName = 'A4 210x297 mm'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
     PrinterSetup.mmMarginBottom = 6350
@@ -477,7 +477,7 @@ object FRelPosicaoEstoqueGrade: TFRelPosicaoEstoqueGrade
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
-    TextSearchSettings.DefaultString = '<FindText>'
+    TextSearchSettings.DefaultString = '<Texto a localizar>'
     TextSearchSettings.Enabled = True
     Left = 192
     Top = 192

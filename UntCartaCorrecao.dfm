@@ -3,6 +3,7 @@ object FrmCartaCorrecao: TFrmCartaCorrecao
   Top = 135
   Width = 511
   Height = 407
+  BorderIcons = [biSystemMenu]
   Caption = 'Carta de Corre'#231#227'o Eletr'#244'nica'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -167,6 +168,7 @@ object FrmCartaCorrecao: TFrmCartaCorrecao
     Configuracoes.WebServices.UF = 'SP'
     Configuracoes.WebServices.AguardarConsultaRet = 0
     Configuracoes.WebServices.QuebradeLinha = '|'
+    DANFE = DmApp.ACBrNFeDANFeRL1
     Left = 190
   end
   object DtVenda: TIBDataSet

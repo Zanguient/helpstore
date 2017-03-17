@@ -397,7 +397,6 @@ uses
   Equipamentos_FRel2 in 'Equipamentos_FRel2.pas' {fRelEquipamentos2},
   CarregarItens in 'CarregarItens.pas' {FrmCarregarItens},
   ConfirmarCarregamentoItens in 'ConfirmarCarregamentoItens.pas' {FrmConfirmarCarregamentoItens},
-  SelCarga in 'SelCarga.pas' {FrmSelCarga},
   OrdemCarga_DM in 'OrdemCarga_DM.pas' {DmOrdemCarga: TDataModule},
   FichaCarga in 'FichaCarga.pas' {FrmFichaCarga},
   SeriesCustomizaveis in 'SeriesCustomizaveis.pas' {FrmSeriesCustomizaveis},

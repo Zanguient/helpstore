@@ -21,8 +21,8 @@ object FrmPagar: TFrmPagar
   object pnlClient: TPanel
     Left = 0
     Top = 0
-    Width = 1264
-    Height = 690
+    Width = 1272
+    Height = 697
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -37,16 +37,16 @@ object FrmPagar: TFrmPagar
     OnResize = pnlClientResize
     object Bevel1: TBevel
       Left = 2
-      Top = 656
-      Width = 1260
+      Top = 663
+      Width = 1268
       Height = 2
       Align = alBottom
       Shape = bsTopLine
     end
     object pnlBottom: TPanel
       Left = 2
-      Top = 658
-      Width = 1260
+      Top = 665
+      Width = 1268
       Height = 30
       Align = alBottom
       BevelOuter = bvNone
@@ -54,7 +54,7 @@ object FrmPagar: TFrmPagar
       object dxBarDockControl1: TdxBarDockControl
         Left = 0
         Top = 2
-        Width = 1260
+        Width = 1268
         Height = 26
         Align = dalTop
         BarManager = BarManager
@@ -62,7 +62,7 @@ object FrmPagar: TFrmPagar
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 1260
+        Width = 1268
         Height = 2
         Align = alTop
         BevelOuter = bvNone
@@ -72,8 +72,8 @@ object FrmPagar: TFrmPagar
     object Panel5: TPanel
       Left = 2
       Top = 2
-      Width = 1039
-      Height = 654
+      Width = 1047
+      Height = 661
       Align = alClient
       BevelOuter = bvNone
       Caption = 'Panel5'
@@ -82,7 +82,7 @@ object FrmPagar: TFrmPagar
       object Panel3: TPanel
         Left = 0
         Top = 39
-        Width = 1039
+        Width = 1047
         Height = 193
         Align = alTop
         BevelOuter = bvNone
@@ -314,7 +314,7 @@ object FrmPagar: TFrmPagar
         object Panel10: TPanel
           Left = 0
           Top = 0
-          Width = 1039
+          Width = 1047
           Height = 15
           Align = alTop
           BevelOuter = bvNone
@@ -623,7 +623,7 @@ object FrmPagar: TFrmPagar
       object Panel2: TPanel
         Left = 0
         Top = 0
-        Width = 1039
+        Width = 1047
         Height = 39
         Align = alTop
         BevelOuter = bvNone
@@ -733,8 +733,8 @@ object FrmPagar: TFrmPagar
       object cxGrid: TcxGrid
         Left = 0
         Top = 232
-        Width = 1039
-        Height = 422
+        Width = 1047
+        Height = 429
         Align = alClient
         TabOrder = 2
         object GridTV: TcxGridDBBandedTableView
@@ -1071,10 +1071,10 @@ object FrmPagar: TFrmPagar
       end
     end
     object Panel4: TPanel
-      Left = 1041
+      Left = 1049
       Top = 2
       Width = 221
-      Height = 654
+      Height = 661
       Align = alRight
       BevelInner = bvRaised
       BevelOuter = bvLowered
@@ -1411,7 +1411,7 @@ object FrmPagar: TFrmPagar
         Left = 2
         Top = 2
         Width = 7
-        Height = 650
+        Height = 657
         Control = Panel4
       end
     end

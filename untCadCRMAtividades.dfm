@@ -8,14 +8,14 @@ inherited frmCadCRMAtividades: TfrmCadCRMAtividades
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcCadastro: TcxPageControl
-    Width = 957
-    Height = 474
-    ClientRectBottom = 470
-    ClientRectRight = 953
+    Width = 965
+    Height = 481
+    ClientRectBottom = 477
+    ClientRectRight = 961
     inherited tbsLista: TcxTabSheet
       inherited Grid: TcxGrid
-        Width = 949
-        Height = 378
+        Width = 957
+        Height = 385
         inherited TVRegistro: TcxGridDBBandedTableView
           object TVRegistroCODIGO: TcxGridDBBandedColumn
             DataBinding.FieldName = 'CODIGO'
@@ -120,26 +120,26 @@ inherited frmCadCRMAtividades: TfrmCadCRMAtividades
         end
       end
       inherited pnlFiltro: TPanel
-        Width = 949
+        Width = 957
         Visible = False
       end
     end
     inherited tbsEdita: TcxTabSheet
       inherited Panel2: TPanel
-        Width = 949
-        Height = 443
+        Width = 957
+        Height = 450
         inherited pnlSubCad: TPanel
-          Top = 165
-          Width = 947
+          Top = 172
+          Width = 955
           inherited PgcDetalhe: TcxPageControl
-            Width = 947
-            ClientRectRight = 943
+            Width = 955
+            ClientRectRight = 951
             inherited tbsDetalhe1: TcxTabSheet
               Caption = 'Intera'#231#245'es'
               inherited PGCSub1: TcxPageControl
-                Width = 939
+                Width = 947
                 ActivePage = tbsListaSub1
-                ClientRectRight = 935
+                ClientRectRight = 943
                 inherited tbsListaSub1: TcxTabSheet
                   inherited GridDet1: TcxGrid
                     Width = 931
@@ -266,62 +266,62 @@ inherited frmCadCRMAtividades: TfrmCadCRMAtividades
             inherited tbsDetalhe2: TcxTabSheet
               TabVisible = False
               inherited PGCSub2: TcxPageControl
-                Width = 939
-                ClientRectRight = 935
+                Width = 947
+                ClientRectRight = 943
               end
             end
             inherited tbsDetalhe3: TcxTabSheet
               TabVisible = False
               inherited PGCSub3: TcxPageControl
-                Width = 939
-                ClientRectRight = 935
+                Width = 947
+                ClientRectRight = 943
               end
             end
             inherited tbsDetalhe4: TcxTabSheet
               TabVisible = False
               inherited PGCSub4: TcxPageControl
-                Width = 939
-                ClientRectRight = 935
+                Width = 947
+                ClientRectRight = 943
               end
             end
             inherited tbsDetalhe5: TcxTabSheet
               TabVisible = False
               inherited PGCSub5: TcxPageControl
-                Width = 939
-                ClientRectRight = 935
+                Width = 947
+                ClientRectRight = 943
               end
             end
             inherited tbsDetalhe6: TcxTabSheet
               TabVisible = False
               inherited PGCSub6: TcxPageControl
-                Width = 939
-                ClientRectRight = 935
+                Width = 947
+                ClientRectRight = 943
               end
             end
             inherited tbsDetalhe7: TcxTabSheet
               TabVisible = False
               inherited PGCSub7: TcxPageControl
-                Width = 939
-                ClientRectRight = 935
+                Width = 947
+                ClientRectRight = 943
               end
             end
             inherited tbsDetalhe8: TcxTabSheet
               TabVisible = False
               inherited PGCSub8: TcxPageControl
-                Width = 939
-                ClientRectRight = 935
+                Width = 947
+                ClientRectRight = 943
               end
             end
           end
         end
         inherited pnlMaster: TPanel
-          Width = 947
-          Height = 164
+          Width = 955
+          Height = 171
           inherited PgcMaster: TcxPageControl
-            Width = 947
-            Height = 164
-            ClientRectBottom = 160
-            ClientRectRight = 943
+            Width = 955
+            Height = 171
+            ClientRectBottom = 167
+            ClientRectRight = 951
             inherited tbsMaster1: TcxTabSheet
               Caption = 'Atividades'
               inherited edtCodigo: TcxDBTextEdit

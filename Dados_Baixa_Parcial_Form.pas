@@ -186,7 +186,9 @@ begin
       Abort;
      END
      ELSE BEGIN
-       RESTANTE.VALUE := ( TOTAL.VALUE ) - BAIXA.Value;
+        // Sanniel 21-10-16 -- acrescentei o código "+JUROS.VALUE" pq o sistema não aceitava
+        //    acréscimo no juros. Solicitação da Rita e Alessandra
+       RESTANTE.VALUE := ( TOTAL.VALUE ) + JUROS.VALUE - BAIXA.Value;
        Dinheiro.Value := BAIXA.Value ;
      END;
 

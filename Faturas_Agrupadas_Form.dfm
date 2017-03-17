@@ -20,7 +20,7 @@ object FrmFaturas_Notas: TFrmFaturas_Notas
     Left = 0
     Top = 0
     Width = 554
-    Height = 361
+    Height = 357
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -165,7 +165,7 @@ object FrmFaturas_Notas: TFrmFaturas_Notas
     end
     object Panel1: TPanel
       Left = 2
-      Top = 320
+      Top = 316
       Width = 550
       Height = 39
       Align = alBottom

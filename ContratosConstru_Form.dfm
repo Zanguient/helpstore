@@ -85,10 +85,10 @@ object FrmContratoConstru: TFrmContratoConstru
         ActivePage = tbsFinanceiro
         Align = alClient
         TabOrder = 1
-        ClientRectBottom = 496
-        ClientRectLeft = 2
-        ClientRectRight = 746
-        ClientRectTop = 24
+        ClientRectBottom = 497
+        ClientRectLeft = 4
+        ClientRectRight = 747
+        ClientRectTop = 27
         object tbsGeral: TcxTabSheet
           Caption = 'Dados Gerais'
           ImageIndex = 0
@@ -197,7 +197,7 @@ object FrmContratoConstru: TFrmContratoConstru
           object GroupBox1: TGroupBox
             Left = 0
             Top = 0
-            Width = 744
+            Width = 743
             Height = 212
             Align = alTop
             TabOrder = 2
@@ -1291,9 +1291,9 @@ object FrmContratoConstru: TFrmContratoConstru
             Width = 735
             object GridParcelamento: TcxGrid
               Left = 3
-              Top = 15
+              Top = 16
               Width = 729
-              Height = 177
+              Height = 178
               Align = alClient
               TabOrder = 0
               LookAndFeel.Kind = lfOffice11
@@ -1412,9 +1412,9 @@ object FrmContratoConstru: TFrmContratoConstru
             Width = 735
             object GridParcReceber: TcxGrid
               Left = 3
-              Top = 15
+              Top = 16
               Width = 729
-              Height = 86
+              Height = 87
               Align = alClient
               TabOrder = 0
               LookAndFeel.Kind = lfOffice11

@@ -1317,7 +1317,9 @@ begin
                     );
 end;
 
-Procedure TDmFinanceiro2.Baixa_Receber_Selecao_ADM(Tipo: String; Cliente: Integer; Historico: String;Data_Ini: TDateTime; Data_Fim: TDateTime; Total: Real; Juros: Real; Desconto: Real; Usuario: Integer; Dinheiro, Cheque, Cartao: Real; Conta: Integer; Turno:Integer; Banco: Integer;Nome:string);
+Procedure TDmFinanceiro2.Baixa_Receber_Selecao_ADM(Tipo: String; Cliente: Integer; Historico: String;Data_Ini: TDateTime; Data_Fim: TDateTime;
+                                                    Total: Real; Juros: Real; Desconto: Real; Usuario: Integer; Dinheiro, Cheque, Cartao: Real;
+                                                    Conta: Integer; Turno:Integer; Banco: Integer;Nome:string);
 Var
    Planilha: Integer;
    DtBaixa : TDate;

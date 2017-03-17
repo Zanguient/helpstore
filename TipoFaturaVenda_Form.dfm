@@ -6042,7 +6042,7 @@ object FrmTipoFaturaVenda: TFrmTipoFaturaVenda
     PrinterSetup.BinName = 'Default'
     PrinterSetup.Collation = False
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.PaperName = 'Carta 8,5x11 pol'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
     PrinterSetup.mmMarginBottom = 0
@@ -8800,7 +8800,7 @@ object FrmTipoFaturaVenda: TFrmTipoFaturaVenda
     DataPipeline = ppDuplicata
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PaperName = 'A4 210x297 mm'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
     PrinterSetup.mmMarginBottom = 50000

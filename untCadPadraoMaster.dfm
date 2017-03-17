@@ -1,5 +1,5 @@
 object frmCadPadraoMaster: TfrmCadPadraoMaster
-  Left = 216
+  Left = 218
   Top = 90
   Width = 669
   Height = 517
@@ -907,6 +907,10 @@ object frmCadPadraoMaster: TfrmCadPadraoMaster
         item
           Visible = True
           ItemName = 'btnHelp'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton2'
         end>
       OneOnRow = True
       Row = 0
@@ -1101,6 +1105,14 @@ object frmCadPadraoMaster: TfrmCadPadraoMaster
       Action = ActHelp
       Category = 0
       Hint = 'Ajuda'
+    end
+    object dxBarButton1: TdxBarButton
+      Action = actLimpaAcessaFiltro
+      Category = 0
+    end
+    object dxBarButton2: TdxBarButton
+      Action = actLimpaAcessaFiltro
+      Category = 0
     end
     object dxBarDBNavFirst1: TdxBarDBNavButton
       Action = ActFirst
@@ -1450,6 +1462,10 @@ object frmCadPadraoMaster: TfrmCadPadraoMaster
       Caption = 'Help'
       ImageIndex = 42
       ShortCut = 112
+    end
+    object actLimpaAcessaFiltro: TAction
+      ImageIndex = 38
+      ShortCut = 114
     end
   end
   object dsLink: TDataSource

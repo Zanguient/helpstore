@@ -1,5 +1,5 @@
 object FrmSelVendas: TFrmSelVendas
-  Left = 40
+  Left = 41
   Top = 32
   Width = 1233
   Height = 654
@@ -21,8 +21,8 @@ object FrmSelVendas: TFrmSelVendas
   object pnlClient: TPanel
     Left = 0
     Top = 0
-    Width = 1217
-    Height = 616
+    Width = 1225
+    Height = 623
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -37,16 +37,16 @@ object FrmSelVendas: TFrmSelVendas
     OnResize = pnlClientResize
     object Bevel1: TBevel
       Left = 2
-      Top = 582
-      Width = 1213
+      Top = 589
+      Width = 1221
       Height = 2
       Align = alBottom
       Shape = bsTopLine
     end
     object pnlBottom: TPanel
       Left = 2
-      Top = 584
-      Width = 1213
+      Top = 591
+      Width = 1221
       Height = 30
       Align = alBottom
       BevelOuter = bvNone
@@ -54,7 +54,7 @@ object FrmSelVendas: TFrmSelVendas
       object dxBarDockControl1: TdxBarDockControl
         Left = 0
         Top = 2
-        Width = 1213
+        Width = 1221
         Height = 26
         Align = dalTop
         BarManager = BarMgr
@@ -62,7 +62,7 @@ object FrmSelVendas: TFrmSelVendas
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 1213
+        Width = 1221
         Height = 2
         Align = alTop
         BevelOuter = bvNone
@@ -70,10 +70,10 @@ object FrmSelVendas: TFrmSelVendas
       end
     end
     object Panel4: TPanel
-      Left = 1031
+      Left = 1039
       Top = 2
       Width = 184
-      Height = 580
+      Height = 587
       Align = alRight
       BevelInner = bvRaised
       BevelOuter = bvLowered
@@ -884,7 +884,7 @@ object FrmSelVendas: TFrmSelVendas
       end
       object GroupLeg: TcxGroupBox
         Left = 2
-        Top = 499
+        Top = 506
         Align = alBottom
         Anchors = [akRight, akBottom]
         Caption = 'Legendas'
@@ -957,8 +957,8 @@ object FrmSelVendas: TFrmSelVendas
     object Panel6: TPanel
       Left = 2
       Top = 2
-      Width = 1029
-      Height = 580
+      Width = 1037
+      Height = 587
       Align = alClient
       BevelOuter = bvNone
       Caption = 'Panel6'
@@ -967,8 +967,8 @@ object FrmSelVendas: TFrmSelVendas
       object Panel7: TPanel
         Left = 0
         Top = 49
-        Width = 1029
-        Height = 531
+        Width = 1037
+        Height = 538
         Align = alClient
         BevelOuter = bvNone
         Caption = 'Panel6'
@@ -977,23 +977,23 @@ object FrmSelVendas: TFrmSelVendas
         object pc: TcxPageControl
           Left = 0
           Top = 0
-          Width = 1029
-          Height = 531
+          Width = 1037
+          Height = 538
           ActivePage = tbsOrcamento
           Align = alClient
           HotTrack = True
           TabOrder = 0
           OnChange = pcChange
-          ClientRectBottom = 527
+          ClientRectBottom = 534
           ClientRectLeft = 4
-          ClientRectRight = 1025
+          ClientRectRight = 1033
           ClientRectTop = 27
           object tbsVenda: TcxTabSheet
             Caption = ' Pedidos ( F11 )'
             object Shape1: TShape
               Left = 0
               Top = 0
-              Width = 1021
+              Width = 1029
               Height = 1
               Align = alTop
               Pen.Color = clBtnShadow
@@ -1001,8 +1001,8 @@ object FrmSelVendas: TFrmSelVendas
             object Panel9: TPanel
               Left = 0
               Top = 1
-              Width = 1021
-              Height = 499
+              Width = 1029
+              Height = 506
               Align = alClient
               BevelOuter = bvNone
               Caption = 'Panel9'
@@ -1011,7 +1011,7 @@ object FrmSelVendas: TFrmSelVendas
               object Panel2: TPanel
                 Left = 0
                 Top = 0
-                Width = 1021
+                Width = 1029
                 Height = 62
                 Align = alTop
                 BevelInner = bvRaised
@@ -1146,8 +1146,8 @@ object FrmSelVendas: TFrmSelVendas
               object Grid: TcxGrid
                 Left = 0
                 Top = 62
-                Width = 1021
-                Height = 437
+                Width = 1029
+                Height = 444
                 Align = alClient
                 TabOrder = 1
                 object GridTV: TcxGridDBBandedTableView
@@ -1595,8 +1595,8 @@ object FrmSelVendas: TFrmSelVendas
             object Panel5: TPanel
               Left = 0
               Top = 0
-              Width = 1021
-              Height = 500
+              Width = 1029
+              Height = 507
               Align = alClient
               Caption = 'Panel5'
               Color = clHighlightText
@@ -1604,7 +1604,7 @@ object FrmSelVendas: TFrmSelVendas
               object Panel3: TPanel
                 Left = 1
                 Top = 1
-                Width = 1019
+                Width = 1027
                 Height = 62
                 Align = alTop
                 BevelInner = bvRaised
@@ -1767,8 +1767,8 @@ object FrmSelVendas: TFrmSelVendas
               object GridOrc: TcxGrid
                 Left = 1
                 Top = 63
-                Width = 1019
-                Height = 436
+                Width = 1027
+                Height = 443
                 Align = alClient
                 TabOrder = 1
                 object cxGridDBBandedTableView1: TcxGridDBBandedTableView
@@ -2152,7 +2152,7 @@ object FrmSelVendas: TFrmSelVendas
       object Panel8: TPanel
         Left = 0
         Top = 0
-        Width = 1029
+        Width = 1037
         Height = 49
         Align = alTop
         BevelOuter = bvNone

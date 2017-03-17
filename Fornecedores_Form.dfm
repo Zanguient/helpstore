@@ -21,8 +21,8 @@ object FrmFornecedores: TFrmFornecedores
   object pnlClient: TPanel
     Left = 0
     Top = 0
-    Width = 667
-    Height = 569
+    Width = 675
+    Height = 576
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -36,8 +36,8 @@ object FrmFornecedores: TFrmFornecedores
     TabOrder = 0
     object Bevel1: TBevel
       Left = 2
-      Top = 535
-      Width = 663
+      Top = 542
+      Width = 671
       Height = 2
       Align = alBottom
       Shape = bsTopLine
@@ -165,8 +165,8 @@ object FrmFornecedores: TFrmFornecedores
     end
     object pnlBottom: TPanel
       Left = 2
-      Top = 537
-      Width = 663
+      Top = 544
+      Width = 671
       Height = 30
       Align = alBottom
       BevelOuter = bvNone
@@ -174,7 +174,7 @@ object FrmFornecedores: TFrmFornecedores
       object dxBarDockControl1: TdxBarDockControl
         Left = 0
         Top = 2
-        Width = 663
+        Width = 671
         Height = 26
         Align = dalTop
         BarManager = BarMgr
@@ -182,7 +182,7 @@ object FrmFornecedores: TFrmFornecedores
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 663
+        Width = 671
         Height = 2
         Align = alTop
         BevelOuter = bvNone

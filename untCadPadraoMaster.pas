@@ -218,6 +218,9 @@ type
     LVDet8: TcxGridLevel;
     btnHelp: TdxBarButton;
     ActHelp: TAction;
+    dxBarButton1: TdxBarButton;
+    actLimpaAcessaFiltro: TAction;
+    dxBarButton2: TdxBarButton;
     procedure FormShow(Sender: TObject);
     procedure pgcCadastroChange(Sender: TObject);
     procedure ActFirstExecute(Sender: TObject);
@@ -312,6 +315,7 @@ var
   i : integer;
 begin
   inherited;
+    
   ActFilter.execute;
 
   ConfiguraSubTabs;

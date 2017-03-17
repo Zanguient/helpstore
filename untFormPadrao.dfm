@@ -1,5 +1,5 @@
 object FormPadrao: TFormPadrao
-  Left = 264
+  Left = 266
   Top = 72
   Width = 671
   Height = 500

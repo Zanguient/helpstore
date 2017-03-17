@@ -89,12 +89,12 @@ begin
     MesFinal := '0' + IntToStr(MonthOf(MtbConsultaXmlDtFinal.value));
 
   if AnoInicial <> AnoFinal then
-    CaminhoDestino := CaminhoDestino + AnoInicial + MesInicial + '_' + AnoFinal + MesFinal + '\'
+    CaminhoDestino := CaminhoDestino + AnoInicial + MesInicial + '_' + AnoFinal + MesFinal + '_exp' + '\'
   else
     if MesInicial <> MesFinal then
-      CaminhoDestino := CaminhoDestino + AnoInicial + MesInicial + '_' + MesFinal + '\'
+      CaminhoDestino := CaminhoDestino + AnoInicial + MesInicial + '_' + MesFinal + '_exp' + '\'
     else
-      CaminhoDestino := CaminhoDestino + AnoInicial + MesInicial;
+      CaminhoDestino := CaminhoDestino + AnoInicial + MesInicial + '_exp' + '\';
 
   if not(DirectoryExists(CaminhoDestino)) then
     CreateDir(CaminhoDestino);

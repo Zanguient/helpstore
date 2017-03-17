@@ -2,7 +2,7 @@ object DmApp: TDmApp
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Left = 319
+  Left = 321
   Height = 728
   Width = 808
   object Database: TIBDatabase
@@ -2989,6 +2989,7 @@ object DmApp: TDmApp
       'D:\Sistemas\Componentes\ACBR Trunk2\Exemplos\ACBrDFe\Schemas\NFe' +
       '\'
     Configuracoes.Arquivos.AdicionarLiteral = True
+    Configuracoes.Arquivos.SepararPorMes = True
     Configuracoes.Arquivos.PathNFe = 'C:\Sistemas\HelpStore\FISCAL'
     Configuracoes.Arquivos.PathInu = 'C:\Sistemas\HelpStore\NFe'
     Configuracoes.Arquivos.PathEvento = 'C:\Sistemas\HelpStore\NFe'
@@ -5571,7 +5572,7 @@ object DmApp: TDmApp
     CasasDecimais._Mask_vUnCom = '###,###,###,##0.00'
     ExibirResumoCanhoto = False
     FormularioContinuo = False
-    TamanhoFonte_DemaisCampos = 10
+    TamanhoFonte_DemaisCampos = 8
     ProdutosPorPagina = 0
     ImprimirDetalhamentoEspecifico = True
     NFeCancelada = False
@@ -5582,10 +5583,10 @@ object DmApp: TDmApp
     RecuoEndereco = 0
     RecuoEmpresa = 0
     LogoemCima = False
-    TamanhoFonteEndereco = 0
+    TamanhoFonteEndereco = 8
     RecuoLogo = 0
     TributosSeparadamente = False
-    LarguraCodProd = 54
+    LarguraCodProd = 80
     ExibirEAN = False
     QuebraLinhaEmDetalhamentoEspecifico = True
     ExibeCampoFatura = False

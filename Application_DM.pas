@@ -13,7 +13,7 @@ uses
   RpDefine,  ppReport, ppEndUsr, ACBrBase, ACBrExtenso, ExtCtrls
   ,ppSMTPIndy9 ,ppSMTPIndy, ppParameter, ppSMTPCustom, cxFilterControl, cxDBFilterControl,cxGridExportLink, cxGridDBBandedTableView,cxGrid,
   madExceptVcl,  untCadPadrao, ACBrNFeDANFeRLClass, ACBrDFe,
-  pcnConversaoNFe, ACBrBoleto;
+  pcnConversaoNFe, ACBrBoleto, StdCtrls;
 
 type
   TDmApp = class(TDataModule)
@@ -11237,9 +11237,11 @@ end;
 
 procedure TDmApp.ImprimeNFE(cnpj: string; venda, num_nf: integer; DataNF: TDate;Serie:string='1';PathXML:String='');
 var
-   vAux,regime, FileXML, Nfe_Ref : String;
+   vAux,regime, FileXML, Nfe_Ref, Aux2, AuxSql, Mostra_Desconto: String;
    ok :boolean;
    NITEM, AuxRef : Integer;
+   ArquivoTexto: TextFile;
+   ProdutoCSOSN: Variant;
 begin
   if PathXML <> '' then
   begin
@@ -11252,6 +11254,8 @@ begin
   //  ACBrNFe.Configuracoes.WebServices.Ambiente   := StrToTpAmb(Ok,IntToStr(StrToInt(DmApp.NFE_WS_AMBIENTE)+1));
     exit;
   end;
+
+  ACBrNFe.DANFE := DmApp.ACBrNFeDANFeRL1;
 
   try
      ACBrNFe.WebServices.StatusServico.Executar
@@ -11338,6 +11342,16 @@ begin
     begin
       infNFe.ID := dmCadastros2.NFe_Faturamentos2CODIGO.asString;
 
+      //Sanniel -- Necessário para Nfe de entrada de produtor rural
+      if (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 1949) then
+      begin
+        if (InputQuery('APENAS NFe de Ent de "PRODUTOR RURAL"', 'Digite a Chave da NFe de referência:', vAux)) then
+          with Ide.NFref.Add do
+          begin
+              refNFe := vAux;
+          end;
+      end;
+
       //Sanniel -- Necessário para Nfe de saída de devolução
       if (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 5202) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 6202) then
       begin
@@ -11347,11 +11361,31 @@ begin
             CreateDir('C:\Sistemas\HelpStore\NFe\Temp\');
 
           FileXML := 'C:\Sistemas\HelpStore\NFe\Temp\'+dmCadastros2.NFe_Faturamentos2CODIGO.AsString+'.tmp';
-          dmCadastros2.NFe_Faturamentos2xml_ref_dev.SaveToFile(FileXML);  //pega o xml da nfe de entrada
+          if not (dmCadastros2.NFe_Faturamentos2xml_ref_dev.AsString = '') then
+            dmCadastros2.NFe_Faturamentos2xml_ref_dev.SaveToFile(FileXML)  //pega o xml da nfe de entrada
+          else
+          begin
+            if not(InputQuery('NFe de Referência', 'Digite a NFe de referência:', vAux)) then
+              Exit;
+
+            AuxSql := 'select et.nfe_xml from est_entradas et where et.ndoctoint = ' +  vAux;
+
+            Aux2 := RetornaValor(AuxSql);
+            if Aux2 <> null then
+            begin
+              AssignFile(ArquivoTexto,FileXML);
+              ReWrite(ArquivoTexto);
+              Append(ArquivoTexto);
+              Write(ArquivoTexto,Aux2);
+              CloseFile(ArquivoTexto);
+            end else
+              Application.MessageBox('Verifique a existência da NFe ou do XML de referência','Erro', mb_ok + mb_iconerror);
+          end;
+
           ACBrNFe1.NotasFiscais.LoadFromFile(FileXML);
           ACBrNFe1.Configuracoes.Geral.ModeloDF := moNFe; // moNFe ou moNFCe
+          refNFe := ACBrNFe1.NotasFiscais.Items[0].NFe.infNFe.ID;//'32150502135222000228550110000630971139131147';  
           DeleteFile(FileXML);
-          refNFe := ACBrNFe1.NotasFiscais.Items[0].NFe.infNFe.ID;//'32150502135222000228550110000630971139131147';
         end;
       end;
 
@@ -11388,7 +11422,7 @@ begin
       Ide.cUF       := 50; //mato grosso do sul
       Ide.cMunFG    := StrToInt(DMApp.NFE_EMIT_COD_CIDADE);
 
-      if (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 1202) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 5202) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 6202) then
+      if (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 1202) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 1411) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 5202) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 6202) then
         Ide.finNFe    := fnDevolucao
       else
         Ide.finNFe    := fnNormal;
@@ -11475,14 +11509,20 @@ begin
       dmCadastros2.NFe_Parcelamentos.Open;
       dmCadastros2.NFe_Parcelamentos.First;
       NITEM := 1;
+
+      if RetornaValor('select cast(vnd.mostra_desconto as char) from fat_vendas vnd where vnd.codigo = ' + dmCadastros2.NFe_Faturamentos2CODIGO.AsString) <> null then
+        Mostra_Desconto := RetornaValor('select cast(vnd.mostra_desconto as char) from fat_vendas vnd where vnd.codigo = ' + dmCadastros2.NFe_Faturamentos2CODIGO.AsString);
+      
       while not dmCadastros2.NFe_Parcelamentos.Eof do
       begin
         if (NITEM = 1) then
         begin
           Cobr.Fat.nFat := dmCadastros2.NFe_ParcelamentosN_FAT.AsString;
           Cobr.Fat.vOrig := dmCadastros2.NFe_ParcelamentosTOTAL_ORIG.AsFloat;
-          //SANNIEL -- SERÁ CONCEDIDO DESCONTO APENAS COM CFOP 5102
-          if dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 5102 then
+
+          //SANNIEL -- COM O CHECKBOX DE DESCONTO SELECIONADO (21-10-16)
+
+          if (Mostra_Desconto = 'S') then
           begin
             Cobr.Fat.vDesc := (-1 * dmCadastros2.NFe_ParcelamentosDESC_ACRES.AsFloat);
             Cobr.Fat.vLiq := dmCadastros2.NFe_ParcelamentosTOTAL.AsFloat
@@ -11515,11 +11555,11 @@ begin
           Prod.qCom     := Arredonda(dmCadastros2.NFe_Faturamentos_ItensQCOM.value,2);
           Prod.uCom     := dmCadastros2.NFe_Faturamentos_ItensUCOM.value;
 
-          if (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 5102) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 6102) then
+          if (Mostra_Desconto = 'S') then
           begin
             Prod.vProd    := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVPROD.value {+ (dmCadastros2.NFe_Faturamentos_ItensVDESC.value * dmCadastros2.NFe_Faturamentos_ItensQCOM.value)},2);
             Prod.vUnCom   := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVUTRIB.value {+ dmCadastros2.NFe_Faturamentos_ItensVDESC.value},2);
-            Prod.vUnTrib  := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVUTRIB.value {+ dmCadastros2.NFe_Faturamentos_ItensVDESC.value},2);
+            Prod.vUnTrib  := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVUTRIB.value {+ dmCadastros2.NFe_Faturamentos_ItensVDESC.value},2);  
             Prod.vDesc := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVDESC.value * dmCadastros2.NFe_Faturamentos_ItensQTRIB.value,2);
           end else
           begin
@@ -11567,27 +11607,53 @@ begin
               end
               else
               begin
-                //(csosnVazio,csosn101, csosn102, csosn103, csosn201, csosn202, csosn203, csosn300, csosn400, csosn500,csosn900 )
-                if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 101) then
-                  CSOSN := csosn101
-                else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 102) then
-                  CSOSN := csosn102
-                else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 103) then
-                  CSOSN := csosn103
-                else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 201) then
-                  CSOSN := csosn201
-                else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 202) then
-                  CSOSN := csosn202
-                else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 203) then
-                  CSOSN := csosn203
-                else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 300) then
-                  CSOSN := csosn300
-                else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 400) then
-                  CSOSN := csosn400
-                else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 500) then
-                  CSOSN := csosn500
-                else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 900) then
-                  CSOSN := csosn900;
+                { Sanniel -- 22/09/2016 -- às vezes é necessário alteração no csosn para emissão de NFe,
+                  para evitar ter que fazer uma alteração no código toda vez, habilitei a alteração do csosn no
+                  cadastro de produto, em tributações, lá o usuário pode alterar e então emitir a nfe com o csosn desejado}
+                  
+                AuxSql := 'select prd.csosn from est_produtos prd where prd.codigo = ''' + dmCadastros2.NFe_Faturamentos_ItensCPROD.AsString + '''';
+                ProdutoCSOSN := RetornaValor(AuxSql);
+
+                if (ProdutoCSOSN <> null) and (ProdutoCSOSN > 0) then
+                begin                     
+                  case ProdutoCSOSN of
+                    101 : CSOSN := csosn101;
+                    102 : CSOSN := csosn102;
+                    103 : CSOSN := csosn103;
+                    201 : CSOSN := csosn201;
+                    202 : CSOSN := csosn202;
+                    203 : CSOSN := csosn203;
+                    300 : CSOSN := csosn300;
+                    400 : CSOSN := csosn400;
+                    500 : CSOSN := csosn500;
+                    900 : CSOSN := csosn900;
+                  end;
+                end else
+                begin
+
+                    //(csosnVazio,csosn101, csosn102, csosn103, csosn201, csosn202, csosn203, csosn300, csosn400, csosn500,csosn900 )
+                    if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 101) then
+                      CSOSN := csosn101
+                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 102) then
+                      CSOSN := csosn102
+                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 103) then
+                      CSOSN := csosn103
+                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 201) then
+                      CSOSN := csosn201
+                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 202) then
+                      CSOSN := csosn202
+                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 203) then
+                      CSOSN := csosn203
+                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 300) then
+                      CSOSN := csosn300
+                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 400) then
+                      CSOSN := csosn400
+                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 500) then
+                      CSOSN := csosn500
+                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 900) then
+                      CSOSN := csosn900;
+
+                  end;
               end;
 
 
@@ -11633,7 +11699,7 @@ begin
       Total.ICMSTot.vBC   := Arredonda(dmCadastros2.NFe_Faturamentos2BASE_ICM.value,2);
       Total.ICMSTot.vICMS := Arredonda(dmCadastros2.NFe_Faturamentos2ICM.value,2);
 
-      if dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 5102 then
+      if (Mostra_Desconto = 'S')  then
       begin
         if (dmCadastros2.NFe_Faturamentos2DESC_ACRESC.value < 0) then
           Total.ICMSTot.vDesc := (-1 * Arredonda(dmCadastros2.NFe_Faturamentos2DESC_ACRESC.value,2))
@@ -11649,7 +11715,7 @@ begin
 
       Total.ICMSTot.vNF   := Arredonda(dmCadastros2.NFe_Faturamentos2TOTAL_NF.value,2);
 
-      if dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 5102 then
+      if (Mostra_Desconto = 'S') then
         Total.ICMSTot.vProd := Arredonda(dmCadastros2.NFe_Faturamentos2TOTAL.value,2)
       else
         Total.ICMSTot.vProd := Arredonda(dmCadastros2.NFe_Faturamentos2TOTAL.value - dmCadastros2.NFe_Faturamentos2DESC_ACRESC.value,2);
@@ -11703,14 +11769,18 @@ begin
           Transp.Peso_Bruto  := dmCadastros2.NFe_Faturamentos2TRP_PESO_BRUTO.AsFloat;
 
       if (dmCadastros2.NFe_Faturamentos2TRP_PESO_LIQUIDO.Value > 0 ) then
-          Transp.Transporta.Peso_Liquido  := dmCadastros2.NFe_Faturamentos2TRP_PESO_LIQUIDO.AsFloat;
+          Transp.Transporta.Peso_Liquido  := dmCadastros2.NFe_Faturamentos2TRP_PESO_LIQUIDO.AsFloat;  }
+
+      { Sanniel 09/09/2016 -- a quantidade e especie estavam comentados,
+          descomentei por solicitação da Leticia para a quantidade aparecer na NFe }
 
       if (dmCadastros2.NFe_Faturamentos2TRP_QTDE.Value > 0 ) then
-          Transp.Transporta.QTDE  := dmCadastros2.NFe_Faturamentos2TRP_QTDE.AsFloat;
+          //Transp.Transporta.QTDE  := dmCadastros2.NFe_Faturamentos2TRP_QTDE.AsFloat;
+          Transp.Vol.Add.qVol := dmCadastros2.NFe_Faturamentos2TRP_QTDE.AsInteger;
 
       if (dmCadastros2.NFe_Faturamentos2TRP_ESPECIE.Value <> '' ) then
-          Transp.Transporta.Especie  := dmCadastros2.NFe_Faturamentos2TRP_ESPECIE.AsString;}
-
+          //Transp.Transporta.Especie  := dmCadastros2.NFe_Faturamentos2TRP_ESPECIE.AsString;
+          Transp.Vol.Add.esp := dmCadastros2.NFe_Faturamentos2TRP_ESPECIE.AsString;
     end;
 
     if (StrToTpEmis(Ok,IntToStr(StrToInt(DMApp.NFE_GER_FORMA_EMISSAO)+1)) = teNormal) then

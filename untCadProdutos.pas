@@ -638,6 +638,20 @@ type
     TVRegistroLOCALIZACAO_3: TcxGridDBBandedColumn;
     cxDBTextEdit38: TcxDBTextEdit;
     cxLabel98: TcxLabel;
+    cxLabel99: TcxLabel;
+    edtFiltroCodigo: TcxDBTextEdit;
+    cxLabel100: TcxLabel;
+    edtFiltroNome: TcxDBTextEdit;
+    mtbFiltroCODIGO: TStringField;
+    mtbFiltroNOME: TStringField;
+    edtFiltroCodFabricante: TcxDBTextEdit;
+    cxLabel101: TcxLabel;
+    mtbFiltroCODIGO_FABRICANTE: TStringField;
+    edtCodSecundario: TcxDBTextEdit;
+    cxLabel102: TcxLabel;
+    mtbFiltroCODIGO_2: TStringField;
+    cxDBLabel6: TcxDBLabel;
+    cxLabel103: TcxLabel;
     procedure ActCadLookupExecute(Sender: TObject);
     procedure dtEditNewRecord(DataSet: TDataSet);
     procedure BtnGruposClick(Sender: TObject);
@@ -679,8 +693,11 @@ type
     procedure dtEditAfterInsert(DataSet: TDataSet);
     procedure dtEditBeforeOpen(DataSet: TDataSet);
     procedure dtEditBeforePost(DataSet: TDataSet);
+    procedure ActFilterExecute(Sender: TObject);
+    procedure actLimpaAcessaFiltroExecute(Sender: TObject);
   private
     { Private declarations }
+    procedure Filtrar;
   public
     { Public declarations }
   end;
@@ -696,6 +713,29 @@ uses UntCadSecoesProdutos, UntCadModelo, UntCadMarcas, UntCadMaterial,
   UntCadReducoes, UntCadPerfilGrades, Funcoes, Cadastros_DM;
 
 {$R *.dfm}
+
+
+procedure TfrmCadProdutos.Filtrar;
+var
+  filtro : string;
+begin
+  filtro := '';  
+  dtList.Close;
+  
+  if mtbFiltroCODIGO.AsString <> '' then
+    filtro := filtro + ' and prd.codigo = ''' + mtbFiltroCODIGO.AsString + '''';
+
+  if mtbFiltroNOME.AsString <> '' then
+    filtro := filtro + ' and prd.nome containing ''' + mtbFiltroNOME.AsString + '''';
+
+  if mtbFiltroCODIGO_FABRICANTE.AsString <> '' then
+    filtro := filtro + ' and prd.codigo_fabricante = ''' + mtbFiltroCODIGO_FABRICANTE.AsString + '''';
+
+  if mtbFiltroCODIGO_2.AsString <> '' then
+    filtro := filtro + ' and prd.codigo_2 = ''' + mtbFiltroCODIGO_2.AsString + '''';
+
+  dtList.sql.text := sqloriginal + filtro;
+end;
 
 procedure TfrmCadProdutos.ActCadLookupExecute(Sender: TObject);
 begin
@@ -1076,8 +1116,8 @@ end;
 procedure TfrmCadProdutos.dtEditCSOSNGetText(Sender: TField;
   var Text: String; DisplayText: Boolean);
 begin
-  inherited;
-  if (Sender.Value = 101) then
+  inherited;  
+  {if (Sender.Value = 101) then
     Text:= '101 - Tributado com permissão de crédito'
   else if (Sender.Value = 102) then
     Text:= '102 - Tributado sem permissão de crédito'
@@ -1092,29 +1132,33 @@ begin
   else if (Sender.Value = 300) then
     Text:= '300 - Imune'
   else if (Sender.Value = 400) then
-    Text:= '400 - Não tributado';
+    Text:= '400 - Não tributado'
+  else if (Sender.Value = 900) then
+    Text:= '900 - Códigos usados por ME/EPPs nas demais operações que não se enquadrem nas demais'; }
 end;
 
 procedure TfrmCadProdutos.dtEditCSOSNSetText(Sender: TField;
   const Text: String);
 begin
   inherited;
-  if (Text= '101 - Tributado com permissão de crédito') then
+  {if Trim(Text)= '101 - Tributado com permissão de crédito' then              -
     Sender.Value := 101
-  else if (Text ='102 - Tributado sem permissão de crédito' ) then
+  else if Trim(Text) ='102 - Tributado sem permissão de crédito' then
      Sender.Value := 102
-  else if (Text= '103 - Isenção de icms por faixa de receita bruta' ) then
+  else if Trim(Text)= '103 - Isenção de icms por faixa de receita bruta' then
     Sender.Value := 103
-  else if (Text = '201 - Tributado com permissão de crédito e com cobrança do ICMS por ST' ) then
+  else if Trim(Text) = '201 - Tributado com permissão de crédito e com cobrança do ICMS por ST' then
     Sender.Value := 201
-  else if (Text = '202 - Tributado sem permissão de crédito e com cobrança do ICMS por ST') then
+  else if Trim(Text) = '202 - Tributado sem permissão de crédito e com cobrança do ICMS por ST' then
     Sender.Value := 202
-  else if (Text = '203 - Isenção do ICMS para faixa de receita bruta e com combrança de ICMS por ST') then
+  else if Trim(Text) = '203 - Isenção do ICMS para faixa de receita bruta e com combrança de ICMS por ST' then
     Sender.Value := 203
-  else if (Text = '300 - Imune' ) then
+  else if Trim(Text) = '300 - Imune' then
     Sender.Value := 300
-  else if (Text = '400 - Não tributado') then
-    Sender.Value := 400;
+  else if Trim(Text) = '400 - Não tributado' then
+    Sender.Value := 400
+  else if Trim(Text) = '900 - Códigos usados por ME/EPPs nas demais operações que não se enquadrem nas demais' then
+    Sender.Value := 900;    }
 end;
 
 procedure TfrmCadProdutos.BtnReducoesClick(Sender: TObject);
@@ -1308,6 +1352,41 @@ begin
 
     if (dtEditMATERIAL.asInteger = 0) then
        dtEditMATERIAL.asVariant := Null;
+end;
+
+procedure TfrmCadProdutos.ActFilterExecute(Sender: TObject);
+begin     
+  Filtrar;
+  inherited;
+end;
+
+procedure TfrmCadProdutos.actLimpaAcessaFiltroExecute(Sender: TObject);
+begin
+  inherited;
+  if (mtbFiltroCODIGO.AsString <> '') or (mtbFiltroNOME.AsString <> '')
+      or (mtbFiltroCODIGO_FABRICANTE.AsString <> '') or(mtbFiltroCODIGO_2.AsString <> '') then
+  begin
+    mtbFiltroCODIGO.Clear;
+    mtbFiltroNOME.Clear;
+    mtbFiltroCODIGO_FABRICANTE.Clear;
+    mtbFiltroCODIGO_2.Clear;
+
+    dtList.Close;
+    dtList.SQL.Clear;
+    dtList.SQL.Text := sqlOriginal;
+    dtList.Open;
+
+    Grid.SetFocus;
+  end else
+    if (edtFiltroCodigo.Text <> '') or (edtFiltroNome.Text <> '')
+      or (edtFiltroCodFabricante.Text <> '') or(edtCodSecundario.Text <> '') then
+    begin
+      edtFiltroCodigo.Text := '';
+      edtFiltroNome.Text := '';
+      edtFiltroCodFabricante.Text := '';
+      edtCodSecundario.Text := '';
+    end else
+      edtFiltroCodigo.SetFocus;
 end;
 
 end.

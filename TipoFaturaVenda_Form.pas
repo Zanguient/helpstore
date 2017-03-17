@@ -392,7 +392,7 @@ uses Usuarios_DM,
      SelFaturaVendas_Form,
      Cadastros_DM,
      NotaPromissoria_FRel, Vendas_Form, Vendas_DM2, Cadastros_Dm2,
-  ConfiguraDuplicata_Form, Procedures_DM;
+  ConfiguraDuplicata_Form, Procedures_DM ;
 
 {$R *.DFM}
 

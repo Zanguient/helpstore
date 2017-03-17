@@ -579,6 +579,8 @@ type
     cxLabel2: TcxLabel;
     EdtNfRef: TdxDBEdit;
     VendasNFE_REF_DEV: TIBStringField;
+    VendasMOSTRA_DESCONTO: TIBStringField;
+    cxDBCheckBox1: TcxDBCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ActIncluirExecute(Sender: TObject);
     procedure ActExcluirExecute(Sender: TObject);

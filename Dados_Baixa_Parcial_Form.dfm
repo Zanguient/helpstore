@@ -21,7 +21,7 @@ object FrmDadosBaixaParcial: TFrmDadosBaixaParcial
     Left = 0
     Top = 0
     Width = 390
-    Height = 328
+    Height = 324
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -366,7 +366,7 @@ object FrmDadosBaixaParcial: TFrmDadosBaixaParcial
     end
     object Panel1: TPanel
       Left = 2
-      Top = 292
+      Top = 288
       Width = 386
       Height = 34
       Align = alBottom
@@ -584,6 +584,7 @@ object FrmDadosBaixaParcial: TFrmDadosBaixaParcial
       Style.ButtonStyle = btsSimple
       TabOrder = 17
       OnEnter = DescontoEnter
+      OnExit = JurosExit
       OnKeyDown = DataKeyDown
       Alignment = taRightJustify
       ReadOnly = False

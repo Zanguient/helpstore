@@ -1,6 +1,5 @@
 inherited frmCadOS: TfrmCadOS
   Left = 250
-  Top = 115
   Width = 1030
   Height = 641
   Caption = 'Manuten'#231#227'o de Ordens de Servi'#231'o'
@@ -10,7 +9,6 @@ inherited frmCadOS: TfrmCadOS
   inherited pgcCadastro: TcxPageControl
     Width = 1022
     Height = 584
-    ActivePage = tbsEdita
     ClientRectBottom = 580
     ClientRectRight = 1018
     inherited tbsLista: TcxTabSheet
@@ -4729,16 +4727,16 @@ inherited frmCadOS: TfrmCadOS
     end
   end
   inherited ActionList1: TActionList
-    object ActImprimirOS: TAction
+    object ActImprimirOS: TAction [21]
       Caption = 'Imprimir OS'
       ShortCut = 118
       OnExecute = ActImprimirOSExecute
     end
-    object ActGeraVenda: TAction
+    object ActGeraVenda: TAction [22]
       Caption = 'ActGeraVenda'
       OnExecute = ActGeraVendaExecute
     end
-    object ActImprimeHistorico: TAction
+    object ActImprimeHistorico: TAction [23]
       Caption = 'Hist'#243'rico Equipamento (F8)'
       ImageIndex = 34
       ShortCut = 119
@@ -9700,7 +9698,7 @@ inherited frmCadOS: TfrmCadOS
     DataPipeline = ppHistEquip
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PaperName = 'A4 210x297 mm'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
     PrinterSetup.mmMarginBottom = 6350

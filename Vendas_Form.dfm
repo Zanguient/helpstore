@@ -968,6 +968,18 @@ object FrmVendas: TFrmVendas
             DataField = 'NFE_REF_DEV'
             DataSource = DataSource
           end
+          object cxDBCheckBox1: TcxDBCheckBox
+            Left = 722
+            Top = 144
+            Caption = 'Mostrar Desconto'
+            DataBinding.DataField = 'MOSTRA_DESCONTO'
+            DataBinding.DataSource = DataSource
+            Properties.NullStyle = nssUnchecked
+            Properties.ValueChecked = 'S'
+            Properties.ValueUnchecked = 'N'
+            TabOrder = 41
+            Width = 121
+          end
         end
         object Panel8: TPanel
           Left = 0
@@ -4475,32 +4487,32 @@ object FrmVendas: TFrmVendas
         '   INSS, IPI, IRRF, ISS, KM_ATUAL, LOCAL, LOCAL_COBRANCA, MEDIA_' +
         'KM, MESA, '
       
-        '   N_SEQ_ECF, N_SERIE_ECF, NAO_COBR_JUR_ATE, NATUREZA, NF_AGRUPA' +
-        'DA, NFE_ASSINADA, '
+        '   MOSTRA_DESCONTO, N_SEQ_ECF, N_SERIE_ECF, NAO_COBR_JUR_ATE, NA' +
+        'TUREZA, '
       
-        '   NFE_AUTORIZADA, NFE_CANC_MOTIVO, NFE_CANC_PROTOCOLO, NFE_CANC' +
-        '_STATUS, '
+        '   NF_AGRUPADA, NFE_ASSINADA, NFE_AUTORIZADA, NFE_CANC_MOTIVO, N' +
+        'FE_CANC_PROTOCOLO, '
       
-        '   NFE_CANC_XML, NFE_CHAVE, NFE_DANFE_IMPRESSO, NFE_PROTOCOLO, N' +
-        'FE_RECIBO, '
+        '   NFE_CANC_STATUS, NFE_CANC_XML, NFE_CHAVE, NFE_DANFE_IMPRESSO,' +
+        ' NFE_PROTOCOLO, '
       
-        '   NFE_REF_DEV, NFE_SELECIONADO, NFE_TRANSMITIDA, NFE_VALIDADA, ' +
-        'NFE_XML, '
+        '   NFE_RECIBO, NFE_REF_DEV, NFE_SELECIONADO, NFE_TRANSMITIDA, NF' +
+        'E_VALIDADA, '
       
-        '   NOME, NOME_CONSUMIDOR, NOME_CONVENIO, NOME_FORMA, NOME_NATURE' +
-        'ZA, NOME_PROPRIEDADE, '
+        '   NFE_XML, NOME, NOME_CONSUMIDOR, NOME_CONVENIO, NOME_FORMA, NO' +
+        'ME_NATUREZA, '
       
-        '   NOME_TERCEIRO, NOME_VENDEDOR, NUM_CUPOM, NUM_NF, OBSERVACAO, ' +
-        'ORCAMENTO, '
+        '   NOME_PROPRIEDADE, NOME_TERCEIRO, NOME_VENDEDOR, NUM_CUPOM, NU' +
+        'M_NF, OBSERVACAO, '
       
-        '   ORDEM_CARGA, PCT_COMISSAO, PCT_DESCTO_ICMS, PESO, PESSOA_FJ, ' +
-        'PGTO_FRETE, '
+        '   ORCAMENTO, ORDEM_CARGA, PCT_COMISSAO, PCT_DESCTO_ICMS, PESO, ' +
+        'PESSOA_FJ, '
       
-        '   PIS_COFINS_CSLL, PLACA, PROPRIEDADE, RECEBIDAS, REQUISICAO, S' +
-        'EGURO, '
+        '   PGTO_FRETE, PIS_COFINS_CSLL, PLACA, PROPRIEDADE, RECEBIDAS, R' +
+        'EQUISICAO, '
       
-        '   SELECIONADA, SERIE, STATUS_CARREGAMENTO, TERCEIRO, TICKET, TI' +
-        'PO_DOCTO, '
+        '   SEGURO, SELECIONADA, SERIE, STATUS_CARREGAMENTO, TERCEIRO, TI' +
+        'CKET, TIPO_DOCTO, '
       
         '   TIPO_VENDA, TOTAL, TOTAL_FISCAL, TOTAL_NOTA, TRANSPORTADORA, ' +
         'TROCO, '
@@ -4548,48 +4560,48 @@ object FrmVendas: TFrmVendas
         '   :IDX_COTACAO, :IDX_DATABASE, :IDX_QTDE, :INSS, :IPI, :IRRF, :' +
         'ISS, :KM_ATUAL, '
       
-        '   :LOCAL, :LOCAL_COBRANCA, :MEDIA_KM, :MESA, :N_SEQ_ECF, :N_SER' +
-        'IE_ECF, '
+        '   :LOCAL, :LOCAL_COBRANCA, :MEDIA_KM, :MESA, :MOSTRA_DESCONTO, ' +
+        ':N_SEQ_ECF, '
       
-        '   :NAO_COBR_JUR_ATE, :NATUREZA, :NF_AGRUPADA, :NFE_ASSINADA, :N' +
-        'FE_AUTORIZADA, '
+        '   :N_SERIE_ECF, :NAO_COBR_JUR_ATE, :NATUREZA, :NF_AGRUPADA, :NF' +
+        'E_ASSINADA, '
       
-        '   :NFE_CANC_MOTIVO, :NFE_CANC_PROTOCOLO, :NFE_CANC_STATUS, :NFE' +
-        '_CANC_XML, '
+        '   :NFE_AUTORIZADA, :NFE_CANC_MOTIVO, :NFE_CANC_PROTOCOLO, :NFE_' +
+        'CANC_STATUS, '
       
-        '   :NFE_CHAVE, :NFE_DANFE_IMPRESSO, :NFE_PROTOCOLO, :NFE_RECIBO,' +
-        ' :NFE_REF_DEV, '
+        '   :NFE_CANC_XML, :NFE_CHAVE, :NFE_DANFE_IMPRESSO, :NFE_PROTOCOL' +
+        'O, :NFE_RECIBO, '
       
-        '   :NFE_SELECIONADO, :NFE_TRANSMITIDA, :NFE_VALIDADA, :NFE_XML, ' +
-        ':NOME, '
+        '   :NFE_REF_DEV, :NFE_SELECIONADO, :NFE_TRANSMITIDA, :NFE_VALIDA' +
+        'DA, :NFE_XML, '
       
-        '   :NOME_CONSUMIDOR, :NOME_CONVENIO, :NOME_FORMA, :NOME_NATUREZA' +
-        ', :NOME_PROPRIEDADE, '
+        '   :NOME, :NOME_CONSUMIDOR, :NOME_CONVENIO, :NOME_FORMA, :NOME_N' +
+        'ATUREZA, '
       
-        '   :NOME_TERCEIRO, :NOME_VENDEDOR, :NUM_CUPOM, :NUM_NF, :OBSERVA' +
-        'CAO, :ORCAMENTO, '
+        '   :NOME_PROPRIEDADE, :NOME_TERCEIRO, :NOME_VENDEDOR, :NUM_CUPOM' +
+        ', :NUM_NF, '
       
-        '   :ORDEM_CARGA, :PCT_COMISSAO, :PCT_DESCTO_ICMS, :PESO, :PESSOA' +
-        '_FJ, :PGTO_FRETE, '
+        '   :OBSERVACAO, :ORCAMENTO, :ORDEM_CARGA, :PCT_COMISSAO, :PCT_DE' +
+        'SCTO_ICMS, '
       
-        '   :PIS_COFINS_CSLL, :PLACA, :PROPRIEDADE, :RECEBIDAS, :REQUISIC' +
-        'AO, :SEGURO, '
+        '   :PESO, :PESSOA_FJ, :PGTO_FRETE, :PIS_COFINS_CSLL, :PLACA, :PR' +
+        'OPRIEDADE, '
       
-        '   :SELECIONADA, :SERIE, :STATUS_CARREGAMENTO, :TERCEIRO, :TICKE' +
-        'T, :TIPO_DOCTO, '
+        '   :RECEBIDAS, :REQUISICAO, :SEGURO, :SELECIONADA, :SERIE, :STAT' +
+        'US_CARREGAMENTO, '
       
-        '   :TIPO_VENDA, :TOTAL, :TOTAL_FISCAL, :TOTAL_NOTA, :TRANSPORTAD' +
-        'ORA, :TROCO, '
+        '   :TERCEIRO, :TICKET, :TIPO_DOCTO, :TIPO_VENDA, :TOTAL, :TOTAL_' +
+        'FISCAL, '
       
-        '   :TRP_CIDADE, :TRP_CPF_CNPJ, :TRP_ESPECIE, :TRP_MARCA, :TRP_NO' +
-        'ME, :TRP_NUMERO, '
+        '   :TOTAL_NOTA, :TRANSPORTADORA, :TROCO, :TRP_CIDADE, :TRP_CPF_C' +
+        'NPJ, :TRP_ESPECIE, '
       
-        '   :TRP_PESO_BRUTO, :TRP_PESO_LIQUIDO, :TRP_QTDE, :TURNO, :UF, :' +
-        'UF_PLACA, '
+        '   :TRP_MARCA, :TRP_NOME, :TRP_NUMERO, :TRP_PESO_BRUTO, :TRP_PES' +
+        'O_LIQUIDO, '
       
-        '   :USUARIO, :VALE_TROCO, :VALIDADE, :VALOR_ICM_SUBST, :VENDEDOR' +
-        ', :VLR_PARC_LC, '
-      '   :VOLUME)')
+        '   :TRP_QTDE, :TURNO, :UF, :UF_PLACA, :USUARIO, :VALE_TROCO, :VA' +
+        'LIDADE, '
+      '   :VALOR_ICM_SUBST, :VENDEDOR, :VLR_PARC_LC, :VOLUME)')
     RefreshSQL.Strings = (
       'Select '
       '  CNPJ,'
@@ -4738,7 +4750,10 @@ object FrmVendas: TFrmVendas
       '  TRP_CPF_CNPJ,'
       '  NFE_NUMERO,'
       '  COD_CONTRATO,'
-      '  NFE_REF_DEV'
+      '  NFE_REF_DEV,'
+      '  CARTA_CORRECAO_ELETRONICA,'
+      '  CCE_SEQUENCIA,'
+      '  MOSTRA_DESCONTO'
       'from FAT_VENDAS '
       'where'
       '  CNPJ = :CNPJ and'
@@ -4819,6 +4834,7 @@ object FrmVendas: TFrmVendas
       '  LOCAL_COBRANCA = :LOCAL_COBRANCA,'
       '  MEDIA_KM = :MEDIA_KM,'
       '  MESA = :MESA,'
+      '  MOSTRA_DESCONTO = :MOSTRA_DESCONTO,'
       '  N_SEQ_ECF = :N_SEQ_ECF,'
       '  N_SERIE_ECF = :N_SERIE_ECF,'
       '  NAO_COBR_JUR_ATE = :NAO_COBR_JUR_ATE,'
@@ -5733,6 +5749,12 @@ object FrmVendas: TFrmVendas
     object VendasNFE_REF_DEV: TIBStringField
       FieldName = 'NFE_REF_DEV'
       Origin = '"FAT_VENDAS"."NFE_REF_DEV"'
+    end
+    object VendasMOSTRA_DESCONTO: TIBStringField
+      FieldName = 'MOSTRA_DESCONTO'
+      Origin = '"FAT_VENDAS"."MOSTRA_DESCONTO"'
+      FixedChar = True
+      Size = 1
     end
   end
   object Vendas_Itens: TIBDataSet

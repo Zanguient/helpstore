@@ -1,7 +1,7 @@
 object DmPlano: TDmPlano
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Left = 684
+  Left = 685
   Top = 184
   Height = 450
   Width = 638

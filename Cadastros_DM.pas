@@ -1021,6 +1021,15 @@ type
     SelMarcaCODIGO: TIntegerField;
     SelMarcaNOME: TIBStringField;
     SelMarcaSELECIONADO: TIBStringField;
+    qryLocalizarProduto: TIBQuery;
+    qryLocalizarProdutoCODIGO: TIBStringField;
+    qryLocalizarProdutoNOME: TIBStringField;
+    qryLocalizarProdutoQTDADE_2: TFloatField;
+    qryLocalizarProdutoQTDADE_1: TFloatField;
+    qryLocalizarProdutoPRC_VENDA: TFloatField;
+    qryLocalizarProdutoCODIGO_2: TIBStringField;
+    qryLocalizarProdutoPRC_REPOS: TFloatField;
+    qryLocalizarProdutoMARCA: TIBStringField;
     Paises: TIBDataSet;
     PaisesCNPJ: TIBStringField;
     PaisesCODIGO: TIntegerField;
@@ -1036,6 +1045,7 @@ type
     NotaPromissoriaCAN_COD_VENDA_ALT: TIntegerField;
     NotaPromissoriaCAN_VENCTO_DST: TIntegerField;
     NotaPromissoriaCAN_VENCTO_ALT: TIntegerField;
+    qryLocalizarProdutoSERIE: TIBStringField;
     EdtCopiaCheque: TIBDataSet;
     SelProdutosSERIE: TIBStringField;
     EdtCopiaChequeCNPJ: TIBStringField;
@@ -1051,6 +1061,8 @@ type
     EdtSerieOrcNFCNPJ: TIBStringField;
     EdtSerieOrcNFCONFIG_SERIE_ORC_NF: TMemoField;
     dsSerieOrcNF: TDataSource;
+    qryLocalizarProdutoMDL_CODIGO: TIntegerField;
+    qryLocalizarProdutoMODELO: TIBStringField;
     NaturezaGERA_FINANCEIRO: TIBStringField;
     Produtos: TIBDataSet;
     ProdutosCOMPLEMENTO: TIBStringField;
@@ -1454,6 +1466,10 @@ type
     SubgruposProdESTOQUE_INI: TIntegerField;
     SubgruposProdESTOQUE_FIM: TIntegerField;
     SubgruposProdOBS: TMemoField;
+    qryLocalizarProdutoSECAO: TIBStringField;
+    qryLocalizarProdutoLOCALIZACAO_1: TIBStringField;
+    qryLocalizarProdutoLOCALIZACAO_2: TIBStringField;
+    qryLocalizarProdutoLOCALIZACAO_3: TIBStringField;
     QryIndices: TIBQuery;
     QryIndicesNOME: TIBStringField;
     QryIndicesUSO: TIntegerField;
@@ -1517,6 +1533,8 @@ type
     Formas_PagtoOUTROS: TIBStringField;
     ProdutosCOR: TIntegerField;
     ProdutosMATERIAL: TIntegerField;
+    qryLocalizarProdutoCODIGO_FABRICANTE: TIBStringField;
+    qryLocalizarProdutoCOMPLEMENTO: TIBStringField;
     Cliente_Endereco: TIBDataSet;
     Tipo_Endereco: TIBDataSet;
     Cliente_EnderecoCODIGO: TIntegerField;
@@ -1934,8 +1952,8 @@ uses Application_DM,
      Plano_DM,
      FormasPagto_Form,
      Funcoes,
-     Vendas_Dm, EntraDescricao_Form, Variants,
-  untCadPessoas, Produtos_Form;
+     PessoasFJ_Form,
+     Vendas_Dm, EntraDescricao_Form, Produtos_Form, Variants;
 
 {$R *.DFM}
 
@@ -3129,7 +3147,7 @@ end;
 
 procedure TDMCadastros.VeiculoNewRecord(DataSet: TDataSet);
 begin
-     IF {FrmPessoasFJ} FrmCadPessoas <> nIL
+     IF FrmPessoasFJ <> nIL
      THEN BEGIN
           VeiculoPESSOA_FJ.Value := Pessoas_FJCODIGO.Value;
      //     VeiculoCODIGO.Value    := DMApp.GerarCodigoVeiculo(Pessoas_FJCODIGO.Value);

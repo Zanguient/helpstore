@@ -169,6 +169,7 @@ begin
   DtVenda.ParamByName('CODIGO').Value := Venda;
   DtVenda.Open;
   DtVenda.Edit;
+  ACBrNFe1.DANFE := DmApp.ACBrNFeDANFeRL1;
   if DtVendaCARTA_CORRECAO_ELETRONICA.AsString <> '' then
   begin
     ACBrNFe1.EventoNFe.Evento.Clear;

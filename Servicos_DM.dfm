@@ -1,6 +1,6 @@
 object DmServicos: TDmServicos
   OldCreateOrder = False
-  Left = 15
+  Left = 17
   Top = 1
   Height = 517
   Width = 669

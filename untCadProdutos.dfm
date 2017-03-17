@@ -1,5 +1,5 @@
 inherited frmCadProdutos: TfrmCadProdutos
-  Left = 244
+  Left = 245
   Top = 49
   Width = 717
   Height = 646
@@ -14,9 +14,8 @@ inherited frmCadProdutos: TfrmCadProdutos
     ClientRectRight = 705
     inherited tbsLista: TcxTabSheet
       inherited Grid: TcxGrid
-        Top = 27
         Width = 701
-        Height = 531
+        Height = 493
         inherited TVRegistro: TcxGridDBBandedTableView
           object TVRegistroCODIGO: TcxGridDBBandedColumn
             DataBinding.FieldName = 'CODIGO'
@@ -124,7 +123,142 @@ inherited frmCadProdutos: TfrmCadProdutos
       end
       inherited pnlFiltro: TPanel
         Width = 701
-        Height = 27
+        Color = clWhite
+        object cxLabel99: TcxLabel
+          Left = 8
+          Top = 16
+          Caption = 'C'#243'digo'
+          Transparent = True
+        end
+        object edtFiltroCodigo: TcxDBTextEdit
+          Tag = 1
+          Left = 8
+          Top = 32
+          DataBinding.DataField = 'CODIGO'
+          DataBinding.DataSource = dsFiltro
+          Properties.CharCase = ecUpperCase
+          Properties.ReadOnly = False
+          Style.BorderColor = clWindowFrame
+          Style.BorderStyle = ebs3D
+          Style.Color = clWindow
+          Style.HotTrack = False
+          TabOrder = 0
+          Width = 98
+        end
+        object cxLabel100: TcxLabel
+          Left = 112
+          Top = 16
+          Caption = 'Nome'
+          Style.HotTrack = False
+          Style.LookAndFeel.Kind = lfUltraFlat
+          Style.LookAndFeel.NativeStyle = False
+          Style.LookAndFeel.SkinName = 'GlassOceans'
+          Style.Shadow = False
+          Style.TransparentBorder = True
+          StyleDisabled.LookAndFeel.Kind = lfUltraFlat
+          StyleDisabled.LookAndFeel.NativeStyle = False
+          StyleDisabled.LookAndFeel.SkinName = 'GlassOceans'
+          StyleFocused.LookAndFeel.Kind = lfUltraFlat
+          StyleFocused.LookAndFeel.NativeStyle = False
+          StyleFocused.LookAndFeel.SkinName = 'GlassOceans'
+          StyleHot.LookAndFeel.Kind = lfUltraFlat
+          StyleHot.LookAndFeel.NativeStyle = False
+          StyleHot.LookAndFeel.SkinName = 'GlassOceans'
+          Transparent = True
+        end
+        object edtFiltroNome: TcxDBTextEdit
+          Left = 111
+          Top = 32
+          DataBinding.DataField = 'NOME'
+          DataBinding.DataSource = dsFiltro
+          ParentFont = False
+          Properties.CharCase = ecUpperCase
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -11
+          Style.Font.Name = 'Tahoma'
+          Style.Font.Style = []
+          Style.HotTrack = False
+          Style.IsFontAssigned = True
+          TabOrder = 1
+          Width = 207
+        end
+        object edtFiltroCodFabricante: TcxDBTextEdit
+          Left = 323
+          Top = 32
+          DataBinding.DataField = 'CODIGO_FABRICANTE'
+          DataBinding.DataSource = dsFiltro
+          ParentFont = False
+          Properties.CharCase = ecUpperCase
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -11
+          Style.Font.Name = 'Tahoma'
+          Style.Font.Style = []
+          Style.HotTrack = False
+          Style.IsFontAssigned = True
+          TabOrder = 2
+          Width = 104
+        end
+        object cxLabel101: TcxLabel
+          Left = 324
+          Top = 16
+          Caption = 'C'#243'd. Fabricante'
+          Style.HotTrack = False
+          Style.LookAndFeel.Kind = lfUltraFlat
+          Style.LookAndFeel.NativeStyle = False
+          Style.LookAndFeel.SkinName = 'GlassOceans'
+          Style.Shadow = False
+          Style.TransparentBorder = True
+          StyleDisabled.LookAndFeel.Kind = lfUltraFlat
+          StyleDisabled.LookAndFeel.NativeStyle = False
+          StyleDisabled.LookAndFeel.SkinName = 'GlassOceans'
+          StyleFocused.LookAndFeel.Kind = lfUltraFlat
+          StyleFocused.LookAndFeel.NativeStyle = False
+          StyleFocused.LookAndFeel.SkinName = 'GlassOceans'
+          StyleHot.LookAndFeel.Kind = lfUltraFlat
+          StyleHot.LookAndFeel.NativeStyle = False
+          StyleHot.LookAndFeel.SkinName = 'GlassOceans'
+          Transparent = True
+        end
+        object edtCodSecundario: TcxDBTextEdit
+          Left = 433
+          Top = 32
+          DataBinding.DataField = 'CODIGO_2'
+          DataBinding.DataSource = dsFiltro
+          ParentFont = False
+          Properties.CharCase = ecUpperCase
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -11
+          Style.Font.Name = 'Tahoma'
+          Style.Font.Style = []
+          Style.HotTrack = False
+          Style.IsFontAssigned = True
+          TabOrder = 3
+          Width = 112
+        end
+        object cxLabel102: TcxLabel
+          Left = 434
+          Top = 16
+          Caption = 'C'#243'd. Secund'#225'rio'
+          Style.HotTrack = False
+          Style.LookAndFeel.Kind = lfUltraFlat
+          Style.LookAndFeel.NativeStyle = False
+          Style.LookAndFeel.SkinName = 'GlassOceans'
+          Style.Shadow = False
+          Style.TransparentBorder = True
+          StyleDisabled.LookAndFeel.Kind = lfUltraFlat
+          StyleDisabled.LookAndFeel.NativeStyle = False
+          StyleDisabled.LookAndFeel.SkinName = 'GlassOceans'
+          StyleFocused.LookAndFeel.Kind = lfUltraFlat
+          StyleFocused.LookAndFeel.NativeStyle = False
+          StyleFocused.LookAndFeel.SkinName = 'GlassOceans'
+          StyleHot.LookAndFeel.Kind = lfUltraFlat
+          StyleHot.LookAndFeel.NativeStyle = False
+          StyleHot.LookAndFeel.SkinName = 'GlassOceans'
+          Transparent = True
+        end
       end
     end
     inherited tbsEdita: TcxTabSheet
@@ -138,6 +272,7 @@ inherited frmCadProdutos: TfrmCadProdutos
           inherited PgcDetalhe: TcxPageControl
             Width = 699
             Height = 238
+            ActivePage = tbsDetalhe6
             ClientRectBottom = 234
             ClientRectRight = 695
             inherited tbsDetalhe1: TcxTabSheet
@@ -967,6 +1102,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                     Top = 24
                     DataBinding.DataField = 'CTE'
                     DataBinding.DataSource = dsRegistro
+                    Properties.CharCase = ecUpperCase
                     Properties.Items.Strings = (
                       '1 - Tributada Integralmente'
                       '2 - Tributada com Redu'#231#227'o na Base de C'#225'lculo'
@@ -1025,6 +1161,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                     Top = 24
                     DataBinding.DataField = 'CTIE'
                     DataBinding.DataSource = dsRegistro
+                    Properties.CharCase = ecUpperCase
                     Properties.Items.Strings = (
                       '1 - Tributada Integralmente'
                       '2 - Tributada com Redu'#231#227'o na Base de C'#225'lculo'
@@ -1124,6 +1261,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                     Top = 24
                     DataBinding.DataField = 'FORNECEDOR'
                     DataBinding.DataSource = dsRegistroDet6
+                    Properties.CharCase = ecUpperCase
                     Properties.KeyFieldNames = 'CODIGO'
                     Properties.ListColumns = <
                       item
@@ -1194,6 +1332,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                     Top = 24
                     DataBinding.DataField = 'FATOR'
                     DataBinding.DataSource = dsRegistroDet6
+                    Properties.CharCase = ecUpperCase
                     Properties.ReadOnly = False
                     Style.BorderColor = clWindowFrame
                     Style.BorderStyle = ebs3D
@@ -1219,6 +1358,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                     Top = 64
                     DataBinding.DataField = 'UNIDADE'
                     DataBinding.DataSource = dsRegistroDet6
+                    Properties.CharCase = ecUpperCase
                     Properties.ReadOnly = False
                     Style.BorderColor = clWindowFrame
                     Style.BorderStyle = ebs3D
@@ -1238,6 +1378,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                     Top = 64
                     DataBinding.DataField = 'COD_PRD_FORNECEDOR'
                     DataBinding.DataSource = dsRegistroDet6
+                    Properties.CharCase = ecUpperCase
                     Properties.ReadOnly = False
                     Style.BorderColor = clWindowFrame
                     Style.BorderStyle = ebs3D
@@ -1281,7 +1422,6 @@ inherited frmCadProdutos: TfrmCadProdutos
           inherited PgcMaster: TcxPageControl
             Width = 699
             Height = 318
-            ActivePage = cxTabSheet1
             ClientRectBottom = 314
             ClientRectRight = 695
             inherited tbsMaster1: TcxTabSheet
@@ -1289,6 +1429,7 @@ inherited frmCadProdutos: TfrmCadProdutos
               inherited edtCodigo: TcxDBTextEdit
                 Tag = 1
                 DataBinding.DataField = 'CODIGO'
+                Properties.CharCase = ecUpperCase
                 Properties.ReadOnly = False
                 Style.Color = clWindow
                 TabOrder = 0
@@ -1300,6 +1441,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                 DataBinding.DataField = 'CODIGO_2'
                 DataBinding.DataSource = dsRegistro
                 ParentFont = False
+                Properties.CharCase = ecUpperCase
                 Style.Font.Charset = DEFAULT_CHARSET
                 Style.Font.Color = clWindowText
                 Style.Font.Height = -11
@@ -1412,6 +1554,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                 Top = 56
                 DataBinding.DataField = 'GRUPO'
                 DataBinding.DataSource = dsRegistro
+                Properties.CharCase = ecUpperCase
                 Properties.KeyFieldNames = 'CODIGO'
                 Properties.ListColumns = <
                   item
@@ -1468,6 +1611,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                 Top = 56
                 DataBinding.DataField = 'SUBGRUPO'
                 DataBinding.DataSource = dsRegistro
+                Properties.CharCase = ecUpperCase
                 Properties.KeyFieldNames = 'SUBGRUPO'
                 Properties.ListColumns = <
                   item
@@ -1538,6 +1682,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                 Top = 96
                 DataBinding.DataField = 'SECAO'
                 DataBinding.DataSource = dsRegistro
+                Properties.CharCase = ecUpperCase
                 Properties.KeyFieldNames = 'COD_SECAO'
                 Properties.ListColumns = <
                   item
@@ -1573,6 +1718,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                 Top = 96
                 DataBinding.DataField = 'MODELO'
                 DataBinding.DataSource = dsRegistro
+                Properties.CharCase = ecUpperCase
                 Properties.KeyFieldNames = 'CODIGO'
                 Properties.ListColumns = <
                   item
@@ -1608,6 +1754,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                 Top = 96
                 DataBinding.DataField = 'MARCA'
                 DataBinding.DataSource = dsRegistro
+                Properties.CharCase = ecUpperCase
                 Properties.KeyFieldNames = 'CODIGO'
                 Properties.ListColumns = <
                   item
@@ -1748,6 +1895,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                 Top = 96
                 DataBinding.DataField = 'MATERIAL'
                 DataBinding.DataSource = dsRegistro
+                Properties.CharCase = ecUpperCase
                 Properties.KeyFieldNames = 'CODIGO'
                 Properties.ListColumns = <
                   item
@@ -1819,6 +1967,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                 DataBinding.DataField = 'CODIGO_FABRICANTE'
                 DataBinding.DataSource = dsRegistro
                 ParentFont = False
+                Properties.CharCase = ecUpperCase
                 Style.Font.Charset = DEFAULT_CHARSET
                 Style.Font.Color = clWindowText
                 Style.Font.Height = -11
@@ -1855,6 +2004,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                 Top = 136
                 DataBinding.DataField = 'UNIDADE'
                 DataBinding.DataSource = dsRegistro
+                Properties.CharCase = ecUpperCase
                 Properties.KeyFieldNames = 'SIGLA'
                 Properties.ListColumns = <
                   item
@@ -1925,6 +2075,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                 Top = 136
                 DataBinding.DataField = 'COR'
                 DataBinding.DataSource = dsRegistro
+                Properties.CharCase = ecUpperCase
                 Properties.KeyFieldNames = 'CODIGO'
                 Properties.ListColumns = <
                   item
@@ -1975,6 +2126,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                 DataBinding.DataField = 'SERIE'
                 DataBinding.DataSource = dsRegistro
                 ParentFont = False
+                Properties.CharCase = ecUpperCase
                 Style.Font.Charset = DEFAULT_CHARSET
                 Style.Font.Color = clWindowText
                 Style.Font.Height = -11
@@ -2083,7 +2235,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                 Top = 190
                 Caption = 'Estoque Atual'
                 TabOrder = 41
-                Height = 81
+                Height = 91
                 Width = 673
                 object cxDBLabel1: TcxDBLabel
                   Left = 16
@@ -2108,7 +2260,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                 object cxDBLabel2: TcxDBLabel
                   Left = 16
                   Top = 40
-                  DataBinding.DataField = 'QTD_UM'
+                  DataBinding.DataField = 'COMPROMETIDO'
                   DataBinding.DataSource = dsRegistro
                   ParentColor = False
                   ParentFont = False
@@ -2128,7 +2280,7 @@ inherited frmCadProdutos: TfrmCadProdutos
                 object cxDBLabel3: TcxDBLabel
                   Left = 272
                   Top = 40
-                  DataBinding.DataField = 'QTD_UM'
+                  DataBinding.DataField = 'QTD_UNIT'
                   DataBinding.DataSource = dsRegistro
                   ParentFont = False
                   Properties.Alignment.Horz = taRightJustify
@@ -2177,22 +2329,51 @@ inherited frmCadProdutos: TfrmCadProdutos
                   Style.IsFontAssigned = True
                   Transparent = True
                   Height = 21
-                  Width = 169
+                  Width = 137
                 end
                 object cxLabel95: TcxLabel
                   Left = 137
                   Top = 41
                   Caption = 'Comprometido'
+                  Transparent = True
                 end
                 object cxLabel96: TcxLabel
                   Left = 393
                   Top = 17
                   Caption = 'F'#237'sico'
+                  Transparent = True
                 end
                 object cxLabel97: TcxLabel
                   Left = 393
                   Top = 41
                   Caption = 'Unidades'
+                  Transparent = True
+                end
+                object cxDBLabel6: TcxDBLabel
+                  Left = 16
+                  Top = 64
+                  DataBinding.DataField = 'EST_DISPONIVEL'
+                  DataBinding.DataSource = dsRegistro
+                  ParentColor = False
+                  ParentFont = False
+                  Properties.Alignment.Horz = taRightJustify
+                  Properties.LabelEffect = cxleCool
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clRed
+                  Style.Font.Height = -13
+                  Style.Font.Name = 'MS Sans Serif'
+                  Style.Font.Style = [fsBold]
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                  Height = 21
+                  Width = 121
+                  AnchorX = 137
+                end
+                object cxLabel103: TcxLabel
+                  Left = 137
+                  Top = 65
+                  Caption = 'Dispon'#237'vel'
+                  Transparent = True
                 end
               end
             end
@@ -3799,21 +3980,16 @@ inherited frmCadProdutos: TfrmCadProdutos
                 Top = 136
                 DataBinding.DataField = 'CSOSN'
                 DataBinding.DataSource = dsRegistro
+                Properties.ClearKey = 46
                 Properties.Items.Strings = (
-                  '101 - Tributado com permiss'#227'o de cr'#233'dito'
-                  '102 - Tributado sem permiss'#227'o de cr'#233'dito'
-                  '103 - Isen'#231#227'o de icms por faixa de receita bruta'
-                  
-                    '201 - Tributado com permiss'#227'o de cr'#233'dito e com cobran'#231'a do ICMS ' +
-                    'por ST'
-                  
-                    '202 - Tributado sem permiss'#227'o de cr'#233'dito e com cobran'#231'a do ICMS ' +
-                    'por ST'
-                  
-                    '203 - Isen'#231#227'o do ICMS para faixa de receita bruta e com combran'#231 +
-                    'a de ICMS por ST'
-                  '300 - Imune'
-                  '400 - N'#227'o tributado')
+                  '101'
+                  '102'
+                  '103'
+                  '201'
+                  '202'
+                  '203'
+                  '400'
+                  '900')
                 TabOrder = 9
                 Width = 287
               end
@@ -4934,10 +5110,14 @@ inherited frmCadProdutos: TfrmCadProdutos
       26)
   end
   inherited ActionList1: TActionList
-    object ActIncluirModelo: TAction
+    object ActIncluirModelo: TAction [21]
       Caption = 'ActIncluirModelo'
       ShortCut = 16461
       OnExecute = ActIncluirModeloExecute
+    end
+    inherited actLimpaAcessaFiltro: TAction
+      Hint = 'Limpa ou acessa o filtro'
+      OnExecute = actLimpaAcessaFiltroExecute
     end
   end
   inherited cxImageList1: TcxImageList
@@ -7242,12 +7422,22 @@ inherited frmCadProdutos: TfrmCadProdutos
     Top = 416
   end
   inherited mtbFiltro: TdxMemData
-    Left = 533
-    Top = 4
+    Left = 205
+    object mtbFiltroCODIGO: TStringField
+      FieldName = 'CODIGO'
+    end
+    object mtbFiltroNOME: TStringField
+      FieldName = 'NOME'
+    end
+    object mtbFiltroCODIGO_FABRICANTE: TStringField
+      FieldName = 'CODIGO_FABRICANTE'
+    end
+    object mtbFiltroCODIGO_2: TStringField
+      FieldName = 'CODIGO_2'
+    end
   end
   inherited dsFiltro: TDataSource
-    Left = 567
-    Top = 4
+    Left = 239
   end
   object QryGrupo: TIBQuery
     Tag = 4
@@ -7264,8 +7454,8 @@ inherited frmCadProdutos: TfrmCadProdutos
       'FROM EST_GRUPOS'
       'WHERE CNPJ = :CNPJ'
       'ORDER BY NOME')
-    Left = 329
-    Top = 36
+    Left = 585
+    Top = 4
     ParamData = <
       item
         DataType = ftUnknown
@@ -7306,8 +7496,8 @@ inherited frmCadProdutos: TfrmCadProdutos
   end
   object DsGrupo: TDataSource
     DataSet = QryGrupo
-    Left = 351
-    Top = 36
+    Left = 607
+    Top = 4
   end
   object DsSubGrupo: TDataSource
     DataSet = QrySubGrupo
@@ -7453,8 +7643,8 @@ inherited frmCadProdutos: TfrmCadProdutos
     SQL.Strings = (
       'select * from est_secao s'
       'where s.cnpj = :cnpj')
-    Left = 441
-    Top = 36
+    Left = 657
+    Top = 4
     ParamData = <
       item
         DataType = ftUnknown
@@ -7483,8 +7673,8 @@ inherited frmCadProdutos: TfrmCadProdutos
   end
   object DsSecao: TDataSource
     DataSet = QrySecao
-    Left = 463
-    Top = 36
+    Left = 679
+    Top = 4
   end
   object QryModelo: TIBQuery
     Tag = 4

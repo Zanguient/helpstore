@@ -1,5 +1,5 @@
 object FRelListaCaixaGeral: TFRelListaCaixaGeral
-  Left = 252
+  Left = 255
   Top = 161
   BorderStyle = bsDialog
   Caption = ' Lista Caixa Geral'

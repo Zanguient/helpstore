@@ -20,8 +20,8 @@ object FrmNaturezaOper: TFrmNaturezaOper
   object pnlClient: TPanel
     Left = 0
     Top = 0
-    Width = 558
-    Height = 388
+    Width = 566
+    Height = 395
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -36,8 +36,8 @@ object FrmNaturezaOper: TFrmNaturezaOper
     OnResize = pnlClientResize
     object Bevel1: TBevel
       Left = 2
-      Top = 384
-      Width = 554
+      Top = 391
+      Width = 562
       Height = 2
       Align = alBottom
       Shape = bsTopLine
@@ -52,21 +52,21 @@ object FrmNaturezaOper: TFrmNaturezaOper
     object pc: TcxPageControl
       Left = 2
       Top = 41
-      Width = 554
-      Height = 343
-      ActivePage = dxTabSheet1
+      Width = 562
+      Height = 350
+      ActivePage = dxTabSheet3
       Align = alClient
       TabOrder = 0
-      ClientRectBottom = 338
-      ClientRectLeft = 2
-      ClientRectRight = 549
-      ClientRectTop = 24
+      ClientRectBottom = 346
+      ClientRectLeft = 4
+      ClientRectRight = 558
+      ClientRectTop = 27
       object dxTabSheet1: TcxTabSheet
         Caption = 'Opera'#231#227'o Interna'
         object Shape1: TShape
           Left = 0
           Top = 0
-          Width = 547
+          Width = 554
           Height = 1
           Align = alTop
           Pen.Color = clBtnShadow
@@ -1420,7 +1420,7 @@ object FrmNaturezaOper: TFrmNaturezaOper
     object Panel2: TPanel
       Left = 2
       Top = 2
-      Width = 554
+      Width = 562
       Height = 39
       Align = alTop
       BevelOuter = bvNone

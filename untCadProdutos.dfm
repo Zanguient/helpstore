@@ -1,5 +1,5 @@
 inherited frmCadProdutos: TfrmCadProdutos
-  Left = 245
+  Left = 249
   Top = 49
   Width = 717
   Height = 646
@@ -10,6 +10,7 @@ inherited frmCadProdutos: TfrmCadProdutos
   inherited pgcCadastro: TcxPageControl
     Width = 709
     Height = 589
+    ActivePage = tbsEdita
     ClientRectBottom = 585
     ClientRectRight = 705
     inherited tbsLista: TcxTabSheet
@@ -272,7 +273,7 @@ inherited frmCadProdutos: TfrmCadProdutos
           inherited PgcDetalhe: TcxPageControl
             Width = 699
             Height = 238
-            ActivePage = tbsDetalhe6
+            ActivePage = tbsDetalhe3
             ClientRectBottom = 234
             ClientRectRight = 695
             inherited tbsDetalhe1: TcxTabSheet
@@ -1422,6 +1423,7 @@ inherited frmCadProdutos: TfrmCadProdutos
           inherited PgcMaster: TcxPageControl
             Width = 699
             Height = 318
+            ActivePage = cxTabSheet3
             ClientRectBottom = 314
             ClientRectRight = 695
             inherited tbsMaster1: TcxTabSheet
@@ -4192,6 +4194,7 @@ inherited frmCadProdutos: TfrmCadProdutos
   inherited dtEdit: TIBDataSet
     AfterEdit = dtEditAfterEdit
     AfterInsert = dtEditAfterInsert
+    AfterOpen = dtEditAfterOpen
     AfterPost = dtEditAfterPost
     BeforeOpen = dtEditBeforeOpen
     OnCalcFields = dtEditCalcFields
@@ -4508,10 +4511,14 @@ inherited frmCadProdutos: TfrmCadProdutos
     object dtEditCTE: TIntegerField
       FieldName = 'CTE'
       Origin = '"PCD_LISTA_PRODUTO"."CTE"'
+      OnGetText = dtEditCTEGetText
+      OnSetText = dtEditCTESetText
     end
     object dtEditCTIE: TIntegerField
       FieldName = 'CTIE'
       Origin = '"PCD_LISTA_PRODUTO"."CTIE"'
+      OnGetText = dtEditCTIEGetText
+      OnSetText = dtEditCTIESetText
     end
     object dtEditQTDADE_1: TFloatField
       FieldName = 'QTDADE_1'
@@ -4907,18 +4914,24 @@ inherited frmCadProdutos: TfrmCadProdutos
     object dtEditTRIB_PIS: TIBStringField
       FieldName = 'TRIB_PIS'
       Origin = '"PCD_LISTA_PRODUTO"."TRIB_PIS"'
+      OnGetText = dtEditTRIB_PISGetText
+      OnSetText = dtEditTRIB_PISSetText
       FixedChar = True
       Size = 2
     end
     object dtEditTRIB_COFINS: TIBStringField
       FieldName = 'TRIB_COFINS'
       Origin = '"PCD_LISTA_PRODUTO"."TRIB_COFINS"'
+      OnGetText = dtEditTRIB_COFINSGetText
+      OnSetText = dtEditTRIB_COFINSSetText
       FixedChar = True
       Size = 2
     end
     object dtEditTRIB_IPI: TIBStringField
       FieldName = 'TRIB_IPI'
       Origin = '"PCD_LISTA_PRODUTO"."TRIB_IPI"'
+      OnGetText = dtEditTRIB_IPIGetText
+      OnSetText = dtEditTRIB_IPISetText
       FixedChar = True
       Size = 2
     end
@@ -4929,6 +4942,8 @@ inherited frmCadProdutos: TfrmCadProdutos
     object dtEditCSOSN: TIntegerField
       FieldName = 'CSOSN'
       Origin = '"PCD_LISTA_PRODUTO"."CSOSN"'
+      OnGetText = dtEditCSOSNGetText
+      OnSetText = dtEditCSOSNSetText
     end
     object dtEditCOD_GETIN: TIBStringField
       FieldName = 'COD_GETIN'
@@ -6791,10 +6806,11 @@ inherited frmCadProdutos: TfrmCadProdutos
     end
   end
   inherited dsLinkDet2: TDataSource
-    Left = 144
+    Left = 112
     Top = 348
   end
   inherited dsLinkDet1: TDataSource
+    Left = 64
     Top = 348
   end
   inherited dtEditDet2: TIBDataSet

@@ -666,8 +666,6 @@ type
     procedure BtnLocalizacao3Click(Sender: TObject);
     procedure BtnFornecedorClick(Sender: TObject);
     procedure BtnTecnicoClick(Sender: TObject);
-    procedure dtEditCTEGetText(Sender: TField; var Text: String;
-      DisplayText: Boolean);
     procedure dtEditCTESetText(Sender: TField; const Text: String);
     procedure dtEditTRIB_PISGetText(Sender: TField; var Text: String;
       DisplayText: Boolean);
@@ -695,6 +693,12 @@ type
     procedure dtEditBeforePost(DataSet: TDataSet);
     procedure ActFilterExecute(Sender: TObject);
     procedure actLimpaAcessaFiltroExecute(Sender: TObject);
+    procedure dtEditAfterOpen(DataSet: TDataSet);
+    procedure dtEditCTEGetText(Sender: TField; var Text: String;
+      DisplayText: Boolean);
+    procedure dtEditCTIEGetText(Sender: TField; var Text: String;
+      DisplayText: Boolean);
+    procedure dtEditCTIESetText(Sender: TField; const Text: String);
   private
     { Private declarations }
     procedure Filtrar;
@@ -723,16 +727,16 @@ begin
   dtList.Close;
   
   if mtbFiltroCODIGO.AsString <> '' then
-    filtro := filtro + ' and prd.codigo = ''' + mtbFiltroCODIGO.AsString + '''';
+    filtro := filtro + ' and prd.codigo containing ''' + mtbFiltroCODIGO.AsString + '''';
 
   if mtbFiltroNOME.AsString <> '' then
     filtro := filtro + ' and prd.nome containing ''' + mtbFiltroNOME.AsString + '''';
 
   if mtbFiltroCODIGO_FABRICANTE.AsString <> '' then
-    filtro := filtro + ' and prd.codigo_fabricante = ''' + mtbFiltroCODIGO_FABRICANTE.AsString + '''';
+    filtro := filtro + ' and prd.codigo_fabricante containing ''' + mtbFiltroCODIGO_FABRICANTE.AsString + '''';
 
   if mtbFiltroCODIGO_2.AsString <> '' then
-    filtro := filtro + ' and prd.codigo_2 = ''' + mtbFiltroCODIGO_2.AsString + '''';
+    filtro := filtro + ' and prd.codigo_2 containing ''' + mtbFiltroCODIGO_2.AsString + '''';
 
   dtList.sql.text := sqloriginal + filtro;
 end;
@@ -893,32 +897,6 @@ procedure TfrmCadProdutos.BtnTecnicoClick(Sender: TObject);
 begin
   inherited;
   CadastroLookup(TfrmCadTecnicos,dtEdit,'COD_TECNICO',QryTecnico);
-end;
-
-procedure TfrmCadProdutos.dtEditCTEGetText(Sender: TField;
-  var Text: String; DisplayText: Boolean);
-begin
-  inherited;            
-  If Sender.Value = 1 Then
-     Text := '1 - Tributada Integralmente';
-
-  If Sender.Value = 2 Then
-     Text := '2 - Tributada com Reduçao na Base de Cálculo';
-
-  If Sender.Value = 3 Then
-     Text := '3 - Isento de ICMS';
-
-  If Sender.Value = 4 Then
-     Text := '4 - ICMS nao incidência';
-
-  If Sender.Value = 5 Then
-     Text := '5 - Diferido';
-
-  If Sender.Value = 6 Then
-     Text := '6 - Substituiçao Tributária';
-
-  If Sender.Value = 7 Then
-     Text := '7 - ISS';       
 end;
 
 procedure TfrmCadProdutos.dtEditCTESetText(Sender: TField;
@@ -1387,6 +1365,115 @@ begin
       edtCodSecundario.Text := '';
     end else
       edtFiltroCodigo.SetFocus;
+end;
+
+procedure TfrmCadProdutos.dtEditAfterOpen(DataSet: TDataSet);
+begin
+  inherited;
+
+  {case dtEditCTE.Value
+
+  If Sender.Value = 1 Then
+     Text := '1 - Tributada Integralmente';
+
+  If Sender.Value = 2 Then
+     Text := '2 - Tributada com Reduçao na Base de Cálculo';
+
+  If Sender.Value = 3 Then
+     Text := '3 - Isento de ICMS';
+
+  If Sender.Value = 4 Then
+     Text := '4 - ICMS nao incidência';
+
+  If Sender.Value = 5 Then
+     Text := '5 - Diferido';
+
+  If Sender.Value = 6 Then
+     Text := '6 - Substituiçao Tributária';
+
+  If Sender.Value = 7 Then
+     Text := '7 - ISS'; }
+end;
+
+procedure TfrmCadProdutos.dtEditCTEGetText(Sender: TField;
+  var Text: String; DisplayText: Boolean);
+begin
+  inherited;
+  If Sender.Value = 1 Then
+     Text := '1 - Tributada Integralmente';
+
+  If Sender.Value = 2 Then
+     Text := '2 - Tributada com Reduçao na Base de Cálculo';
+
+  If Sender.Value = 3 Then
+     Text := '3 - Isento de ICMS';
+
+  If Sender.Value = 4 Then
+     Text := '4 - ICMS nao incidência';
+
+  If Sender.Value = 5 Then
+     Text := '5 - Diferido';
+
+  If Sender.Value = 6 Then
+     Text := '6 - Substituiçao Tributária';
+
+  If Sender.Value = 7 Then
+     Text := '7 - ISS';
+end;
+
+procedure TfrmCadProdutos.dtEditCTIEGetText(Sender: TField;
+  var Text: String; DisplayText: Boolean);
+begin
+  inherited;
+  
+  If Sender.Value = 1 Then
+     Text := '1 - Tributada Integralmente';
+
+  If Sender.Value = 2 Then
+     Text := '2 - Tributada com Reduçao na Base de Cálculo';
+
+  If Sender.Value = 3 Then
+     Text := '3 - Isento de ICMS';
+
+  If Sender.Value = 4 Then
+     Text := '4 - ICMS nao incidência';
+
+  If Sender.Value = 5 Then
+     Text := '5 - Diferido';
+
+  If Sender.Value = 6 Then
+     Text := '6 - Substituiçao Tributária';
+
+  If Sender.Value = 7 Then
+     Text := '7 - ISS';
+
+end;
+
+procedure TfrmCadProdutos.dtEditCTIESetText(Sender: TField;
+  const Text: String);
+begin
+  inherited;
+
+  If Text = '1 - Tributada Integralmente' Then
+     Sender.Value := 1;
+
+  If Text = '2 - Tributada com Redução na Base de Cálculo' Then
+     Sender.Value := 2;
+
+  If Text = '3 - Isento de ICMS' Then
+     Sender.Value := 3;
+
+  If Text = '4 - ICMS não incidência' Then
+     Sender.Value := 4;
+     
+  If Text = '5 - Diferido' Then
+     Sender.Value := 5;
+
+  If Text = '6 - Substituição Tributária' Then
+     Sender.Value := 6;
+
+  If Text = '7 - ISS' Then
+     Sender.Value := 7;
 end;
 
 end.

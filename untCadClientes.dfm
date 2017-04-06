@@ -2186,7 +2186,7 @@ inherited frmCadClientes: TfrmCadClientes
                 Top = 89
                 Width = 1260
                 Height = 267
-                ActivePage = dxTabSheet1
+                ActivePage = cxTabSheet2
                 Align = alClient
                 HotTrack = True
                 TabOrder = 3

@@ -2132,7 +2132,7 @@ begin
        if (Remessa = 'S') then
          tipo := 'Remessa'
        else if (Devolucao = 'S') then
-         tipo := 'Devolução'
+         tipo := ''//'Devolução'
        else
          tipo := '';
 

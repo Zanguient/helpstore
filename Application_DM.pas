@@ -11242,6 +11242,7 @@ var
    NITEM, AuxRef : Integer;
    ArquivoTexto: TextFile;
    ProdutoCSOSN: Variant;
+   ES, DEVOLUCAO: char;
 begin
   if PathXML <> '' then
   begin
@@ -11342,6 +11343,20 @@ begin
     begin
       infNFe.ID := dmCadastros2.NFe_Faturamentos2CODIGO.asString;
 
+      AuxSql := '';
+      AuxSql := 'select nat.es from est_natureza nat where nat.cfop = ' + dmCadastros2.NFe_Faturamentos_ItensCFOP.AsString;
+      if RetornaValor(AuxSql) <> null then
+        ES := Chr(Byte(RetornaValor(AuxSql)))
+      else
+        ES := #0;
+
+      AuxSql := '';
+      AuxSql := 'select nat.devolucao from est_natureza nat where nat.cfop = ' + dmCadastros2.NFe_Faturamentos_ItensCFOP.AsString;
+      if RetornaValor(AuxSql) <> null then
+        DEVOLUCAO := Chr(Byte(RetornaValor(AuxSql)))
+      else
+        DEVOLUCAO := #0;
+
       //Sanniel -- Necessário para Nfe de entrada de produtor rural
       if (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 1949) then
       begin
@@ -11353,7 +11368,8 @@ begin
       end;
 
       //Sanniel -- Necessário para Nfe de saída de devolução
-      if (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 5202) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 6202) then
+      if (DEVOLUCAO = 'S') and (ES = 'S') then
+      {if (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 5202) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 6202) then}
       begin
         with Ide.NFref.Add do
         begin
@@ -11422,7 +11438,8 @@ begin
       Ide.cUF       := 50; //mato grosso do sul
       Ide.cMunFG    := StrToInt(DMApp.NFE_EMIT_COD_CIDADE);
 
-      if (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 1202) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 1411) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 5202) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 6202) then
+      if (DEVOLUCAO = 'S') then
+      //if (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 1202) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 1411) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 5202) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 6202) then
         Ide.finNFe    := fnDevolucao
       else
         Ide.finNFe    := fnNormal;

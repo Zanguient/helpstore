@@ -11237,12 +11237,12 @@ end;
 
 procedure TDmApp.ImprimeNFE(cnpj: string; venda, num_nf: integer; DataNF: TDate;Serie:string='1';PathXML:String='');
 var
-   vAux,regime, FileXML, Nfe_Ref, Aux2, AuxSql, Mostra_Desconto: String;
+   vAux,regime, FileXML, Nfe_Ref, Aux2, AuxSql, Mostra_Desconto, Devolucao_NF,  ES: String;
    ok :boolean;
    NITEM, AuxRef : Integer;
    ArquivoTexto: TextFile;
    ProdutoCSOSN: Variant;
-   ES, DEVOLUCAO: char;
+   DEVOLUCAO: char;
 begin
   if PathXML <> '' then
   begin
@@ -11346,19 +11346,10 @@ begin
       AuxSql := '';
       AuxSql := 'select nat.es from est_natureza nat where nat.cfop = ' + dmCadastros2.NFe_Faturamentos_ItensCFOP.AsString;
       if RetornaValor(AuxSql) <> null then
-        ES := Chr(Byte(RetornaValor(AuxSql)))
-      else
-        ES := #0;
-
-      AuxSql := '';
-      AuxSql := 'select nat.devolucao from est_natureza nat where nat.cfop = ' + dmCadastros2.NFe_Faturamentos_ItensCFOP.AsString;
-      if RetornaValor(AuxSql) <> null then
-        DEVOLUCAO := Chr(Byte(RetornaValor(AuxSql)))
-      else
-        DEVOLUCAO := #0;
+        ES := RetornaValor(AuxSql);
 
       //Sanniel -- Necessário para Nfe de entrada de produtor rural
-      if (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 1949) then
+      if (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 1949) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 2949) then
       begin
         if (InputQuery('APENAS NFe de Ent de "PRODUTOR RURAL"', 'Digite a Chave da NFe de referência:', vAux)) then
           with Ide.NFref.Add do
@@ -11368,8 +11359,11 @@ begin
       end;
 
       //Sanniel -- Necessário para Nfe de saída de devolução
-      if (DEVOLUCAO = 'S') and (ES = 'S') then
-      {if (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 5202) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 6202) then}
+      AuxSql := '';
+      AuxSql := 'select nat.devolucao_nf from est_natureza nat where nat.cfop = ' +  dmCadastros2.NFe_Faturamentos_ItensCFOP.AsString;
+      Devolucao_NF := RetornaValor(AuxSql);
+
+      if (Devolucao_NF = 'S') and (ES = 'S') then
       begin
         with Ide.NFref.Add do
         begin
@@ -11438,8 +11432,7 @@ begin
       Ide.cUF       := 50; //mato grosso do sul
       Ide.cMunFG    := StrToInt(DMApp.NFE_EMIT_COD_CIDADE);
 
-      if (DEVOLUCAO = 'S') then
-      //if (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 1202) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 1411) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 5202) or (dmCadastros2.NFe_Faturamentos_ItensCFOP.AsInteger = 6202) then
+      if (Devolucao_NF = 'S') then
         Ide.finNFe    := fnDevolucao
       else
         Ide.finNFe    := fnNormal;
@@ -11574,18 +11567,15 @@ begin
 
           if (Mostra_Desconto = 'S') then
           begin
-            Prod.vProd    := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVPROD.value {+ (dmCadastros2.NFe_Faturamentos_ItensVDESC.value * dmCadastros2.NFe_Faturamentos_ItensQCOM.value)},2);
-            Prod.vUnCom   := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVUTRIB.value {+ dmCadastros2.NFe_Faturamentos_ItensVDESC.value},2);
-            Prod.vUnTrib  := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVUTRIB.value {+ dmCadastros2.NFe_Faturamentos_ItensVDESC.value},2);  
+            Prod.vProd    := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVPROD.value ,2);
+            Prod.vUnCom   := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVUTRIB.value ,2);
+            Prod.vUnTrib  := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVUTRIB.value ,2);  
             Prod.vDesc := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVDESC.value * dmCadastros2.NFe_Faturamentos_ItensQTRIB.value,2);
           end else
           begin
             Prod.vProd    := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVUNCOM.value * dmCadastros2.NFe_Faturamentos_ItensQCOM.value,2);
             Prod.vUnCom   := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVUNCOM.value,3);
             Prod.vUnTrib  := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVUNCOM.value,3);
-          {  Prod.vProd    := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVPROD.value,2);
-            Prod.vUnCom   := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVUNCOM.value,2);
-            Prod.vUnTrib  := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVUTRIB.value,2); }
           end;
           
           Prod.qTrib    := Arredonda(dmCadastros2.NFe_Faturamentos_ItensQTRIB.value,2);
@@ -11695,9 +11685,6 @@ begin
               ICMS.vBC    := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVBC.value,2);
             end;
 
-            {IPI.CST := StrToCSTIPI(false,Pchar(dmCadastros2.NFe_Faturamentos_ItensTRIB_IPI.AsString));
-            PIS.CST := StrToCSTPIS(false,Pchar(dmCadastros2.NFe_Faturamentos_ItensTRIB_PIS.AsString));
-            COFINS.CST := StrToCSTCOFINS(false,Pchar(dmCadastros2.NFe_Faturamentos_ItensTRIB_COFINS.AsString));
             {
              TpcnCstIpi = (ipi00, ipi49, ipi50, ipi99, ipi01, ipi02, ipi03, ipi04, ipi05, ipi51, ipi52, ipi53, ipi54, ipi55);
              TpcnCstPis = (pis01, pis02, pis03, pis04, pis06, pis07, pis08, pis09, pis99);

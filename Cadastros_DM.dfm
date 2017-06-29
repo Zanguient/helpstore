@@ -1190,18 +1190,18 @@ object DMCadastros: TDMCadastros
         '   CALC_ISSQN, CALC_PIS, CALC_SEST_SENAT, CFOP, CFOP_DESCRICAO, ' +
         'CNPJ, CODIGO, '
       
-        '   COMPUTA_VENDA, CONSIGNACAO, DEVOLUCAO, ENTREGA_FUTURA, ES, GE' +
-        'RA_FINANCEIRO, '
+        '   COMPUTA_VENDA, CONSIGNACAO, DEVOLUCAO, DEVOLUCAO_NF, ENTREGA_' +
+        'FUTURA, '
       
-        '   IMP_PEDIDO, INTERESTADUAL, MENSAGEM_1, MENSAGEM_2, MOV_CAIXA,' +
-        ' MOV_ESTOQUE, '
+        '   ES, GERA_FINANCEIRO, IMP_PEDIDO, INTERESTADUAL, MENSAGEM_1, M' +
+        'ENSAGEM_2, '
       
-        '   MOV_ESTOQUE_FISCAL, MSG_FISCAL, NOME, PAGA_COMISSAO, PERC_ICM' +
-        'S, PERC_ICMS_REV, '
+        '   MOV_CAIXA, MOV_ESTOQUE, MOV_ESTOQUE_FISCAL, MSG_FISCAL, NOME,' +
+        ' PAGA_COMISSAO, '
       
-        '   PERC_ISS, REL_GERENCIAL, REMESSA, RESUMO_CONTABIL, TTL_RES_BO' +
-        'NIFICACAO, '
-      '   TTL_RES_DIVERSOS)'
+        '   PERC_ICMS, PERC_ICMS_REV, PERC_ISS, REL_GERENCIAL, REMESSA, R' +
+        'ESUMO_CONTABIL, '
+      '   TTL_RES_BONIFICACAO, TTL_RES_DIVERSOS)'
       'values'
       
         '  (:ALTERA_CUSTO, :ATIVA, :CALC_COFINS, :CALC_ICMS, :CALC_INSS, ' +
@@ -1210,18 +1210,20 @@ object DMCadastros: TDMCadastros
         '   :CALC_IRRF, :CALC_ISSQN, :CALC_PIS, :CALC_SEST_SENAT, :CFOP, ' +
         ':CFOP_DESCRICAO, '
       
-        '   :CNPJ, :CODIGO, :COMPUTA_VENDA, :CONSIGNACAO, :DEVOLUCAO, :EN' +
-        'TREGA_FUTURA, '
+        '   :CNPJ, :CODIGO, :COMPUTA_VENDA, :CONSIGNACAO, :DEVOLUCAO, :DE' +
+        'VOLUCAO_NF, '
       
-        '   :ES, :GERA_FINANCEIRO, :IMP_PEDIDO, :INTERESTADUAL, :MENSAGEM' +
-        '_1, :MENSAGEM_2, '
+        '   :ENTREGA_FUTURA, :ES, :GERA_FINANCEIRO, :IMP_PEDIDO, :INTERES' +
+        'TADUAL, '
       
-        '   :MOV_CAIXA, :MOV_ESTOQUE, :MOV_ESTOQUE_FISCAL, :MSG_FISCAL, :' +
-        'NOME, :PAGA_COMISSAO, '
+        '   :MENSAGEM_1, :MENSAGEM_2, :MOV_CAIXA, :MOV_ESTOQUE, :MOV_ESTO' +
+        'QUE_FISCAL, '
       
-        '   :PERC_ICMS, :PERC_ICMS_REV, :PERC_ISS, :REL_GERENCIAL, :REMES' +
-        'SA, :RESUMO_CONTABIL, '
-      '   :TTL_RES_BONIFICACAO, :TTL_RES_DIVERSOS)')
+        '   :MSG_FISCAL, :NOME, :PAGA_COMISSAO, :PERC_ICMS, :PERC_ICMS_RE' +
+        'V, :PERC_ISS, '
+      
+        '   :REL_GERENCIAL, :REMESSA, :RESUMO_CONTABIL, :TTL_RES_BONIFICA' +
+        'CAO, :TTL_RES_DIVERSOS)')
     RefreshSQL.Strings = (
       'Select '
       '  CNPJ,'
@@ -1261,7 +1263,8 @@ object DMCadastros: TDMCadastros
       '  CFOP_DESCRICAO,'
       '  MOV_ESTOQUE_FISCAL,'
       '  IMP_PEDIDO,'
-      '  REL_GERENCIAL'
+      '  REL_GERENCIAL,'
+      '  DEVOLUCAO_NF'
       'from EST_NATUREZA '
       'where'
       '  CNPJ = :CNPJ and'
@@ -1287,7 +1290,8 @@ object DMCadastros: TDMCadastros
       'cfop_descricao,'
       'MOV_ESTOQUE_FISCAL,'
       'IMP_PEDIDO  ,'
-      '    REL_GERENCIAL'
+      '    REL_GERENCIAL,'
+      'DEVOLUCAO_NF'
       'from est_natureza'
       'where cnpj = :cnpj order by codigo')
     ModifySQL.Strings = (
@@ -1310,6 +1314,7 @@ object DMCadastros: TDMCadastros
       '  COMPUTA_VENDA = :COMPUTA_VENDA,'
       '  CONSIGNACAO = :CONSIGNACAO,'
       '  DEVOLUCAO = :DEVOLUCAO,'
+      '  DEVOLUCAO_NF = :DEVOLUCAO_NF,'
       '  ENTREGA_FUTURA = :ENTREGA_FUTURA,'
       '  ES = :ES,'
       '  GERA_FINANCEIRO = :GERA_FINANCEIRO,'
@@ -1572,6 +1577,12 @@ object DMCadastros: TDMCadastros
     object NaturezaREL_GERENCIAL: TIBStringField
       FieldName = 'REL_GERENCIAL'
       Origin = '"EST_NATUREZA"."REL_GERENCIAL"'
+      FixedChar = True
+      Size = 1
+    end
+    object NaturezaDEVOLUCAO_NF: TIBStringField
+      FieldName = 'DEVOLUCAO_NF'
+      Origin = '"EST_NATUREZA"."DEVOLUCAO_NF"'
       FixedChar = True
       Size = 1
     end

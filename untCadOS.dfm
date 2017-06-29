@@ -7699,7 +7699,7 @@ inherited frmCadOS: TfrmCadOS
     end
     object mtbFiltroSERIE: TStringField
       FieldName = 'SERIE'
-      Size = 15
+      Size = 30
     end
     object mtbFiltroCODIGO_OS: TIntegerField
       FieldName = 'CODIGO_OS'

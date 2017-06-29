@@ -1748,6 +1748,7 @@ type
     IntegerField40: TIntegerField;
     IntegerField41: TIntegerField;
     IBBCDField9: TIBBCDField;
+    NaturezaDEVOLUCAO_NF: TIBStringField;
     procedure Pessoas_FJAfterInsert(DataSet: TDataSet);
     procedure Pessoas_FJPESSOAGetText(Sender: TField; var Text: String;
       DisplayText: Boolean);

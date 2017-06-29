@@ -1565,7 +1565,6 @@ type
     qryMaxMinPRD_DT_ULTVENDA: TDateField;
     qryMaxMinPRD_ESTOQUE: TIBBCDField;
     dsEntradasProd: TDataSource;
-    SelProdutos_Cod_Nome: TStringField;
     ListaPrecosAZMARCA: TIBStringField;
     qryRelEntProd: TIBQuery;
     qryRelEntProdFORNECEDOR: TIBStringField;
@@ -2102,7 +2101,6 @@ type
     qryRelAuxContagemLOCALIZACAO_2: TIBStringField;
     qryRelAuxContagemLOCALIZACAO_3: TIBStringField;
     qryRelEstoqueCompPRODUTO: TIBStringField;
-    qryRelEstoqueCompCODIGO: TIntegerField;
     qryRelEstoqueCompPRD_NOME: TIBStringField;
     qryRelEstoqueCompMARCA: TIBStringField;
     qryRelEstoqueCompPSA_CODIGO: TIntegerField;
@@ -2194,6 +2192,7 @@ type
     SelRegiaoTECNICO: TIntegerField;
     qryRelPagarCOD_CONTRATO: TIntegerField;
     qryRelPagarCTR_NOME: TIBStringField;
+    qryRelEstoqueCompCODIGO: TIBStringField;
     procedure KardexBeforeOpen(DataSet: TDataSet);
     procedure KardexAfterClose(DataSet: TDataSet);
     procedure PosicaoEstoqueCalcFields(DataSet: TDataSet);
@@ -3127,7 +3126,7 @@ end;
 
 procedure TDMRelatorios.SelProdutosCalcFields(DataSet: TDataSet);
 begin
-  SelProdutos_Cod_Nome.Value := SelProdutosCODIGO.Value+'-'+SelProdutosNOME.Value; 
+  //SelProdutos_Cod_Nome.Value := SelProdutosCODIGO.Value+'-'+SelProdutosNOME.Value; 
 end;
 
 procedure TDMRelatorios.qryRelEntProdCalcFields(DataSet: TDataSet);

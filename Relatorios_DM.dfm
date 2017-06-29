@@ -38,13 +38,6 @@ object DMRelatorios: TDMRelatorios
       Required = True
       Size = 50
     end
-    object SelProdutos_Cod_Nome: TStringField
-      DisplayWidth = 66
-      FieldKind = fkCalculated
-      FieldName = '_Cod_Nome'
-      Size = 65
-      Calculated = True
-    end
   end
   object ListaPrecos: TIBQuery
     Database = DmApp.Database
@@ -14638,9 +14631,6 @@ object DMRelatorios: TDMRelatorios
       FieldName = 'PRODUTO'
       Size = 70
     end
-    object qryRelEstoqueCompCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-    end
     object qryRelEstoqueCompPRD_NOME: TIBStringField
       FieldName = 'PRD_NOME'
       Size = 50
@@ -14678,6 +14668,11 @@ object DMRelatorios: TDMRelatorios
     object qryRelEstoqueCompORIGEM: TIBStringField
       FieldName = 'ORIGEM'
       Size = 50
+    end
+    object qryRelEstoqueCompCODIGO: TIBStringField
+      FieldName = 'CODIGO'
+      Origin = '"PCD_LST_EST_COMPROMETIDO"."CODIGO"'
+      Size = 15
     end
   end
   object qryRelPagar: TIBQuery

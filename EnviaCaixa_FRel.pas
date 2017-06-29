@@ -224,6 +224,7 @@ type
     LBLNOME: TcxLabel;
     LBLPEDIDO: TcxLabel;
     LblTipo: TcxLabel;
+    cxLabel1: TcxLabel;
     procedure FormCreate(Sender: TObject);
     procedure ActFecharExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -1487,6 +1488,10 @@ begin
                rptSerieNF.Template.DatabaseSettings.Name := dmapp.cnpj;
                rptSerieNF.Template.LoadFromDatabase;
 
+               if ( VIAS.Value > 0 ) and ( VIAS.Value < 3 ) then
+                rptSerieNF.PrinterSetup.Copies := Trunc(Vias.Value)
+               else
+                rptSerieNF.PrinterSetup.Copies := 1;
 
                DmVendas2.qrySeriesNF.Close;
                DmVendas2.qrySeriesNF.sql.clear;
@@ -1520,8 +1525,14 @@ begin
                rptSerieOrcaNF.Template.DatabaseSettings.Name := DMCadastros.EdtSerieOrcNFcnpj.asstring;;
                rptSerieOrcaNF.Template.LoadFromDatabase;
 
+               if ( VIAS.Value > 0 ) and ( VIAS.Value < 3 ) then
+                rptSerieOrcaNF.PrinterSetup.Copies := Trunc(Vias.Value)
+               else
+                rptSerieOrcaNF.PrinterSetup.Copies := 1;
+
                DmVendas2.qrySeries_ORC_NF.CLOSE;
-               DmVendas2.qrySeries_ORC_NF.sql.text :=' select * from PCD_IMPRIME_SERIE_ORC_NF(:orca,:cnpj)';
+               DmVendas2.qrySeries_ORC_NF.sql.Clear;
+               DmVendas2.qrySeries_ORC_NF.sql.text := 'select * from PCD_IMPRIME_SERIE_ORC_NF(:orca,:cnpj)';
                DmVendas2.qrySeries_ORC_NF.ParamByName('cnpj').value := dmApp.cnpj;
                DmVendas2.qrySeries_ORC_NF.ParamByName('orca').value := PedidoNumero;
                DmVendas2.qrySeries_ORC_NF.open;

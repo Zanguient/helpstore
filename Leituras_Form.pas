@@ -676,6 +676,8 @@ begin
       exit;
     end;
 
+    //Sanniel -- Caso o total de cópias seja alterado, será obrigatorio preenchimento do campo obs.
+
     {Verificando se algum item não tenha recebido a leitura de cópias}
     with dmCadastros2 do
     begin

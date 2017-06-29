@@ -2,7 +2,7 @@ object DmApp: TDmApp
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Left = 324
+  Left = 330
   Height = 728
   Width = 808
   object Database: TIBDatabase
@@ -5463,6 +5463,7 @@ object DmApp: TDmApp
       '  PARC_TEXTO_RELATORIO = :PARC_TEXTO_RELATORIO'
       'where'
       '  PARC_CNPJ = :OLD_PARC_CNPJ')
+    Active = True
     Left = 456
     Top = 272
     object QryParceiroPARC_RAZAO_SOCIAL: TIBStringField

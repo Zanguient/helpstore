@@ -1,5 +1,5 @@
 object FRelEstoqueComprometido: TFRelEstoqueComprometido
-  Left = 277
+  Left = 283
   Top = 175
   BorderStyle = bsDialog
   Caption = 'Listagem de Estoque Comprometido'
@@ -102,7 +102,7 @@ object FRelEstoqueComprometido: TFRelEstoqueComprometido
         OnExit = cmbProdutoExit
         OnKeyDown = cmbPessoaKeyDown
         ClearKey = 46
-        ListFieldName = 'NOME_RAZAO'
+        ListFieldName = 'NOME_RAZAO; CODIGO'
         CanDeleteText = True
         KeyFieldName = 'CODIGO'
         ListSource = dsCliente
@@ -306,7 +306,7 @@ object FRelEstoqueComprometido: TFRelEstoqueComprometido
     DataPipeline = dbEstComprometido
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PaperName = 'A4 210x297 mm'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
     PrinterSetup.mmMarginBottom = 6350
@@ -1087,8 +1087,8 @@ object FRelEstoqueComprometido: TFRelEstoqueComprometido
       Sortable = False
     end
     object dbEstComprometidoppField2: TppField
-      FieldAlias = 'CODIGO'
-      FieldName = 'CODIGO'
+      FieldAlias = 'PRD_NOME'
+      FieldName = 'PRD_NOME'
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
@@ -1097,8 +1097,8 @@ object FRelEstoqueComprometido: TFRelEstoqueComprometido
       Sortable = False
     end
     object dbEstComprometidoppField3: TppField
-      FieldAlias = 'PRD_NOME'
-      FieldName = 'PRD_NOME'
+      FieldAlias = 'MARCA'
+      FieldName = 'MARCA'
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
@@ -1107,8 +1107,8 @@ object FRelEstoqueComprometido: TFRelEstoqueComprometido
       Sortable = False
     end
     object dbEstComprometidoppField4: TppField
-      FieldAlias = 'MARCA'
-      FieldName = 'MARCA'
+      FieldAlias = 'PSA_CODIGO'
+      FieldName = 'PSA_CODIGO'
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
@@ -1117,8 +1117,8 @@ object FRelEstoqueComprometido: TFRelEstoqueComprometido
       Sortable = False
     end
     object dbEstComprometidoppField5: TppField
-      FieldAlias = 'PSA_CODIGO'
-      FieldName = 'PSA_CODIGO'
+      FieldAlias = 'PSA_NOME_RAZAO'
+      FieldName = 'PSA_NOME_RAZAO'
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
@@ -1127,8 +1127,8 @@ object FRelEstoqueComprometido: TFRelEstoqueComprometido
       Sortable = False
     end
     object dbEstComprometidoppField6: TppField
-      FieldAlias = 'PSA_NOME_RAZAO'
-      FieldName = 'PSA_NOME_RAZAO'
+      FieldAlias = 'QUANTIDADE'
+      FieldName = 'QUANTIDADE'
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
@@ -1137,8 +1137,8 @@ object FRelEstoqueComprometido: TFRelEstoqueComprometido
       Sortable = False
     end
     object dbEstComprometidoppField7: TppField
-      FieldAlias = 'QUANTIDADE'
-      FieldName = 'QUANTIDADE'
+      FieldAlias = 'TOTAL_ITEM'
+      FieldName = 'TOTAL_ITEM'
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
@@ -1147,8 +1147,8 @@ object FRelEstoqueComprometido: TFRelEstoqueComprometido
       Sortable = False
     end
     object dbEstComprometidoppField8: TppField
-      FieldAlias = 'TOTAL_ITEM'
-      FieldName = 'TOTAL_ITEM'
+      FieldAlias = 'PRC_CUSTO'
+      FieldName = 'PRC_CUSTO'
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
@@ -1157,8 +1157,8 @@ object FRelEstoqueComprometido: TFRelEstoqueComprometido
       Sortable = False
     end
     object dbEstComprometidoppField9: TppField
-      FieldAlias = 'PRC_CUSTO'
-      FieldName = 'PRC_CUSTO'
+      FieldAlias = 'CLIENTE'
+      FieldName = 'CLIENTE'
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
@@ -1167,8 +1167,8 @@ object FRelEstoqueComprometido: TFRelEstoqueComprometido
       Sortable = False
     end
     object dbEstComprometidoppField10: TppField
-      FieldAlias = 'CLIENTE'
-      FieldName = 'CLIENTE'
+      FieldAlias = 'ORIGEM'
+      FieldName = 'ORIGEM'
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
@@ -1177,8 +1177,8 @@ object FRelEstoqueComprometido: TFRelEstoqueComprometido
       Sortable = False
     end
     object dbEstComprometidoppField11: TppField
-      FieldAlias = 'ORIGEM'
-      FieldName = 'ORIGEM'
+      FieldAlias = 'CODIGO'
+      FieldName = 'CODIGO'
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
@@ -1197,7 +1197,7 @@ object FRelEstoqueComprometido: TFRelEstoqueComprometido
     DataPipeline = dbEstComprometido
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PaperName = 'A4 210x297 mm'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
     PrinterSetup.mmMarginBottom = 6350
@@ -1522,15 +1522,16 @@ object FRelEstoqueComprometido: TFRelEstoqueComprometido
         Border.Visible = False
         Border.Weight = 1.000000000000000000
         DataField = 'CLIENTE'
-        DataPipeline = dbEstComprometido
+        DataPipeline = ppAppRepresentante
         Ellipsis = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
+        ParentDataPipeline = False
         Transparent = True
-        DataPipelineName = 'dbEstComprometido'
+        DataPipelineName = 'ppAppRepresentante'
         mmHeight = 3259
         mmLeft = 1058
         mmTop = 0
@@ -1975,8 +1976,8 @@ object FRelEstoqueComprometido: TFRelEstoqueComprometido
     object ppAppRepresentanteppField1: TppField
       FieldAlias = 'PARC_RAZAO_SOCIAL'
       FieldName = 'PARC_RAZAO_SOCIAL'
-      FieldLength = 50
-      DisplayWidth = 50
+      FieldLength = 0
+      DisplayWidth = 0
       Position = 0
     end
     object ppAppRepresentanteppField2: TppField
@@ -2058,6 +2059,13 @@ object FRelEstoqueComprometido: TFRelEstoqueComprometido
       FieldLength = 200
       DisplayWidth = 200
       Position = 11
+    end
+    object ppAppRepresentanteppField13: TppField
+      FieldAlias = 'PARC_PATH_ICONE'
+      FieldName = 'PARC_PATH_ICONE'
+      FieldLength = 200
+      DisplayWidth = 200
+      Position = 12
     end
   end
 end

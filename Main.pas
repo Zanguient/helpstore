@@ -7679,7 +7679,7 @@ begin
   PnlClient.Visible:= False;
   FrmSelLeituras.ShowModal;
 
-   //Exit;
+   Exit;
 
   If Not(DMApp.Verificar_Login(FileName(Application.ExeName), 'frmCadLeituras', True)) Then Exit;
 

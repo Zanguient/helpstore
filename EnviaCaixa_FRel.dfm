@@ -37,10 +37,12 @@ object FRelEnviaCaixa: TFRelEnviaCaixa
       Width = 62
     end
     object Vias: TcxSpinEdit
-      Left = 67
+      Left = 64
       Top = 5
+      Properties.MaxValue = 3.000000000000000000
+      Properties.MinValue = 1.000000000000000000
       TabOrder = 1
-      Value = 1
+      Value = 2
       Width = 41
     end
     object btnver: TcxButton
@@ -151,6 +153,12 @@ object FRelEnviaCaixa: TFRelEnviaCaixa
         0333337F3F7F33337F333301E10BBBBB0333337F7F7F33337F333301EE0BBBBB
         0333337F777FFFFF7F3333000000000003333377777777777333}
       NumGlyphs = 2
+    end
+    object cxLabel1: TcxLabel
+      Left = 104
+      Top = 7
+      Caption = 'C'#243'pias'
+      Transparent = True
     end
   end
   object pnlClient: TcxGroupBox
@@ -725,7 +733,7 @@ object FRelEnviaCaixa: TFRelEnviaCaixa
     PrinterSetup.BinName = 'Cont. Feed - No Break'
     PrinterSetup.Collation = False
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.PaperName = 'Carta 8,5x11 pol'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
     PrinterSetup.mmMarginBottom = 4000

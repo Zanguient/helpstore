@@ -231,7 +231,7 @@ begin
     if sFiltro <> '' then
       sFiltro := sFiltro + ' and ';
 
-    sFiltro := ' psa_codigo = '+intToStr(cmbCliente.LooKupKeyValue);
+    sFiltro := sFiltro + ' psa_codigo = '+intToStr(cmbCliente.LooKupKeyValue);
 
     if filtro <> '' then
       filtro := filtro + ' - ';
@@ -244,12 +244,12 @@ begin
     if sFiltro <> '' then
       sFiltro := sFiltro + ' and ';
 
-    sFiltro := sFiltro +' codigo = '+cmbProduto.LooKupKeyValue;
+    sFiltro := sFiltro +' codigo = ''' + cmbProduto.LooKupKeyValue + '''';
 
     if filtro <> '' then
       filtro := filtro + ' - ';
 
-    filtro :=  filtro + ' Produto: '+cmbProduto.text;
+    filtro :=  filtro +cmbProduto.text;
   end;
 
   case rgbOrigem.itemindex of

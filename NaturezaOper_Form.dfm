@@ -54,7 +54,7 @@ object FrmNaturezaOper: TFrmNaturezaOper
       Top = 41
       Width = 562
       Height = 350
-      ActivePage = dxTabSheet3
+      ActivePage = tabNF
       Align = alClient
       TabOrder = 0
       ClientRectBottom = 346
@@ -1412,6 +1412,24 @@ object FrmNaturezaOper: TFrmNaturezaOper
           Font.Style = []
           ParentFont = False
           TabOrder = 12
+          ValueChecked = 'S'
+          ValueUnchecked = 'N'
+        end
+        object DBCheckBox27: TDBCheckBox
+          Left = 144
+          Top = 72
+          Width = 97
+          Height = 17
+          Caption = 'Devolu'#231#227'o NF'
+          DataField = 'DEVOLUCAO_NF'
+          DataSource = DataSource
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 8404992
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 13
           ValueChecked = 'S'
           ValueUnchecked = 'N'
         end

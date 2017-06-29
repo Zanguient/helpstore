@@ -40,6 +40,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure edCodigoInicialEnter(Sender: TObject);
     procedure edCodigoInicialExit(Sender: TObject);
+    procedure RzBitBtn1Click(Sender: TObject);
   private
     { Private declarations }
     Grupo, SubGrupo: Integer;
@@ -95,6 +96,11 @@ end;
 procedure TfrmGerarLeituras.edCodigoInicialExit(Sender: TObject);
 begin
      TIRACORFUNDO ( SENDER );
+end;
+
+procedure TfrmGerarLeituras.RzBitBtn1Click(Sender: TObject);
+begin
+  ModalResult := mrOk;
 end;
 
 end.

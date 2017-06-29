@@ -1,5 +1,5 @@
 object frmGerarLeituras: TfrmGerarLeituras
-  Left = 213
+  Left = 215
   Top = 163
   BorderStyle = bsDialog
   Caption = 'Gerar Leituras'
@@ -88,25 +88,27 @@ object frmGerarLeituras: TfrmGerarLeituras
       ParentFont = False
       Visible = False
     end
-    object RzBitBtn1: tcxButton
+    object RzBitBtn1: TcxButton
       Left = 9
       Top = 7
       Width = 91
+      Height = 25
       Cursor = crHandPoint
+      Caption = 'OK'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
-      HotTrack = True
       ParentFont = False
       TabOrder = 0
-      Kind = bkOK
+      OnClick = RzBitBtn1Click
     end
-    object RzBitBtn2: tcxButton
+    object RzBitBtn2: TcxButton
       Left = 103
       Top = 7
       Width = 91
+      Height = 25
       Cursor = crHandPoint
       Caption = 'Cancelar'
       Font.Charset = DEFAULT_CHARSET
@@ -114,11 +116,9 @@ object frmGerarLeituras: TfrmGerarLeituras
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
-      HotTrack = True
       ParentFont = False
       TabOrder = 1
       OnClick = ActFecharExecute
-      Kind = bkCancel
     end
     object ANDA: TProgressBar
       Left = 200

@@ -146,6 +146,7 @@ type
     DBCheckBox22: TDBCheckBox;
     DBCheckBox23: TDBCheckBox;
     DBCheckBox26: TDBCheckBox;
+    DBCheckBox27: TDBCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ActIncluirExecute(Sender: TObject);
     procedure ActExcluirExecute(Sender: TObject);

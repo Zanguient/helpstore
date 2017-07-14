@@ -22,7 +22,7 @@ uses
   cxDataStorage, cxDBData, cxGridCustomPopupMenu, cxGridPopupMenu,
   cxGridCustomTableView, cxGridTableView, cxGridBandedTableView,
   cxGridDBBandedTableView, cxGridLevel, cxClasses, cxGridCustomView, cxGrid,
-  cxGridDBTableView;
+  cxGridDBTableView, cxDBEdit, cxTextEdit, cxMemo, cxPC;
 
 type
   TFrmVendasItens = class(TForm)
@@ -59,29 +59,6 @@ type
     Shape2: TShape;
     LblTotal: TcxLabel;
     ActConfCampos: TAction;
-    Panel2: TPanel;
-    Label1: TcxLabel;
-    Label10: TcxLabel;
-    Label5: TcxLabel;
-    Label4: TcxLabel;
-    Label3: TcxLabel;
-    Label11: TcxLabel;
-    Label2: TcxLabel;
-    edProduto: TdxDBEdit;
-    EDGRADE: TdxDBEdit;
-    EDNUMERO: TdxDBEdit;
-    dxDBEdit1: TdxDBEdit;
-    EdNatureza: TdxDBEdit;
-    btnBusca: TcxButton;
-    edPrcTotal: TdxDBEdit;
-    dxDBCalcEdit2: TdxDBCalcEdit;
-    dxDBCalcEdit1: TdxDBCalcEdit;
-    edPrcUnit: TdxDBCalcEdit;
-    CmbSubUnidade: TdxDBLookupEdit;
-    cmbUnidade: TdxDBLookupEdit;
-    edQtdade: TdxDBCalcEdit;
-    pnlServico: TPanel;
-    EdServico: TdxDBMemo;
     PopupGrid: TcxGridPopupMenu;
     GridItens: TcxGrid;
     GridItensTV: TcxGridDBBandedTableView;
@@ -139,7 +116,48 @@ type
     GridItensTVSPRODUTO: TcxGridDBBandedColumn;
     GridItensLV: TcxGridLevel;
     stgVendasItens: TcxPropertiesStore;
-    procedure edProdutoKeyDown(Sender: TObject; var Key: Word;
+    cxPageControl1: TcxPageControl;
+    cxTabSheet1: TcxTabSheet;
+    cxTabSheet2: TcxTabSheet;
+    Panel2: TPanel;
+    Label1: TcxLabel;
+    Label10: TcxLabel;
+    Label5: TcxLabel;
+    Label4: TcxLabel;
+    Label3: TcxLabel;
+    Label11: TcxLabel;
+    Label2: TcxLabel;
+    EDNUMERO: TdxDBEdit;
+    dxDBEdit1: TdxDBEdit;
+    EdNatureza: TdxDBEdit;
+    btnBusca: TcxButton;
+    edPrcTotal: TdxDBEdit;
+    dxDBCalcEdit2: TdxDBCalcEdit;
+    dxDBCalcEdit1: TdxDBCalcEdit;
+    edPrcUnit: TdxDBCalcEdit;
+    CmbSubUnidade: TdxDBLookupEdit;
+    cmbUnidade: TdxDBLookupEdit;
+    edQtdade: TdxDBCalcEdit;
+    pnlServico: TPanel;
+    EdServico: TcxDBMemo;
+    edProduto: TcxDBTextEdit;
+    EDGRADE: TcxDBTextEdit;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
+    Label19: TcxLabel;
+    Label20: TcxLabel;
+    EDBASEICMS: TdxDBCalcEdit;
+    EDICMS: TdxDBCalcEdit;
+    EDBASEICMSSUBST: TdxDBCalcEdit;
+    EDICMSSUBST: TdxDBCalcEdit;
+    Panel4: TPanel;
+    Label26: TcxLabel;
+    EDIPI: TdxDBCalcEdit;
+    cxLabel3: TcxLabel;
+    ActImposto: TAction;
+    dxDBCalcEdit3: TdxDBCalcEdit;
+    cxLabel4: TcxLabel;
+    procedure edProduto2KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormCreate(Sender: TObject);
     procedure ActSalvarExecute(Sender: TObject);
@@ -149,7 +167,7 @@ type
     procedure ActInserirExecute(Sender: TObject);
     procedure edPrcUnitExit(Sender: TObject);
     procedure edQtdadeExit(Sender: TObject);
-    procedure edProdutoExit(Sender: TObject);
+    procedure edProduto2Exit(Sender: TObject);
     procedure edtDesconto(Sender: TObject);
     procedure edtPctDesconto(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -158,20 +176,21 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnSalvarEnter(Sender: TObject);
     procedure btnSalvarExit(Sender: TObject);
-    procedure edProdutoEnter(Sender: TObject);
+    procedure edProduto2Enter(Sender: TObject);
     procedure edQtdadeEnter(Sender: TObject);
     procedure cmbUnidadeExit(Sender: TObject);
     procedure CmbSubUnidadeExit(Sender: TObject);
     procedure ActNovoCfopExecute(Sender: TObject);
     procedure DataSourceStateChange(Sender: TObject);
-    procedure EdServicoEnter(Sender: TObject);
+    procedure EdServico2Enter(Sender: TObject);
     procedure ActComplementoExecute(Sender: TObject);
     procedure ActlocalizarGradeExecute(Sender: TObject);
     procedure ActLocalizarNumeroExecute(Sender: TObject);
     procedure edQtdadeFISEnter(Sender: TObject);
     procedure edPrcUnitFISExit(Sender: TObject);
-    procedure EDGRADEEnter(Sender: TObject);
+    procedure EDGRADE2Enter(Sender: TObject);
     procedure ActConfCamposExecute(Sender: TObject);
+    procedure ActImpostoExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -255,7 +274,7 @@ begin
 //  DataSource.DataSet.EnableControls;
 end;
 
-procedure TFrmVendasItens.edProdutoKeyDown(Sender: TObject;
+procedure TFrmVendasItens.edProduto2KeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
   if (key=VK_RETURN) OR (Key=VK_DOWN) Then
@@ -285,6 +304,9 @@ end;
 procedure TFrmVendasItens.ActSalvarExecute(Sender: TObject);
 begin
   //
+      if cxPageControl1.ActivePageIndex = 1 then
+        cxPageControl1.ActivePageIndex := 0;
+
       DmVendas.qProdFracionado.close;
       DmVendas.qProdFracionado.parambyname('cnpj').value    := dmapp.cnpj;
       DmVendas.qProdFracionado.parambyname('PRODUTO').value := DataSource.DataSet.FieldByName('PRODUTO').Value;
@@ -457,7 +479,7 @@ begin
   end;
 end;
 
-procedure TFrmVendasItens.edProdutoExit(Sender: TObject);
+procedure TFrmVendasItens.edProduto2Exit(Sender: TObject);
 Var
    Aux: String;
    CODIGO_LOTE : integer;
@@ -610,6 +632,9 @@ begin
 
 procedure TFrmVendasItens.FormShow(Sender: TObject);
 begin
+  
+     cxPageControl1.ActivePageIndex := 0;
+     
      IniciaComponentes ( Self as TForm );
 
      IF DMAPP.EST_USA_GRADE = 'S' THEN
@@ -742,7 +767,7 @@ begin
      btnSalvar.Colors.Default := clMenu ;
 end;
 
-procedure TFrmVendasItens.edProdutoEnter(Sender: TObject);
+procedure TFrmVendasItens.edProduto2Enter(Sender: TObject);
 begin
      CorFundo ( Sender );
 end;
@@ -790,7 +815,7 @@ begin
      Autorizado := False;
 end;
 
-procedure TFrmVendasItens.EdServicoEnter(Sender: TObject);
+procedure TFrmVendasItens.EdServico2Enter(Sender: TObject);
 begin
      CorFundo ( Sender );
 end;
@@ -862,7 +887,7 @@ begin
      TiraCorFundo ( Sender );
 end;
 
-procedure TFrmVendasItens.EDGRADEEnter(Sender: TObject);
+procedure TFrmVendasItens.EDGRADE2Enter(Sender: TObject);
 begin
      CorFundo ( Sender );
      //Verificando Grade
@@ -889,6 +914,14 @@ begin
     Apenas para validar se será permitido ao usuário editar a exibição dos itens
     da grid ou qualquer outra função de visualização
   }
+end;
+
+procedure TFrmVendasItens.ActImpostoExecute(Sender: TObject);
+begin
+  if cxPageControl1.ActivePageIndex = 0 then
+    cxPageControl1.ActivePageIndex := 1
+  else
+    cxPageControl1.ActivePageIndex := 0;
 end;
 
 end.

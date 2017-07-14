@@ -1,5 +1,5 @@
 object FrmConsultaVenda: TFrmConsultaVenda
-  Left = 230
+  Left = 232
   Top = 115
   BorderStyle = bsDialog
   Caption = 'Consulta Faturamento'

@@ -1,5 +1,5 @@
 object FrmSelFaturaVendas: TFrmSelFaturaVendas
-  Left = 114
+  Left = 116
   Top = 63
   Width = 895
   Height = 634
@@ -5726,8 +5726,8 @@ object FrmSelFaturaVendas: TFrmSelFaturaVendas
               object Panel13: TPanel
                 Left = 0
                 Top = 0
-                Width = 624
-                Height = 392
+                Width = 632
+                Height = 399
                 Align = alClient
                 BevelOuter = bvNone
                 Caption = 'Panel13'
@@ -6023,7 +6023,7 @@ object FrmSelFaturaVendas: TFrmSelFaturaVendas
               object Panel8: TPanel
                 Left = 0
                 Top = 223
-                Width = 624
+                Width = 632
                 Height = 20
                 Align = alTop
                 BevelOuter = bvLowered

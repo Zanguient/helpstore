@@ -11241,8 +11241,7 @@ var
    ok :boolean;
    NITEM, AuxRef : Integer;
    ArquivoTexto: TextFile;
-   ProdutoCSOSN: Variant;
-   DEVOLUCAO: char;
+   ProdutoCSOSN, Frete: Variant;
 begin
   if PathXML <> '' then
   begin
@@ -11354,13 +11353,13 @@ begin
         if (InputQuery('APENAS NFe de Ent de "PRODUTOR RURAL"', 'Digite a Chave da NFe de referência:', vAux)) then
           with Ide.NFref.Add do
           begin
-              refNFe := vAux;
+            refNFe := vAux;
           end;
       end;
 
       //Sanniel -- Necessário para Nfe de saída de devolução
       AuxSql := '';
-      AuxSql := 'select nat.devolucao_nf from est_natureza nat where nat.cfop = ' +  dmCadastros2.NFe_Faturamentos_ItensCFOP.AsString;
+      AuxSql := 'select coalesce(nat.devolucao_nf, ''N'') from est_natureza nat where nat.cfop = ' +  dmCadastros2.NFe_Faturamentos_ItensCFOP.AsString;
       Devolucao_NF := RetornaValor(AuxSql);
 
       if (Devolucao_NF = 'S') and (ES = 'S') then
@@ -11565,6 +11564,13 @@ begin
           Prod.qCom     := Arredonda(dmCadastros2.NFe_Faturamentos_ItensQCOM.value,2);
           Prod.uCom     := dmCadastros2.NFe_Faturamentos_ItensUCOM.value;
 
+          // Acrescentado para frete e impostos serem destacados em NF de devolução -- Sanniel -- 13-07-17
+          if (Devolucao_NF = 'S') then
+          begin
+            Frete := RetornaValor('select coalesce(vnd.frete, 0) from fat_vendas vnd where vnd.codigo = ' + dmCadastros2.NFe_Faturamentos2CODIGO.AsString);
+            Prod.vFrete   := Frete / RetornaValor('select Coalesce(sum(vndi.quantidade), 1) from fat_vendas_itens vndi where vndi.codigo = ' + dmCadastros2.NFe_Faturamentos2CODIGO.AsString);
+          end;
+          
           if (Mostra_Desconto = 'S') then
           begin
             Prod.vProd    := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVPROD.value ,2);
@@ -11594,8 +11600,14 @@ begin
 
           with Imposto  do
           begin
+
+          // Acrescentado para frete e impostos serem destacados em NF de devolução -- Sanniel -- 13-07-17
+          if (Devolucao_NF = 'S') then
+            IPI.vIPI := RetornaValor('select coalesce(vndi.ipi, 0) from fat_vendas_itens vndi where vndi.codigo = ' + dmCadastros2.NFe_Faturamentos2CODIGO.AsString + ' and vndi.produto = ''' + dmCadastros2.NFe_Faturamentos_ItensCPROD.value + '''');
+
             with ICMS  do
             begin
+
               if regime = '1' then
               begin
 
@@ -11617,50 +11629,56 @@ begin
                 { Sanniel -- 22/09/2016 -- às vezes é necessário alteração no csosn para emissão de NFe,
                   para evitar ter que fazer uma alteração no código toda vez, habilitei a alteração do csosn no
                   cadastro de produto, em tributações, lá o usuário pode alterar e então emitir a nfe com o csosn desejado}
-                  
-                AuxSql := 'select prd.csosn from est_produtos prd where prd.codigo = ''' + dmCadastros2.NFe_Faturamentos_ItensCPROD.AsString + '''';
-                ProdutoCSOSN := RetornaValor(AuxSql);
 
-                if (ProdutoCSOSN <> null) and (ProdutoCSOSN > 0) then
-                begin                     
-                  case ProdutoCSOSN of
-                    101 : CSOSN := csosn101;
-                    102 : CSOSN := csosn102;
-                    103 : CSOSN := csosn103;
-                    201 : CSOSN := csosn201;
-                    202 : CSOSN := csosn202;
-                    203 : CSOSN := csosn203;
-                    300 : CSOSN := csosn300;
-                    400 : CSOSN := csosn400;
-                    500 : CSOSN := csosn500;
-                    900 : CSOSN := csosn900;
-                  end;
-                end else
+                // Acrescentado para frete e impostos serem destacados em NF de devolução -- Sanniel -- 13-07-17
+                if RetornaValor('select coalesce(vndi.icm, 0) from fat_vendas_itens vndi where vndi.codigo = ' + dmCadastros2.NFe_Faturamentos2CODIGO.AsString) > 0 then
+                  CSOSN := csosn900
+                else
                 begin
+                  AuxSql := 'select prd.csosn from est_produtos prd where prd.codigo = ''' + dmCadastros2.NFe_Faturamentos_ItensCPROD.AsString + '''';
+                  ProdutoCSOSN := RetornaValor(AuxSql);
 
-                    //(csosnVazio,csosn101, csosn102, csosn103, csosn201, csosn202, csosn203, csosn300, csosn400, csosn500,csosn900 )
-                    if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 101) then
-                      CSOSN := csosn101
-                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 102) then
-                      CSOSN := csosn102
-                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 103) then
-                      CSOSN := csosn103
-                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 201) then
-                      CSOSN := csosn201
-                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 202) then
-                      CSOSN := csosn202
-                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 203) then
-                      CSOSN := csosn203
-                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 300) then
-                      CSOSN := csosn300
-                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 400) then
-                      CSOSN := csosn400
-                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 500) then
-                      CSOSN := csosn500
-                    else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 900) then
-                      CSOSN := csosn900;
+                  if (ProdutoCSOSN <> null) and (ProdutoCSOSN > 0) then
+                  begin
+                    case ProdutoCSOSN of
+                      101 : CSOSN := csosn101;
+                      102 : CSOSN := csosn102;
+                      103 : CSOSN := csosn103;
+                      201 : CSOSN := csosn201;
+                      202 : CSOSN := csosn202;
+                      203 : CSOSN := csosn203;
+                      300 : CSOSN := csosn300;
+                      400 : CSOSN := csosn400;
+                      500 : CSOSN := csosn500;
+                      900 : CSOSN := csosn900;
+                    end;
+                  end else
+                  begin
 
-                  end;
+                      //(csosnVazio,csosn101, csosn102, csosn103, csosn201, csosn202, csosn203, csosn300, csosn400, csosn500,csosn900 )
+                      if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 101) then
+                        CSOSN := csosn101
+                      else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 102) then
+                        CSOSN := csosn102
+                      else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 103) then
+                        CSOSN := csosn103
+                      else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 201) then
+                        CSOSN := csosn201
+                      else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 202) then
+                        CSOSN := csosn202
+                      else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 203) then
+                        CSOSN := csosn203
+                      else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 300) then
+                        CSOSN := csosn300
+                      else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 400) then
+                        CSOSN := csosn400
+                      else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 500) then
+                        CSOSN := csosn500
+                      else if (dmCadastros2.NFe_Faturamentos_ItensCSOSN.Value = 900) then
+                        CSOSN := csosn900;
+
+                    end;
+                end;
               end;
 
 
@@ -11680,11 +11698,19 @@ begin
                 ICMS.vBCST    := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVBC_SUB.value,2);
               end;
 
-              ICMS.pICMS  := Arredonda(dmCadastros2.NFe_Faturamentos_ItensPICMS.value,2);
-              ICMS.vICMS  := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVICMS.Value,2);
-              ICMS.vBC    := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVBC.value,2);
+              // Acrescentado para frete e impostos serem destacados em NF de devolução -- Sanniel -- 13-07-17
+              if (Devolucao_NF = 'S') then
+              begin
+                ICMS.vICMS := RetornaValor('select coalesce(vndi.icm, 0) from fat_vendas_itens vndi where vndi.codigo = ' + dmCadastros2.NFe_Faturamentos2CODIGO.AsString + ' and vndi.produto = ''' + dmCadastros2.NFe_Faturamentos_ItensCPROD.value + '''');
+                ICMS.vBC := RetornaValor('select coalesce(vndi.basecalculoicm, 0) from fat_vendas_itens vndi where vndi.codigo = ' + dmCadastros2.NFe_Faturamentos2CODIGO.AsString + ' and vndi.produto = ''' + dmCadastros2.NFe_Faturamentos_ItensCPROD.value + '''');
+                ICMS.pICMS  :=  RetornaValor('select coalesce(vndi.aliquota_icms, 0) from fat_vendas_itens vndi where vndi.codigo = ' + dmCadastros2.NFe_Faturamentos2CODIGO.AsString + ' and vndi.produto = ''' + dmCadastros2.NFe_Faturamentos_ItensCPROD.value + '''');
+              end else
+              begin
+                ICMS.pICMS  := Arredonda(dmCadastros2.NFe_Faturamentos_ItensPICMS.value,2);
+                ICMS.vICMS  := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVICMS.Value,2);
+                ICMS.vBC    := Arredonda(dmCadastros2.NFe_Faturamentos_ItensVBC.value,2);
+              end;
             end;
-
             {
              TpcnCstIpi = (ipi00, ipi49, ipi50, ipi99, ipi01, ipi02, ipi03, ipi04, ipi05, ipi51, ipi52, ipi53, ipi54, ipi55);
              TpcnCstPis = (pis01, pis02, pis03, pis04, pis06, pis07, pis08, pis09, pis99);
@@ -11700,21 +11726,33 @@ begin
         dmCadastros2.NFe_Faturamentos_Itens.Next;
       end;
 
-      Total.ICMSTot.vBC   := Arredonda(dmCadastros2.NFe_Faturamentos2BASE_ICM.value,2);
-      Total.ICMSTot.vICMS := Arredonda(dmCadastros2.NFe_Faturamentos2ICM.value,2);
+      // Acrescentado para frete e impostos serem destacados em NF de devolução -- Sanniel -- 13-07-17
+      if (Devolucao_NF = 'S') then
+      begin
+        Total.ICMSTot.vFrete := Frete;
+        Total.ICMSTot.vBC := RetornaValor('select coalesce(vnd.base_icm, 0) from fat_vendas vnd where vnd.codigo = ' + dmCadastros2.NFe_Faturamentos2CODIGO.AsString);
+        Total.ICMSTot.vICMS := RetornaValor('select coalesce(vnd.icm, 0) from fat_vendas vnd where vnd.codigo = ' + dmCadastros2.NFe_Faturamentos2CODIGO.AsString);
+        Total.ICMSTot.vBCST := RetornaValor('select coalesce(vnd.base_icm_subst, 0) from fat_vendas vnd where vnd.codigo = ' + dmCadastros2.NFe_Faturamentos2CODIGO.AsString);
+        Total.ICMSTot.vST := RetornaValor('select coalesce(vnd.valor_icm_subst, 0) from fat_vendas vnd where vnd.codigo = ' + dmCadastros2.NFe_Faturamentos2CODIGO.AsString);
+        Total.ICMSTot.vIPI := RetornaValor('select coalesce(vnd.ipi, 0) from fat_vendas vnd where vnd.codigo = ' + dmCadastros2.NFe_Faturamentos2CODIGO.AsString);
+      end else
+      begin
+        Total.ICMSTot.vBC   := Arredonda(dmCadastros2.NFe_Faturamentos2BASE_ICM.value,2);
+        Total.ICMSTot.vICMS := Arredonda(dmCadastros2.NFe_Faturamentos2ICM.value,2);
 
+          if (DmApp.NFE_DESTACA_ICMS_SUB = 'S') then
+          begin
+            Total.ICMSTot.vBCST   := Arredonda(dmCadastros2.NFe_Faturamentos2BASE_ICM_SUBST.value,2);
+            Total.ICMSTot.vST   := Arredonda(dmCadastros2.NFe_Faturamentos2VALOR_ICM_SUBST.value,2);
+          end;
+      end;
+      
       if (Mostra_Desconto = 'S')  then
       begin
         if (dmCadastros2.NFe_Faturamentos2DESC_ACRESC.value < 0) then
           Total.ICMSTot.vDesc := (-1 * Arredonda(dmCadastros2.NFe_Faturamentos2DESC_ACRESC.value,2))
         else
           Total.ICMSTot.vDesc := Arredonda(dmCadastros2.NFe_Faturamentos2DESC_ACRESC.value,2);
-      end;
-
-      if (DmApp.NFE_DESTACA_ICMS_SUB = 'S') then
-      begin
-        Total.ICMSTot.vBCST   := Arredonda(dmCadastros2.NFe_Faturamentos2BASE_ICM_SUBST.value,2);
-        Total.ICMSTot.vST   := Arredonda(dmCadastros2.NFe_Faturamentos2VALOR_ICM_SUBST.value,2);
       end;
 
       Total.ICMSTot.vNF   := Arredonda(dmCadastros2.NFe_Faturamentos2TOTAL_NF.value,2);

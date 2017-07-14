@@ -1,9 +1,9 @@
 object FrmVendasItens: TFrmVendasItens
-  Left = 310
-  Top = 181
+  Left = 197
+  Top = 151
   BorderStyle = bsDialog
   Caption = ' Itens da Venda '
-  ClientHeight = 309
+  ClientHeight = 356
   ClientWidth = 872
   Color = clBtnFace
   DefaultMonitor = dmMainForm
@@ -21,7 +21,7 @@ object FrmVendasItens: TFrmVendasItens
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
-    Top = 268
+    Top = 315
     Width = 872
     Height = 41
     Align = alBottom
@@ -100,15 +100,15 @@ object FrmVendasItens: TFrmVendasItens
       Transparent = True
     end
     object Label13: TcxLabel
-      Left = 235
-      Top = 6
+      Left = 203
+      Top = 12
       Caption = 'Trocar CFOP ( F6 )'
       ParentFont = False
       Transparent = True
     end
     object Label14: TcxLabel
-      Left = 217
-      Top = 23
+      Left = 198
+      Top = 24
       Caption = 'Complemento ( F11 )'
       ParentFont = False
       Transparent = True
@@ -191,12 +191,19 @@ object FrmVendasItens: TFrmVendasItens
         0000}
       NumGlyphs = 2
     end
+    object cxLabel3: TcxLabel
+      Left = 189
+      Top = -1
+      Caption = 'Alternar Imposto ( F5 )'
+      ParentFont = False
+      Transparent = True
+    end
   end
   object pnlClient: TPanel
     Left = 0
     Top = 0
     Width = 872
-    Height = 268
+    Height = 315
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -208,453 +215,15 @@ object FrmVendasItens: TFrmVendasItens
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    object Panel2: TPanel
-      Left = 2
-      Top = 2
-      Width = 868
-      Height = 61
-      Align = alTop
-      BevelOuter = bvNone
-      TabOrder = 0
-      object Label1: TcxLabel
-        Left = 7
-        Top = 10
-        Caption = 'Produto'
-        ParentFont = False
-        Transparent = True
-      end
-      object Label10: TcxLabel
-        Left = 582
-        Top = 10
-        Caption = 'CFOP'
-        ParentFont = False
-        Transparent = True
-      end
-      object Label5: TcxLabel
-        Left = 517
-        Top = 37
-        Caption = 'Desc.(%)'
-        ParentFont = False
-        Transparent = True
-      end
-      object Label4: TcxLabel
-        Left = 383
-        Top = 37
-        Caption = 'Desc.(R$)'
-        ParentFont = False
-        Transparent = True
-      end
-      object Label3: TcxLabel
-        Left = 246
-        Top = 37
-        Caption = 'Unit'#225'rio'
-        ParentFont = False
-        Transparent = True
-      end
-      object Label11: TcxLabel
-        Left = 129
-        Top = 38
-        Caption = 'Un'
-        ParentFont = False
-        Transparent = True
-      end
-      object Label2: TcxLabel
-        Left = 9
-        Top = 37
-        Caption = 'Qtdade'
-        ParentFont = False
-        Transparent = True
-      end
-      object edProduto: TdxDBEdit
-        Left = 47
-        Top = 5
-        Width = 101
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        Style.BorderColor = clBtnShadow
-        Style.BorderStyle = xbsSingle
-        Style.ButtonStyle = btsSimple
-        TabOrder = 0
-        OnEnter = edProdutoEnter
-        OnExit = edProdutoExit
-        OnKeyDown = edProdutoKeyDown
-        CharCase = ecUpperCase
-        DataField = 'SPRODUTO'
-        DataSource = DataSource
-      end
-      object EDGRADE: TdxDBEdit
-        Left = 147
-        Top = 5
-        Width = 49
-        Enabled = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        Style.BorderColor = clBtnShadow
-        Style.BorderStyle = xbsSingle
-        Style.ButtonStyle = btsSimple
-        TabOrder = 1
-        OnEnter = EDGRADEEnter
-        OnExit = edProdutoExit
-        OnKeyDown = edProdutoKeyDown
-        CharCase = ecUpperCase
-        DataField = 'GRADE'
-        DataSource = DataSource
-      end
-      object EDNUMERO: TdxDBEdit
-        Left = 195
-        Top = 5
-        Width = 58
-        Enabled = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        Style.BorderColor = clBtnShadow
-        Style.BorderStyle = xbsSingle
-        Style.ButtonStyle = btsSimple
-        TabOrder = 2
-        OnEnter = edProdutoEnter
-        OnKeyDown = edProdutoKeyDown
-        CharCase = ecUpperCase
-        DataField = 'NUMERO'
-        DataSource = DataSource
-      end
-      object dxDBEdit1: TdxDBEdit
-        Left = 256
-        Top = 5
-        Width = 321
-        Enabled = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        Style.BorderColor = clBtnShadow
-        Style.BorderStyle = xbsSingle
-        Style.ButtonStyle = btsSimple
-        TabOrder = 3
-        OnKeyDown = edProdutoKeyDown
-        DataField = 'Nome_Produto'
-        DataSource = DataSource
-      end
-      object EdNatureza: TdxDBEdit
-        Left = 612
-        Top = 4
-        Width = 48
-        Enabled = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        Style.BorderColor = clBtnShadow
-        Style.BorderStyle = xbsSingle
-        Style.ButtonStyle = btsSimple
-        TabOrder = 4
-        DataField = 'CFOP'
-        DataSource = DataSource
-      end
-      object btnBusca: TcxButton
-        Left = 660
-        Top = 5
-        Width = 57
-        Height = 23
-        Action = ActLookUP
-        TabOrder = 12
-        TabStop = False
-      end
-      object edPrcTotal: TdxDBEdit
-        Left = 643
-        Top = 32
-        Width = 75
-        Enabled = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        Style.BorderColor = clBtnShadow
-        Style.BorderStyle = xbsSingle
-        Style.ButtonStyle = btsSimple
-        TabOrder = 11
-        TabStop = False
-        OnKeyDown = edProdutoKeyDown
-        DataField = 'Total'
-        DataSource = DataSource
-        ReadOnly = True
-        StoredValues = 64
-      end
-      object dxDBCalcEdit2: TdxDBCalcEdit
-        Left = 566
-        Top = 32
-        Width = 77
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        Style.BorderColor = clBtnShadow
-        Style.BorderStyle = xbsSingle
-        Style.ButtonStyle = btsSimple
-        TabOrder = 10
-        OnEnter = edQtdadeEnter
-        OnExit = edtPctDesconto
-        OnKeyDown = edProdutoKeyDown
-        DataField = 'PORC_DESC'
-        DataSource = DataSource
-        ButtonGlyph.Data = {
-          46020000424D460200000000000036000000280000000E0000000C0000000100
-          1800000000001002000000000000000000000000000000000000CED3D6000000
-          0000000000000000000000000000000000000000000000000000000000000000
-          00CED3D600008486008486008400008400008400008400008400008400008400
-          008400008400008400008400000000000000848600FFFFFF8486008486008486
-          0084860084860084860084860084860084860084860084000000000000008486
-          00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
-          00008400000000000000848600FFFFFF84860084860084860084860084860084
-          86008486008486008486008486008400000000000000848600FFFF0084860000
-          0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
-          0000848600FFFFFF848600848600848600848600848600848600848600848600
-          8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
-          C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
-          000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
-          000000000000848600FFFF000000000000000000000000000000000000000000
-          000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
-          00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
-          D684860084860084860084860084860084860084860084860084860084860084
-          8600848600CED3D60000}
-      end
-      object dxDBCalcEdit1: TdxDBCalcEdit
-        Left = 430
-        Top = 32
-        Width = 73
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        Style.BorderColor = clBtnShadow
-        Style.BorderStyle = xbsSingle
-        Style.ButtonStyle = btsSimple
-        TabOrder = 9
-        OnEnter = edQtdadeEnter
-        OnExit = edtDesconto
-        OnKeyDown = edProdutoKeyDown
-        DataField = 'DESCONTO'
-        DataSource = DataSource
-        ButtonGlyph.Data = {
-          46020000424D460200000000000036000000280000000E0000000C0000000100
-          1800000000001002000000000000000000000000000000000000CED3D6000000
-          0000000000000000000000000000000000000000000000000000000000000000
-          00CED3D600008486008486008400008400008400008400008400008400008400
-          008400008400008400008400000000000000848600FFFFFF8486008486008486
-          0084860084860084860084860084860084860084860084000000000000008486
-          00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
-          00008400000000000000848600FFFFFF84860084860084860084860084860084
-          86008486008486008486008486008400000000000000848600FFFF0084860000
-          0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
-          0000848600FFFFFF848600848600848600848600848600848600848600848600
-          8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
-          C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
-          000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
-          000000000000848600FFFF000000000000000000000000000000000000000000
-          000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
-          00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
-          D684860084860084860084860084860084860084860084860084860084860084
-          8600848600CED3D60000}
-      end
-      object edPrcUnit: TdxDBCalcEdit
-        Left = 287
-        Top = 32
-        Width = 90
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        Style.BorderColor = clBtnShadow
-        Style.BorderStyle = xbsSingle
-        Style.ButtonStyle = btsSimple
-        TabOrder = 8
-        OnEnter = edQtdadeEnter
-        OnExit = edPrcUnitExit
-        OnKeyDown = edProdutoKeyDown
-        DataField = 'PRC_UNITARIO'
-        DataSource = DataSource
-        ButtonGlyph.Data = {
-          46020000424D460200000000000036000000280000000E0000000C0000000100
-          1800000000001002000000000000000000000000000000000000CED3D6000000
-          0000000000000000000000000000000000000000000000000000000000000000
-          00CED3D600008486008486008400008400008400008400008400008400008400
-          008400008400008400008400000000000000848600FFFFFF8486008486008486
-          0084860084860084860084860084860084860084860084000000000000008486
-          00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
-          00008400000000000000848600FFFFFF84860084860084860084860084860084
-          86008486008486008486008486008400000000000000848600FFFF0084860000
-          0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
-          0000848600FFFFFF848600848600848600848600848600848600848600848600
-          8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
-          C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
-          000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
-          000000000000848600FFFF000000000000000000000000000000000000000000
-          000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
-          00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
-          D684860084860084860084860084860084860084860084860084860084860084
-          8600848600CED3D60000}
-      end
-      object CmbSubUnidade: TdxDBLookupEdit
-        Left = 206
-        Top = 32
-        Width = 37
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        Style.BorderColor = clBtnShadow
-        Style.BorderStyle = xbsSingle
-        Style.ButtonStyle = btsSimple
-        Style.Edges = [edgLeft, edgTop, edgRight, edgBottom]
-        Style.HotTrack = True
-        Style.Shadow = False
-        TabOrder = 7
-        OnEnter = edQtdadeEnter
-        OnExit = CmbSubUnidadeExit
-        OnKeyDown = edProdutoKeyDown
-        DataField = 'SUBUNIDADE'
-        DataSource = DataSource
-        ReadOnly = False
-        ClearKey = 46
-        ListFieldName = 'UNIDADES'
-        Revertable = True
-        KeyFieldName = 'UNIDADES'
-        ListSource = DsSubUnidade
-        LookupKeyValue = Null
-        StoredValues = 64
-      end
-      object cmbUnidade: TdxDBLookupEdit
-        Left = 147
-        Top = 32
-        Width = 59
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        Style.BorderColor = clBtnShadow
-        Style.BorderStyle = xbsSingle
-        Style.ButtonStyle = btsSimple
-        Style.Edges = [edgLeft, edgTop, edgRight, edgBottom]
-        Style.HotTrack = True
-        Style.Shadow = False
-        TabOrder = 6
-        OnEnter = edQtdadeEnter
-        OnExit = cmbUnidadeExit
-        OnKeyDown = edProdutoKeyDown
-        DataField = 'UNIDADE'
-        DataSource = DataSource
-        ReadOnly = False
-        ClearKey = 46
-        ListFieldName = 'SIGLA'
-        Revertable = True
-        KeyFieldName = 'SIGLA'
-        ListSource = DsUnidade
-        LookupKeyValue = Null
-        StoredValues = 64
-      end
-      object edQtdade: TdxDBCalcEdit
-        Left = 47
-        Top = 32
-        Width = 80
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        Style.BorderColor = clBtnShadow
-        Style.BorderStyle = xbsSingle
-        Style.ButtonStyle = btsSimple
-        TabOrder = 5
-        OnEnter = edQtdadeEnter
-        OnExit = edQtdadeExit
-        OnKeyDown = edProdutoKeyDown
-        DataField = 'QUANTIDADE'
-        DataSource = DataSource
-        ButtonGlyph.Data = {
-          46020000424D460200000000000036000000280000000E0000000C0000000100
-          1800000000001002000000000000000000000000000000000000CED3D6000000
-          0000000000000000000000000000000000000000000000000000000000000000
-          00CED3D600008486008486008400008400008400008400008400008400008400
-          008400008400008400008400000000000000848600FFFFFF8486008486008486
-          0084860084860084860084860084860084860084860084000000000000008486
-          00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
-          00008400000000000000848600FFFFFF84860084860084860084860084860084
-          86008486008486008486008486008400000000000000848600FFFF0084860000
-          0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
-          0000848600FFFFFF848600848600848600848600848600848600848600848600
-          8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
-          C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
-          000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
-          000000000000848600FFFF000000000000000000000000000000000000000000
-          000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
-          00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
-          D684860084860084860084860084860084860084860084860084860084860084
-          8600848600CED3D60000}
-      end
-    end
-    object pnlServico: TPanel
-      Left = 2
-      Top = 63
-      Width = 868
-      Height = 64
-      Align = alTop
-      BevelOuter = bvNone
-      TabOrder = 1
-      Visible = False
-      object EdServico: TdxDBMemo
-        Left = 9
-        Top = 5
-        Width = 708
-        Style.BorderColor = clBtnShadow
-        Style.BorderStyle = xbsSingle
-        Style.ButtonStyle = btsSimple
-        Style.HotTrack = True
-        TabOrder = 0
-        OnEnter = EdServicoEnter
-        OnExit = cmbUnidadeExit
-        CharCase = ecUpperCase
-        DataField = 'SERVICO'
-        DataSource = DataSource
-        Height = 55
-      end
-    end
     object GridItens: TcxGrid
       Left = 2
-      Top = 127
+      Top = 153
       Width = 868
-      Height = 139
+      Height = 160
       Align = alClient
-      TabOrder = 2
+      TabOrder = 0
       object GridItensTV: TcxGridDBBandedTableView
-        OnKeyDown = edProdutoKeyDown
+        OnKeyDown = edProduto2KeyDown
         NavigatorButtons.ConfirmDelete = False
         DataController.DataSource = DataSource
         DataController.Summary.DefaultGroupSummaryItems = <>
@@ -1043,6 +612,743 @@ object FrmVendasItens: TFrmVendasItens
         GridView = GridItensTV
       end
     end
+    object cxPageControl1: TcxPageControl
+      Left = 2
+      Top = 2
+      Width = 868
+      Height = 151
+      ActivePage = cxTabSheet2
+      Align = alTop
+      HideTabs = True
+      TabOrder = 1
+      ClientRectBottom = 150
+      ClientRectLeft = 1
+      ClientRectRight = 867
+      ClientRectTop = 1
+      object cxTabSheet1: TcxTabSheet
+        Caption = 'cxTabSheet1'
+        ImageIndex = 0
+        object Panel2: TPanel
+          Left = 0
+          Top = 0
+          Width = 866
+          Height = 61
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 0
+          object Label1: TcxLabel
+            Left = 7
+            Top = 10
+            Caption = 'Produto'
+            ParentFont = False
+            Transparent = True
+          end
+          object Label10: TcxLabel
+            Left = 582
+            Top = 10
+            Caption = 'CFOP'
+            ParentFont = False
+            Transparent = True
+          end
+          object Label5: TcxLabel
+            Left = 517
+            Top = 37
+            Caption = 'Desc.(%)'
+            ParentFont = False
+            Transparent = True
+          end
+          object Label4: TcxLabel
+            Left = 383
+            Top = 37
+            Caption = 'Desc.(R$)'
+            ParentFont = False
+            Transparent = True
+          end
+          object Label3: TcxLabel
+            Left = 246
+            Top = 37
+            Caption = 'Unit'#225'rio'
+            ParentFont = False
+            Transparent = True
+          end
+          object Label11: TcxLabel
+            Left = 129
+            Top = 38
+            Caption = 'Un'
+            ParentFont = False
+            Transparent = True
+          end
+          object Label2: TcxLabel
+            Left = 9
+            Top = 37
+            Caption = 'Qtdade'
+            ParentFont = False
+            Transparent = True
+          end
+          object EDNUMERO: TdxDBEdit
+            Left = 195
+            Top = 5
+            Width = 58
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = clBtnShadow
+            Style.BorderStyle = xbsSingle
+            Style.ButtonStyle = btsSimple
+            TabOrder = 0
+            OnEnter = edProduto2Enter
+            OnKeyDown = edProduto2KeyDown
+            CharCase = ecUpperCase
+            DataField = 'NUMERO'
+            DataSource = DataSource
+          end
+          object dxDBEdit1: TdxDBEdit
+            Left = 256
+            Top = 5
+            Width = 321
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = clBtnShadow
+            Style.BorderStyle = xbsSingle
+            Style.ButtonStyle = btsSimple
+            TabOrder = 1
+            OnKeyDown = edProduto2KeyDown
+            DataField = 'Nome_Produto'
+            DataSource = DataSource
+          end
+          object EdNatureza: TdxDBEdit
+            Left = 612
+            Top = 4
+            Width = 48
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = clBtnShadow
+            Style.BorderStyle = xbsSingle
+            Style.ButtonStyle = btsSimple
+            TabOrder = 2
+            DataField = 'CFOP'
+            DataSource = DataSource
+          end
+          object btnBusca: TcxButton
+            Left = 660
+            Top = 5
+            Width = 57
+            Height = 23
+            Action = ActLookUP
+            TabOrder = 10
+            TabStop = False
+          end
+          object edPrcTotal: TdxDBEdit
+            Left = 643
+            Top = 32
+            Width = 75
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = clBtnShadow
+            Style.BorderStyle = xbsSingle
+            Style.ButtonStyle = btsSimple
+            TabOrder = 9
+            TabStop = False
+            OnKeyDown = edProduto2KeyDown
+            DataField = 'Total'
+            DataSource = DataSource
+            ReadOnly = True
+            StoredValues = 64
+          end
+          object dxDBCalcEdit2: TdxDBCalcEdit
+            Left = 566
+            Top = 32
+            Width = 77
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = clBtnShadow
+            Style.BorderStyle = xbsSingle
+            Style.ButtonStyle = btsSimple
+            TabOrder = 8
+            OnEnter = edQtdadeEnter
+            OnExit = edtPctDesconto
+            OnKeyDown = edProduto2KeyDown
+            DataField = 'PORC_DESC'
+            DataSource = DataSource
+            ButtonGlyph.Data = {
+              46020000424D460200000000000036000000280000000E0000000C0000000100
+              1800000000001002000000000000000000000000000000000000CED3D6000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              00CED3D600008486008486008400008400008400008400008400008400008400
+              008400008400008400008400000000000000848600FFFFFF8486008486008486
+              0084860084860084860084860084860084860084860084000000000000008486
+              00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
+              00008400000000000000848600FFFFFF84860084860084860084860084860084
+              86008486008486008486008486008400000000000000848600FFFF0084860000
+              0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
+              0000848600FFFFFF848600848600848600848600848600848600848600848600
+              8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
+              C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
+              000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
+              000000000000848600FFFF000000000000000000000000000000000000000000
+              000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
+              00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
+              D684860084860084860084860084860084860084860084860084860084860084
+              8600848600CED3D60000}
+          end
+          object dxDBCalcEdit1: TdxDBCalcEdit
+            Left = 430
+            Top = 32
+            Width = 73
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = clBtnShadow
+            Style.BorderStyle = xbsSingle
+            Style.ButtonStyle = btsSimple
+            TabOrder = 7
+            OnEnter = edQtdadeEnter
+            OnExit = edtDesconto
+            OnKeyDown = edProduto2KeyDown
+            DataField = 'DESCONTO'
+            DataSource = DataSource
+            ButtonGlyph.Data = {
+              46020000424D460200000000000036000000280000000E0000000C0000000100
+              1800000000001002000000000000000000000000000000000000CED3D6000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              00CED3D600008486008486008400008400008400008400008400008400008400
+              008400008400008400008400000000000000848600FFFFFF8486008486008486
+              0084860084860084860084860084860084860084860084000000000000008486
+              00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
+              00008400000000000000848600FFFFFF84860084860084860084860084860084
+              86008486008486008486008486008400000000000000848600FFFF0084860000
+              0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
+              0000848600FFFFFF848600848600848600848600848600848600848600848600
+              8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
+              C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
+              000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
+              000000000000848600FFFF000000000000000000000000000000000000000000
+              000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
+              00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
+              D684860084860084860084860084860084860084860084860084860084860084
+              8600848600CED3D60000}
+          end
+          object edPrcUnit: TdxDBCalcEdit
+            Left = 287
+            Top = 32
+            Width = 90
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = clBtnShadow
+            Style.BorderStyle = xbsSingle
+            Style.ButtonStyle = btsSimple
+            TabOrder = 6
+            OnEnter = edQtdadeEnter
+            OnExit = edPrcUnitExit
+            OnKeyDown = edProduto2KeyDown
+            DataField = 'PRC_UNITARIO'
+            DataSource = DataSource
+            ButtonGlyph.Data = {
+              46020000424D460200000000000036000000280000000E0000000C0000000100
+              1800000000001002000000000000000000000000000000000000CED3D6000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              00CED3D600008486008486008400008400008400008400008400008400008400
+              008400008400008400008400000000000000848600FFFFFF8486008486008486
+              0084860084860084860084860084860084860084860084000000000000008486
+              00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
+              00008400000000000000848600FFFFFF84860084860084860084860084860084
+              86008486008486008486008486008400000000000000848600FFFF0084860000
+              0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
+              0000848600FFFFFF848600848600848600848600848600848600848600848600
+              8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
+              C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
+              000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
+              000000000000848600FFFF000000000000000000000000000000000000000000
+              000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
+              00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
+              D684860084860084860084860084860084860084860084860084860084860084
+              8600848600CED3D60000}
+          end
+          object CmbSubUnidade: TdxDBLookupEdit
+            Left = 206
+            Top = 32
+            Width = 37
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = clBtnShadow
+            Style.BorderStyle = xbsSingle
+            Style.ButtonStyle = btsSimple
+            Style.Edges = [edgLeft, edgTop, edgRight, edgBottom]
+            Style.HotTrack = True
+            Style.Shadow = False
+            TabOrder = 5
+            OnEnter = edQtdadeEnter
+            OnExit = CmbSubUnidadeExit
+            OnKeyDown = edProduto2KeyDown
+            DataField = 'SUBUNIDADE'
+            DataSource = DataSource
+            ReadOnly = False
+            ClearKey = 46
+            ListFieldName = 'UNIDADES'
+            Revertable = True
+            KeyFieldName = 'UNIDADES'
+            ListSource = DsSubUnidade
+            LookupKeyValue = Null
+            StoredValues = 64
+          end
+          object cmbUnidade: TdxDBLookupEdit
+            Left = 147
+            Top = 32
+            Width = 59
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = clBtnShadow
+            Style.BorderStyle = xbsSingle
+            Style.ButtonStyle = btsSimple
+            Style.Edges = [edgLeft, edgTop, edgRight, edgBottom]
+            Style.HotTrack = True
+            Style.Shadow = False
+            TabOrder = 4
+            OnEnter = edQtdadeEnter
+            OnExit = cmbUnidadeExit
+            OnKeyDown = edProduto2KeyDown
+            DataField = 'UNIDADE'
+            DataSource = DataSource
+            ReadOnly = False
+            ClearKey = 46
+            ListFieldName = 'SIGLA'
+            Revertable = True
+            KeyFieldName = 'SIGLA'
+            ListSource = DsUnidade
+            LookupKeyValue = Null
+            StoredValues = 64
+          end
+          object edQtdade: TdxDBCalcEdit
+            Left = 47
+            Top = 32
+            Width = 80
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = clBtnShadow
+            Style.BorderStyle = xbsSingle
+            Style.ButtonStyle = btsSimple
+            TabOrder = 3
+            OnEnter = edQtdadeEnter
+            OnExit = edQtdadeExit
+            OnKeyDown = edProduto2KeyDown
+            DataField = 'QUANTIDADE'
+            DataSource = DataSource
+            ButtonGlyph.Data = {
+              46020000424D460200000000000036000000280000000E0000000C0000000100
+              1800000000001002000000000000000000000000000000000000CED3D6000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              00CED3D600008486008486008400008400008400008400008400008400008400
+              008400008400008400008400000000000000848600FFFFFF8486008486008486
+              0084860084860084860084860084860084860084860084000000000000008486
+              00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
+              00008400000000000000848600FFFFFF84860084860084860084860084860084
+              86008486008486008486008486008400000000000000848600FFFF0084860000
+              0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
+              0000848600FFFFFF848600848600848600848600848600848600848600848600
+              8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
+              C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
+              000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
+              000000000000848600FFFF000000000000000000000000000000000000000000
+              000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
+              00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
+              D684860084860084860084860084860084860084860084860084860084860084
+              8600848600CED3D60000}
+          end
+          object edProduto: TcxDBTextEdit
+            Left = 48
+            Top = 8
+            DataBinding.DataField = 'SPRODUTO'
+            DataBinding.DataSource = DataSource
+            Properties.CharCase = ecUpperCase
+            TabOrder = 18
+            OnEnter = edProduto2Enter
+            OnExit = edProduto2Exit
+            OnKeyDown = edProduto2KeyDown
+            Width = 99
+          end
+          object EDGRADE: TcxDBTextEdit
+            Left = 147
+            Top = 8
+            DataBinding.DataField = 'GRADE'
+            DataBinding.DataSource = DataSource
+            Enabled = False
+            Properties.CharCase = ecUpperCase
+            Style.BorderColor = clBtnShadow
+            TabOrder = 19
+            OnEnter = EDGRADE2Enter
+            OnExit = edProduto2Exit
+            OnKeyDown = edProduto2KeyDown
+            Width = 49
+          end
+        end
+        object pnlServico: TPanel
+          Left = 0
+          Top = 61
+          Width = 866
+          Height = 64
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 1
+          Visible = False
+          object EdServico: TcxDBMemo
+            Left = 8
+            Top = 8
+            DataBinding.DataField = 'SERVICO'
+            DataBinding.DataSource = DataSource
+            Properties.CharCase = ecUpperCase
+            TabOrder = 0
+            OnEnter = EdServico2Enter
+            OnExit = cmbUnidadeExit
+            Height = 53
+            Width = 709
+          end
+        end
+      end
+      object cxTabSheet2: TcxTabSheet
+        Caption = 'cxTabSheet2'
+        ImageIndex = 1
+        object cxLabel1: TcxLabel
+          Left = 17
+          Top = 31
+          Caption = 'Base ICMS'
+          ParentFont = False
+          Transparent = True
+        end
+        object cxLabel2: TcxLabel
+          Left = 139
+          Top = 31
+          Caption = 'Valor ICMS'
+          ParentFont = False
+          Transparent = True
+        end
+        object Label19: TcxLabel
+          Left = 15
+          Top = 79
+          Caption = 'Base ICMS Sub.'
+          ParentFont = False
+          Transparent = True
+        end
+        object Label20: TcxLabel
+          Left = 137
+          Top = 79
+          Caption = 'Valor ICMS Sub.'
+          ParentFont = False
+          Transparent = True
+        end
+        object EDBASEICMS: TdxDBCalcEdit
+          Left = 17
+          Top = 47
+          Width = 123
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = clBtnShadow
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsSimple
+          TabOrder = 4
+          AutoSize = False
+          DataField = 'BASECALCULOICM'
+          DataSource = DataSource
+          ButtonGlyph.Data = {
+            46020000424D460200000000000036000000280000000E0000000C0000000100
+            1800000000001002000000000000000000000000000000000000CED3D6000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            00CED3D600008486008486008400008400008400008400008400008400008400
+            008400008400008400008400000000000000848600FFFFFF8486008486008486
+            0084860084860084860084860084860084860084860084000000000000008486
+            00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
+            00008400000000000000848600FFFFFF84860084860084860084860084860084
+            86008486008486008486008486008400000000000000848600FFFF0084860000
+            0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
+            0000848600FFFFFF848600848600848600848600848600848600848600848600
+            8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
+            C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
+            000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
+            000000000000848600FFFF000000000000000000000000000000000000000000
+            000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
+            00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
+            D684860084860084860084860084860084860084860084860084860084860084
+            8600848600CED3D60000}
+          PopupBorder = pbFrame3D
+          Height = 25
+        end
+        object EDICMS: TdxDBCalcEdit
+          Left = 139
+          Top = 47
+          Width = 123
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = clBtnShadow
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsSimple
+          TabOrder = 5
+          AutoSize = False
+          DataField = 'ICM'
+          DataSource = DataSource
+          ButtonGlyph.Data = {
+            46020000424D460200000000000036000000280000000E0000000C0000000100
+            1800000000001002000000000000000000000000000000000000CED3D6000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            00CED3D600008486008486008400008400008400008400008400008400008400
+            008400008400008400008400000000000000848600FFFFFF8486008486008486
+            0084860084860084860084860084860084860084860084000000000000008486
+            00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
+            00008400000000000000848600FFFFFF84860084860084860084860084860084
+            86008486008486008486008486008400000000000000848600FFFF0084860000
+            0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
+            0000848600FFFFFF848600848600848600848600848600848600848600848600
+            8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
+            C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
+            000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
+            000000000000848600FFFF000000000000000000000000000000000000000000
+            000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
+            00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
+            D684860084860084860084860084860084860084860084860084860084860084
+            8600848600CED3D60000}
+          PopupBorder = pbFrame3D
+          Height = 25
+        end
+        object EDBASEICMSSUBST: TdxDBCalcEdit
+          Left = 15
+          Top = 95
+          Width = 123
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = clBtnShadow
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsSimple
+          TabOrder = 7
+          AutoSize = False
+          DataField = 'BASECALCULOSUBSTITUICAO'
+          DataSource = DataSource
+          ButtonGlyph.Data = {
+            46020000424D460200000000000036000000280000000E0000000C0000000100
+            1800000000001002000000000000000000000000000000000000CED3D6000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            00CED3D600008486008486008400008400008400008400008400008400008400
+            008400008400008400008400000000000000848600FFFFFF8486008486008486
+            0084860084860084860084860084860084860084860084000000000000008486
+            00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
+            00008400000000000000848600FFFFFF84860084860084860084860084860084
+            86008486008486008486008486008400000000000000848600FFFF0084860000
+            0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
+            0000848600FFFFFF848600848600848600848600848600848600848600848600
+            8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
+            C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
+            000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
+            000000000000848600FFFF000000000000000000000000000000000000000000
+            000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
+            00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
+            D684860084860084860084860084860084860084860084860084860084860084
+            8600848600CED3D60000}
+          PopupBorder = pbFrame3D
+          Height = 25
+        end
+        object EDICMSSUBST: TdxDBCalcEdit
+          Left = 137
+          Top = 95
+          Width = 123
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = clBtnShadow
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsSimple
+          TabOrder = 8
+          AutoSize = False
+          DataField = 'ICM_SUBS'
+          DataSource = DataSource
+          ButtonGlyph.Data = {
+            46020000424D460200000000000036000000280000000E0000000C0000000100
+            1800000000001002000000000000000000000000000000000000CED3D6000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            00CED3D600008486008486008400008400008400008400008400008400008400
+            008400008400008400008400000000000000848600FFFFFF8486008486008486
+            0084860084860084860084860084860084860084860084000000000000008486
+            00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
+            00008400000000000000848600FFFFFF84860084860084860084860084860084
+            86008486008486008486008486008400000000000000848600FFFF0084860000
+            0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
+            0000848600FFFFFF848600848600848600848600848600848600848600848600
+            8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
+            C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
+            000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
+            000000000000848600FFFF000000000000000000000000000000000000000000
+            000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
+            00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
+            D684860084860084860084860084860084860084860084860084860084860084
+            8600848600CED3D60000}
+          PopupBorder = pbFrame3D
+          Height = 25
+        end
+        object Panel4: TPanel
+          Left = 7
+          Top = 7
+          Width = 622
+          Height = 15
+          BevelOuter = bvNone
+          Caption = 'C'#225'lculo do Imposto'
+          Color = clAppWorkSpace
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 9
+        end
+        object Label26: TcxLabel
+          Left = 260
+          Top = 79
+          Caption = 'IPI'
+          ParentFont = False
+          Transparent = True
+        end
+        object EDIPI: TdxDBCalcEdit
+          Left = 259
+          Top = 95
+          Width = 123
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = clBtnShadow
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsSimple
+          TabOrder = 11
+          AutoSize = False
+          DataField = 'IPI'
+          DataSource = DataSource
+          ButtonGlyph.Data = {
+            46020000424D460200000000000036000000280000000E0000000C0000000100
+            1800000000001002000000000000000000000000000000000000CED3D6000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            00CED3D600008486008486008400008400008400008400008400008400008400
+            008400008400008400008400000000000000848600FFFFFF8486008486008486
+            0084860084860084860084860084860084860084860084000000000000008486
+            00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
+            00008400000000000000848600FFFFFF84860084860084860084860084860084
+            86008486008486008486008486008400000000000000848600FFFF0084860000
+            0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
+            0000848600FFFFFF848600848600848600848600848600848600848600848600
+            8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
+            C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
+            000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
+            000000000000848600FFFF000000000000000000000000000000000000000000
+            000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
+            00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
+            D684860084860084860084860084860084860084860084860084860084860084
+            8600848600CED3D60000}
+          PopupBorder = pbFrame3D
+          Height = 25
+        end
+        object dxDBCalcEdit3: TdxDBCalcEdit
+          Left = 261
+          Top = 47
+          Width = 123
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = clBtnShadow
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsSimple
+          TabOrder = 6
+          AutoSize = False
+          DataField = 'ALIQUOTA_ICMS'
+          DataSource = DataSource
+          ButtonGlyph.Data = {
+            46020000424D460200000000000036000000280000000E0000000C0000000100
+            1800000000001002000000000000000000000000000000000000CED3D6000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            00CED3D600008486008486008400008400008400008400008400008400008400
+            008400008400008400008400000000000000848600FFFFFF8486008486008486
+            0084860084860084860084860084860084860084860084000000000000008486
+            00FFFF00848600000000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF00
+            00008400000000000000848600FFFFFF84860084860084860084860084860084
+            86008486008486008486008486008400000000000000848600FFFF0084860000
+            0000FFFFFF000000FFFFFF000000FFFFFF000000FFFFFF000000840000000000
+            0000848600FFFFFF848600848600848600848600848600848600848600848600
+            8486008486008400000000000000848600FFFF00000000C6C7C6C6C7C6C6C7C6
+            C6C7C6C6C7C6C6C7C6C6C7C68486008486008400000000000000848600FFFFFF
+            000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C7C68486008486008400
+            000000000000848600FFFF000000000000000000000000000000000000000000
+            000000008486008486008400000000000000848600FFFFFFFFFF00FFFFFFFFFF
+            00FFFFFFFFFF00FFFFFFFFFF00FFFFFFFFFF00FFFFFF8486000000000000CED3
+            D684860084860084860084860084860084860084860084860084860084860084
+            8600848600CED3D60000}
+          PopupBorder = pbFrame3D
+          Height = 25
+        end
+        object cxLabel4: TcxLabel
+          Left = 261
+          Top = 31
+          Caption = 'Al'#237'quota ICMS'
+          ParentFont = False
+          Transparent = True
+        end
+      end
+    end
   end
   object DataSource: TDataSource
     DataSet = FrmVendas.Vendas_Itens
@@ -1113,6 +1419,11 @@ object FrmVendasItens: TFrmVendasItens
       Tag = 1
       Caption = 'Configurar Campos'
       OnExecute = ActConfCamposExecute
+    end
+    object ActImposto: TAction
+      Caption = 'Alternar Imposto'
+      ShortCut = 116
+      OnExecute = ActImpostoExecute
     end
   end
   object DsUnidade: TDataSource

@@ -581,6 +581,7 @@ type
     VendasNFE_REF_DEV: TIBStringField;
     VendasMOSTRA_DESCONTO: TIBStringField;
     cxDBCheckBox1: TcxDBCheckBox;
+    Vendas_ItensALIQUOTA_ICMS: TFloatField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ActIncluirExecute(Sender: TObject);
     procedure ActExcluirExecute(Sender: TObject);
@@ -1100,7 +1101,7 @@ begin
         if VarIsNull(DesctoRes) then
             DesctoRes := 0;
 
-        Vendas.edit;
+ //       Vendas.edit;
         VendasDESCTO_RES.Value := DesctoRes;
         //-------------------- Validacao ENTREGA FUTURA? ------------------------
         If FrmVendas.ckEntregaFutura.checked Then

@@ -1,5 +1,5 @@
 object FrmVendas: TFrmVendas
-  Left = 264
+  Left = 113
   Top = 103
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -77,7 +77,7 @@ object FrmVendas: TFrmVendas
       Top = 49
       Width = 928
       Height = 491
-      ActivePage = TabFaturamento
+      ActivePage = TabTransporte
       Align = alClient
       HotTrack = True
       TabOrder = 1
@@ -5776,102 +5776,114 @@ object FrmVendas: TFrmVendas
     InsertSQL.Strings = (
       'insert into FAT_VENDAS_ITENS'
       
-        '  (ALIQUOTA, ALIQUOTA_EST, ALIQUOTA_INT, BASECALCULOICM, BASECAL' +
-        'CULOSUBSTITUICAO, '
+        '  (ALIQUOTA, ALIQUOTA_EST, ALIQUOTA_ICMS, ALIQUOTA_INT, BASECALC' +
+        'ULOICM, '
       
-        '   CFOP, CNPJ, CODIGO, CODIGO_LOTE, COMPLEMENTO, CTE, CTIE, DESC' +
-        'ONTO, FRACIONADO, '
+        '   BASECALCULOSUBSTITUICAO, CFOP, CNPJ, CODIGO, CODIGO_LOTE, COM' +
+        'PLEMENTO, '
       
-        '   GRADE, ICM, ICM_SUBS, IPI, LOTE, MENSAGEM_REDUCAO, NOME_FIS, ' +
-        'NOME_PRODUTO, '
+        '   CTE, CTIE, DESCONTO, FRACIONADO, GRADE, ICM, ICM_SUBS, IPI, L' +
+        'OTE, MENSAGEM_REDUCAO, '
       
-        '   NUMERO, ORIGEM, PESO, PORC_DESC, PRC_CUSTO, PRC_UNIT_ORIGINAL' +
-        ', PRC_UNITARIO, '
+        '   NOME_FIS, NOME_PRODUTO, NUMERO, ORIGEM, PESO, PORC_DESC, PRC_' +
+        'CUSTO, '
       
-        '   PRC_UNITARIO_FIS, PRODUTO, PRODUTOFIS, QUANTIDADE, QUANTIDADE' +
-        '_FIS, REDUCAO, '
+        '   PRC_UNIT_ORIGINAL, PRC_UNITARIO, PRC_UNITARIO_FIS, PRODUTO, P' +
+        'RODUTOFIS, '
       
-        '   SEQUENCIA, SERVICO, SPRODUTO, SUBUNIDADE, UNIDADE, UTILIZA_LO' +
-        'TE, VENDEDOR, '
-      '   VOLUME)'
+        '   QUANTIDADE, QUANTIDADE_FIS, REDUCAO, SEQUENCIA, SERVICO, SPRO' +
+        'DUTO, SUBUNIDADE, '
+      '   UNIDADE, UTILIZA_LOTE, VENDEDOR, VOLUME)'
       'values'
       
-        '  (:ALIQUOTA, :ALIQUOTA_EST, :ALIQUOTA_INT, :BASECALCULOICM, :BA' +
-        'SECALCULOSUBSTITUICAO, '
+        '  (:ALIQUOTA, :ALIQUOTA_EST, :ALIQUOTA_ICMS, :ALIQUOTA_INT, :BAS' +
+        'ECALCULOICM, '
       
-        '   :CFOP, :CNPJ, :CODIGO, :CODIGO_LOTE, :COMPLEMENTO, :CTE, :CTI' +
-        'E, :DESCONTO, '
+        '   :BASECALCULOSUBSTITUICAO, :CFOP, :CNPJ, :CODIGO, :CODIGO_LOTE' +
+        ', :COMPLEMENTO, '
       
-        '   :FRACIONADO, :GRADE, :ICM, :ICM_SUBS, :IPI, :LOTE, :MENSAGEM_' +
-        'REDUCAO, '
+        '   :CTE, :CTIE, :DESCONTO, :FRACIONADO, :GRADE, :ICM, :ICM_SUBS,' +
+        ' :IPI, '
       
-        '   :NOME_FIS, :NOME_PRODUTO, :NUMERO, :ORIGEM, :PESO, :PORC_DESC' +
-        ', :PRC_CUSTO, '
+        '   :LOTE, :MENSAGEM_REDUCAO, :NOME_FIS, :NOME_PRODUTO, :NUMERO, ' +
+        ':ORIGEM, '
       
-        '   :PRC_UNIT_ORIGINAL, :PRC_UNITARIO, :PRC_UNITARIO_FIS, :PRODUT' +
-        'O, :PRODUTOFIS, '
+        '   :PESO, :PORC_DESC, :PRC_CUSTO, :PRC_UNIT_ORIGINAL, :PRC_UNITA' +
+        'RIO, :PRC_UNITARIO_FIS, '
       
-        '   :QUANTIDADE, :QUANTIDADE_FIS, :REDUCAO, :SEQUENCIA, :SERVICO,' +
-        ' :SPRODUTO, '
-      '   :SUBUNIDADE, :UNIDADE, :UTILIZA_LOTE, :VENDEDOR, :VOLUME)')
+        '   :PRODUTO, :PRODUTOFIS, :QUANTIDADE, :QUANTIDADE_FIS, :REDUCAO' +
+        ', :SEQUENCIA, '
+      
+        '   :SERVICO, :SPRODUTO, :SUBUNIDADE, :UNIDADE, :UTILIZA_LOTE, :V' +
+        'ENDEDOR, '
+      '   :VOLUME)')
     RefreshSQL.Strings = (
-      'select '
-      '    fti.CNPJ,'
-      '    fti.CODIGO,'
-      '    fti.PRODUTO,'
-      '    fti.SPRODUTO,'
-      '    fti.SEQUENCIA,'
-      '    fti.QUANTIDADE,'
-      '    fti.PRC_UNITARIO,'
-      '    fti.PRC_CUSTO,'
-      '    fti.ICM,'
-      '    fti.ICM_SUBS,'
-      '    fti.IPI,'
-      '    fti.VOLUME,'
-      '    fti.PESO,'
-      '    fti.DESCONTO,'
-      '    fti.PORC_DESC,'
-      '    fti.UNIDADE,'
-      '    fti.PRC_UNIT_ORIGINAL,'
-      '    fti.NOME_PRODUTO,'
-      '    fti.ALIQUOTA,'
-      '    fti.PRODUTOFIS,'
-      '    fti.NOME_FIS,'
-      '    fti.SUBUNIDADE,'
-      '    fti.ORIGEM,'
-      '    fti.CTE,'
-      '    fti.CTIE,'
-      '    fti.REDUCAO,'
-      '    fti.FRACIONADO,'
-      '    fti.VENDEDOR,'
-      '    fti.MENSAGEM_REDUCAO,'
-      '    fti.BASECALCULOICM,'
-      '    fti.BASECALCULOSUBSTITUICAO,'
-      '    fti.ALIQUOTA_EST,'
-      '    fti.ALIQUOTA_INT,'
-      '    fti.CFOP ,'
-      '    fti.COMPLEMENTO,'
-      '    fti.SERVICO,'
-      '    fti.GRADE,'
-      '    fti.NUMERO,'
-      '    fti.PRC_UNITARIO_FIS,'
-      '    fti.QUANTIDADE_FIS,'
-      '    fti.LOTE,'
-      '    fti.CODIGO_LOTE,'
-      '    fti.utiliza_lote,'
-      '    grd.grade,'
-      '    grd.nome_cor,'
-      '    grd.nome_material,'
-      '    grd.nome_perfil,'
-      '    prd.servico prd_servico'
-      'from FAT_VENDAS_ITENS fti'
-      
-        'left join est_produtos prd on (prd.codigo = fti.produto and fti.' +
-        'cnpj = prd.cnpj)'
-      
-        'left join EST_PRODUTOS_GRADES grd on (grd.produto = fti.produto ' +
-        'and grd.grade = fti.grade and grd.cnpj = fti.cnpj)'
-      'WHERE fti.CNPJ = :CNPJ AND fti.CODIGO = :CODIGO')
+      'Select '
+      '  CNPJ,'
+      '  CODIGO,'
+      '  PRODUTO,'
+      '  SEQUENCIA,'
+      '  QUANTIDADE,'
+      '  PRC_UNITARIO,'
+      '  PRC_CUSTO,'
+      '  ICM,'
+      '  ICM_SUBS,'
+      '  IPI,'
+      '  VOLUME,'
+      '  PESO,'
+      '  DESCONTO,'
+      '  PORC_DESC,'
+      '  UNIDADE,'
+      '  PRC_UNIT_ORIGINAL,'
+      '  NOME_PRODUTO,'
+      '  ALIQUOTA,'
+      '  PRODUTOFIS,'
+      '  NOME_FIS,'
+      '  CTE,'
+      '  CTIE,'
+      '  ORIGEM,'
+      '  REDUCAO,'
+      '  SUBUNIDADE,'
+      '  TOTAL_DIGITADO,'
+      '  VENDEDOR,'
+      '  FRACIONADO,'
+      '  MENSAGEM_REDUCAO,'
+      '  BASECALCULOICM,'
+      '  BASECALCULOSUBSTITUICAO,'
+      '  ALIQUOTA_EST,'
+      '  ALIQUOTA_INT,'
+      '  CFOP,'
+      '  COMPLEMENTO,'
+      '  NOME_VENDEDOR,'
+      '  SERVICO,'
+      '  NUMERO,'
+      '  LINHA_ABASTECIMENTO,'
+      '  CONTADOR_ARQUIVO,'
+      '  GRADE,'
+      '  QUANTIDADE_FIS,'
+      '  PRC_UNITARIO_FIS,'
+      '  LOTE,'
+      '  CODIGO_LOTE,'
+      '  UTILIZA_LOTE,'
+      '  COM_GERADA,'
+      '  QTDE_ENTREGUE,'
+      '  CUSTO_MEDIO,'
+      '  LUCRO_ITEM,'
+      '  CARREGAR,'
+      '  CARREGADO,'
+      '  ENTREGUE,'
+      '  ENTREGAR,'
+      '  DEVOLVER,'
+      '  DEVOLVIDO,'
+      '  SPRODUTO,'
+      '  VLR_LUCRO_ITEM,'
+      '  ALIQUOTA_ICMS'
+      'from FAT_VENDAS_ITENS '
+      'where'
+      '  CNPJ = :CNPJ and'
+      '  CODIGO = :CODIGO and'
+      '  PRODUTO = :PRODUTO and'
+      '  SEQUENCIA = :SEQUENCIA')
     SelectSQL.Strings = (
       'select '
       '    fti.CNPJ,'
@@ -5921,7 +5933,8 @@ object FrmVendas: TFrmVendas
       '    grd.nome_cor,'
       '    grd.nome_material,'
       '    grd.nome_perfil,'
-      '    prd.servico prd_servico'
+      '    prd.servico prd_servico, '
+      '    ALIQUOTA_ICMS'
       'from FAT_VENDAS_ITENS fti'
       
         'left join est_produtos prd on (prd.codigo = fti.produto and fti.' +
@@ -5935,6 +5948,7 @@ object FrmVendas: TFrmVendas
       'set'
       '  ALIQUOTA = :ALIQUOTA,'
       '  ALIQUOTA_EST = :ALIQUOTA_EST,'
+      '  ALIQUOTA_ICMS = :ALIQUOTA_ICMS,'
       '  ALIQUOTA_INT = :ALIQUOTA_INT,'
       '  BASECALCULOICM = :BASECALCULOICM,'
       '  BASECALCULOSUBSTITUICAO = :BASECALCULOSUBSTITUICAO,'
@@ -6305,6 +6319,10 @@ object FrmVendas: TFrmVendas
       Origin = '"FAT_VENDAS_ITENS"."SPRODUTO"'
       OnSetText = Vendas_ItensSPRODUTOSetText
       Size = 16
+    end
+    object Vendas_ItensALIQUOTA_ICMS: TFloatField
+      FieldName = 'ALIQUOTA_ICMS'
+      Origin = '"FAT_VENDAS_ITENS"."ALIQUOTA_ICMS"'
     end
   end
   object dsLink: TDataSource

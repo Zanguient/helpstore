@@ -1,6 +1,6 @@
 object DmOrdemCarga: TDmOrdemCarga
   OldCreateOrder = False
-  Left = 3
+  Left = 4
   Top = 1
   Height = 450
   Width = 638

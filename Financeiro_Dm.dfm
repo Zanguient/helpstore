@@ -2,7 +2,7 @@ object DmFinanceiro: TDmFinanceiro
   OldCreateOrder = False
   OnCreate = verreceberbefor
   Height = 728
-  Width = 1280
+  Width = 1024
   object Contas_Receber: TIBDataSet
     Database = DmApp.Database
     Transaction = DmApp.Transaction

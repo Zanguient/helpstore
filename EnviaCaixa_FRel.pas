@@ -19,7 +19,7 @@ uses
   dxSkinSharp, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
   dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinXmas2008Blue, Menus, cxButtons, cxLabel, ppEndUsr, cxTextEdit,
-  cxMaskEdit, cxSpinEdit, cxCheckBox, cxGroupBox;
+  cxMaskEdit, cxSpinEdit, cxCheckBox, cxGroupBox, cxPropertiesStore;
 
 type
   TFRelEnviaCaixa = class(TForm)
@@ -225,6 +225,7 @@ type
     LBLPEDIDO: TcxLabel;
     LblTipo: TcxLabel;
     cxLabel1: TcxLabel;
+    stgFRelEnviaCaixa: TcxPropertiesStore;
     procedure FormCreate(Sender: TObject);
     procedure ActFecharExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -288,17 +289,31 @@ uses Usuarios_DM,
      Funcoes,
      Vendas_Dm,
      NotaPromissoria_FRel,
-     Cadastros_DM, Vendas_DM2;
+     Cadastros_DM, Vendas_DM2,
+     cxStorage;
 
 {$R *.DFM}
 
 procedure TFRelEnviaCaixa.FormCreate(Sender: TObject);
+var
+  FMyStream: TMemoryStream;
 begin
   // Se o Usuário for Supervisor
   If DMUsuarios.Direito = 'SUPERVISOR' Then
      DMApp.Verifica_Modulo(FileName(Application.ExeName), Self.Name, Self.Caption, ListaActions(Actions))
   Else If DMUsuarios.Objeto = Self.Name Then
      AtivaActions(Actions, DMUsuarios.Direito);
+
+  stgFRelEnviaCaixa.StorageType := stStream;
+  FmyStream := TMemoryStream.Create;
+  stgFRelEnviaCaixa.StorageStream := FMyStream;
+
+  if FileExists('C:\Sistemas\HelpStore\filtros\'+stgFRelEnviaCaixa.StorageName) then
+  begin
+    FMyStream.LoadFromFile('C:\Sistemas\HelpStore\filtros\'+stgFRelEnviaCaixa.StorageName);
+    FMyStream.Position := 0;
+    stgFRelEnviaCaixa.RestoreFrom;
+  end;
 end;
 
 procedure TFRelEnviaCaixa.ActFecharExecute(Sender: TObject);
@@ -315,6 +330,11 @@ begin
           DmVendas.Consulta_Venda.Close ;
           DSource.DataSet.Close ;
      end;
+
+     (stgFRelEnviaCaixa.StorageStream as TMemoryStream).Position := 0;
+     stgFRelEnviaCaixa.StoreTo(true);
+     (stgFRelEnviaCaixa.StorageStream as TMemoryStream).SaveToFile(('C:\Sistemas\HelpStore\filtros\'+stgFRelEnviaCaixa.StorageName));
+
 
      Action := caFree;
      FRElenviaCaixa := Nil;

@@ -10,7 +10,6 @@ inherited frmCadProdutos: TfrmCadProdutos
   inherited pgcCadastro: TcxPageControl
     Width = 709
     Height = 589
-    ActivePage = tbsEdita
     ClientRectBottom = 585
     ClientRectRight = 705
     inherited tbsLista: TcxTabSheet
@@ -118,6 +117,17 @@ inherited frmCadProdutos: TfrmCadProdutos
             DataBinding.FieldName = 'LOCALIZACAO_3'
             Position.BandIndex = 0
             Position.ColIndex = 16
+            Position.RowIndex = 0
+          end
+          object TVRegistroATIVO: TcxGridDBBandedColumn
+            DataBinding.FieldName = 'ATIVO'
+            PropertiesClassName = 'TcxCheckBoxProperties'
+            Properties.ValueChecked = 'S'
+            Properties.ValueGrayed = 'N '
+            Properties.ValueUnchecked = 'N'
+            Width = 46
+            Position.BandIndex = 0
+            Position.ColIndex = 17
             Position.RowIndex = 0
           end
         end
@@ -3984,14 +3994,24 @@ inherited frmCadProdutos: TfrmCadProdutos
                 DataBinding.DataSource = dsRegistro
                 Properties.ClearKey = 46
                 Properties.Items.Strings = (
-                  '101'
-                  '102'
-                  '103'
-                  '201'
-                  '202'
-                  '203'
-                  '400'
-                  '900')
+                  '101 - Tributado com permiss'#227'o de cr'#233'dito'
+                  '102 - Tributado sem permiss'#227'o de cr'#233'dito'
+                  '103 - Isen'#231#227'o de icms por faixa de receita bruta'
+                  
+                    '201 - Tributado com permiss'#227'o de cr'#233'dito e com cobran'#231'a do ICMS ' +
+                    'por ST'
+                  
+                    '202 - Tributado sem permiss'#227'o de cr'#233'dito e com cobran'#231'a do ICMS ' +
+                    'por ST'
+                  
+                    '203 - Isen'#231#227'o do ICMS para faixa de receita bruta e com combran'#231 +
+                    'a de ICMS por ST'
+                  '300 - Imune'
+                  '400 - N'#227'o tributado'
+                  
+                    '500 - ICMS cobrado anteriormente por substitui'#231#227'o tribut'#225'ria (su' +
+                    'bstitu'#237'do) ou por antecipa'#231#227'o'
+                  '900 - Outros')
                 TabOrder = 9
                 Width = 287
               end
@@ -4993,7 +5013,7 @@ inherited frmCadProdutos: TfrmCadProdutos
       'mdl.codigo mdl_codigo, mdl.nome modelo,'
       
         's.nome secao, prd.localizacao_1, prd.localizacao_2, prd.localiza' +
-        'cao_3'
+        'cao_3, prd.ativo'
       'from est_produtos prd'
       
         'left join est_marcas mr on (mr.cnpj = prd.cnpj and mr.codigo = p' +
@@ -5109,6 +5129,13 @@ inherited frmCadProdutos: TfrmCadProdutos
       FieldName = 'LOCALIZACAO_3'
       Origin = '"EST_PRODUTOS"."LOCALIZACAO_3"'
       Size = 30
+    end
+    object dtListATIVO: TIBStringField
+      DisplayLabel = 'Ativo'
+      FieldName = 'ATIVO'
+      Origin = '"EST_PRODUTOS"."ATIVO"'
+      FixedChar = True
+      Size = 1
     end
   end
   inherited dxBarManager: TdxBarManager

@@ -251,8 +251,6 @@ object FrmMain: TFrmMain
         end
         object nvProdutos: TdxNavBarItem
           Action = ActConsultaProduto
-          LargeImageIndex = 1
-          SmallImageIndex = 1
         end
         object nvClientes: TdxNavBarItem
           Action = ActClientes
@@ -471,7 +469,6 @@ object FrmMain: TFrmMain
             Font.Style = []
             Storage = AgendaStorage2
             TabOrder = 1
-            Selection = 1
             Splitters = {
               9B0200007E0000002A0300008300000096020000010000009B02000070010000}
             StoredClientBounds = {01000000010000002A03000070010000}

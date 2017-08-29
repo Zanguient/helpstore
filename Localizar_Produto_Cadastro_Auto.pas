@@ -61,6 +61,7 @@ type
     Bevel2: TBevel;
     EdCodigoSec: TdxEdit;
     cxLabel1: TcxLabel;
+    cbListaProdAtivos: TCheckBox;
     procedure FormShow(Sender: TObject);
     procedure GridKeyPress(Sender: TObject; var Key: Char);
     procedure GridDblClick(Sender: TObject);
@@ -100,6 +101,7 @@ type
 
 var
   FrmLocProdutoCadastro_Auto: TFrmLocProdutoCadastro_Auto;
+  ListaProdAtivo: String;
 
 implementation
 
@@ -296,11 +298,16 @@ begin
        with DmCadastros do
        begin
          qryLocalizarProduto.Close;
-         if (FrmProdutos = nil) then
-           qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and prd.ativo = ''S'' and prd.codigo like '+QuotedStr(trim(EdCodigo.Text)+'%')+' order by prd.codigo '
-         else
-           qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and prd.codigo like '+QuotedStr(trim(EdCodigo.Text)+'%')+' order by prd.codigo ';
+         {if (FrmProdutos = nil) then
+           qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and prd.ativo = ''S'' and prd.codigo like '+QuotedStr(trim(EdCodigo.Text)+'%')
+         else}
+           qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and prd.codigo like '+QuotedStr(trim(EdCodigo.Text)+'%');
 
+         //Alteração feita por solicitação da Veronica em 17/08/17. Para listar apenas produtos ativos
+        if cbListaProdAtivos.State = cbChecked then
+          qryLocalizarProduto.sql.text := qryLocalizarProduto.sql.text + ' and prd.ativo = ''S''';
+
+         qryLocalizarProduto.sql.text := qryLocalizarProduto.sql.text + ' order by prd.codigo ';
         // qryLocalizarProduto.parambyname('vendedor').value := vendedor;
          qryLocalizarProduto.Open;
        end;
@@ -312,15 +319,22 @@ procedure TFrmLocProdutoCadastro_Auto.FiltraNome;
 var
   sql : string;
 begin
-     if (FrmProdutos = nil) then
-       sql := sqlOriginal + ' where prd.cnpj = :cnpj and prd.nome like ''%''||'+QuoTedStr(EdNome.text)+'||''%''  order by prd.nome '
-     else
-       sql := sqlOriginal + ' where prd.cnpj = :cnpj and prd.ativo = ''S'' and prd.nome like ''%''||'+QuoTedStr(EdNome.text)+'||''%''  order by prd.nome ';
+     {if (FrmProdutos = nil) then}
+       sql := sqlOriginal + ' where prd.cnpj = :cnpj and prd.nome like ''%''||'+QuoTedStr(EdNome.text)+'||''%''';
+     {else
+       sql := sqlOriginal + ' where prd.cnpj = :cnpj and prd.ativo = ''S'' and prd.nome like ''%''||'+QuoTedStr(EdNome.text)+'||''%'''; }
 
      with DmCadastros do
      begin
        qryLocalizarProduto.Close;
        qryLocalizarProduto.sql.text := sql;
+
+       //Alteração feita por solicitação da Veronica em 17/08/17. Para listar apenas produtos ativos
+        if cbListaProdAtivos.State = cbChecked then
+          qryLocalizarProduto.sql.text := qryLocalizarProduto.sql.text + ' and prd.ativo = ''S''';
+          
+       qryLocalizarProduto.sql.text := qryLocalizarProduto.sql.text + ' order by prd.nome ';
+       
        qryLocalizarProduto.Open;
      end;
 
@@ -339,10 +353,16 @@ begin
        with DmCadastros do
        begin
          qryLocalizarProduto.Close;
-         if (FrmProdutos = nil) then
-           qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and prd.ativo = ''S'' and prd.codigo_fabricante like '+QuotedStr(trim(EdCodigoFab.Text)+'%')+' order by prd.codigo_fabricante '
-         else
-           qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and codigo_fabricante like '+QuotedStr(trim(EdCodigoFab.Text)+'%')+' order by codigo_fabricante ';
+         {if (FrmProdutos = nil) then
+           qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and prd.ativo = ''S'' and prd.codigo_fabricante like '+QuotedStr(trim(EdCodigoFab.Text)+'%')
+         else }
+           qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and codigo_fabricante like '+QuotedStr(trim(EdCodigoFab.Text)+'%');
+
+         //Alteração feita por solicitação da Veronica em 17/08/17. Para listar apenas produtos ativos
+          if cbListaProdAtivos.State = cbChecked then
+          qryLocalizarProduto.sql.text := qryLocalizarProduto.sql.text + ' and prd.ativo = ''S''';
+           
+         qryLocalizarProduto.sql.text := qryLocalizarProduto.sql.text + ' order by prd.codigo_fabricante ';
 
         // qryLocalizarProduto.parambyname('vendedor').value := vendedor;
          qryLocalizarProduto.Open;
@@ -362,11 +382,16 @@ begin
        with DmCadastros do
        begin
          qryLocalizarProduto.Close;
-         if (FrmProdutos = nil) then
+         {if (FrmProdutos = nil) then
            qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj and prd.ativo = ''S''  order by prd.nome '
-         else
-           qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj order by prd.nome ';
+         else }
+           qryLocalizarProduto.sql.text := sqlOriginal + ' where prd.cnpj = :cnpj';
 
+        //Alteração feita por solicitação da Veronica em 17/08/17. Para listar apenas produtos ativos
+        if cbListaProdAtivos.State = cbChecked then
+          qryLocalizarProduto.sql.text := qryLocalizarProduto.sql.text + ' and prd.ativo = ''S''';
+
+        qryLocalizarProduto.sql.text := qryLocalizarProduto.sql.text + ' order by prd.nome ';
         // qryLocalizarProduto.parambyname('vendedor').value := vendedor;
          qryLocalizarProduto.Open;
        end;
@@ -385,15 +410,21 @@ procedure TFrmLocProdutoCadastro_Auto.FiltraCodigoSec;
 var
   sql : string;
 begin
-  if (FrmProdutos = nil) then
-    sql := sqlOriginal + ' where prd.cnpj = :cnpj and  prd.codigo_2 like ''%''||'+QuoTedStr(trim(EdCodigoSec.text))+'||''%''  order by  prd.codigo_2 '
-  else
-    sql := sqlOriginal + ' where prd.cnpj = :cnpj and prd.ativo = ''S'' and  prd.codigo_2 like ''%''||'+QuoTedStr(trim(EdCodigoSec.text))+'||''%''  order by  prd.codigo_2 ';
-
+  {if (FrmProdutos = nil) then}
+    sql := sqlOriginal + ' where prd.cnpj = :cnpj and  prd.codigo_2 like ''%''||'+QuoTedStr(trim(EdCodigoSec.text))+'||''%''';
+  {else
+    sql := sqlOriginal + ' where prd.cnpj = :cnpj and prd.ativo = ''S'' and  prd.codigo_2 like ''%''||'+QuoTedStr(trim(EdCodigoSec.text))+'||''%''';
+   }
   with DmCadastros do
   begin
     qryLocalizarProduto.Close;
     qryLocalizarProduto.sql.text := sql;
+    
+    //Alteração feita por solicitação da Veronica em 17/08/17. Para listar apenas produtos ativos
+        if cbListaProdAtivos.State = cbChecked then
+          qryLocalizarProduto.sql.text := qryLocalizarProduto.sql.text + ' and prd.ativo = ''S''';
+          
+    qryLocalizarProduto.sql.text := qryLocalizarProduto.sql.text + ' order by prd.codigo_2 ';
     qryLocalizarProduto.Open;
   end;
 

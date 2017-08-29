@@ -92,7 +92,7 @@ object FrmLocProdutoCadastro_Auto: TFrmLocProdutoCadastro_Auto
         Style.BorderColor = clBtnShadow
         Style.BorderStyle = xbsSingle
         Style.ButtonStyle = btsSimple
-        TabOrder = 0
+        TabOrder = 1
         OnEnter = EdCodigoEnter
         OnExit = EdCodigoExit
         OnKeyDown = EdCodigoKeyDown
@@ -111,7 +111,7 @@ object FrmLocProdutoCadastro_Auto: TFrmLocProdutoCadastro_Auto
         Style.BorderColor = clBtnShadow
         Style.BorderStyle = xbsSingle
         Style.ButtonStyle = btsSimple
-        TabOrder = 1
+        TabOrder = 2
         OnEnter = EdNomeEnter
         OnExit = EdCodigoExit
         OnKeyDown = EdCodigoKeyDown
@@ -130,7 +130,7 @@ object FrmLocProdutoCadastro_Auto: TFrmLocProdutoCadastro_Auto
         Style.BorderColor = clBtnShadow
         Style.BorderStyle = xbsSingle
         Style.ButtonStyle = btsSimple
-        TabOrder = 2
+        TabOrder = 3
         OnEnter = EdCodigoEnter
         OnExit = EdCodigoExit
         OnKeyDown = EdCodigoKeyDown
@@ -149,7 +149,7 @@ object FrmLocProdutoCadastro_Auto: TFrmLocProdutoCadastro_Auto
         Style.BorderColor = clBtnShadow
         Style.BorderStyle = xbsSingle
         Style.ButtonStyle = btsSimple
-        TabOrder = 7
+        TabOrder = 8
         OnEnter = EdCodigoEnter
         OnExit = EdCodigoExit
         OnKeyDown = EdCodigoKeyDown
@@ -161,6 +161,16 @@ object FrmLocProdutoCadastro_Auto: TFrmLocProdutoCadastro_Auto
         Caption = 'C'#243'd. Sec.'
         ParentFont = False
         Transparent = True
+      end
+      object cbListaProdAtivos: TCheckBox
+        Left = 632
+        Top = 4
+        Width = 137
+        Height = 17
+        Caption = 'Lista Produtos Ativos'
+        Checked = True
+        State = cbChecked
+        TabOrder = 0
       end
     end
     object Panel2: TPanel

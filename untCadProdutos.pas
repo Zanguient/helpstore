@@ -652,6 +652,8 @@ type
     mtbFiltroCODIGO_2: TStringField;
     cxDBLabel6: TcxDBLabel;
     cxLabel103: TcxLabel;
+    dtListATIVO: TIBStringField;
+    TVRegistroATIVO: TcxGridDBBandedColumn;
     procedure ActCadLookupExecute(Sender: TObject);
     procedure dtEditNewRecord(DataSet: TDataSet);
     procedure BtnGruposClick(Sender: TObject);
@@ -1095,7 +1097,7 @@ procedure TfrmCadProdutos.dtEditCSOSNGetText(Sender: TField;
   var Text: String; DisplayText: Boolean);
 begin
   inherited;  
-  {if (Sender.Value = 101) then
+  if (Sender.Value = 101) then
     Text:= '101 - Tributado com permissão de crédito'
   else if (Sender.Value = 102) then
     Text:= '102 - Tributado sem permissão de crédito'
@@ -1111,32 +1113,36 @@ begin
     Text:= '300 - Imune'
   else if (Sender.Value = 400) then
     Text:= '400 - Não tributado'
+  else if (Sender.Value = 500) then
+    Text:= '500 - ICMS cobrado anteriormente por substituição tributária (substituído) ou por antecipação'
   else if (Sender.Value = 900) then
-    Text:= '900 - Códigos usados por ME/EPPs nas demais operações que não se enquadrem nas demais'; }
+    Text:= '900 - Outros';
 end;
 
 procedure TfrmCadProdutos.dtEditCSOSNSetText(Sender: TField;
   const Text: String);
 begin
   inherited;
-  {if Trim(Text)= '101 - Tributado com permissão de crédito' then              -
+ if (Text= '101 - Tributado com permissão de crédito') then
     Sender.Value := 101
-  else if Trim(Text) ='102 - Tributado sem permissão de crédito' then
+  else if (Text ='102 - Tributado sem permissão de crédito' ) then
      Sender.Value := 102
-  else if Trim(Text)= '103 - Isenção de icms por faixa de receita bruta' then
+  else if (Text= '103 - Isenção de icms por faixa de receita bruta' ) then
     Sender.Value := 103
-  else if Trim(Text) = '201 - Tributado com permissão de crédito e com cobrança do ICMS por ST' then
+  else if (Text = '201 - Tributado com permissão de crédito e com cobrança do ICMS por ST' ) then
     Sender.Value := 201
-  else if Trim(Text) = '202 - Tributado sem permissão de crédito e com cobrança do ICMS por ST' then
+  else if (Text = '202 - Tributado sem permissão de crédito e com cobrança do ICMS por ST') then
     Sender.Value := 202
-  else if Trim(Text) = '203 - Isenção do ICMS para faixa de receita bruta e com combrança de ICMS por ST' then
+  else if (Text = '203 - Isenção do ICMS para faixa de receita bruta e com combrança de ICMS por ST') then
     Sender.Value := 203
-  else if Trim(Text) = '300 - Imune' then
+  else if (Text = '300 - Imune' ) then
     Sender.Value := 300
-  else if Trim(Text) = '400 - Não tributado' then
+  else if (Text = '400 - Não tributado') then
     Sender.Value := 400
-  else if Trim(Text) = '900 - Códigos usados por ME/EPPs nas demais operações que não se enquadrem nas demais' then
-    Sender.Value := 900;    }
+  else if (Text = '500 - ICMS cobrado anteriormente por substituição tributária (substituído) ou por antecipação') then
+    Sender.Value := 500
+  else if (Text= '900 - Outros') then
+    Sender.Value := 900;
 end;
 
 procedure TfrmCadProdutos.BtnReducoesClick(Sender: TObject);

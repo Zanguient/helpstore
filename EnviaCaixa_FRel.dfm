@@ -42,7 +42,7 @@ object FRelEnviaCaixa: TFRelEnviaCaixa
       Properties.MaxValue = 3.000000000000000000
       Properties.MinValue = 1.000000000000000000
       TabOrder = 1
-      Value = 2
+      Value = 1
       Width = 41
     end
     object btnver: TcxButton
@@ -733,7 +733,7 @@ object FRelEnviaCaixa: TFRelEnviaCaixa
     PrinterSetup.BinName = 'Cont. Feed - No Break'
     PrinterSetup.Collation = False
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta 8,5x11 pol'
+    PrinterSetup.PaperName = 'Letter 8 1/2 x 11 in'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
     PrinterSetup.mmMarginBottom = 4000
@@ -3340,5 +3340,52 @@ object FRelEnviaCaixa: TFRelEnviaCaixa
     DataSet = dmCadastros2.CONFIG_REL_GRAFICO
     Left = 219
     Top = 33
+  end
+  object stgFRelEnviaCaixa: TcxPropertiesStore
+    Components = <
+      item
+        Component = Vias
+        Properties.Strings = (
+          'Anchors'
+          'AutoSize'
+          'BeepOnEnter'
+          'Constraints'
+          'Cursor'
+          'DragCursor'
+          'DragKind'
+          'DragMode'
+          'Enabled'
+          'FakeStyleController'
+          'Height'
+          'HelpContext'
+          'HelpKeyword'
+          'HelpType'
+          'Hint'
+          'ImeMode'
+          'ImeName'
+          'Left'
+          'Name'
+          'ParentColor'
+          'ParentFont'
+          'ParentShowHint'
+          'PopupMenu'
+          'Properties'
+          'RepositoryItem'
+          'ShowHint'
+          'Style'
+          'StyleDisabled'
+          'StyleFocused'
+          'StyleHot'
+          'TabOrder'
+          'TabStop'
+          'Tag'
+          'Top'
+          'Value'
+          'Visible'
+          'Width')
+      end>
+    StorageName = 'FRelEnviaCaixa'
+    Left = 129
+    Top = 56
   end
 end
